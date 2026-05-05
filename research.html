@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Research & Insight | Hannah Tran</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="container">
+    <nav>
+      <img src="images/logo.png" class="logo">
+      <ul id="sidemenu">
+        <li><a href="index.html#header">Home</a></li>
+        <li><a href="index.html#about">My Story</a></li>
+        <li><a href="index.html#professions">Professions</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://pottery.hannahtran7.repl.co">Pottery</a></li>
+        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+      </ul>
+      <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <div id="about">
+    <div class="container">
+
+      <h1 class="sub-title">Research & Insight</h1>
+
+      <p style="margin-top: 20px;">
+        My research focuses on understanding how people interact with complex systems—whether through technology, identity, or environmental narratives.
+      </p>
+
+      <p style="margin-top: 10px;">
+        I work across qualitative and technical methods to explore how information is distributed, interpreted, and experienced.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="portfolio">
+    <div class="container">
+
+      <div class="work-list">
+
+        <!-- PROJECT 1 -->
+        <div class="work">
+          <!-- <img src="images/work-1.png"> -->
+          <div class="layer">
+            <h3>Transformers & Formal Languages</h3>
+            <p>
+              Investigating whether transformer models learn true language rules or rely on pattern approximation beyond training distributions.
+            </p>
+            <a href="project-ai.html">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="work">
+          <!-- <img src="images/work-3.png"> -->
+          <div class="layer">
+            <h3>Trans Identity, Ecology & TikTok</h3>
+            <p>
+              Explored how TikTok shapes interactions between transgender identity and environmental narratives through algorithmic distribution.
+            </p>
+            <a href="project-trans-env.html">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="work">
+          <!-- <img src="images/work-2.png"> -->
+          <div class="layer">
+            <h3>ML + Dozuki + Hardware Learning</h3>
+            <p>
+              Developed educational systems combining Arduino, SolidWorks, and machine learning concepts to make technical learning accessible.
+            </p>
+            <a href="project-ml.html">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <a href="index.html#professions" class="btn">← Back</a>
+
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    var sidemnu = document.getElementById("sidemenu");
+
+    function openmenu(){
+      sidemnu.style.right = "0"
+    }
+    function closemenu(){
+      sidemnu.style.right = "-200px"
+    }
+  </script>
+
+</body>
+</html>

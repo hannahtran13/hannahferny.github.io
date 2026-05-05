@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Project | Hannah Tran</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- NAV (copied from index) -->
+  <div class="container">
+    <nav>
+      <img src="images/logo.png" class="logo">
+      <ul id="sidemenu">
+        <li><a href="index.html#header">Home</a></li>
+        <li><a href="index.html#about">My Story</a></li>
+        <li><a href="index.html#professions">Professions</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://pottery.hannahtran7.repl.co">Pottery</a></li>
+        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+      </ul>
+      <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+    </nav>
+  </div>
+
+  <!-- PROJECT HEADER -->
+  <div id="about">
+    <div class="container">
+
+      <h1 class="sub-title">Project Title</h1>
+
+      <p style="margin-top: 20px; font-size: 18px;">
+        One-line summary of what this project is and why it matters.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- PROJECT CONTENT -->
+  <div id="portfolio">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="about-col-1">
+          <img src="images/work-1.png">
+        </div>
+
+        <div class="about-col-2">
+
+          <h2>Context</h2>
+          <p>
+            What problem were you solving? What was the situation? Why did this project exist?
+          </p>
+
+          <br>
+
+          <h2>What I Did</h2>
+          <ul>
+            <li>Designed...</li>
+            <li>Conducted research...</li>
+            <li>Built...</li>
+          </ul>
+
+          <br>
+
+          <h2>Outcome</h2>
+          <p>
+            What happened? What impact did this have? Include numbers if possible.
+          </p>
+
+          <br>
+
+          <h2>Key Insight</h2>
+          <p>
+            What did you learn? How did this change how you think?
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- BACK BUTTON -->
+      <a href="index.html#portfolio" class="btn">← Back to Work</a>
+
+    </div>
+  </div>
+
+  <!-- JS (reuse from index) -->
+  <script>
+    var sidemnu = document.getElementById("sidemenu");
+
+    function openmenu(){
+      sidemnu.style.right = "0"
+    }
+    function closemenu(){
+      sidemnu.style.right = "-200px"
+    }
+  </script>
+
+</body>
+</html>
