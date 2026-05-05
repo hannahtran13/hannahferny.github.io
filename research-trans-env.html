@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Trans Identity & Algorithmic Systems</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<!-- NAV (same as index) -->
+<div class="container">
+  <nav>
+    <img src="images/logo.png" class="logo">
+    <ul id="sidemenu">
+      <li><a href="index.html#header">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+    </ul>
+    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+  </nav>
+</div>
+
+<!-- PROJECT -->
+<div id="about">
+  <div class="container">
+
+    <h1 class="sub-title">
+      Trans Identity, Ecology & Algorithmic Systems
+    </h1>
+
+    <p style="margin-top: 20px;">
+      This research investigates how TikTok shapes discourse at the intersection of transgender identity and environmental narratives, examining how algorithmic systems construct, reinforce, and destabilize identity.
+    </p>
+
+    <!-- TABS -->
+    <div class="tab-titles">
+      <p class="tab-links active-link" onclick="opentab('overview')">Overview</p>
+      <p class="tab-links" onclick="opentab('method')">Method</p>
+      <p class="tab-links" onclick="opentab('findings')">Findings</p>
+      <p class="tab-links" onclick="opentab('implications')">Implications</p>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="tab-contents active-tab" id="overview">
+      <p>
+        Social media platforms like TikTok function as both spaces of visibility and sites of control. While they amplify marginalized voices, they are also driven by engagement-based algorithms that prioritize attention, conflict, and retention.
+      </p>
+
+      <br>
+
+      <p>
+        This research explores a less examined intersection: transgender identity, environmental discourse, and pollution narratives. It asks whether a platform shaped by capitalist incentives and algorithmic feedback loops can meaningfully contribute to liberation—or whether it ultimately reinforces existing systems of power.
+      </p>
+
+      <br>
+
+      <!-- OPTIONAL TIKTOK EMBED -->
+      <iframe 
+        src="https://www.tiktok.com/embed/REPLACE_WITH_VIDEO_ID"
+        width="325" height="575"
+        frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- METHOD -->
+    <div class="tab-contents" id="method">
+      <p>
+        To understand how TikTok constructs user experience, I developed a walkthrough method simulating new-user interactions with the platform.
+      </p>
+
+      <br>
+
+      <ul>
+        <li><span>Controlled Accounts</span><br>Four TikTok accounts were created with minimal identity information to reduce bias.</li>
+        <li><span>Sampling Process</span><br>Each session recorded the first 30 videos on the For You Page and tracked emerging patterns.</li>
+        <li><span>Search Terms</span><br>Queries included "transgender identity", "queer ecology", and "black transgender".</li>
+        <li><span>Data Collection</span><br>Content was documented, categorized, and analyzed qualitatively.</li>
+      </ul>
+
+      <br>
+
+      <!-- DIAGRAM PLACEHOLDER -->
+      <img src="images/tiktok-diagram.png" style="width:100%; border-radius:10px;">
+      <p style="font-size:14px; margin-top:10px;">
+        Figure: Conceptual feedback loop between user interaction and algorithmic recommendation.
+      </p>
+    </div>
+
+    <!-- FINDINGS -->
+    <div class="tab-contents" id="findings">
+
+      <h3>1. Feedback Loops</h3>
+      <p>
+        TikTok rapidly reinforces content patterns based on user interaction. Even minimal engagement leads to strong content clustering, producing highly curated identity spaces.
+      </p>
+
+      <br>
+
+      <h3>2. Volatility of Identity</h3>
+      <p>
+        Content shifts between affirming and harmful narratives. Users encounter both supportive and antagonistic content within the same ecosystem, creating instability in representation.
+      </p>
+
+      <br>
+
+      <h3>3. Echo Chambers</h3>
+      <p>
+        As engagement increases, exposure narrows. The platform prioritizes familiar content, reducing diversity of perspectives and reinforcing specific identity narratives.
+      </p>
+
+      <br>
+
+      <h3>4. Algorithmic Identity Construction</h3>
+      <p>
+        TikTok does not explicitly collect gender identity, yet infers it through behavior, interactions, and content consumption—effectively constructing a user identity through data.
+      </p>
+
+    </div>
+
+    <!-- IMPLICATIONS -->
+    <div class="tab-contents" id="implications">
+      <p>
+        TikTok exists as a contradictory system. It provides visibility for marginalized communities while simultaneously shaping that visibility through engagement-driven incentives.
+      </p>
+
+      <br>
+
+      <p>
+        The platform’s design encourages polarization, amplifies dominant narratives, and constrains the range of identities that are most visible. While it can act as a point of entry for awareness and connection, it ultimately operates within structures that limit its liberatory potential.
+      </p>
+
+      <br>
+
+      <p>
+        This research raises broader questions about the role of technology in shaping identity and discourse—and challenges the assumption that visibility alone equates to liberation.
+      </p>
+    </div>
+
+    <br>
+    <a href="research.html" class="btn">← Back</a>
+
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+var tablinks = document.getElementsByClassName("tab-links");
+var tabcontents = document.getElementsByClassName("tab-contents");
+
+function opentab(tabname){
+  for(let tablink of tablinks){
+    tablink.classList.remove("active-link");
+  }
+  for(let tabcontent of tabcontents){
+    tabcontent.classList.remove("active-tab");
+  }
+  event.currentTarget.classList.add("active-link");
+  document.getElementById(tabname).classList.add("active-tab");
+}
+</script>
+
+</body>
+</html>
