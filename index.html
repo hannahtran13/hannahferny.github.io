@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hannah Tran Online Portal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="images/logo.png" class="logo">
+        <ul id="sidemenu">
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">My Story</a></li>
+          <li><a href="#professions">Professions</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://pottery.hannahtran7.repl.co">Pottery</a></li>
+          <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+        </ul>
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+      </nav>
+      <div class="header-text">
+        <p>Hi, I’m Hannah.</p>
+        <h1>
+          I turn complex ideas <br>into things people <br>actually understand.
+        </h1>
+      </div>
+    </div>
+  </div>
+  <!---------------mystory------------------->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+           <img src="images/user.png">
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About me!</h1>
+          <p>
+          I’m a senior at Bucknell University studying Computer Science and Environmental Studies.
+
+          My work focuses on translating complex systems-especially in sustainability and technology-into clear, engaging experiences. I’ve worked across marketing, research, and design, building campaigns, analyzing audience behavior, and creating narratives that connect technical ideas with real people.<br><br>
+
+          Recently, I’ve:
+          <br>• Designed cross-platform marketing campaigns for public-facing environmental programs
+          <br>• Led research on social media narratives and audience perception
+          <br>• Built exhibitions and digital experiences that make research accessible<br><br>
+
+          I’m especially interested in work that combines <strong>AI, storytelling, and sustainability</strong>, not just to inform people, but to change how they think and act.
+          </p>
+
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+            <p class="tab-links" onclick="opentab('education')">Education</p>
+            <p class="tab-links" onclick="opentab('volunteering')">Volunteering</p>
+          </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>Marketing & Strategy</span><br>Campaign planning, messaging, audience research</li>
+              <li><span>Design & Media</span><br>Adobe Creative Suite, visual storytelling</li>
+              <li><span>Research & Analysis</span><br>Survey design, qualitative & quantitative analysis</li>
+              <li><span>Technical</span><br>Python, JavaScript, HTML/CSS, R</li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li>
+                <span>2025 - Maryland Environmental Service</span><br>
+                <strong>Marketing & Operations Intern</strong><br>
+                Designed and executed cross-platform campaigns for sustainability products (Leafgro & Leafgro Gold)
+              </li>
+
+              <li>
+                <span>2024 - 2025 - Bucknell University</span><br>
+                <strong>Research Assistant (Audience Insight & Narrative Analysis)</strong><br>
+                Led qualitative and quantitative research on social media narratives and environmental communication.
+              </li>
+
+              <li>
+                <span>2023 - Bucknell University (RED Grant)</span><br>
+                <strong>Undergraduate Researcher - AI & Curriculum Integration</strong> <br>
+                Applied machine learning concepts to educational design, translating technical systems into accessible learning experiences.
+              </li>
+
+              <li>
+                <span>2023 - Bucknell Center for Sustainability & Environment</span><br>
+                <strong>Graphic Design & Exhibition Intern</strong><br>
+                Led visual branding and narrative development for a museum renovation and public exhibition.
+              </li>
+
+              <li>
+                <span>2021 - 2022 - Freelance</span><br>
+                <strong>Graphic Designer</strong><br>
+                Delivered branding and digital assets for small businesses and nonprofits.
+              </li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="education">
+            <ul>
+              <li>
+                <span>Bucknell University</span><br>
+                Bachelor of Arts in Computer Science & Environmental Studies (Expected May 2026)<br><br>
+
+                <strong>Relevant Coursework:</strong><br>
+                UX/UI Design, Environmental Policy, Community Research Design
+              </li>
+
+            </ul>
+          </div>
+          <div class="tab-contents" id="volunteering">
+            <ul>
+              <li><span>2020-2021 - The Ahurea Project</span><br>Founder - Head of Content (season 1)/ President (season 2)<br></li>
+              <li><span>2021 - Inventa Magazine</span><br>Editor-in-Chief<br></li>
+              <li><span>2021 - “Me in Culture” Events Series</span><br>Head of Organisation</li>
+              <li><span>2021 - “COLOVE” Podcast</span><br>Head of Production<br> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---------------profession-------------->
+  <div id="professions">
+    <div class="container">
+      <h1 class="sub-title">Areas of Profession</h1>
+      <div class="profession-list">
+        <div>
+          <i class="fa-solid fa-window-maximize"></i>
+          <h2>Web Design</h2>
+          <p>Join me as I explore the boundless possibilities of web design and strive to create meaningful digital spaces for your targeted users.</p>
+          <a href="#">Learn more</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-layer-group"></i>
+          <h2>UI/UX Design</h2>
+          <p> Explore my work and witness the transformation of digital landscapes into captivating user journeys, pixel by pixel</p>
+          <a href="#">Learn more</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-brush"></i>
+          <h2>Graphic Design</h2>
+          <p>Step into the captivating world of graphic design, where creativity knows no bounds. My design journey has been a tapestry of innovation and visual storytelling, with a long lasting impression.</p>
+          <a href="#">Learn more</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-bowl-rice"></i>
+          <h2>Pottery</h2>
+          <p> As a pottery instructor at my university, I craft pieces to kindle the love for the craft within my own community. Explore my gallery to immerse yourself in the beauty and individuality that defines the world of pottery. C'mon in!</p>
+          <a href="https://www.instagram.com/hannahs_haandvaerk">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---------------portfolio-------------->
+  <div id="portfolio">
+    <div class="portfolio">
+      <h1 class="sub-title">My Work</h1>
+      <div class="work-list">
+        <div class="work">
+          <img src="images/work-1.png">
+          <div class="layer">
+            <h3>The Ahurea Project</h3>
+            <p>A cultural project concerning different aspects of humanities, achieved 80+ members in 2 seasons, attracted 10,000+ likes and followers, reached 149,600+ people</p>
+            <a href="https://www.facebook.com/theahureaproject"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="images/work-2.png">
+          <div class="layer">
+            <h3>Milton: Planted In Place Exhibition</h3>
+            <p> The first exhibition at Milton Municipal Museum, Milton, PA; celebrating the history and nature of Milton and the area</p>
+            <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="images/work-3.png">
+          <div class="layer">
+            <h3>Pottery</h3>
+            <p>My pottery portfolio</p>
+            <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="btn">See more</a> 
+    </div> 
+  </div>
+  <!---------------contact-------------->
+  <div id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact me</h1>
+          <p><i class="fa-solid fa-paper-plane"></i>tranmanh11hp@gmail.com</p>
+          <p><i class="fa-solid fa-square-phone"></i>+1 (646) 406-7753</p>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/hannah-tran-2852bb236"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://instagram.com/ferniesdesigns?igshid=OGQ5ZDc2ODk2ZA=="><i class="fa-brands fa-instagram"></i></a>
+          </div>
+          <a href="images/my-cv.pdf" download class="btn btn2">Download Resume</a>
+        </div>
+        <div class="contact-right">
+          <form name="submit-to-google-sheet">
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email">
+            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+            <button type="submit" class="btn btn2">Submit</button>            
+          </form>
+          <span id="msg"></span>
+        </div>
+        <div class="copyright">
+          <p>Copyright © Hannah Tran. September 2023</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+      for(let tablink of tablinks){
+        tablink.classList.remove("active-link");
+      }
+      for(let tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+      }
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+    
+  </script>
+  <script>
+    var sidemnu = document.getElementById("sidemenu");
+
+    function openmenu(){
+      sidemnu.style.right = "0"
+    }
+    function closemenu(){
+      sidemnu.style.right = "-200px"
+    }
+  </script>
+
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwhZskWNn5y7tK06t4kgOO_ZAv3ErLLtcXJxUh3UyakbnH8Xk9Dw01dMTyLIJn8g-Cf/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg =document.getElementById("msg")
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          msg.innerHTML = "Message sent successfully"
+          setTimeout(function(){
+            msg.innerHTML = ""
+          },5000)
+          form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+
+</html>
