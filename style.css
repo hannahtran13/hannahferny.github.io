@@ -813,8 +813,39 @@ nav .fa-solid{
     flex-wrap:wrap;
     gap:20px;
   }
+   #portfolio{
+    padding:100px 0 50px 0;
+  }
 
+  .work-list{
+    grid-template-columns:1fr;
+
+    gap:28px;
+  }
+
+  .work{
+    aspect-ratio:1 / 1.15;
+  }
+
+  .layer{
+    padding:30px;
+  }
+
+  .layer h3{
+    font-size:1.8rem;
+  }
+
+  .layer p{
+    font-size:0.95rem;
+    line-height:1.7;
+  }
+
+  .btn{
+    margin-top:35px;
+  }
 }
+
+
 
 /* =========================
 SUCCESS MESSAGE
