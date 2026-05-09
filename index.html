@@ -9,7 +9,47 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
 </head>
+<script>
 
+const works = document.querySelectorAll('.work');
+
+works.forEach(work => {
+
+  work.addEventListener('click', function(e){
+
+    // if already active -> follow project link
+    if(work.classList.contains('active')){
+
+      const link = work.querySelector('a');
+
+      if(link){
+        window.location.href = link.href;
+      }
+
+    } else {
+
+      // close all others
+      works.forEach(w => w.classList.remove('active'));
+
+      // open clicked one
+      work.classList.add('active');
+
+    }
+
+  });
+
+});
+
+// tap outside closes cards
+document.addEventListener('click', function(e){
+
+  if(!e.target.closest('.work')){
+    works.forEach(w => w.classList.remove('active'));
+  }
+
+});
+
+</script>
 <body>
   <div id="header">
     <div class="container">
