@@ -441,17 +441,6 @@ PROFESSIONS
 PORTFOLIO
 ========================= */
 
-.work-list{
-  display:grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(300px, 1fr));
-
-  gap:35px;
-
-  margin-top:70px;
-}
-
 .work{
   position:relative;
 
@@ -463,6 +452,8 @@ PORTFOLIO
     0 20px 70px rgba(20,30,70,0.12);
 
   transition:0.5s ease;
+
+  cursor:pointer;
 }
 
 .work img{
@@ -476,6 +467,8 @@ PORTFOLIO
   transition:0.8s ease;
 }
 
+/* DARK OVERLAY */
+
 .work::after{
   content:'';
 
@@ -483,16 +476,32 @@ PORTFOLIO
   inset:0;
 
   background:
-    linear-gradient(
-      to top,
-      rgba(20,30,70,0.92),
-      rgba(20,30,70,0.15)
-    );
+    rgba(20,30,70,0.82);
+
+  backdrop-filter:blur(10px);
+
+  opacity:0;
+
+  transition:0.5s ease;
+
+  z-index:1;
 }
+
+.work-list{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap:35px;
+
+  margin-top:70px;
+}
+
+/* TEXT LAYER */
 
 .layer{
   position:absolute;
-
   inset:0;
 
   z-index:2;
@@ -507,7 +516,11 @@ PORTFOLIO
 
   opacity:0;
 
-  transition:0.5s ease;
+  transform:translateY(20px);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .layer h3{
@@ -541,16 +554,23 @@ PORTFOLIO
   font-size:1.1rem;
 }
 
+/* HOVER STATE */
+
 .work:hover{
   transform:translateY(-10px);
 }
 
 .work:hover img{
-  transform:scale(1.08);
+  transform:scale(1.05);
+}
+
+.work:hover::after{
+  opacity:1;
 }
 
 .work:hover .layer{
   opacity:1;
+  transform:translateY(0);
 }
 
 /* =========================
