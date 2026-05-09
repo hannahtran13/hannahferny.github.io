@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milton — Planted In Place</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Norwester';
+      src: url('fonts/norwester.otf') format('opentype');
+    }
+
+    :root {
+      --cream: #EDE4E0;
+      --sage: #C8DBBE;
+      --tan: #9F8772;
+      --brown: #665A48;
+      --gold: #D7A628;
+      --black: #111111;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--brown);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: url('https://www.transparenttextures.com/patterns/noise.png');
+      z-index: 999;
+    }
+
+    .hero {
+      background:
+      radial-gradient(circle at top left, rgba(200,219,190,0.35), transparent 35%),
+      radial-gradient(circle at bottom right, rgba(215,166,40,0.18), transparent 35%),
+      linear-gradient(rgba(237,228,224,0.86), rgba(237,228,224,0.9)),
+      url('images/milton/hero-map.jpg');
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 6rem;
+      overflow: hidden;
+      background: linear-gradient(rgba(237,228,224,0.88), rgba(237,228,224,0.88)),
+      url('images/milton/hero-map.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(215,166,40,0.18), transparent 40%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 4rem;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--tan);
+    }
+
+    .hero-title {
+      font-family: 'Norwester', sans-serif;
+      font-size: clamp(5rem, 12vw, 11rem);
+      line-height: 0.85;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 650px;
+      color: var(--brown);
+    }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .floating-book {
+      width: 90%;
+      transform: rotate(-4deg);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.18);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .section {
+      padding: 8rem 6rem;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Norwester';
+      font-size: clamp(3rem, 7vw, 6rem);
+      color: var(--gold);
+      line-height: 0.9;
+    }
+
+    .section-desc {
+      max-width: 500px;
+      line-height: 1.8;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 4rem;
+    }
+
+    .meta-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.65), rgba(200,219,190,0.35));
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(102,90,72,0.1);
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .meta-item {
+      margin-bottom: 2rem;
+    }
+
+    .meta-label {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.2rem;
+      color: var(--tan);
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-value {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .overview-copy {
+      font-size: 1.1rem;
+      line-height: 2;
+    }
+
+    .overview-copy p {
+      margin-bottom: 2rem;
+    }
+
+    .moodboard {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 140px;
+      gap: 1rem;
+    }
+
+    .moodboard-item {
+      overflow: hidden;
+      position: relative;
+      background: #ddd;
+    }
+
+    .moodboard-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      filter: saturate(0.9);
+    }
+
+    .moodboard-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .moodboard-item:nth-child(1) {
+      grid-column: span 5;
+      grid-row: span 3;
+    }
+
+    .moodboard-item:nth-child(2) {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    .moodboard-item:nth-child(3) {
+      grid-column: span 4;
+      grid-row: span 4;
+    }
+
+    .moodboard-item:nth-child(4) {
+      grid-column: span 4;
+      grid-row: span 2;
+    }
+
+    .moodboard-item:nth-child(5) {
+      grid-column: span 5;
+      grid-row: span 2;
+    }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    .editorial-card {
+      background:
+      linear-gradient(145deg, rgba(255,255,255,0.92), rgba(200,219,190,0.18));
+      position: relative;
+      overflow: hidden;
+      background: white;
+      padding: 1rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    }
+
+    .editorial-card.large {
+      grid-column: span 2;
+    }
+
+    .editorial-caption {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+      color: var(--tan);
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .split-section img {
+      box-shadow: 0 30px 60px rgba(0,0,0,0.14);
+    }
+
+    .split-copy h3 {
+      font-family: 'Norwester';
+      color: var(--gold);
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      line-height: 0.9;
+    }
+
+    .split-copy p {
+      line-height: 2;
+      margin-bottom: 1.5rem;
+    }
+
+    .quote-section {
+      background:
+      radial-gradient(circle at top left, rgba(215,166,40,0.22), transparent 35%),
+      linear-gradient(135deg, #665A48, #4D4236);
+      background: var(--brown);
+      color: var(--cream);
+      text-align: center;
+      padding: 10rem 2rem;
+    }
+
+    .quote-section h2 {
+      font-family: 'Norwester';
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1;
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+    }
+
+    .quote-section p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 2;
+      color: rgba(237,228,224,0.8);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      z-index: 1000;
+      background: rgba(237,228,224,0.75);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(102,90,72,0.08);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      color: var(--gold);
+      font-family: 'Norwester';
+      letter-spacing: 0.1rem;
+      font-size: 1.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--brown);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.15rem;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -0.35rem;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .back-button{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+
+    margin-top:2rem;
+
+    text-decoration:none;
+
+    background:var(--brown);
+    color:var(--cream);
+
+    padding:1rem 1.4rem;
+
+    border-radius:999px;
+
+    text-transform:uppercase;
+    letter-spacing:0.12rem;
+    font-size:0.7rem;
+
+    transition:0.35s ease;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .back-button:hover{
+    background:var(--gold);
+    color:var(--black);
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 20px 45px rgba(215,166,40,0.35);
+    }
+
+    footer {
+      padding: 5rem 6rem;
+      border-top: 1px solid rgba(102,90,72,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-title {
+      font-family: 'Norwester';
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .footer-sub {
+      text-transform: uppercase;
+      letter-spacing: 0.15rem;
+      font-size: 0.8rem;
+      color: var(--tan);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 1000px) {
+      .hero,
+      .section,
+      footer {
+        padding: 4rem 2rem;
+      }
+
+      .hero-grid,
+      .overview-grid,
+      .split-section,
+      .editorial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .editorial-card.large {
+        grid-column: span 1;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .hero-title {
+        font-size: 5rem;
+      }
+
+      .moodboard {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+      }
+
+      .moodboard-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
+    }
+
+    /* =========================
+THREE SPAN VISUAL SECTION
+========================= */
+
+.visual-three-grid{
+  display:grid;
+
+  grid-template-columns:
+    0.8fr 1.4fr 0.8fr;
+
+  gap:2rem;
+
+  align-items:center;
+
+  margin-top:4rem;
+}
+
+.visual-card{
+  position:relative;
+
+  background:white;
+
+  padding:1rem;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.08);
+
+  transition:0.5s ease;
+}
+
+.visual-card img{
+  width:100%;
+  display:block;
+
+  transition:0.6s ease;
+}
+
+.visual-card:hover{
+  transform:translateY(-10px);
+
+  box-shadow:
+    0 35px 70px rgba(0,0,0,0.14);
+}
+
+.visual-card:hover img{
+  transform:scale(1.02);
+}
+
+/* CENTER CARD EMPHASIS */
+
+.hero-card{
+  transform:translateY(-20px) scale(1.02);
+
+  z-index:2;
+}
+
+.hero-card:hover{
+  transform:translateY(-30px) scale(1.03);
+}
+
+/* CAPTION */
+
+.visual-caption{
+  margin-top:1rem;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  font-size:0.75rem;
+
+  text-transform:uppercase;
+
+  letter-spacing:0.12rem;
+
+  color:var(--tan);
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+  .visual-three-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-card{
+    transform:none;
+  }
+
+  .hero-card:hover{
+    transform:translateY(-10px);
+  }
+
+}
+
+/* =========================
+SPATIAL MOCKUPS
+========================= */
+
+.spatial-grid{
+  display:grid;
+
+  grid-template-columns:
+    1.1fr 0.9fr;
+
+  gap:3rem;
+
+  align-items:start;
+
+  margin-top:4rem;
+}
+
+/* HERO VERTICAL */
+
+.spatial-hero{
+  background:white;
+
+  padding:1rem;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.08);
+
+  transition:0.5s ease;
+}
+
+.spatial-hero:hover{
+  transform:translateY(-10px);
+
+  box-shadow:
+    0 35px 80px rgba(0,0,0,0.12);
+}
+
+.spatial-hero img{
+  width:100%;
+  display:block;
+}
+
+/* RIGHT COLUMN */
+
+.spatial-side{
+  display:flex;
+  flex-direction:column;
+
+  gap:2rem;
+}
+
+.spatial-card{
+  background:white;
+
+  padding:1rem;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.08);
+
+  transition:0.5s ease;
+}
+
+.spatial-card:hover{
+  transform:translateY(-8px);
+}
+
+.spatial-card img{
+  width:100%;
+  display:block;
+}
+
+/* CAPTION */
+
+.spatial-caption{
+  margin-top:1rem;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  text-transform:uppercase;
+
+  letter-spacing:0.12rem;
+
+  font-size:0.75rem;
+
+  color:var(--tan);
+}
+
+/* TEXT */
+
+.spatial-copy{
+  padding:1rem 0;
+}
+
+.spatial-copy h3{
+  font-family:'Norwester';
+
+  font-size:3rem;
+
+  line-height:0.9;
+
+  color:var(--gold);
+
+  margin-bottom:1.5rem;
+}
+
+.spatial-copy p{
+  line-height:2;
+
+  margin-bottom:1.5rem;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+  .spatial-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">HANNAH TRAN</a>
+
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#visual">Visual Language</a>
+    <a href="#book">Publication</a>
+    <a href="#spatial">Exhibition</a>
+  </div>
+</nav>
+
+
+<div class="grain"></div>
+
+<section class="hero">
+  <div class="hero-grid">
+
+    <div class="hero-left">
+      <div class="hero-kicker">
+        Exhibition Design · Editorial Design · Environmental Storytelling
+      </div>
+
+      <h1 class="hero-title">
+        MILTON <br> PLANTED IN PLACE
+      </h1>
+
+      <p class="hero-sub">
+        Planted in Place is an interdisciplinary museum exhibition and publication system exploring the environmental and industrial evolution of Milton, Pennsylvania through historical cartography, botanical archives, and contemporary editorial design.
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="floating-book">
+        <img src="images/milton/book-cover.png" alt="Milton Exhibition Book">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="overview">
+
+  <div class="section-header">
+    <h2 class="section-title">
+      PROJECT<br>OVERVIEW
+    </h2>
+
+    <p class="section-desc">
+      A collaborative exhibition initiative developed for the Milton Municipal Museum combining archival research, environmental studies, and publication design.
+    </p>
+  </div>
+
+  <div class="overview-grid">
+
+    <div class="meta-card">
+
+      <div class="meta-item">
+        <div class="meta-label">Client</div>
+        <div class="meta-value">Milton Municipal Museum</div>
+      </div>
+
+      <div class="meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">
+          Graphic Designer<br>
+          Exhibition Design Intern
+        </div>
+      </div>
+
+      <div class="meta-item">
+        <div class="meta-label">Disciplines</div>
+        <div class="meta-value">
+          Editorial Design<br>
+          Exhibition Systems<br>
+          Environmental Storytelling<br>
+          Archival Visualization
+        </div>
+      </div>
+
+      <div class="meta-item">
+        <div class="meta-label">Timeline</div>
+        <div class="meta-value">2022–2023</div>
+      </div>
+
+    </div>
+
+    <div class="overview-copy">
+      <p>
+        Developed through a collaboration between the Milton Municipal Museum, T.I.M.E., and Bucknell University, Planted in Place translated historical and ecological research into a cohesive museum experience.
+      </p>
+
+      <p>
+        The project centered around Sanborn insurance maps documenting Milton's urban development from the 1880s to the 1910s, pairing cartographic history with botanical research collected from Milton State Park Island.
+      </p>
+
+      <p>
+        My role focused on transforming archival and research-heavy material into an accessible contemporary visual system across exhibition graphics, publication layouts, promotional materials, and museum experiences.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="visual">
+
+  <div class="section-header">
+    <h2 class="section-title">
+      GRAPHIC<br>LANGUAGE
+    </h2>
+
+    <p class="section-desc">
+      Promotional materials for the exhibition blended archival textures,
+      botanical imagery, and restrained editorial typography systems to
+      create a contemporary public-facing visual identity.
+    </p>
+  </div>
+
+  <div class="visual-three-grid">
+
+    <!-- LEFT POSTCARD -->
+    <div class="visual-card">
+      <img src="images/milton/POSTCARD front green.png" alt="Green Postcard">
+
+      <div class="visual-caption">
+        <span>Postcard Design</span>
+        <span>Botanical System</span>
+      </div>
+    </div>
+
+    <!-- CENTER HERO -->
+    <div class="visual-card hero-card">
+      <img src="images/milton/poster summer w may.png" alt="Summer Poster">
+
+      <div class="visual-caption">
+        <span>Promotional Poster</span>
+        <span>Seasonal Campaign</span>
+      </div>
+    </div>
+
+    <!-- RIGHT POSTCARD -->
+    <div class="visual-card">
+      <img src="images/milton/POSTCARD front orange.png" alt="Orange Postcard">
+
+      <div class="visual-caption">
+        <span>Postcard Design</span>
+        <span>Environmental Graphics</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="book">
+
+  <div class="section-header">
+    <h2 class="section-title">
+      EDITORIAL<br>SPREADS
+    </h2>
+
+    <p class="section-desc">
+      Exhibition publications and editorial layouts translated historical
+      and ecological research into accessible visual storytelling systems.
+    </p>
+  </div>
+
+  <div class="editorial-grid">
+
+    <div class="editorial-card large">
+      <img src="images/milton/67.png" alt="Editorial Spread">
+      <div class="editorial-caption">
+        <span>Editorial Spread</span>
+        <span>Historical Cartography</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="spatial">
+
+  <div class="section-header">
+    <h2 class="section-title">
+      EXHIBITION<br>MOCKUPS
+    </h2>
+
+    <p class="section-desc">
+      Spatial visualization systems exploring how archival materials
+      could be translated into immersive public exhibition experiences.
+    </p>
+  </div>
+
+  <div class="spatial-grid">
+
+    <!-- LEFT LARGE VERTICAL -->
+    <div class="spatial-hero">
+      <img src="images/milton/IMG_0458.PNG" alt="Vertical Exhibition Mockup">
+
+      <div class="spatial-caption">
+        <span>Sanborn Installation System</span>
+        <span>Archival Timeline</span>
+      </div>
+
+      <div class="spatial-copy">
+        <h3>
+          SPATIAL<br>STORYTELLING
+        </h3>
+        <p>
+            Due to the relatively limited footprint of the exhibition space, the spatial layout was designed around a continuous circular movement system that guides visitors through the exhibition in a single uninterrupted flow.
+        </p>
+
+        <p>
+          Exhibition systems were designed to guide visitors through
+          Milton’s environmental and industrial evolution using
+          archival cartography, layered timelines, and spatial sequencing.
+        </p>
+
+        <p>
+          Historical maps became navigational and narrative devices
+          within the museum environment, translating dense research
+          into accessible public experiences.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT SUPPORT -->
+    <div class="spatial-side">
+
+      <div class="spatial-card">
+        <img src="images/milton/IMG_0447.PNG" alt="Horizontal Exhibition Mockup">
+
+        <div class="spatial-caption">
+          <span>Exhibition Mockup</span>
+          <span>Public Installation</span>
+        </div>
+        <div class="spatial-copy">
+            <h3>
+            NATURE<br>IN MOTION
+            </h3>
+
+            <p>
+            This circulation pattern was intentionally inspired by the movement of the Susquehanna River through Milton. Much like the river itself, the exhibition unfolds gradually through a sequence of connected visual and historical moments rather than isolated sections.
+            </p>
+
+            <p>
+            Archival maps, botanical research, and environmental narratives were arranged to create a flowing progression across the gallery space, encouraging visitors to experience the exhibition as an evolving landscape rather than a static collection of artifacts.
+            </p>
+        </div>
+
+      </div>
+
+      
+    </div>
+
+  </div>
+
+</section>
+
+<section class="quote-section">
+
+  <h2>
+    DESIGN AS A BRIDGE BETWEEN PUBLIC HISTORY, ENVIRONMENTAL RESEARCH, AND CULTURAL STORYTELLING.
+  </h2>
+
+  <p>
+    This project fundamentally shaped my approach to interdisciplinary design systems by demonstrating how visual communication can translate research into meaningful public experiences.
+  </p>
+
+</section>
+
+<footer>
+
+  <div>
+    <div class="footer-title">
+      MILTON — PLANTED IN PLACE
+    </div>
+
+    <div class="footer-sub">
+      Exhibition & Publication Design
+    </div>
+  </div>
+
+  <a href="index.html" class="back-button">
+    Back To Home
+  </a>
+
+</footer>
+
+</body>
+</html>
