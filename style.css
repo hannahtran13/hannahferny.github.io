@@ -843,6 +843,27 @@ nav .fa-solid{
   .btn{
     margin-top:35px;
   }
+
+   .work::after{
+    opacity:1;
+
+    background:
+      linear-gradient(
+        to top,
+        rgba(20,30,70,0.82),
+        rgba(20,30,70,0.15)
+      );
+
+    backdrop-filter:none;
+  }
+
+  .layer{
+    opacity:1;
+
+    transform:none;
+  }
+
+}
 }
 
 
