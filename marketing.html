@@ -52,7 +52,22 @@ document.addEventListener('click', function(e){
 </script>
 <body>
 
-  <!-- NAV (same as index) -->
+  <!-- NAV -->
+  <div class="container">
+    <nav>
+      <img src="images/logo.png" class="logo">
+      <ul id="sidemenu">
+        <li><a href="index.html#header">Home</a></li>
+        <li><a href="index.html#about">My Story</a></li>
+        <li><a href="index.html#professions">Professions</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://pottery.hannahtran7.repl.co">Pottery</a></li>
+        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+      </ul>
+      <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+    </nav>
+  </div>
 
   <div id="about">
     <div class="container">
@@ -118,5 +133,17 @@ document.addEventListener('click', function(e){
     </div>
   </div>
 
+
+    <!-- JS -->
+  <script>
+    var sidemnu = document.getElementById("sidemenu");
+
+    function openmenu(){
+      sidemnu.style.right = "0"
+    }
+    function closemenu(){
+      sidemnu.style.right = "-200px"
+    }
+  </script>
 </body>
 </html>

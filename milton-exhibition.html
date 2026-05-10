@@ -380,7 +380,113 @@
     .nav-links a:hover::after {
       width: 100%;
     }
+    
+    nav{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
+    position:fixed;
+    top:0;
+    left:0;
+
+    padding:1.5rem 3rem;
+
+    z-index:1000;
+
+    background:rgba(237,228,224,0.75);
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(102,90,72,0.08);
+    }
+
+    nav .fa-solid{
+    display:none;
+    }
+
+    #sidemenu{
+    display:flex;
+    gap:2rem;
+    list-style:none;
+    }
+
+    #sidemenu li a{
+    text-decoration:none;
+    color:var(--brown);
+
+    text-transform:uppercase;
+    font-size:0.75rem;
+    letter-spacing:0.15rem;
+
+    position:relative;
+
+    transition:0.3s ease;
+    }
+
+    #sidemenu li a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-0.35rem;
+
+    width:0%;
+    height:1px;
+
+    background:var(--gold);
+
+    transition:width 0.3s ease;
+    }
+
+    #sidemenu li a:hover::after{
+    width:100%;
+    }
+
+    /* MOBILE */
+
+    @media only screen and (max-width:1000px){
+
+    nav .fa-solid{
+        display:block;
+        font-size:1.5rem;
+        color:var(--brown);
+        cursor:pointer;
+    }
+
+    #sidemenu{
+        background:var(--brown);
+
+        position:fixed;
+        top:0;
+        right:-240px;
+
+        width:240px;
+        height:100vh;
+
+        padding-top:5rem;
+
+        flex-direction:column;
+        gap:2rem;
+
+        transition:right 0.5s ease;
+    }
+
+    #sidemenu li{
+        margin-left:2rem;
+    }
+
+    #sidemenu li a{
+        color:var(--cream);
+    }
+
+    #sidemenu .fa-xmark{
+        position:absolute;
+        top:1.5rem;
+        left:1.5rem;
+
+        color:var(--cream);
+    }
+    }
     .back-button{
     display:inline-flex;
     align-items:center;
@@ -689,7 +795,119 @@ SPATIAL MOCKUPS
 
   margin-bottom:1.5rem;
 }
+/* =========================
+RESULTS SECTION
+========================= */
 
+.results-grid{
+  display:grid;
+
+  grid-template-columns:
+    1.4fr 0.9fr;
+
+  gap:2rem;
+
+  align-items:start;
+
+  margin-top:4rem;
+}
+
+/* LEFT LARGE */
+
+.results-large{
+  position:relative;
+
+  overflow:hidden;
+
+  background:white;
+
+  padding:1rem;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.08);
+
+  transition:0.5s ease;
+}
+
+.results-large:hover{
+  transform:translateY(-10px);
+
+  box-shadow:
+    0 35px 80px rgba(0,0,0,0.12);
+}
+
+.results-large img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+}
+
+/* RIGHT COLUMN */
+
+.results-side{
+  display:flex;
+  flex-direction:column;
+
+  gap:2rem;
+}
+
+.results-card{
+  position:relative;
+
+  overflow:hidden;
+
+  background:white;
+
+  padding:1rem;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.08);
+
+  transition:0.5s ease;
+}
+
+.results-card:hover{
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 30px 65px rgba(0,0,0,0.12);
+}
+
+.results-card img{
+  width:100%;
+  display:block;
+}
+
+/* OVERLAY CAPTION */
+
+.results-overlay{
+  margin-top:1rem;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  text-transform:uppercase;
+
+  letter-spacing:0.12rem;
+
+  font-size:0.72rem;
+
+  color:var(--tan);
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+  .results-grid{
+    grid-template-columns:1fr;
+  }
+
+}
 /* MOBILE */
 
 @media(max-width:1000px){
@@ -700,18 +918,26 @@ SPATIAL MOCKUPS
 
 }
   </style>
+
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
 </head>
+
+
 <body>
 
-<nav class="navbar">
+<nav>
   <a href="index.html" class="nav-logo">HANNAH TRAN</a>
 
-  <div class="nav-links">
-    <a href="#overview">Overview</a>
-    <a href="#visual">Visual Language</a>
-    <a href="#book">Publication</a>
-    <a href="#spatial">Exhibition</a>
-  </div>
+  <ul id="sidemenu">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#visual">Visual Language</a></li>
+    <li><a href="#book">Publication</a></li>
+    <li><a href="#spatial">Exhibition</a></li>
+
+    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+  </ul>
+
+  <i class="fa-solid fa-bars" onclick="openmenu()"></i>
 </nav>
 
 
@@ -722,7 +948,7 @@ SPATIAL MOCKUPS
 
     <div class="hero-left">
       <div class="hero-kicker">
-        Exhibition Design · Editorial Design · Environmental Storytelling
+        Exhibition Design · Editorial Design · Environmental Storytelling · Spatial Curation
       </div>
 
       <h1 class="hero-title">
@@ -730,8 +956,7 @@ SPATIAL MOCKUPS
       </h1>
 
       <p class="hero-sub">
-        Planted in Place is an interdisciplinary museum exhibition and publication system exploring the environmental and industrial evolution of Milton, Pennsylvania through historical cartography, botanical archives, and contemporary editorial design.
-      </p>
+        The first exhibition ever mounted at the Milton Municipal Museum - Planted in Place is an interdisciplinary museum experience exploring the environmental and industrial history of Milton, Pennsylvania. I designed the complete visual system: spatial layout, publication design, promotional identity, and archival visualization, from the ground up.
     </div>
 
     <div class="hero-right">
@@ -767,8 +992,7 @@ SPATIAL MOCKUPS
       <div class="meta-item">
         <div class="meta-label">Role</div>
         <div class="meta-value">
-          Graphic Designer<br>
-          Exhibition Design Intern
+          Lead Designer <br> Full Exhibition Curator
         </div>
       </div>
 
@@ -795,7 +1019,7 @@ SPATIAL MOCKUPS
       </p>
 
       <p>
-        The project centered around Sanborn insurance maps documenting Milton's urban development from the 1880s to the 1910s, pairing cartographic history with botanical research collected from Milton State Park Island.
+        The project centered around Sanborn insurance maps documenting Milton's urban development from the 1880s to the 1910s, pairing cartographic history with botanical research collected from Milton State Park Island. This was the first exhibition the Milton Municipal Museum had ever mounted.
       </p>
 
       <p>
@@ -962,6 +1186,59 @@ SPATIAL MOCKUPS
 
 </section>
 
+<section class="section" id="results">
+
+  <div class="section-header">
+    <h2 class="section-title">
+      IN THE<br>SPACE
+    </h2>
+
+    <p class="section-desc">
+      The final exhibition translated archival research into a public-facing
+      spatial experience, inviting visitors to physically move through the
+      environmental and industrial history of Milton.
+    </p>
+  </div>
+
+  <div class="results-grid">
+
+    <!-- LARGE IMAGE -->
+    <div class="results-large">
+      <img src="images/milton/result1.jpg" alt="Visitors inside exhibition">
+
+      <div class="results-overlay">
+        <span>Public Opening</span>
+        <span>Milton Municipal Museum</span>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="results-side">
+
+      <div class="results-card">
+        <img src="images/milton/result2.jpg" alt="Visitor interacting with maps">
+
+        <div class="results-overlay">
+          <span>Interactive Archival Systems</span>
+          <span>Historical Mapping</span>
+        </div>
+      </div>
+
+      <div class="results-card">
+        <img src="images/milton/result3.jpg" alt="Botanical installation">
+
+        <div class="results-overlay">
+          <span>Botanical Installation</span>
+          <span>Environmental Storytelling</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 <section class="quote-section">
 
   <h2>
@@ -991,6 +1268,16 @@ SPATIAL MOCKUPS
   </a>
 
 </footer>
+<script>
+  var sidemenu = document.getElementById("sidemenu");
 
+  function openmenu(){
+    sidemenu.style.right = "0";
+  }
+
+  function closemenu(){
+    sidemenu.style.right = "-240px";
+  }
+</script>
 </body>
 </html>
