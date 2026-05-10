@@ -1,157 +1,841 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
+
   <title>Research & Insight | Hannah Tran</title>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
   <link rel="stylesheet" href="style.css">
+
   <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
-</head>
-<script>
 
-const works = document.querySelectorAll('.work');
+  <style>
 
-works.forEach(work => {
+    /* =========================
+    PAGE
+    ========================= */
 
-  work.addEventListener('click', function(e){
+    .research-page{
+      padding-top:140px;
+    }
 
-    // if already active -> follow project link
-    if(work.classList.contains('active')){
+    /* =========================
+    HERO
+    ========================= */
 
-      const link = work.querySelector('a');
+    .research-hero{
+      padding:60px 0 140px 0;
 
-      if(link){
-        window.location.href = link.href;
+      position:relative;
+
+      overflow:hidden;
+    }
+
+    .research-hero::before{
+      content:'';
+
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      background:
+        radial-gradient(circle, rgba(199,0,57,0.10), transparent 70%);
+
+      top:-300px;
+      right:-150px;
+
+      pointer-events:none;
+    }
+
+    .research-hero p{
+      font-size:1rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      margin-bottom:25px;
+
+      font-weight:700;
+    }
+
+    .research-hero h1{
+      font-size:clamp(4rem, 9vw, 7rem);
+
+      line-height:0.92;
+
+      letter-spacing:-4px;
+
+      margin-bottom:35px;
+
+      max-width:1000px;
+    }
+
+    .research-hero h1 span{
+      color:#c70039;
+    }
+
+    .research-hero h3{
+      font-size:1.3rem;
+
+      line-height:1.9;
+
+      color:#4f709C;
+
+      max-width:850px;
+
+      font-weight:400;
+    }
+
+    /* =========================
+    MARQUEE
+    ========================= */
+
+    .marquee-strip{
+      overflow:hidden;
+
+      border-top:
+        1px solid rgba(20,30,70,0.08);
+
+      border-bottom:
+        1px solid rgba(20,30,70,0.08);
+
+      padding:18px 0;
+
+      background:#141e46;
+    }
+
+    .marquee-inner{
+      display:flex;
+
+      width:max-content;
+
+      animation:marquee 24s linear infinite;
+    }
+
+    .marquee-item{
+      display:flex;
+
+      align-items:center;
+
+      gap:28px;
+
+      padding:0 40px;
+
+      font-size:0.7rem;
+
+      letter-spacing:3px;
+
+      text-transform:uppercase;
+
+      color:rgba(255,245,224,0.55);
+
+      font-weight:700;
+    }
+
+    .dot{
+      width:5px;
+      height:5px;
+
+      background:#c70039;
+
+      border-radius:50%;
+    }
+
+    @keyframes marquee{
+      from{
+        transform:translateX(0);
       }
 
-    } else {
+      to{
+        transform:translateX(-50%);
+      }
+    }
 
-      // close all others
-      works.forEach(w => w.classList.remove('active'));
+    /* =========================
+    SECTION
+    ========================= */
 
-      // open clicked one
-      work.classList.add('active');
+    .section-block{
+      padding:140px 0;
+    }
+
+    .section-label{
+      font-size:0.9rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      margin-bottom:40px;
+
+      font-weight:700;
+    }
+
+    /* =========================
+    PHILOSOPHY
+    ========================= */
+
+    .philosophy{
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:70px;
+
+      align-items:center;
+    }
+
+    .philosophy h2{
+      font-size:clamp(3rem, 7vw, 5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .philosophy h2 span{
+      color:#c70039;
+    }
+
+    .philosophy p{
+      font-size:1.05rem;
+
+      line-height:2;
+
+      color:#4f709C;
+
+      margin-bottom:24px;
+    }
+
+    .quote{
+      padding:35px;
+
+      border-left:4px solid #c70039;
+
+      background:
+        rgba(255,255,255,0.35);
+
+      backdrop-filter:blur(14px);
+
+      border-radius:24px;
+
+      font-size:1.3rem;
+
+      line-height:1.8;
+
+      font-weight:700;
+    }
+
+    /* =========================
+    RESEARCH PROJECTS
+    ========================= */
+
+    .work-feature{
+      margin-bottom:120px;
+    }
+
+    .work-feature:last-child{
+      margin-bottom:0;
+    }
+
+    .work-feature-image{
+      width:100%;
+
+      aspect-ratio:16 / 10;
+
+      overflow:hidden;
+
+      border-radius:30px;
+
+      margin-bottom:40px;
+
+      background:#dfe7e2;
+
+      box-shadow:
+        0 20px 70px rgba(20,30,70,0.10);
+    }
+
+    .work-feature-image img{
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      display:block;
+
+      transition:0.8s ease;
+    }
+
+    .work-feature:hover img{
+      transform:scale(1.03);
+    }
+
+    .work-feature-tag{
+      display:block;
+
+      margin-bottom:24px;
+
+      font-size:0.8rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      font-weight:700;
+    }
+
+    .work-feature-content h2{
+      font-size:clamp(2.5rem, 5vw, 4.5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .work-feature-content p{
+      font-size:1.1rem;
+
+      line-height:2;
+
+      color:#4f709C;
+
+      max-width:950px;
+
+      margin-bottom:35px;
+    }
+
+    .work-feature-details{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:12px;
+
+      margin-bottom:40px;
+    }
+
+    .work-feature-details span{
+      padding:12px 18px;
+
+      border-radius:999px;
+
+      background:
+        rgba(255,255,255,0.45);
+
+      backdrop-filter:blur(12px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      font-size:0.78rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:2px;
+
+      font-weight:700;
+
+      transition:0.4s ease;
+    }
+
+    .work-feature-details span:hover{
+      background:#c70039;
+
+      color:#fff;
+
+      transform:translateY(-3px);
+    }
+
+    .project-link{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      font-weight:700;
+
+      transition:0.3s ease;
+    }
+
+    .project-link:hover{
+      color:#c70039;
+
+      transform:translateX(6px);
+    }
+
+    /* =========================
+    METHODS
+    ========================= */
+
+    .methods-grid{
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:60px;
+    }
+
+    .methods-grid h2{
+      font-size:clamp(3rem, 7vw, 5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .methods-list{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:18px;
+    }
+
+    .methods-list div{
+      padding:22px 24px;
+
+      border-radius:20px;
+
+      background:
+        rgba(255,255,255,0.38);
+
+      backdrop-filter:blur(14px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      font-weight:700;
+    }
+
+    .methods-right p{
+      color:#4f709C;
+
+      line-height:2;
+
+      margin-bottom:24px;
+
+      font-size:1.05rem;
+    }
+
+    /* =========================
+    FOOTER
+    ========================= */
+
+    .page-footer{
+      padding:100px 0;
+
+      text-align:center;
+
+      border-top:
+        1px solid rgba(20,30,70,0.08);
+    }
+
+    /* =========================
+    MOBILE
+    ========================= */
+
+    @media only screen and (max-width:768px){
+
+      .research-page{
+        padding-top:120px;
+      }
+
+      .research-hero{
+        padding:40px 0 100px 0;
+      }
+
+      .research-hero h1{
+        font-size:4rem;
+      }
+
+      .research-hero h3{
+        font-size:1.1rem;
+      }
+
+      .section-block{
+        padding:100px 0;
+      }
+
+      .philosophy{
+        grid-template-columns:1fr;
+
+        gap:40px;
+      }
+
+      .methods-grid{
+        grid-template-columns:1fr;
+      }
+
+      .work-feature{
+        margin-bottom:90px;
+      }
+
+      .work-feature-content h2{
+        font-size:3rem;
+      }
+
+      .work-feature-content p{
+        font-size:1rem;
+      }
+
+      .marquee-item{
+        padding:0 28px;
+
+        font-size:0.62rem;
+      }
 
     }
 
-  });
+  </style>
 
-});
+</head>
 
-// tap outside closes cards
-document.addEventListener('click', function(e){
-
-  if(!e.target.closest('.work')){
-    works.forEach(w => w.classList.remove('active'));
-  }
-
-});
-
-</script>
 <body>
 
   <!-- NAV -->
-  <div class="container">
-    <nav>
-      <img src="images/logo.png" class="logo">
-      <ul id="sidemenu">
-        <li><a href="index.html#header">Home</a></li>
-        <li><a href="index.html#about">My Story</a></li>
-        <li><a href="index.html#professions">Professions</a></li>
-        <li><a href="index.html#portfolio">Portfolio</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="https://pottery.hannahtran7.repl.co">Pottery</a></li>
-        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
-      </ul>
-      <i class="fa-solid fa-bars" onclick="openmenu()"></i>
-    </nav>
-  </div>
 
-  <!-- HEADER -->
-  <div id="about">
-    <div class="container">
+  <nav>
 
-      <h1 class="sub-title">Research & Insight</h1>
+    <img src="images/logo.png" class="logo">
 
-      <p style="margin-top: 20px;">
-        My research focuses on understanding how people interact with complex systems—whether through technology, identity, or environmental narratives.
-      </p>
+    <ul id="sidemenu">
+      <li><a href="index.html#header">Home</a></li>
+      <li><a href="index.html#about">My Story</a></li>
+      <li><a href="index.html#professions">Professions</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
 
-      <p style="margin-top: 10px;">
-        I work across qualitative and technical methods to explore how information is distributed, interpreted, and experienced.
-      </p>
+      <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+    </ul>
+
+    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+
+  </nav>
+
+  <div class="research-page">
+
+    <!-- HERO -->
+
+    <section class="research-hero">
+
+      <div class="container">
+
+        <p>Research & Insight</p>
+
+        <h1>
+          Researching how<br>
+          systems shape <span>people.</span>
+        </h1>
+
+        <h3>
+          My research explores the intersection between technology, identity, communication, and environmental systems — focusing on how complex structures are experienced, interpreted, and understood.
+        </h3>
+
+      </div>
+
+    </section>
+
+    <!-- MARQUEE -->
+
+    <div class="marquee-strip">
+
+      <div class="marquee-inner">
+
+        <span class="marquee-item">Machine Learning <span class="dot"></span></span>
+        <span class="marquee-item">Transformer Models <span class="dot"></span></span>
+        <span class="marquee-item">Formal Languages <span class="dot"></span></span>
+        <span class="marquee-item">Platform Studies <span class="dot"></span></span>
+        <span class="marquee-item">Identity Theory <span class="dot"></span></span>
+        <span class="marquee-item">Environmental Systems <span class="dot"></span></span>
+        <span class="marquee-item">Qualitative Methods <span class="dot"></span></span>
+        <span class="marquee-item">Behavioral Analysis <span class="dot"></span></span>
+
+        <span class="marquee-item">Machine Learning <span class="dot"></span></span>
+        <span class="marquee-item">Transformer Models <span class="dot"></span></span>
+        <span class="marquee-item">Formal Languages <span class="dot"></span></span>
+        <span class="marquee-item">Platform Studies <span class="dot"></span></span>
+        <span class="marquee-item">Identity Theory <span class="dot"></span></span>
+        <span class="marquee-item">Environmental Systems <span class="dot"></span></span>
+        <span class="marquee-item">Qualitative Methods <span class="dot"></span></span>
+        <span class="marquee-item">Behavioral Analysis <span class="dot"></span></span>
+
+      </div>
 
     </div>
-  </div>
 
-  <!-- PROJECTS -->
-  <div id="portfolio">
-    <div class="container">
+    <!-- PHILOSOPHY -->
 
-      <div class="work-list">
+    <section class="section-block">
 
-        <!-- PROJECT 1 -->
-        <div class="work">
-          <img src="images/1.png">
-          <div class="layer">
-            <h3>Transformers & Formal Languages</h3>
-            <p>
-              Investigating whether transformer models learn true language rules or rely on pattern approximation beyond training distributions.
-            </p>
-            <a href="research-ai.html">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+      <div class="container">
+
+        <div class="section-label">Approach</div>
+
+        <div class="philosophy">
+
+          <div>
+
+            <h2>
+              Looking at the<br>
+              systems behind<br>
+              <span>behavior.</span>
+            </h2>
+
+            <div class="quote">
+              “The most interesting questions appear where systems begin to fail.”
+            </div>
+
           </div>
-        </div>
 
-        <!-- PROJECT 2 -->
-        <div class="work">
-          <img src="images/2.png">
-          <div class="layer">
-            <h3>Trans Identity and The Environment on TikTok</h3>
-            <p>
-              Explored how TikTok shapes interactions between transgender identity and environmental narratives through algorithmic distribution.
-            </p>
-            <a href="research-trans-env.html">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
+          <div>
 
-        <!-- PROJECT 3 -->
-        <div class="work">
-          <img src="images/3.png">
-          <div class="layer">
-            <h3>ML + Dozuki + Hardware Learning</h3>
             <p>
-              Developed educational systems combining Arduino, SolidWorks, and machine learning concepts to make technical learning accessible.
+              My research is fundamentally interdisciplinary. I’m interested in how people interact with technical, social, and environmental systems, and what happens when those systems shape perception, identity, or understanding.
             </p>
-            <a href="research-ml.html">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+
+            <p>
+              I move between computational methods, qualitative inquiry, and systems thinking depending on the question being asked.
+            </p>
+
+            <p>
+              Whether I’m studying transformer architectures or digital identity formation, I’m ultimately interested in the same thing: how information becomes experience.
+            </p>
+
           </div>
+
         </div>
 
       </div>
 
-      <a href="index.html#professions" class="btn">← Back</a>
+    </section>
 
-    </div>
+    <!-- PROJECTS -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Selected Research</div>
+
+        <!-- PROJECT 1 -->
+
+        <div class="work-feature">
+
+          <div class="work-feature-image">
+            <img src="images/1.png" alt="Transformers & Formal Languages">
+          </div>
+
+          <div class="work-feature-content">
+
+            <span class="work-feature-tag">
+              Machine Learning · NLP · Formal Languages
+            </span>
+
+            <h2>Transformers & Formal Languages</h2>
+
+            <p>
+              Investigating whether transformer architectures genuinely learn structural rules or rely on probabilistic approximation beyond training distributions. Using deterministic finite automata to isolate behavioral understanding from statistical correlation.
+            </p>
+
+            <div class="work-feature-details">
+
+              <span>DFA Synthesis</span>
+              <span>OOD Evaluation</span>
+              <span>Behavioral Analysis</span>
+              <span>Transformer Models</span>
+
+            </div>
+
+            <a href="research-ai.html" class="project-link">
+              View Research →
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- PROJECT 2 -->
+
+        <div class="work-feature">
+
+          <div class="work-feature-image">
+            <img src="images/2.png" alt="Trans Identity & Environment">
+          </div>
+
+          <div class="work-feature-content">
+
+            <span class="work-feature-tag">
+              Platform Studies · Identity · Digital Ecology
+            </span>
+
+            <h2>Trans Identity & The Environment on TikTok</h2>
+
+            <p>
+              Qualitative research exploring how TikTok’s algorithmic distribution shapes interactions between transgender identity and environmental narratives, investigating digital visibility, platform behavior, and narrative framing.
+            </p>
+
+            <div class="work-feature-details">
+
+              <span>Platform Studies</span>
+              <span>Identity Theory</span>
+              <span>Digital Ecology</span>
+              <span>Qualitative Research</span>
+
+            </div>
+
+            <a href="research-trans-env.html" class="project-link">
+              View Research →
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- PROJECT 3 -->
+
+        <div class="work-feature">
+
+          <div class="work-feature-image">
+            <img src="images/3.png" alt="ML & Hardware Learning">
+          </div>
+
+          <div class="work-feature-content">
+
+            <span class="work-feature-tag">
+              Applied ML · Hardware · Education Systems
+            </span>
+
+            <h2>ML + Hardware Learning Systems</h2>
+
+            <p>
+              Developing educational systems combining Arduino, SolidWorks, and machine learning concepts to make technical learning more tangible and accessible through physical-digital integration.
+            </p>
+
+            <div class="work-feature-details">
+
+              <span>Arduino</span>
+              <span>SolidWorks</span>
+              <span>Educational Design</span>
+              <span>Systems Thinking</span>
+
+            </div>
+
+            <a href="research-ml.html" class="project-link">
+              View Research →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- METHODS -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Methods</div>
+
+        <div class="methods-grid">
+
+          <div>
+
+            <h2>How I Research</h2>
+
+            <div class="methods-list">
+
+              <div>Quantitative & qualitative methods</div>
+              <div>Behavioral and systems analysis</div>
+              <div>Machine learning experimentation</div>
+              <div>Platform and algorithmic studies</div>
+              <div>Identity and narrative analysis</div>
+              <div>Research visualization & communication</div>
+
+            </div>
+
+          </div>
+
+          <div class="methods-right">
+
+            <h2>Perspective</h2>
+
+            <p>
+              I’m most interested in interdisciplinary research where computational systems intersect with human behavior and cultural interpretation.
+            </p>
+
+            <p>
+              My work often investigates how systems distribute information, how narratives emerge within technical environments, and how people navigate structures they rarely fully see.
+            </p>
+
+            <p>
+              I believe research should not only produce insight, it should also communicate clearly enough to become usable and meaningful outside academia.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <section class="page-footer">
+
+      <div class="container">
+
+        <a href="index.html#professions" class="btn">
+          ← Back to Professions
+        </a>
+
+      </div>
+
+    </section>
+
   </div>
 
-  <!-- JS -->
+  <!-- MOBILE MENU -->
+
   <script>
+
     var sidemnu = document.getElementById("sidemenu");
 
     function openmenu(){
-      sidemnu.style.right = "0"
+      sidemnu.style.right = "0";
     }
+
     function closemenu(){
-      sidemnu.style.right = "-200px"
+      sidemnu.style.right = "-220px";
     }
+
   </script>
 
 </body>
+
 </html>

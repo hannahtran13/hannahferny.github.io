@@ -1,138 +1,813 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
+
   <title>Marketing & Strategy | Hannah Tran</title>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
   <link rel="stylesheet" href="style.css">
+
   <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
-</head>
-<script>
 
-const works = document.querySelectorAll('.work');
+  <style>
 
-works.forEach(work => {
+    /* =========================
+    PAGE
+    ========================= */
 
-  work.addEventListener('click', function(e){
+    .marketing-page{
+      padding-top:140px;
+    }
 
-    // if already active -> follow project link
-    if(work.classList.contains('active')){
+    /* =========================
+    HERO
+    ========================= */
 
-      const link = work.querySelector('a');
+    .marketing-hero{
+      padding:60px 0 140px 0;
 
-      if(link){
-        window.location.href = link.href;
+      position:relative;
+
+      overflow:hidden;
+    }
+
+    .marketing-hero::before{
+      content:'';
+
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      background:
+        radial-gradient(circle, rgba(199,0,57,0.10), transparent 70%);
+
+      top:-300px;
+      right:-150px;
+
+      pointer-events:none;
+    }
+
+    .marketing-hero p{
+      font-size:1rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      margin-bottom:25px;
+
+      font-weight:700;
+    }
+
+    .marketing-hero h1{
+      font-size:clamp(4rem, 9vw, 7rem);
+
+      line-height:0.92;
+
+      letter-spacing:-4px;
+
+      margin-bottom:35px;
+
+      max-width:1000px;
+    }
+
+    .marketing-hero h1 span{
+      color:#c70039;
+    }
+
+    .marketing-hero h3{
+      font-size:1.3rem;
+
+      line-height:1.9;
+
+      color:#4f709C;
+
+      max-width:850px;
+
+      font-weight:400;
+    }
+
+    /* =========================
+    SECTION
+    ========================= */
+
+    .section-block{
+      padding:140px 0;
+    }
+
+    .section-label{
+      font-size:0.9rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      margin-bottom:35px;
+
+      font-weight:700;
+    }
+
+    /* =========================
+    PHILOSOPHY
+    ========================= */
+
+    .philosophy{
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:70px;
+
+      align-items:center;
+    }
+
+    .philosophy h2{
+      font-size:clamp(3rem, 7vw, 5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .philosophy h2 span{
+      color:#c70039;
+    }
+
+    .philosophy p{
+      font-size:1.05rem;
+
+      line-height:2;
+
+      color:#4f709C;
+
+      margin-bottom:24px;
+    }
+
+    .quote{
+      padding:35px;
+
+      border-left:4px solid #c70039;
+
+      background:
+        rgba(255,255,255,0.35);
+
+      backdrop-filter:blur(14px);
+
+      border-radius:24px;
+
+      font-size:1.3rem;
+
+      line-height:1.8;
+
+      font-weight:700;
+    }
+
+    /* =========================
+    STRENGTHS
+    ========================= */
+
+    .strength-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(300px,1fr));
+
+      gap:30px;
+
+      margin-top:60px;
+    }
+
+    .strength-card{
+      position:relative;
+
+      padding:45px 35px;
+
+      border-radius:30px;
+
+      overflow:hidden;
+
+      background:
+        rgba(255,255,255,0.38);
+
+      backdrop-filter:blur(18px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      box-shadow:
+        0 15px 60px rgba(20,30,70,0.08);
+
+      transition:0.45s ease;
+    }
+
+    .strength-card:hover{
+      transform:translateY(-8px);
+
+      box-shadow:
+        0 30px 80px rgba(20,30,70,0.12);
+    }
+
+    .strength-card i{
+      font-size:2.8rem;
+
+      color:#c70039;
+
+      margin-bottom:25px;
+    }
+
+    .strength-card h3{
+      font-size:2rem;
+
+      margin-bottom:20px;
+    }
+
+    .strength-card p{
+      color:#4f709C;
+
+      line-height:1.9;
+    }
+
+    /* =========================
+    PROJECTS
+    ========================= */
+
+    .work-feature{
+      margin-bottom:120px;
+    }
+
+    .work-feature:last-child{
+      margin-bottom:0;
+    }
+
+    .work-feature-image{
+      width:100%;
+
+      aspect-ratio:16 / 10;
+
+      overflow:hidden;
+
+      border-radius:30px;
+
+      margin-bottom:40px;
+
+      background:#dfe7e2;
+
+      box-shadow:
+        0 20px 70px rgba(20,30,70,0.10);
+    }
+
+    .work-feature-image img{
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      display:block;
+
+      transition:0.8s ease;
+    }
+
+    .work-feature:hover img{
+      transform:scale(1.03);
+    }
+
+    .work-feature-tag{
+      display:block;
+
+      margin-bottom:24px;
+
+      font-size:0.8rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      font-weight:700;
+    }
+
+    .work-feature-content h2{
+      font-size:clamp(2.5rem, 5vw, 4.5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .work-feature-content p{
+      font-size:1.1rem;
+
+      line-height:2;
+
+      color:#4f709C;
+
+      max-width:950px;
+
+      margin-bottom:35px;
+    }
+
+    .work-feature-details{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:12px;
+
+      margin-bottom:40px;
+    }
+
+    .work-feature-details span{
+      padding:12px 18px;
+
+      border-radius:999px;
+
+      background:
+        rgba(255,255,255,0.45);
+
+      backdrop-filter:blur(12px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      font-size:0.78rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:2px;
+
+      font-weight:700;
+
+      transition:0.4s ease;
+    }
+
+    .work-feature-details span:hover{
+      background:#c70039;
+
+      color:#fff;
+
+      transform:translateY(-3px);
+    }
+
+    .project-link{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      font-weight:700;
+
+      transition:0.3s ease;
+    }
+
+    .project-link:hover{
+      color:#c70039;
+
+      transform:translateX(6px);
+    }
+
+    /* =========================
+    APPROACH
+    ========================= */
+
+    .approach-grid{
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:60px;
+    }
+
+    .approach-grid h2{
+      font-size:clamp(3rem, 7vw, 5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .approach-list{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:18px;
+    }
+
+    .approach-list div{
+      padding:22px 24px;
+
+      border-radius:20px;
+
+      background:
+        rgba(255,255,255,0.38);
+
+      backdrop-filter:blur(14px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      font-weight:700;
+    }
+
+    .approach-right p{
+      color:#4f709C;
+
+      line-height:2;
+
+      margin-bottom:24px;
+
+      font-size:1.05rem;
+    }
+
+    /* =========================
+    FOOTER
+    ========================= */
+
+    .page-footer{
+      padding:100px 0;
+
+      text-align:center;
+
+      border-top:
+        1px solid rgba(20,30,70,0.08);
+    }
+
+    /* =========================
+    MOBILE
+    ========================= */
+
+    @media only screen and (max-width:768px){
+
+      .marketing-page{
+        padding-top:120px;
       }
 
-    } else {
+      .marketing-hero{
+        padding:40px 0 100px 0;
+      }
 
-      // close all others
-      works.forEach(w => w.classList.remove('active'));
+      .marketing-hero h1{
+        font-size:4rem;
+      }
 
-      // open clicked one
-      work.classList.add('active');
+      .marketing-hero h3{
+        font-size:1.1rem;
+      }
+
+      .section-block{
+        padding:100px 0;
+      }
+
+      .philosophy{
+        grid-template-columns:1fr;
+
+        gap:40px;
+      }
+
+      .approach-grid{
+        grid-template-columns:1fr;
+      }
+
+      .work-feature{
+        margin-bottom:90px;
+      }
+
+      .work-feature-content h2{
+        font-size:3rem;
+      }
+
+      .work-feature-content p{
+        font-size:1rem;
+      }
 
     }
 
-  });
+  </style>
 
-});
+</head>
 
-// tap outside closes cards
-document.addEventListener('click', function(e){
-
-  if(!e.target.closest('.work')){
-    works.forEach(w => w.classList.remove('active'));
-  }
-
-});
-
-</script>
 <body>
 
   <!-- NAV -->
-  <div class="container">
-    <nav>
-      <img src="images/logo.png" class="logo">
-      <ul id="sidemenu">
-        <li><a href="index.html#header">Home</a></li>
-        <li><a href="index.html#about">My Story</a></li>
-        <li><a href="index.html#professions">Professions</a></li>
-        <li><a href="index.html#portfolio">Portfolio</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="https://pottery.hannahtran7.repl.co">Pottery</a></li>
-        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
-      </ul>
-      <i class="fa-solid fa-bars" onclick="openmenu()"></i>
-    </nav>
-  </div>
 
-  <div id="about">
-    <div class="container">
+  <nav>
 
-      <h1 class="sub-title">Marketing & Strategy</h1>
+    <img src="images/logo.png" class="logo">
 
-      <p style="margin-top: 20px;">
-        I design campaigns and messaging that translate complex ideas—especially in sustainability—into something people actually understand and care about.
-      </p>
+    <ul id="sidemenu">
+      <li><a href="index.html#header">Home</a></li>
+      <li><a href="index.html#about">My Story</a></li>
+      <li><a href="index.html#professions">Professions</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
 
-      <p style="margin-top: 15px;">
-        My work focuses on bridging technical systems with real audiences through clear communication and strategic thinking.
-      </p>
+      <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+    </ul>
 
-    </div>
-  </div>
+    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
 
-  <!-- PROJECTS -->
-  <div id="portfolio">
-    <div class="container">
+  </nav>
 
-      <h2 style="margin-bottom: 20px;">Selected Work</h2>
+  <div class="marketing-page">
 
-      <div class="work-list">
+    <!-- HERO -->
 
-        <div class="work">
-          <img src="images/work-2.png">
-          <div class="layer">
-            <h3>Milton-Planted In Place Campaign</h3>
-            <p>Museum exhibition marketing in Milton, PA</p>
-            <a href="milt.html">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+    <section class="marketing-hero">
+
+      <div class="container">
+
+        <p>Marketing & Strategy</p>
+
+        <h1>
+          Turning complex ideas<br>
+          into <span>clear narratives.</span>
+        </h1>
+
+        <h3>
+          I design campaigns and communication systems that help people understand, connect with, and care about complex topics, especially in sustainability, culture, and public engagement.
+        </h3>
+
+      </div>
+
+    </section>
+
+    <!-- PHILOSOPHY -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Approach</div>
+
+        <div class="philosophy">
+
+          <div>
+
+            <h2>
+              Strategy built<br>
+              around <span>understanding.</span>
+            </h2>
+
+            <p>
+              My marketing work focuses on translation: helping technical systems, cultural projects, and public-facing initiatives communicate in ways that feel emotionally legible.
+            </p>
+
+            <p>
+              I’m interested in the intersection between strategy, storytelling, and visual identity: how campaigns shape perception, how messaging changes behavior, and how design reinforces narrative.
+            </p>
+
+            <p>
+              Whether I’m building social campaigns, exhibitions, or sustainability communications, my goal is always the same: make people feel connected to the idea.
+            </p>
+
           </div>
-        </div>
 
-        <div class="work">
-          <img src="images/work-1.png">
-          <div class="layer">
-            <h3>The Ahurea Project</h3>
-            <p>Non-profit marketing in Haiphong, Vietnam</p>
-            <a href="ahurea-project.html">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
         </div>
 
       </div>
 
-      <a href="index.html#professions" class="btn">← Back</a>
+    </section>
 
-    </div>
+    <!-- STRENGTHS -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">What I Do</div>
+
+        <div class="strength-grid">
+
+          <div class="strength-card">
+
+            <i class="fa-solid fa-bullhorn"></i>
+
+            <h3>Campaign Strategy</h3>
+
+            <p>
+              Building multi-platform campaigns that connect communication goals with audience behavior and emotional resonance.
+            </p>
+
+          </div>
+
+          <div class="strength-card">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <h3>Audience Insight</h3>
+
+            <p>
+              Using qualitative and quantitative research to understand how people perceive narratives and respond to messaging.
+            </p>
+
+          </div>
+
+          <div class="strength-card">
+
+            <i class="fa-solid fa-pen-ruler"></i>
+
+            <h3>Visual Communication</h3>
+
+            <p>
+              Translating messaging systems into cohesive visual identities, campaign graphics, and public-facing design.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Selected Work</div>
+
+        <!-- MILTON -->
+
+        <div class="work-feature">
+
+          <div class="work-feature-image">
+            <img src="images/work-2.png" alt="Milton Campaign">
+          </div>
+
+          <div class="work-feature-content">
+
+            <span class="work-feature-tag">
+              Museum Marketing · Public Engagement
+            </span>
+
+            <h2>Milton - Planted In Place</h2>
+
+            <p>
+              Developed exhibition communication materials and visual messaging for the Milton Municipal Museum’s “Planted In Place” exhibition, translating local environmental and historical narratives into a cohesive public-facing identity.
+            </p>
+
+            <div class="work-feature-details">
+
+              <span>Campaign Design</span>
+              <span>Exhibition Promotion</span>
+              <span>Visual Identity</span>
+              <span>Public Engagement</span>
+
+            </div>
+
+            <a href="milton-exhibition.html" class="project-link">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- AHUREA -->
+
+        <div class="work-feature">
+
+          <div class="work-feature-image">
+            <img src="images/work-1.png" alt="Ahurea Project">
+          </div>
+
+          <div class="work-feature-content">
+
+            <span class="work-feature-tag">
+              Cultural Campaign · Social Media Strategy
+            </span>
+
+            <h2>The Ahurea Project</h2>
+
+            <p>
+              Led communication strategy, editorial direction, and multi-platform social campaigns for a youth-led nonprofit cultural platform in Vietnam, reaching over 149K people across two seasons.
+            </p>
+
+            <div class="work-feature-details">
+
+              <span>Campaign Strategy</span>
+              <span>Social Media</span>
+              <span>Editorial Direction</span>
+              <span>Community Building</span>
+
+            </div>
+
+            <a href="ahurea-project.html" class="project-link">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- APPROACH -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Methods</div>
+
+        <div class="approach-grid">
+
+          <div>
+
+            <h2>How I Work</h2>
+
+            <div class="approach-list">
+
+              <div>Campaign planning & communication strategy</div>
+              <div>Audience & narrative analysis</div>
+              <div>Cross-platform visual communication</div>
+              <div>Public-facing sustainability messaging</div>
+              <div>Editorial storytelling systems</div>
+              <div>Research-informed communication design</div>
+
+            </div>
+
+          </div>
+
+          <div class="approach-right">
+
+            <h2>Perspective</h2>
+
+            <p>
+              My work sits between strategy, design, and research. I’m especially interested in communication challenges where technical systems meet public audiences.
+            </p>
+
+            <p>
+              I approach marketing less as persuasion and more as interpretation — understanding what people need emotionally and structurally in order to connect with an idea.
+            </p>
+
+            <p>
+              I’m particularly drawn to sustainability, culture, and mission-driven work where communication has the power to reshape perception and participation.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <section class="page-footer">
+
+      <div class="container">
+
+        <a href="index.html#professions" class="btn">
+          ← Back to Professions
+        </a>
+
+      </div>
+
+    </section>
+
   </div>
 
+  <!-- MOBILE MENU -->
 
-    <!-- JS -->
   <script>
+
     var sidemnu = document.getElementById("sidemenu");
 
     function openmenu(){
-      sidemnu.style.right = "0"
+      sidemnu.style.right = "0";
     }
+
     function closemenu(){
-      sidemnu.style.right = "-200px"
+      sidemnu.style.right = "-220px";
     }
+
   </script>
+
 </body>
+
 </html>
