@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Design & Communication | Hannah Tran</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+
+  <style>
+
+    /* =========================
+    HERO
+    ========================= */
+
+    .design-hero{
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+
+      position:relative;
+
+      overflow:hidden;
+    }
+
+    .design-hero::before{
+      content:'';
+
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      background:
+        radial-gradient(circle, rgba(199,0,57,0.12), transparent 70%);
+
+      top:-250px;
+      right:-150px;
+    }
+
+    .design-hero::after{
+      content:'';
+
+      position:absolute;
+
+      width:600px;
+      height:600px;
+
+      background:
+        radial-gradient(circle, rgba(20,30,70,0.08), transparent 70%);
+
+      bottom:-250px;
+      left:-150px;
+    }
+
+    .design-hero-content{
+      position:relative;
+      z-index:2;
+
+      padding-top:140px;
+
+      max-width:950px;
+    }
+
+    .design-hero-content p{
+      font-size:1rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      margin-bottom:25px;
+
+      color:#c70039;
+
+      font-weight:700;
+    }
+
+    .design-hero-content h1{
+      font-size:clamp(4rem, 9vw, 7rem);
+
+      line-height:0.92;
+
+      letter-spacing:-4px;
+
+      margin-bottom:35px;
+    }
+
+    .design-hero-content h1 span{
+      color:#c70039;
+    }
+
+    .design-hero-content h3{
+      font-size:1.35rem;
+
+      line-height:1.9;
+
+      color:#4f709C;
+
+      max-width:850px;
+
+      font-weight:400;
+    }
+
+    /* =========================
+    SECTION
+    ========================= */
+
+    .design-section{
+      padding:140px 0;
+    }
+
+    .design-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(320px,1fr));
+
+      gap:35px;
+
+      margin-top:60px;
+    }
+
+    .design-card{
+      position:relative;
+
+      padding:50px 40px;
+
+      border-radius:30px;
+
+      overflow:hidden;
+
+      background:
+        rgba(255,255,255,0.42);
+
+      backdrop-filter:blur(18px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      box-shadow:
+        0 15px 60px rgba(20,30,70,0.08);
+
+      transition:0.5s ease;
+    }
+
+    .design-card:hover{
+      transform:translateY(-10px);
+
+      box-shadow:
+        0 30px 80px rgba(20,30,70,0.12);
+    }
+
+    .design-card::before{
+      content:'';
+
+      position:absolute;
+
+      width:200px;
+      height:200px;
+
+      background:
+        radial-gradient(circle, rgba(199,0,57,0.12), transparent 70%);
+
+      top:-100px;
+      right:-100px;
+    }
+
+    .design-card i{
+      font-size:3rem;
+
+      margin-bottom:30px;
+
+      color:#c70039;
+    }
+
+    .design-card h2{
+      font-size:2rem;
+
+      margin-bottom:20px;
+
+      line-height:1.1;
+    }
+
+    .design-card p{
+      color:#4f709C;
+
+      line-height:1.9;
+    }
+
+    /* =========================
+    PHILOSOPHY
+    ========================= */
+
+    .philosophy-wrap{
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:70px;
+
+      align-items:center;
+    }
+
+    .philosophy-wrap h2{
+      font-size:clamp(3rem, 7vw, 5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .philosophy-wrap h2 span{
+      color:#c70039;
+    }
+
+    .philosophy-wrap p{
+      font-size:1.1rem;
+
+      line-height:2;
+
+      color:#4f709C;
+
+      margin-bottom:25px;
+    }
+
+    .quote{
+      padding:35px;
+
+      border-left:4px solid #c70039;
+
+      background:
+        rgba(255,255,255,0.35);
+
+      backdrop-filter:blur(14px);
+
+      border-radius:20px;
+
+      font-size:1.3rem;
+
+      line-height:1.8;
+
+      color:#141e46;
+
+      font-weight:700;
+    }
+
+    /* =========================
+    PROCESS
+    ========================= */
+
+    .process-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(250px,1fr));
+
+      gap:30px;
+
+      margin-top:70px;
+    }
+
+    .process-step{
+      padding:40px;
+
+      border-radius:28px;
+
+      background:
+        rgba(255,255,255,0.42);
+
+      backdrop-filter:blur(18px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      box-shadow:
+        0 15px 60px rgba(20,30,70,0.08);
+
+      transition:0.4s ease;
+    }
+
+    .process-step:hover{
+      transform:translateY(-8px);
+    }
+
+    .process-step span{
+      font-size:4rem;
+
+      font-weight:700;
+
+      color:#c70039;
+
+      display:block;
+
+      margin-bottom:20px;
+    }
+
+    .process-step h3{
+      font-size:1.7rem;
+
+      margin-bottom:20px;
+    }
+
+    .process-step p{
+      line-height:1.9;
+
+      color:#4f709C;
+    }
+
+    /* =========================
+    TOOLS
+    ========================= */
+
+    .tools{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:18px;
+
+      margin-top:60px;
+    }
+
+    .tool{
+      padding:14px 24px;
+
+      border-radius:999px;
+
+      background:
+        rgba(255,255,255,0.5);
+
+      backdrop-filter:blur(12px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      font-weight:700;
+
+      transition:0.4s ease;
+    }
+
+    .tool:hover{
+      background:#c70039;
+
+      color:#fff;
+
+      transform:translateY(-4px);
+    }
+
+    /* =========================
+    FOOTER
+    ========================= */
+
+    .design-footer{
+      padding:80px 0;
+
+      text-align:center;
+
+      border-top:
+        1px solid rgba(20,30,70,0.08);
+    }
+
+    .design-footer a{
+      display:inline-block;
+    }
+
+    /* =========================
+    MOBILE
+    ========================= */
+
+    @media only screen and (max-width:768px){
+
+      .design-hero-content{
+        padding-top:180px;
+      }
+
+      .design-hero-content h1{
+        font-size:4rem;
+      }
+
+      .design-hero-content h3{
+        font-size:1.1rem;
+      }
+
+      .philosophy-wrap{
+        grid-template-columns:1fr;
+
+        gap:40px;
+      }
+
+      .design-section{
+        padding:100px 0;
+      }
+
+    }
+
+    /* =========================
+SELECTED WORK FEATURE
+========================= */
+
+.work-feature{
+  margin-bottom:120px;
+}
+
+.work-feature:last-child{
+  margin-bottom:0;
+}
+
+.work-feature-image{
+  width:100%;
+
+  aspect-ratio:16 / 10;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  margin-bottom:40px;
+
+  background:#dfe7e2;
+
+  box-shadow:
+    0 20px 70px rgba(20,30,70,0.10);
+}
+
+.work-feature-image img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:0.8s ease;
+}
+
+.work-feature:hover .work-feature-image img{
+  transform:scale(1.03);
+}
+
+.work-feature-tag{
+  display:block;
+
+  margin-bottom:25px;
+
+  font-size:0.8rem;
+
+  text-transform:uppercase;
+
+  letter-spacing:4px;
+
+  color:#c70039;
+
+  font-weight:700;
+}
+
+.work-feature-content h2{
+  font-size:clamp(2.5rem, 5vw, 4.5rem);
+
+  line-height:0.95;
+
+  letter-spacing:-3px;
+
+  margin-bottom:30px;
+
+  color:#141e46;
+}
+
+.work-feature-content p{
+  font-size:1.15rem;
+
+  line-height:2;
+
+  color:#4f709C;
+
+  max-width:950px;
+
+  margin-bottom:35px;
+}
+
+/* detail pills */
+
+.work-feature-details{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+
+  margin-bottom:40px;
+}
+
+.work-feature-details span{
+  padding:12px 18px;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,0.45);
+
+  backdrop-filter:blur(12px);
+
+  border:
+    1px solid rgba(20,30,70,0.08);
+
+  font-size:0.78rem;
+
+  text-transform:uppercase;
+
+  letter-spacing:2px;
+
+  font-weight:700;
+
+  transition:0.4s ease;
+}
+
+.work-feature-details span:hover{
+  background:#c70039;
+
+  color:#fff;
+
+  transform:translateY(-3px);
+}
+
+/* project link */
+
+.project-link{
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  font-weight:700;
+
+  transition:0.3s ease;
+}
+
+.project-link:hover{
+  color:#c70039;
+
+  transform:translateX(6px);
+}
+
+/* mobile */
+
+@media only screen and (max-width:768px){
+
+  .work-feature{
+    margin-bottom:90px;
+  }
+
+  .work-feature-image{
+    margin-bottom:30px;
+  }
+
+  .work-feature-content h2{
+    font-size:3rem;
+  }
+
+  .work-feature-content p{
+    font-size:1rem;
+  }
+
+}
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <img src="images/logo.png" class="logo">
+
+    <ul id="sidemenu">
+      <li><a href="index.html#header">Home</a></li>
+      <li><a href="index.html#about">My Story</a></li>
+      <li><a href="index.html#professions">Professions</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+
+      <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+    </ul>
+
+    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="design-hero">
+
+    <div class="container">
+
+      <div class="design-hero-content">
+
+        <p>Design & Communication</p>
+
+        <h1>
+          Design as a tool<br>
+          for <span>clarity.</span>
+        </h1>
+
+        <h3>
+          I use design to translate complex systems into things people can actually understand, whether that’s exhibitions, publications, visual identity systems, or digital experiences.
+        </h3>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PHILOSOPHY -->
+
+  <section class="design-section">
+
+    <div class="container">
+
+      <div class="philosophy-wrap">
+
+        <div>
+
+          <h2>
+            Making the<br>
+            complex feel<br>
+            <span>inevitable.</span>
+          </h2>
+
+          <div class="quote">
+            “The best design feels like it couldn’t have been any other way.”
+          </div>
+
+        </div>
+
+        <div>
+
+          <p>
+            My design practice sits between communication strategy and visual storytelling. I’m drawn to projects where understanding depends on how information is structured and experienced.
+          </p>
+
+          <p>
+            Whether I’m designing an exhibition, publication, campaign, or interface, my process always begins with the same question:
+          </p>
+
+          <p>
+            <strong>What does the audience need to feel, and in what order?</strong>
+          </p>
+
+          <p>
+            That question shapes every typographic decision, layout system, color relationship, and interaction.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- WHAT I DO -->
+
+  <section class="design-section">
+
+    <div class="container">
+
+      <h1 class="sub-title">What I Design</h1>
+
+      <div class="design-grid">
+
+        <div class="design-card">
+          <i class="fa-solid fa-pen-ruler"></i>
+          <h2>Visual Identity</h2>
+          <p>
+            Building cohesive visual systems that communicate values, personality, and story across multiple platforms.
+          </p>
+        </div>
+
+        <div class="design-card">
+          <i class="fa-solid fa-book-open"></i>
+          <h2>Editorial Design</h2>
+          <p>
+            Transforming dense research and storytelling into readable, engaging publication experiences.
+          </p>
+        </div>
+
+        <div class="design-card">
+          <i class="fa-solid fa-building-columns"></i>
+          <h2>Exhibition Design</h2>
+          <p>
+            Translating archives, environmental research, and history into spatial storytelling systems.
+          </p>
+        </div>
+
+        <div class="design-card">
+          <i class="fa-solid fa-laptop-code"></i>
+          <h2>Digital Interfaces</h2>
+          <p>
+            Designing web experiences that prioritize typography, navigation, clarity, and emotional atmosphere.
+          </p>
+        </div>
+
+        <div class="design-card">
+          <i class="fa-solid fa-bullhorn"></i>
+          <h2>Campaign Graphics</h2>
+          <p>
+            Creating social campaigns and public-facing graphics that sustain engagement and identity.
+          </p>
+        </div>
+
+        <div class="design-card">
+          <i class="fa-solid fa-shirt"></i>
+          <h2>Print & Merchandise</h2>
+          <p>
+            Designing physical artifacts that extend visual identity into tactile and memorable experiences.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SELECTED WORK -->
+
+<section class="design-section">
+
+  <div class="container">
+
+    <h1 class="sub-title">Selected Work</h1>
+
+    <!-- AHUREA -->
+
+    <div class="work-feature">
+
+      <div class="work-feature-image">
+        <img src="images/work-1.png" alt="Ahurea Project">
+      </div>
+
+      <div class="work-feature-content">
+
+        <span class="work-feature-tag">
+          Visual Identity · Editorial · Campaign
+        </span>
+
+        <h2>The Ahurea Project</h2>
+
+        <p>
+          A youth-led cultural platform in Vietnam built around cyberpunk editorial aesthetics, experimental typography, and multi-phase social campaigns. Reached 149K+ people across two seasons.
+        </p>
+
+        <div class="work-feature-details">
+
+          <span>Identity System</span>
+          <span>Publication</span>
+          <span>Social Campaign</span>
+          <span>Merchandise</span>
+
+        </div>
+
+        <a href="ahurea-project.html" class="project-link">
+          View Project →
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- MILTON -->
+
+    <div class="work-feature">
+
+      <div class="work-feature-image">
+        <img src="images/work-2.png" alt="Milton Exhibition">
+      </div>
+
+      <div class="work-feature-content">
+
+        <span class="work-feature-tag">
+          Exhibition · Editorial · Environmental
+        </span>
+
+        <h2>Milton - Planted In Place</h2>
+
+        <p>
+          Exhibition and publication design translating archival maps and botanical research into spatial storytelling inspired by the Susquehanna River.
+        </p>
+
+        <div class="work-feature-details">
+
+          <span>Exhibition Design</span>
+          <span>Editorial Layout</span>
+          <span>Archival Visualization</span>
+          <span>Print</span>
+
+        </div>
+
+        <a href="milton-exhibition.html" class="project-link">
+          View Project →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+  <!-- PROCESS -->
+
+  <section class="design-section">
+
+    <div class="container">
+
+      <h1 class="sub-title">Process</h1>
+
+      <div class="process-grid">
+
+        <div class="process-step">
+          <span>01</span>
+          <h3>Understand</h3>
+          <p>
+            Understand the audience, the system, and the emotional core of the project.
+          </p>
+        </div>
+
+        <div class="process-step">
+          <span>02</span>
+          <h3>Structure</h3>
+          <p>
+            Organize information into hierarchy and narrative before aesthetics begin.
+          </p>
+        </div>
+
+        <div class="process-step">
+          <span>03</span>
+          <h3>Design</h3>
+          <p>
+            Build a visual language specific to the project — never generic.
+          </p>
+        </div>
+
+        <div class="process-step">
+          <span>04</span>
+          <h3>Refine</h3>
+          <p>
+            Strip away anything that distracts from understanding and clarity.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TOOLS -->
+
+  <section class="design-section">
+
+    <div class="container">
+
+      <h1 class="sub-title">Tools</h1>
+
+      <div class="tools">
+
+        <div class="tool">Adobe InDesign</div>
+        <div class="tool">Illustrator</div>
+        <div class="tool">Photoshop</div>
+        <div class="tool">Figma</div>
+        <div class="tool">HTML/CSS</div>
+        <div class="tool">Canva</div>
+        <div class="tool">Procreate</div>
+        <div class="tool">SolidWorks</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <section class="design-footer">
+
+    <div class="container">
+
+      <a href="index.html#professions" class="btn">
+        ← Back to Professions
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- MOBILE MENU -->
+
+  <script>
+
+    var sidemnu = document.getElementById("sidemenu");
+
+    function openmenu(){
+      sidemnu.style.right = "0";
+    }
+
+    function closemenu(){
+      sidemnu.style.right = "-220px";
+    }
+
+  </script>
+
+</body>
+
+</html>

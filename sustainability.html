@@ -1,91 +1,837 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Sustainability & Systems</title>
 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sustainability & Systems | Hannah Tran</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
   <link rel="stylesheet" href="style.css">
 
   <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+
+  <style>
+
+    /* =========================
+    PAGE
+    ========================= */
+
+    .sustainability-page{
+      padding-top:140px;
+    }
+
+    /* =========================
+    HERO
+    ========================= */
+
+    .sustainability-hero{
+      padding:60px 0 140px 0;
+
+      position:relative;
+
+      overflow:hidden;
+    }
+
+    .sustainability-hero::before{
+      content:'';
+
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      background:
+        radial-gradient(circle, rgba(199,0,57,0.10), transparent 70%);
+
+      top:-300px;
+      right:-150px;
+
+      pointer-events:none;
+    }
+
+    .sustainability-hero p{
+      font-size:1rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      margin-bottom:25px;
+
+      font-weight:700;
+    }
+
+    .sustainability-hero h1{
+      font-size:clamp(4rem, 9vw, 7rem);
+
+      line-height:0.92;
+
+      letter-spacing:-4px;
+
+      margin-bottom:35px;
+
+      max-width:1000px;
+    }
+
+    .sustainability-hero h1 span{
+      color:#c70039;
+    }
+
+    .sustainability-hero h3{
+      font-size:1.3rem;
+
+      line-height:1.9;
+
+      color:#4f709C;
+
+      max-width:850px;
+
+      font-weight:400;
+    }
+
+    /* =========================
+    SECTION
+    ========================= */
+
+    .section-block{
+      padding:140px 0;
+    }
+
+    .section-label{
+      font-size:0.9rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      margin-bottom:35px;
+
+      font-weight:700;
+    }
+
+    /* =========================
+    PHILOSOPHY
+    ========================= */
+
+    .philosophy{
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:70px;
+
+      align-items:center;
+    }
+
+    .philosophy h2{
+      font-size:clamp(3rem, 7vw, 5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .philosophy h2 span{
+      color:#c70039;
+    }
+
+    .philosophy p{
+      font-size:1.05rem;
+
+      line-height:2;
+
+      color:#4f709C;
+
+      margin-bottom:24px;
+    }
+
+    .quote{
+      padding:35px;
+
+      border-left:4px solid #c70039;
+
+      background:
+        rgba(255,255,255,0.35);
+
+      backdrop-filter:blur(14px);
+
+      border-radius:24px;
+
+      font-size:1.3rem;
+
+      line-height:1.8;
+
+      font-weight:700;
+    }
+
+    /* =========================
+    BELIEFS
+    ========================= */
+
+    .belief-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(300px,1fr));
+
+      gap:30px;
+
+      margin-top:60px;
+    }
+
+    .belief-card{
+      position:relative;
+
+      padding:45px 35px;
+
+      border-radius:30px;
+
+      overflow:hidden;
+
+      background:
+        rgba(255,255,255,0.38);
+
+      backdrop-filter:blur(18px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      box-shadow:
+        0 15px 60px rgba(20,30,70,0.08);
+
+      transition:0.45s ease;
+    }
+
+    .belief-card:hover{
+      transform:translateY(-8px);
+
+      box-shadow:
+        0 30px 80px rgba(20,30,70,0.12);
+    }
+
+    .belief-card h3{
+      font-size:2rem;
+
+      margin-bottom:20px;
+    }
+
+    .belief-card p{
+      color:#4f709C;
+
+      line-height:1.9;
+    }
+
+    /* =========================
+    PROJECTS
+    ========================= */
+
+    .work-feature{
+      margin-bottom:120px;
+    }
+
+    .work-feature:last-child{
+      margin-bottom:0;
+    }
+
+    .work-feature-image{
+      width:100%;
+
+      aspect-ratio:16 / 10;
+
+      overflow:hidden;
+
+      border-radius:30px;
+
+      margin-bottom:40px;
+
+      background:#dfe7e2;
+
+      box-shadow:
+        0 20px 70px rgba(20,30,70,0.10);
+    }
+
+    .work-feature-image img{
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      display:block;
+
+      transition:0.8s ease;
+    }
+
+    .work-feature:hover img{
+      transform:scale(1.03);
+    }
+
+    .work-feature-tag{
+      display:block;
+
+      margin-bottom:24px;
+
+      font-size:0.8rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:4px;
+
+      color:#c70039;
+
+      font-weight:700;
+    }
+
+    .work-feature-content h2{
+      font-size:clamp(2.5rem, 5vw, 4.5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .work-feature-content p{
+      font-size:1.1rem;
+
+      line-height:2;
+
+      color:#4f709C;
+
+      max-width:950px;
+
+      margin-bottom:35px;
+    }
+
+    .work-feature-details{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:12px;
+
+      margin-bottom:40px;
+    }
+
+    .work-feature-details span{
+      padding:12px 18px;
+
+      border-radius:999px;
+
+      background:
+        rgba(255,255,255,0.45);
+
+      backdrop-filter:blur(12px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      font-size:0.78rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:2px;
+
+      font-weight:700;
+
+      transition:0.4s ease;
+    }
+
+    .work-feature-details span:hover{
+      background:#c70039;
+
+      color:#fff;
+
+      transform:translateY(-3px);
+    }
+
+    .project-link{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      font-weight:700;
+
+      transition:0.3s ease;
+    }
+
+    .project-link:hover{
+      color:#c70039;
+
+      transform:translateX(6px);
+    }
+
+    /* =========================
+    METHODS
+    ========================= */
+
+    .methods-grid{
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:60px;
+    }
+
+    .methods-grid h2{
+      font-size:clamp(3rem, 7vw, 5rem);
+
+      line-height:0.95;
+
+      letter-spacing:-3px;
+
+      margin-bottom:30px;
+    }
+
+    .methods-list{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:18px;
+    }
+
+    .methods-list div{
+      padding:22px 24px;
+
+      border-radius:20px;
+
+      background:
+        rgba(255,255,255,0.38);
+
+      backdrop-filter:blur(14px);
+
+      border:
+        1px solid rgba(20,30,70,0.08);
+
+      font-weight:700;
+    }
+
+    .methods-right p{
+      color:#4f709C;
+
+      line-height:2;
+
+      margin-bottom:24px;
+
+      font-size:1.05rem;
+    }
+
+    /* =========================
+    FOOTER
+    ========================= */
+
+    .page-footer{
+      padding:100px 0;
+
+      text-align:center;
+
+      border-top:
+        1px solid rgba(20,30,70,0.08);
+    }
+
+    /* =========================
+    MOBILE
+    ========================= */
+
+    @media only screen and (max-width:768px){
+
+      .sustainability-page{
+        padding-top:120px;
+      }
+
+      .sustainability-hero{
+        padding:40px 0 100px 0;
+      }
+
+      .sustainability-hero h1{
+        font-size:4rem;
+      }
+
+      .sustainability-hero h3{
+        font-size:1.1rem;
+      }
+
+      .section-block{
+        padding:100px 0;
+      }
+
+      .philosophy{
+        grid-template-columns:1fr;
+
+        gap:40px;
+      }
+
+      .methods-grid{
+        grid-template-columns:1fr;
+      }
+
+      .work-feature{
+        margin-bottom:90px;
+      }
+
+      .work-feature-content h2{
+        font-size:3rem;
+      }
+
+      .work-feature-content p{
+        font-size:1rem;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body>
 
   <!-- NAV -->
-  <div class="container">
-    <nav>
-      <img src="images/logo.png" class="logo">
-      <ul id="sidemenu">
-        <li><a href="index.html#header">Home</a></li>
-        <li><a href="index.html#about">My Story</a></li>
-        <li><a href="index.html#professions">Professions</a></li>
-        <li><a href="index.html#portfolio">Portfolio</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="https://pottery.hannahtran7.repl.co">Pottery</a></li>
-        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
-      </ul>
-      <i class="fa-solid fa-bars" onclick="openmenu()"></i>
-    </nav>
+
+  <nav>
+
+    <img src="images/logo.png" class="logo">
+
+    <ul id="sidemenu">
+      <li><a href="index.html#header">Home</a></li>
+      <li><a href="index.html#about">My Story</a></li>
+      <li><a href="index.html#professions">Professions</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+
+      <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+    </ul>
+
+    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+
+  </nav>
+
+  <div class="sustainability-page">
+
+    <!-- HERO -->
+
+    <section class="sustainability-hero">
+
+      <div class="container">
+
+        <p>Sustainability & Systems</p>
+
+        <h1>
+          Connecting systems<br>
+          to <span>real people.</span>
+        </h1>
+
+        <h3>
+          I work at the intersection of environmental systems and public communication, helping technical realities reach the communities they affect most.
+        </h3>
+
+      </div>
+
+    </section>
+
+    <!-- PHILOSOPHY -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Approach</div>
+
+        <div class="philosophy">
+
+          <div>
+
+            <h2>
+              Where systems<br>
+              meet <span>communities.</span>
+            </h2>
+
+            <div class="quote">
+              “Technical systems only work when the people inside them understand what they're for.”
+            </div>
+
+          </div>
+
+          <div>
+
+            <p>
+              Much of my sustainability work lives in the gap between how environmental programs are designed and how the public actually experiences them.
+            </p>
+
+            <p>
+              Composting systems, exhibitions, trail infrastructure, and environmental campaigns all exist at the boundary between technical planning and lived community life.
+            </p>
+
+            <p>
+              My role in these projects is translation: understanding the technical reality deeply enough to communicate it clearly and understanding the audience well enough to make it land emotionally.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- BELIEFS -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Core Beliefs</div>
+
+        <div class="belief-grid">
+
+          <div class="belief-card">
+
+            <h3>Clarity is equity</h3>
+
+            <p>
+              When environmental information is inaccessible, the people most affected by environmental decisions are the ones excluded from them.
+            </p>
+
+          </div>
+
+          <div class="belief-card">
+
+            <h3>Community before campaign</h3>
+
+            <p>
+              Effective sustainability communication begins with listening, not messaging.
+            </p>
+
+          </div>
+
+          <div class="belief-card">
+
+            <h3>Systems thinking, human scale</h3>
+
+            <p>
+              Environmental systems are complex. My work is about translating that complexity into something a real person can understand and act on.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Projects</div>
+
+        <!-- LEAFGRO -->
+
+        <div class="work-feature">
+
+          <div class="work-feature-image">
+            <img src="images/leafgro.png" alt="Leafgro Campaign">
+          </div>
+
+          <div class="work-feature-content">
+
+            <span class="work-feature-tag">
+              Sustainability Marketing · Campaign Strategy
+            </span>
+
+            <h2>Leafgro Campaign</h2>
+
+            <p>
+              Developed public-facing campaign materials for Maryland Environmental Service’s Leafgro composting initiative, translating county-level biosolid recycling systems into accessible and community-relevant messaging.
+            </p>
+
+            <div class="work-feature-details">
+
+              <span>Campaign Strategy</span>
+              <span>Copywriting</span>
+              <span>Visual Design</span>
+              <span>Public Engagement</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- TRAIL -->
+
+        <div class="work-feature">
+
+          <div class="work-feature-image">
+            <img src="images/trail.png" alt="Community Trail Research">
+          </div>
+
+          <div class="work-feature-content">
+
+            <span class="work-feature-tag">
+              Community Research · Environmental Policy
+            </span>
+
+            <h2>Community Trail Research</h2>
+
+            <p>
+              Qualitative and quantitative research project analyzing public perception, safety concerns, and stakeholder dynamics around regional trail expansion and environmental infrastructure.
+            </p>
+
+            <div class="work-feature-details">
+
+              <span>Stakeholder Mapping</span>
+              <span>Survey Design</span>
+              <span>Community Engagement</span>
+              <span>Policy Research</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- MILTON -->
+
+        <div class="work-feature">
+
+          <div class="work-feature-image">
+            <img src="images/work-2.png" alt="Milton Exhibition">
+          </div>
+
+          <div class="work-feature-content">
+
+            <span class="work-feature-tag">
+              Exhibition · Environmental Storytelling
+            </span>
+
+            <h2>Milton - Planted In Place</h2>
+
+            <p>
+              Exhibition and publication design translating environmental history, archival maps, and botanical field research into a public-facing spatial storytelling experience.
+            </p>
+
+            <div class="work-feature-details">
+
+              <span>Exhibition Design</span>
+              <span>Archival Research</span>
+              <span>Editorial Layout</span>
+              <span>Public Interpretation</span>
+
+            </div>
+
+            <a href="milton-exhibition.html" class="project-link">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- METHODS -->
+
+    <section class="section-block">
+
+      <div class="container">
+
+        <div class="section-label">Methods</div>
+
+        <div class="methods-grid">
+
+          <div>
+
+            <h2>How I Work</h2>
+
+            <div class="methods-list">
+
+              <div>Qualitative interviews & stakeholder mapping</div>
+              <div>Environmental communication strategy</div>
+              <div>Campaign & visual messaging design</div>
+              <div>Public perception research</div>
+              <div>Community engagement</div>
+              <div>Environmental storytelling</div>
+              <div>Exhibition & interpretive design</div>
+
+            </div>
+
+          </div>
+
+          <div class="methods-right">
+
+            <h2>Disciplines</h2>
+
+            <p>
+              My sustainability work draws on environmental studies, communication, design, and qualitative research.
+            </p>
+
+            <p>
+              I’m most effective when projects require bridging those fields: when technical systems need to meet public understanding.
+            </p>
+
+            <p>
+              I’m especially interested in projects involving environmental justice, public infrastructure, and the communication systems surrounding community-level environmental decisions.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <section class="page-footer">
+
+      <div class="container">
+
+        <a href="index.html#professions" class="btn">
+          ← Back to Professions
+        </a>
+
+      </div>
+
+    </section>
+
   </div>
 
-  <div id="about">
-    <div class="container">
+  <!-- MOBILE MENU -->
 
-      <h1 class="sub-title">Sustainability & Systems</h1>
-
-    <p style="margin-top: 20px;">
-      My work in sustainability focuses on how environmental systems are communicated, understood, and experienced by the public.
-    </p>
-
-    <br><br>
-
-    <div class="sustainability-list">
-
-      <!-- PROJECT 1 -->
-      <div style="margin-bottom: 30px;">
-        <h3>Community Trail Research (ENST 411)</h3>
-        <p>
-          Ongoing research project analyzing public perception, safety concerns, and stakeholder dynamics in a proposed regional trail expansion.
-        </p>
-        <p style="opacity: 0.7;">Status: In Progress</p>
-      </div>
-
-      <!-- PROJECT 2 -->
-      <div style="margin-bottom: 30px;">
-        <h3>Sustainability Marketing — Maryland Environmental Service</h3>
-        <p>
-          Worked on public-facing campaigns translating composting systems into accessible messaging for county-level environmental programs.
-        </p>
-        <p style="opacity: 0.7;">Status: Completed</p>
-      </div>
-
-      <!-- PROJECT 3 -->
-      <div style="margin-bottom: 30px;">
-        <h3>Environmental Exhibition Design</h3>
-        <p>
-          Contributed to a museum renovation by developing visual storytelling and narrative structure connecting environmental research with public engagement.
-        </p>
-        <p style="opacity: 0.7;">Status: Completed</p>
-      </div>
-
-    </div>
-
-  <a href="index.html#professions" class="btn">← Back</a>
-
-    <!-- JS -->
   <script>
+
     var sidemnu = document.getElementById("sidemenu");
 
     function openmenu(){
-      sidemnu.style.right = "0"
+      sidemnu.style.right = "0";
     }
+
     function closemenu(){
-      sidemnu.style.right = "-200px"
+      sidemnu.style.right = "-220px";
     }
+
   </script>
-</div>
 
 </body>
+
 </html>
