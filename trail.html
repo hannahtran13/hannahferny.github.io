@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
   <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <style>
 
     :root{
@@ -791,6 +794,118 @@
 
     }
 
+    /* =========================
+    INTERACTIVE MAP
+    ========================= */
+
+    .interactive-map-wrapper{
+
+        position:relative;
+
+        width:100%;
+
+        height:650px;
+
+        border-radius:30px;
+
+        overflow:hidden;
+
+        margin-top:50px;
+
+        box-shadow:
+        0 20px 80px rgba(0,0,0,0.08);
+
+        border:
+        1px solid rgba(0,0,0,0.08);
+
+    }
+
+    #trail-map{
+
+        width:100%;
+        height:100%;
+
+        filter:
+        saturate(1)
+        contrast(1.05)
+        brightness(1.05);
+
+    }
+
+    .map-overlay-card{
+
+        position:absolute;
+
+        top:30px;
+        left:30px;
+
+        z-index:999;
+
+        width:320px;
+
+        padding:28px;
+
+        border-radius:24px;
+
+        background:
+        rgba(235,230,217,0.92);
+
+        backdrop-filter:blur(16px);
+
+        border:
+        1px solid rgba(0,0,0,0.08);
+
+    }
+
+    .map-overlay-label{
+
+        font-size:0.72rem;
+
+        letter-spacing:3px;
+
+        text-transform:uppercase;
+
+        font-weight:700;
+
+        color:var(--green);
+
+        margin-bottom:18px;
+
+    }
+
+    .map-overlay-card h3{
+
+        font-family:"Times New Roman", serif;
+
+        font-size:2rem;
+
+        line-height:1;
+
+        margin-bottom:20px;
+
+    }
+
+    .map-overlay-card p{
+
+        line-height:1.8;
+
+        color:#333;
+
+    }
+
+    .leaflet-control-attribution{
+        display:none;
+    }
+
+    .leaflet-popup-content-wrapper{
+        border-radius:18px;
+        background:var(--cream);
+    }
+
+    .leaflet-popup-content{
+        font-family:Helvetica, sans-serif;
+    }
+
   </style>
 
 </head>
@@ -896,9 +1011,29 @@
       </p>
       
       <br>
-        <div class="split-image">
-          <img src="" alt="Map of The Extension">
+        <div class="interactive-map-wrapper">
+
+    <div id="trail-map"></div>
+
+    <div class="map-overlay-card">
+
+        <div class="map-overlay-label">
+            Interactive Corridor
         </div>
+
+        <h3>
+            Proposed Extension Route
+        </h3>
+
+        <p>
+            The proposed extension reconnects Lewisburg and
+            Montandon through a multimodal pedestrian and
+            cycling corridor crossing the Susquehanna River.
+        </p>
+
+    </div>
+
+</div>
     </div>
     
   </section>
@@ -982,11 +1117,6 @@
       </div>
 
       <div class="feature">
-
-        <div class="feature-image">
-          <img src="images/research-map.png">
-        </div>
-
         <span class="feature-tag">
           Mixed Methods • Community Research • Systems Analysis
         </span>
@@ -1338,6 +1468,154 @@
 
   </footer>
 
+  <script>
+
+    /* =========================
+    INITIALIZE MAP
+    ========================= */
+
+    const map = L.map('trail-map', {
+
+    zoomControl:false,
+    scrollWheelZoom:true,
+    dragging:true,
+    touchZoom:true,
+    doubleClickZoom:true
+
+}).setView([40.963, -76.889], 15);
+
+    /* =========================
+    BASE MAP
+    ========================= */
+
+    L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    {
+        subdomains:'abcd',
+        maxZoom:20
+    }).addTo(map);
+
+    /* =========================
+    EXISTING TRAIL
+    ========================= */
+
+    const existingTrail = [
+  [40.96435666598305, -76.88841140215615],
+  [40.964181098776606, -76.88869755948852],
+  [40.963181707322946, -76.89051287006544],
+  [40.96220931192204, -76.89222087164259],
+  [40.961082133594175, -76.8946945184049],
+  [40.961041558260916, -76.8949631739706],
+  [40.96054112710425, -76.8960736169759],
+  [40.96051407666377, -76.89657510736573],
+  [40.96014889462671, -76.89802584742117],
+  [40.95972960905567, -76.89970942229985],
+  [40.95813359293368, -76.90782281691477],
+  [40.956625158528055, -76.91571347386649],
+  [40.9547010929474, -76.92976814605139],
+  [40.95352872460907, -76.9382923863034],
+  [40.953177030654416, -76.94024461674829],
+  [40.94961877240189, -76.95505065809519],
+  [40.94682290111848, -76.9665236791498],
+  [40.94498480823606, -76.97353289952888],
+  [40.94451131236511, -76.97512692255233],
+  [40.94161348225529, -76.98428978917863],
+  [40.939984313220805, -76.98970404805956],
+  [40.938392903956384, -76.99624080428663],
+  [40.93534263007777, -77.00890739672843],
+  [40.93473376017255, -77.01114619311019],
+  [40.9341790071509, -77.01265066427887],
+  [40.93319126463004, -77.01487155028941],
+  [40.93027558014495, -77.02064515015876],
+  [40.92751511326418, -77.02607199258834],
+  [40.92564767284918, -77.03033467164128],
+  [40.92516050589688, -77.03166003909902],
+  [40.920577268286365, -77.04576518561485],
+  [40.917097594302135, -77.05302087140474],
+  [40.91619972509872, -77.05488477676508],
+  [40.915698954102766, -77.0563176064493],
+  [40.91560421321711, -77.05671163461267]
+];
+
+    L.polyline(existingTrail,{
+
+        color:'#355f2e',
+        weight:5,
+        opacity:0.95,
+        lineCap:'round'
+
+    }).addTo(map);
+
+    /* =========================
+    PROPOSED EXTENSION
+    ========================= */
+
+    const extensionTrail = [
+
+        [40.964416, -76.888371],
+        [40.967727, -76.882335],
+        [40.967905, -76.881563],
+        [40.968124, -76.876949]
+
+    ];
+
+    L.polyline(extensionTrail,{
+
+        color:'#b4dd1e',
+        weight:5,
+        opacity:0.95,
+        dashArray:'12 12',
+        lineCap:'round'
+
+    }).addTo(map);
+
+    /* =========================
+    MARKERS
+    ========================= */
+
+    L.marker([40.967905, -76.881563])
+
+    .addTo(map)
+
+    .bindPopup(`
+
+    <b>Susquehanna Crossing</b>
+
+    <br><br>
+
+    Proposed multimodal railway bridge connection.
+
+    `);
+
+    L.marker([40.968124, -76.876949])
+
+    .addTo(map)
+
+    .bindPopup(`
+
+    <b>Montandon Connection</b>
+
+    <br><br>
+
+    Potential future trail corridor.
+
+    `);
+
+    L.marker([40.962198, -76.892301])
+
+    .addTo(map)
+
+    .bindPopup(`
+
+    <b>Unplanned US 11/15 Crossing</b>
+
+    <br><br>
+
+    Potential crossing at US 11/15.
+
+    `);
+
+    </script>
 </body>
 
 </html>
