@@ -1,1094 +1,1030 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Do Transformers Learn Rules or Just Patterns? — Hannah Tran</title>
+
+<link href="https://fonts.cdnfonts.com/css/highway-gothic" rel="stylesheet">
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap');
-
-  :root {
-    --amber: #E8820C;
-    --amber-light: #F5A535;
-    --amber-pale: #FDF0DC;
-    --navy: #0F1B2D;
-    --navy-mid: #1A2D47;
-    --navy-light: #243B55;
-    --white: #FAFAF8;
-    --grey: #8A9BB0;
-    --grey-light: #D4DCE6;
-    --text: #0F1B2D;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: var(--white);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 48px;
-    background: var(--navy);
-    border-bottom: 2px solid var(--amber);
-  }
-
-  .nav-logo {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--grey);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--amber); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--navy);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 62px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(232,130,12,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 60px 80px 80px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .hero-eyebrow {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 28px;
-  }
-
-  .hero-subtitle {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--grey);
-    margin-bottom: 16px;
-    letter-spacing: 0.04em;
-  }
-
-  .hero-title {
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 700;
-    line-height: 1.05;
-    color: var(--white);
-    margin-bottom: 40px;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-title em {
-    font-style: normal;
-    color: var(--amber);
-  }
-
-  .hero-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 48px;
-  }
-
-  .hero-meta-row {
-    display: flex;
-    gap: 12px;
-    align-items: baseline;
-  }
-
-  .meta-label {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--amber);
-    min-width: 80px;
-  }
-
-  .meta-value {
-    font-size: 13px;
-    color: var(--grey-light);
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--amber);
-    color: var(--navy);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 14px 28px;
-    width: fit-content;
-    transition: background 0.2s, transform 0.2s;
-  }
-
-  .hero-cta:hover {
-    background: var(--amber-light);
-    transform: translateX(4px);
-  }
-
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 80px 80px 60px;
-    gap: 24px;
-  }
-
-  .key-question {
-    background: var(--amber);
-    padding: 32px;
-    position: relative;
-  }
-
-  .key-question-label {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 12px;
-  }
-
-  .key-question p {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1.4;
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .stat-card {
-    background: var(--navy-mid);
-    padding: 24px;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .stat-number {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--amber);
-    letter-spacing: -0.02em;
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .stat-label {
-    font-size: 11px;
-    color: var(--grey);
-    line-height: 1.4;
-  }
-
-  .pipeline-bar {
-    display: flex;
-    align-items: center;
-    background: var(--navy-light);
-    padding: 16px 24px;
-    gap: 0;
-    overflow: hidden;
-  }
-
-  .pipeline-step {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
-    white-space: nowrap;
-  }
-
-  .pipeline-arrow {
-    color: var(--amber);
-    margin: 0 10px;
-    font-size: 12px;
-  }
-
-  /* ── SECTION SCAFFOLDING ── */
-  section {
-    padding: 100px 80px;
-  }
-
-  .section-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--navy);
-    margin-bottom: 20px;
-    letter-spacing: -0.02em;
-  }
-
-  .section-body {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #3D4E63;
-    max-width: 620px;
-  }
-
-  /* ── MOTIVATION ── */
-  .motivation {
-    background: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .motivation-left {}
-
-  .motivation-right {
-    padding-top: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .research-gap-card {
-    background: var(--navy);
-    color: var(--white);
-    padding: 32px;
-  }
-
-  .research-gap-card h3 {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 20px;
-  }
-
-  .gap-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .gap-col-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--grey);
-    margin-bottom: 10px;
-  }
-
-  .gap-col ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .gap-col ul li {
-    font-size: 12px;
-    color: var(--grey-light);
-    padding-left: 12px;
-    position: relative;
-    line-height: 1.5;
-  }
-
-  .gap-col ul li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--amber);
-    font-size: 10px;
-  }
-
-  .fills-card {
-    background: var(--amber-pale);
-    border-left: 4px solid var(--amber);
-    padding: 24px;
-  }
-
-  .fills-card h3 {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 12px;
-  }
-
-  .fills-card ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .fills-card ul li {
-    font-size: 13px;
-    color: var(--navy);
-    padding-left: 14px;
-    position: relative;
-  }
-
-  .fills-card ul li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--amber);
-  }
-
-  /* ── METHODOLOGY ── */
-  .methodology {
-    background: var(--navy);
-    color: var(--white);
-  }
-
-  .methodology .section-title { color: var(--white); }
-  .methodology .section-body { color: var(--grey-light); }
-
-  .method-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: 48px;
-  }
-
-  .method-card {
-    background: var(--navy-mid);
-    padding: 32px;
-    border-top: 3px solid transparent;
-    transition: border-color 0.2s;
-  }
-
-  .method-card:hover { border-color: var(--amber); }
-
-  .method-card-label {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 12px;
-  }
-
-  .method-card h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 12px;
-  }
-
-  .method-card p {
-    font-size: 13px;
-    color: var(--grey);
-    line-height: 1.6;
-  }
-
-  .method-card ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 12px;
-  }
-
-  .method-card ul li {
-    font-size: 12px;
-    color: var(--grey-light);
-    padding-left: 14px;
-    position: relative;
-  }
-
-  .method-card ul li::before {
-    content: '·';
-    position: absolute;
-    left: 0;
-    color: var(--amber);
-    font-size: 16px;
-    line-height: 1;
-    top: 2px;
-  }
-
-  .pipeline-full {
-    margin-top: 48px;
-    display: flex;
-    align-items: center;
-    background: var(--navy-light);
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .pipe-node {
-    flex: 1;
-    padding: 20px 24px;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .pipe-node:last-child { border-right: none; }
-
-  .pipe-num {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--amber);
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .pipe-name {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 0.06em;
-  }
-
-  /* ── FINDINGS ── */
-  .findings {
-    background: var(--white);
-  }
-
-  .findings-intro {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    margin-bottom: 64px;
-    align-items: end;
-  }
-
-  .findings-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .finding-card {
-    background: var(--white);
-    border: 1px solid var(--grey-light);
-    padding: 36px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .finding-card:hover {
-    border-color: var(--amber);
-    transform: translateY(-2px);
-  }
-
-  .finding-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--amber);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-
-  .finding-card:hover::before { transform: scaleX(1); }
-
-  .finding-num {
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--grey-light);
-    line-height: 1;
-    letter-spacing: -0.04em;
-    margin-bottom: 16px;
-  }
-
-  .finding-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 10px;
-  }
-
-  .finding-body {
-    font-size: 13px;
-    line-height: 1.65;
-    color: #5A6B80;
-  }
-
-  .finding-tag {
-    display: inline-block;
-    margin-top: 16px;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--amber);
-    background: var(--amber-pale);
-    padding: 4px 10px;
-  }
-
-  /* ── KEY INSIGHT ── */
-  .key-insight {
-    background: var(--amber);
-    padding: 80px;
-  }
-
-  .insight-inner {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .insight-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 24px;
-    opacity: 0.7;
-  }
-
-  .insight-statement {
-    font-size: clamp(22px, 3vw, 36px);
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1.25;
-    margin-bottom: 32px;
-  }
-
-  .insight-formula {
-    display: inline-block;
-    background: var(--navy);
-    color: var(--amber);
-    font-size: 16px;
-    font-weight: 700;
-    font-family: 'Courier New', monospace;
-    padding: 14px 28px;
-    letter-spacing: 0.04em;
-    margin-bottom: 32px;
-  }
-
-  .insight-body {
-    font-size: 15px;
-    color: var(--navy);
-    opacity: 0.8;
-    line-height: 1.7;
-    max-width: 700px;
-  }
-
-  /* ── IMPLICATIONS ── */
-  .implications {
-    background: var(--navy);
-    color: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .implications .section-title { color: var(--white); }
-
-  .impl-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding-top: 60px;
-  }
-
-  .impl-item {
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    display: flex;
-    gap: 20px;
-    align-items: start;
-  }
-
-  .impl-icon {
-    color: var(--amber);
-    font-size: 18px;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-
-  .impl-content h4 {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 6px;
-  }
-
-  .impl-content p {
-    font-size: 13px;
-    color: var(--grey);
-    line-height: 1.6;
-  }
-
-  /* ── FUTURE WORK ── */
-  .future {
-    background: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .future-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding-top: 60px;
-  }
-
-  .future-tag {
-    background: var(--navy);
-    color: var(--white);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 10px 18px;
-    transition: background 0.2s;
-  }
-
-  .future-tag:hover { background: var(--amber); color: var(--navy); }
-
-  /* ── CITATION ── */
-  .citation {
-    background: var(--amber-pale);
-    border-top: 3px solid var(--amber);
-    padding: 48px 80px;
-  }
-
-  .citation-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 12px;
-  }
-
-  .citation-text {
-    font-size: 13px;
-    color: var(--navy);
-    line-height: 1.6;
-    max-width: 780px;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    padding: 32px 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 2px solid var(--amber);
-  }
-
-  .footer-back {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--amber);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: gap 0.2s;
-  }
-
-  .footer-back:hover { gap: 14px; }
-
-  .footer-copy {
-    font-size: 11px;
-    color: var(--grey);
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-  .hero-subtitle { animation: fadeUp 0.6s 0.1s ease both; }
-  .hero-title { animation: fadeUp 0.6s 0.2s ease both; }
-  .hero-meta { animation: fadeUp 0.6s 0.3s ease both; }
-  .hero-cta { animation: fadeUp 0.6s 0.4s ease both; }
-  .hero-right > * { animation: fadeUp 0.6s 0.35s ease both; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 80px 24px 40px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .hero-right { padding: 40px 24px 60px; }
-    section { padding: 60px 24px; }
-    .motivation, .findings-intro, .implications, .future { grid-template-columns: 1fr; gap: 40px; }
-    .method-grid { grid-template-columns: 1fr; }
-    .findings-grid { grid-template-columns: 1fr; }
-    .hero-stats { grid-template-columns: 1fr 1fr; }
-    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
-    .citation { padding: 40px 24px; }
-    .key-insight { padding: 60px 24px; }
-    .pipeline-full { flex-wrap: wrap; }
-    .pipe-node { flex: none; width: 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  }
+
+:root{
+    --bg:#090b10;
+
+    --panel:rgba(255,255,255,0.06);
+    --panel-strong:rgba(255,255,255,0.1);
+
+    --border:rgba(255,255,255,0.08);
+
+    --text:#f3f5f7;
+    --muted:#9da7b5;
+
+    --accent:#ff9f2d;
+    --accent-soft:#ffc66d;
+
+    --blue:#7ab6ff;
+
+    --radius:30px;
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,0.35);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family: Helvetica, Arial, sans-serif;
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    background:
+        linear-gradient(
+            rgba(3,8,18,0.45),
+            rgba(3,8,18,0.55)
+        ),
+
+        url("images/dfa-space.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+
+    top:18px;
+    left:18px;
+    right:18px;
+
+    z-index:999;
+
+    padding:18px 30px;
+
+    border-radius:999px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:rgba(10,12,18,0.7);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:var(--shadow);
+}
+
+.nav-logo{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.14em;
+
+    font-size:14px;
+
+    color:white;
+
+    text-decoration:none;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    transition:0.3s ease;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    padding:
+        180px
+        7vw
+        120px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.2fr
+        0.8fr;
+
+    gap:40px;
+
+    align-items:center;
+}
+
+.hero-left{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.hero-label{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.2em;
+
+    color:var(--accent);
+
+    font-size:14px;
+}
+
+.hero-title{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    font-size:clamp(60px,8vw,130px);
+
+    line-height:0.9;
+
+    letter-spacing:-0.04em;
+}
+
+.hero-title span{
+    color:var(--accent);
+}
+
+.hero-description{
+    max-width:720px;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:var(--muted);
+}
+
+.hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:16px;
+}
+
+.meta-pill{
+    padding:14px 18px;
+
+    border-radius:999px;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+
+    font-size:16px;
+}
+
+.hero-right{
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.glass-card{
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:var(--shadow);
+}
+
+.question-card{
+    padding:40px;
+}
+
+.question-card h3{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.12em;
+
+    color:var(--accent);
+
+    margin-bottom:20px;
+
+    font-size:18px;
+}
+
+.question-card p{
+    font-size:22px;
+
+    line-height:1.5;
+}
+
+.stats-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+}
+
+.stat-card{
+    padding:30px;
+}
+
+.stat-number{
+    font-family:'Highway Gothic', sans-serif;
+
+    font-size:52px;
+
+    color:var(--accent);
+
+    margin-bottom:10px;
+}
+
+.stat-label{
+    color:var(--muted);
+
+    line-height:1.6;
+
+    font-size:19px;
+}
+
+/* SECTIONS */
+
+section{
+    padding:120px 7vw;
+}
+
+.section-label{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    color:var(--accent);
+
+    letter-spacing:0.18em;
+
+    margin-bottom:20px;
+
+    font-size:14px;
+}
+
+.section-title{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    font-size:clamp(42px,5vw,78px);
+
+    line-height:0.95;
+
+    margin-bottom:30px;
+}
+
+.section-body{
+    max-width:780px;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:17px;
+}
+
+/* GRID */
+
+.two-grid{
+    margin-top:60px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:24px;
+}
+
+.info-card{
+    padding:40px;
+}
+
+.info-card h3{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    color:white;
+
+    margin-bottom:18px;
+
+    letter-spacing:0.08em;
+
+    font-size:26px;
+}
+
+.info-card p,
+.info-card li{
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.info-card ul{
+    margin-top:20px;
+
+    padding-left:18px;
+}
+
+/* METHOD */
+
+.method-grid{
+    margin-top:70px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+}
+
+.method-card{
+    padding:40px;
+
+    transition:0.35s ease;
+}
+
+.method-card:hover{
+    transform:translateY(-10px);
+
+    background:rgba(255,255,255,0.08);
+}
+
+.method-card h3{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    font-size:28px;
+
+    margin-bottom:18px;
+
+    color:white;
+}
+
+.method-card p{
+    color:var(--muted);
+
+    line-height:1.8;
+
+    margin-bottom:18px;
+}
+
+.method-card ul{
+    padding-left:18px;
+}
+
+.method-card li{
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+/* FINDINGS */
+
+.findings-grid{
+    margin-top:70px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:24px;
+}
+
+.finding-card{
+    padding:50px;
+
+    transition:0.35s ease;
+}
+
+.finding-card:hover{
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,0.08);
+}
+
+.finding-number{
+    font-family:'Highway Gothic', sans-serif;
+
+    font-size:90px;
+
+    color:rgba(255,255,255,0.08);
+
+    margin-bottom:10px;
+}
+
+.finding-card h3{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    font-size:30px;
+
+    margin-bottom:18px;
+}
+
+.finding-card p{
+    color:var(--muted);
+
+    line-height:1.9;
+}
+
+/* INSIGHT */
+
+.insight{
+    padding:160px 7vw;
+
+    text-align:center;
+}
+
+.insight-box{
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:70px;
+}
+
+.insight-statement{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    font-size:clamp(34px,4vw,62px);
+
+    line-height:1.1;
+
+    margin-bottom:40px;
+}
+
+.formula{
+    display:inline-block;
+
+    padding:20px 36px;
+
+    border-radius:999px;
+
+    background:rgba(255,159,45,0.14);
+
+    border:1px solid rgba(255,159,45,0.3);
+
+    font-size:24px;
+
+    margin-bottom:40px;
+
+    color:var(--accent-soft);
+}
+
+.insight-text{
+    max-width:820px;
+
+    margin:auto;
+
+    line-height:1.9;
+
+    color:var(--muted);
+
+    font-size:18px;
+}
+
+/* FUTURE */
+
+.tag-wrap{
+    margin-top:60px;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:16px;
+}
+
+.tag{
+    padding:16px 22px;
+
+    border-radius:999px;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(20px);
+
+    font-size:16px;
+
+    transition:0.3s ease;
+}
+
+.tag:hover{
+    background:rgba(255,159,45,0.18);
+
+    transform:translateY(-4px);
+}
+
+/* FOOTER */
+
+footer{
+    padding:60px 7vw;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-left{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.14em;
+
+    color:white;
+}
+
+.footer-right{
+    color:var(--muted);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+.hero{
+    grid-template-columns:1fr;
+}
+
+.method-grid{
+    grid-template-columns:1fr;
+}
+
+.findings-grid{
+    grid-template-columns:1fr;
+}
+
+.two-grid{
+    grid-template-columns:1fr;
+}
+
+.hero-title{
+    font-size:70px;
+}
+
+.stats-grid{
+    grid-template-columns:1fr;
+}
+
+.nav-links{
+    display:none;
+}
+
+footer{
+    flex-direction:column;
+    gap:14px;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="https://hannahferny.com" class="nav-logo">Hannah Tran</a>
-  <ul class="nav-links">
-    <li><a href="#motivation">Overview</a></li>
-    <li><a href="#methodology">Methodology</a></li>
-    <li><a href="#findings">Findings</a></li>
-    <li><a href="#implications">Implications</a></li>
-    <li><a href="https://hannahferny.com/research.html">← All Research</a></li>
-  </ul>
+    <a class="nav-logo" href="https://hannahferny.com">
+        Hannah Tran
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#findings">Findings</a></li>
+        <li><a href="#future">Future Work</a></li>
+    </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Empirical CS Research · Bucknell University</div>
-    <div class="hero-subtitle">An Empirical Study on DFA-Based Regular Languages</div>
-    <h1 class="hero-title">Do Transformers Learn Rules<br>or <em>Just Patterns?</em></h1>
-    <div class="hero-meta">
-      <div class="hero-meta-row">
-        <span class="meta-label">Authors</span>
-        <span class="meta-value">Hannah Tran & Chris Mitsch</span>
-      </div>
-      <div class="hero-meta-row">
-        <span class="meta-label">Domain</span>
-        <span class="meta-value">Machine Learning · Formal Languages · Generalization</span>
-      </div>
-      <div class="hero-meta-row">
-        <span class="meta-label">Method</span>
-        <span class="meta-value">DFA → Synthetic Data → Transformer Training → OOD Evaluation</span>
-      </div>
-    </div>
-    <a href="#findings" class="hero-cta">Read the Findings →</a>
-  </div>
+<section class="hero">
 
-  <div class="hero-right">
-    <div class="key-question">
-      <div class="key-question-label">Central Question</div>
-      <p>Do transformer models truly learn the underlying rules of structured data, or do they rely on statistical patterns within the training distribution?</p>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-card">
-        <span class="stat-number">2</span>
-        <span class="stat-label">Model sizes tested<br>(128,2) and (256,4) layers</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">4</span>
-        <span class="stat-label">Core research questions on generalization behavior</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">OOD</span>
-        <span class="stat-label">Out-of-distribution sequences up to length 14</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">EOS</span>
-        <span class="stat-label">End-of-sequence prediction as primary failure point</span>
-      </div>
-    </div>
-    <div class="pipeline-bar">
-      <span class="pipeline-step">DFA</span>
-      <span class="pipeline-arrow">→</span>
-      <span class="pipeline-step">Synthetic Data</span>
-      <span class="pipeline-arrow">→</span>
-      <span class="pipeline-step">Train GPT</span>
-      <span class="pipeline-arrow">→</span>
-      <span class="pipeline-step">ID vs OOD</span>
-      <span class="pipeline-arrow">→</span>
-      <span class="pipeline-step">Analyze</span>
-    </div>
-  </div>
-</section>
+    <div class="hero-left">
 
-<!-- MOTIVATION -->
-<section class="motivation" id="motivation">
-  <div class="motivation-left">
-    <div class="section-label">Motivation</div>
-    <h2 class="section-title">High accuracy doesn't mean structural understanding.</h2>
-    <p class="section-body">Modern transformer models achieve strong performance across sequence modeling tasks, but performance alone does not tell us whether a model has learned the rules governing a system, or merely approximated its surface patterns.<br><br>This research isolates that distinction by studying formal languages generated by deterministic finite automata (DFAs), where the true generative rules are fully known and unambiguous. By controlling the environment completely, we can ask precisely: what has the model actually learned?</p>
-  </div>
-  <div class="motivation-right">
-    <div class="research-gap-card">
-      <h3>Research Gap</h3>
-      <div class="gap-cols">
-        <div class="gap-col">
-          <div class="gap-col-label">Prior Work</div>
-          <ul>
-            <li>Focuses on performance (accuracy / perplexity)</li>
-            <li>OR theory (learnability, Gold's theorem)</li>
-            <li>Behavioral + structural analysis rarely combined</li>
-          </ul>
+        <div class="hero-label">
+            Empirical CS Research · Bucknell University
         </div>
-        <div class="gap-col">
-          <div class="gap-col-label">Missing</div>
-          <ul>
-            <li>Where exactly models fail</li>
-            <li>Why failures are structured, not random</li>
-            <li>What this means for deployment</li>
-          </ul>
+
+        <h1 class="hero-title">
+            DO TRANSFORMERS<br>
+            LEARN RULES<br>
+            OR <span>JUST PATTERNS?</span>
+        </h1>
+
+        <p class="hero-description">
+            An empirical study investigating whether transformer models truly learn
+            structural rules in formal languages or simply memorize statistical
+            surface patterns within the training distribution.
+        </p>
+
+        <div class="hero-meta">
+
+            <div class="meta-pill">
+                Hannah Tran & Chris Mitsch
+            </div>
+
+            <div class="meta-pill">
+                Formal Languages
+            </div>
+
+            <div class="meta-pill">
+                DFA-Based Evaluation
+            </div>
+
+            <div class="meta-pill">
+                Out-of-Distribution Generalization
+            </div>
+
         </div>
-      </div>
+
     </div>
-    <div class="fills-card">
-      <h3>This Project Fills the Gap By</h3>
-      <ul>
-        <li>Using controlled DFA data with fully known structure</li>
-        <li>Testing in-distribution (ID) vs. out-of-distribution (OOD)</li>
-        <li>Running mechanistic failure analysis at the token level</li>
-        <li>Isolating EOS prediction as a structural probe</li>
-      </ul>
+
+    <div class="hero-right">
+
+        <div class="question-card glass-card">
+
+            <h3>Central Question</h3>
+
+            <p>
+                Can transformers learn the actual generative structure of a
+                language, or do they only approximate patterns seen during training?
+            </p>
+
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card glass-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">
+                    Transformer architectures tested
+                </div>
+            </div>
+
+            <div class="stat-card glass-card">
+                <div class="stat-number">OOD</div>
+                <div class="stat-label">
+                    Long-sequence generalization evaluation
+                </div>
+            </div>
+
+            <div class="stat-card glass-card">
+                <div class="stat-number">DFA</div>
+                <div class="stat-label">
+                    Fully controlled formal language generation
+                </div>
+            </div>
+
+            <div class="stat-card glass-card">
+                <div class="stat-number">EOS</div>
+                <div class="stat-label">
+                    Primary structural failure point identified
+                </div>
+            </div>
+
+        </div>
+
     </div>
-  </div>
+
 </section>
 
-<!-- METHODOLOGY -->
-<section class="methodology" id="methodology">
-  <div class="section-label">Methodology</div>
-  <h2 class="section-title">A controlled experimental environment<br>where the truth is always known.</h2>
-  <p class="section-body">All sequences were generated from deterministic finite automata, meaning the correct answer for every input is always computable. This lets us measure not just accuracy, but structural alignment.</p>
+<section id="overview">
 
-  <div class="method-grid">
-    <div class="method-card">
-      <div class="method-card-label">Task Setup</div>
-      <h3>Language & Data</h3>
-      <p>Sequences generated from DFAs over a regular language alphabet.</p>
-      <ul>
-        <li>Alphabet: {a, b, c}, d optional</li>
-        <li>Training: positive sequences only</li>
-        <li>Objective: next-token prediction</li>
-        <li>Train: short sequences (≤ 5)</li>
-        <li>OOD: longer sequences (6–14)</li>
-      </ul>
+    <div class="section-label">
+        Overview
     </div>
-    <div class="method-card">
-      <div class="method-card-label">Models</div>
-      <h3>GPT-Style Transformers</h3>
-      <p>Two model sizes trained and compared on identical data regimes.</p>
-      <ul>
-        <li>Small model: 128 hidden, 2 layers</li>
-        <li>Large model: 256 hidden, 4 layers</li>
-        <li>Both trained via next-token prediction</li>
-        <li>Classification baseline included</li>
-      </ul>
-    </div>
-    <div class="method-card">
-      <div class="method-card-label">Evaluation</div>
-      <h3>Metrics & Probes</h3>
-      <p>Evaluation designed to detect structural failure, not just accuracy degradation.</p>
-      <ul>
-        <li>Perplexity: ID vs OOD</li>
-        <li>Accuracy by prefix length</li>
-        <li>EOS prediction breakdown</li>
-        <li>State-respecting behavior probe</li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="pipeline-full">
-    <div class="pipe-node">
-      <span class="pipe-num">01</span>
-      <span class="pipe-name">Define DFA</span>
+    <h2 class="section-title">
+        HIGH ACCURACY<br>
+        DOES NOT NECESSARILY<br>
+        MEAN UNDERSTANDING
+    </h2>
+
+    <p class="section-body">
+        Transformer models routinely achieve impressive performance on sequence
+        modeling tasks, yet performance metrics alone cannot determine whether
+        these systems genuinely understand the rules governing a structure or
+        merely approximate patterns within a dataset.
+        <br><br>
+        This project isolates that distinction through deterministic finite
+        automata, where the true generative rules are fully known. By creating
+        a controlled experimental environment, we can directly observe where
+        transformers succeed, where they fail, and whether those failures reveal
+        deeper architectural limitations.
+    </p>
+
+    <div class="two-grid">
+
+        <div class="info-card glass-card">
+
+            <h3>Research Gap</h3>
+
+            <p>
+                Prior work often focuses on benchmark accuracy or theoretical
+                learnability in isolation. Very little research combines both
+                behavioral evaluation and structural probing to identify
+                whether models genuinely learn rules.
+            </p>
+
+        </div>
+
+        <div class="info-card glass-card">
+
+            <h3>This Project Explores</h3>
+
+            <ul>
+                <li>In-distribution vs out-of-distribution performance</li>
+                <li>EOS prediction failure patterns</li>
+                <li>Structural generalization breakdown</li>
+                <li>Whether scaling improves true rule learning</li>
+            </ul>
+
+        </div>
+
     </div>
-    <div class="pipe-node">
-      <span class="pipe-num">02</span>
-      <span class="pipe-name">Generate Sequences</span>
-    </div>
-    <div class="pipe-node">
-      <span class="pipe-num">03</span>
-      <span class="pipe-name">Train Transformer</span>
-    </div>
-    <div class="pipe-node">
-      <span class="pipe-num">04</span>
-      <span class="pipe-name">Evaluate ID Performance</span>
-    </div>
-    <div class="pipe-node">
-      <span class="pipe-num">05</span>
-      <span class="pipe-name">Evaluate OOD Failure</span>
-    </div>
-    <div class="pipe-node">
-      <span class="pipe-num">06</span>
-      <span class="pipe-name">Analyze Structure</span>
-    </div>
-  </div>
+
 </section>
 
-<!-- FINDINGS -->
-<section class="findings" id="findings">
-  <div class="findings-intro">
-    <div>
-      <div class="section-label">Key Findings</div>
-      <h2 class="section-title">Failure is structured, not random.</h2>
-    </div>
-    <p class="section-body" style="padding-top:60px;">Models perform well on training-length sequences but degrade sharply and systematically on longer inputs, especially at sequence-termination tokens. This is not noise: it's evidence of a deeper architectural limitation.</p>
-  </div>
+<section id="methodology">
 
-  <div class="findings-grid">
-    <div class="finding-card">
-      <div class="finding-num">01</div>
-      <div class="finding-title">Strong In-Distribution Performance</div>
-      <p class="finding-body">Models achieve low loss and stable perplexity on sequences similar to training data, confirming the experimental setup is sound and the task is learnable in-distribution.</p>
-      <span class="finding-tag">Violates Q1 expectation of generalization</span>
+    <div class="section-label">
+        Methodology
     </div>
-    <div class="finding-card">
-      <div class="finding-num">02</div>
-      <div class="finding-title">Sharp Out-of-Distribution Failure</div>
-      <p class="finding-body">Performance degrades sharply on longer sequences. The degradation is not gradual, it spikes at specific sequence lengths, indicating structured failure rather than general uncertainty.</p>
-      <span class="finding-tag">Violates Q2 Inductive Bias</span>
+
+    <h2 class="section-title">
+        A CONTROLLED SYSTEM<br>
+        WHERE THE TRUTH<br>
+        IS ALWAYS KNOWN
+    </h2>
+
+    <p class="section-body">
+        All datasets were generated using deterministic finite automata,
+        ensuring every sequence has a precisely computable structure.
+        This allows evaluation beyond simple accuracy metrics and enables
+        direct probing of structural understanding.
+    </p>
+
+    <div class="method-grid">
+
+        <div class="method-card glass-card">
+
+            <h3>Language</h3>
+
+            <p>
+                Regular languages generated through DFA transitions over
+                constrained alphabets.
+            </p>
+
+            <ul>
+                <li>Positive sequences only</li>
+                <li>Next-token prediction objective</li>
+                <li>Controlled sequence lengths</li>
+            </ul>
+
+        </div>
+
+        <div class="method-card glass-card">
+
+            <h3>Models</h3>
+
+            <p>
+                GPT-style transformer architectures evaluated under identical
+                training conditions.
+            </p>
+
+            <ul>
+                <li>128 hidden / 2 layers</li>
+                <li>256 hidden / 4 layers</li>
+                <li>OOD evaluation up to length 14</li>
+            </ul>
+
+        </div>
+
+        <div class="method-card glass-card">
+
+            <h3>Evaluation</h3>
+
+            <p>
+                Structural failure was measured through targeted probing
+                rather than benchmark accuracy alone.
+            </p>
+
+            <ul>
+                <li>Perplexity analysis</li>
+                <li>Token-level evaluation</li>
+                <li>EOS prediction probing</li>
+            </ul>
+
+        </div>
+
     </div>
-    <div class="finding-card">
-      <div class="finding-num">03</div>
-      <div class="finding-title">Structural Collapse at EOS</div>
-      <p class="finding-body">Failure concentrates specifically at end-of-sequence prediction, the token that depends directly on understanding the DFA's accepting states. Token prediction stays stable; EOS collapses.</p>
-      <span class="finding-tag">Violates Q3 State-Respecting Bias</span>
-    </div>
-    <div class="finding-card">
-      <div class="finding-num">04</div>
-      <div class="finding-title">Scaling Doesn't Fix It</div>
-      <p class="finding-body">Increasing model size (from 128→256 hidden, 2→4 layers) improves in-distribution performance but does not resolve OOD generalization failure, ruling out capacity as the bottleneck.</p>
-      <span class="finding-tag">Violates Q4 Extrapolative Predictability</span>
-    </div>
-  </div>
+
 </section>
 
-<!-- KEY INSIGHT -->
-<section class="key-insight">
-  <div class="insight-inner">
-    <div class="insight-label">Key Insight</div>
-    <p class="insight-statement">A model has learned the underlying rule if and only if its predictions factor through the state mapping. Otherwise, it is learning a spurious function over strings, not the true generative structure.</p>
-    <div class="insight-formula">m̂_D(x) ≈ g ∘ φ(x)</div>
-    <p class="insight-body">Transformers trained via next-token prediction do not learn functions of this form. Instead, they rely on surface-level features-sequence length, token position, local correlations-that work within the training distribution but break at its boundaries.</p>
-  </div>
+<section id="findings">
+
+    <div class="section-label">
+        Findings
+    </div>
+
+    <h2 class="section-title">
+        FAILURE IS<br>
+        STRUCTURED,<br>
+        NOT RANDOM
+    </h2>
+
+    <p class="section-body">
+        Models performed well on sequences similar to training data,
+        but degraded sharply on longer unseen sequences.
+        The failures consistently concentrated around sequence termination,
+        suggesting the absence of true structural understanding.
+    </p>
+
+    <div class="findings-grid">
+
+        <div class="finding-card glass-card">
+
+            <div class="finding-number">01</div>
+
+            <h3>Strong ID Performance</h3>
+
+            <p>
+                Transformers achieved stable perplexity and strong next-token
+                prediction within the training distribution.
+            </p>
+
+        </div>
+
+        <div class="finding-card glass-card">
+
+            <div class="finding-number">02</div>
+
+            <h3>OOD Collapse</h3>
+
+            <p>
+                Performance degraded sharply on longer unseen sequences,
+                indicating failure to extrapolate structural rules.
+            </p>
+
+        </div>
+
+        <div class="finding-card glass-card">
+
+            <div class="finding-number">03</div>
+
+            <h3>EOS Failure</h3>
+
+            <p>
+                End-of-sequence prediction emerged as the primary breakdown
+                point, revealing weak state-sensitive reasoning.
+            </p>
+
+        </div>
+
+        <div class="finding-card glass-card">
+
+            <div class="finding-number">04</div>
+
+            <h3>Scaling Wasn't Enough</h3>
+
+            <p>
+                Larger models improved in-distribution metrics but did not
+                resolve structural generalization failures.
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
 
-<!-- IMPLICATIONS -->
-<section class="implications" id="implications">
-  <div>
-    <div class="section-label">Implications</div>
-    <h2 class="section-title">What this means for the future of machine learning.</h2>
-    <p class="section-body" style="color: var(--grey-light);">These findings are not just about regular languages. They point to fundamental questions about what transformer-based architectures are actually learning, and where that matters most.</p>
-  </div>
-  <div class="impl-list">
-    <div class="impl-item">
-      <div class="impl-icon">⚠</div>
-      <div class="impl-content">
-        <h4>Reliability Under Distribution Shift</h4>
-        <p>If models learn heuristics rather than rules, their behavior in deployment scenarios that differ from training data is fundamentally unpredictable, not just uncertain.</p>
-      </div>
+<section class="insight">
+
+    <div class="insight-box glass-card">
+
+        <div class="section-label">
+            Key Insight
+        </div>
+
+        <div class="insight-statement">
+            A MODEL HAS LEARNED THE RULE ONLY IF ITS PREDICTIONS FACTOR THROUGH THE STATE MAPPING
+        </div>
+
+        <div class="formula">
+            m̂<sub>D</sub>(x) ≈ g ∘ φ(x)
+        </div>
+
+        <p class="insight-text">
+            Our findings suggest transformers trained through next-token
+            prediction do not reliably learn functions of this form.
+            Instead, they often rely on local statistical correlations that
+            remain effective only within the original training distribution.
+        </p>
+
     </div>
-    <div class="impl-item">
-      <div class="impl-icon">🔍</div>
-      <div class="impl-content">
-        <h4>Interpretability Gaps</h4>
-        <p>High accuracy can mask a total absence of structural understanding. Standard benchmarks are insufficient to distinguish rule learning from pattern approximation.</p>
-      </div>
-    </div>
-    <div class="impl-item">
-      <div class="impl-icon">🏗</div>
-      <div class="impl-content">
-        <h4>Architectural Limitations</h4>
-        <p>Scaling existing architectures does not close the generalization gap. Solving this likely requires inductive biases built into the architecture itself, not just more parameters or data.</p>
-      </div>
-    </div>
-  </div>
+
 </section>
 
-<!-- FUTURE WORK -->
-<section class="future">
-  <div>
-    <div class="section-label">Future Work</div>
-    <h2 class="section-title">Where this research points next.</h2>
-    <p class="section-body">The DFA framework opens a controlled experimental space that can be extended in several directions: each targeting a different dimension of the generalization problem.</p>
-  </div>
-  <div class="future-tags">
-    <span class="future-tag">Extend to Context-Free Languages</span>
-    <span class="future-tag">Introduce Negative Samples</span>
-    <span class="future-tag">Probe Internal Representations</span>
-    <span class="future-tag">Explore Alternative Architectures</span>
-    <span class="future-tag">State-Sensitive Training Objectives</span>
-    <span class="future-tag">Mechanistic Interpretability</span>
-    <span class="future-tag">Inductive Bias by Design</span>
-  </div>
+<section id="future">
+
+    <div class="section-label">
+        Future Work
+    </div>
+
+    <h2 class="section-title">
+        WHERE THIS<br>
+        RESEARCH GOES NEXT
+    </h2>
+
+    <p class="section-body">
+        The DFA framework creates a controlled environment for studying
+        structural learning and opens several directions for future work
+        surrounding interpretability, inductive bias, and symbolic reasoning.
+    </p>
+
+    <div class="tag-wrap">
+
+        <div class="tag">Context-Free Languages</div>
+        <div class="tag">Mechanistic Interpretability</div>
+        <div class="tag">Negative Samples</div>
+        <div class="tag">Alternative Architectures</div>
+        <div class="tag">State-Sensitive Objectives</div>
+        <div class="tag">Generalization Theory</div>
+
+    </div>
+
 </section>
 
-<!-- CITATION -->
-<div class="citation">
-  <div class="citation-label">Inspired By</div>
-  <p class="citation-text">Vafa, K., Chang, P.G., Rambachan, A., & Mullainathan, S. (2025). <em>What has a foundation model found? Using inductive bias to probe for world models.</em> In Proceedings of the 42nd International Conference on Machine Learning, PMLR.</p>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <a href="https://hannahferny.com/research.html" class="footer-back">← All Research</a>
-  <span class="footer-copy">Hannah Tran · Bucknell University · 2025</span>
+
+    <div class="footer-left">
+        Hannah Tran · Bucknell University
+    </div>
+
+    <div class="footer-right">
+        2025 Research Project
+    </div>
+
 </footer>
 
 </body>
