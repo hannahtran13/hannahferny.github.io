@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transgender Identity & The Environment on TikTok — Hannah Tran</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Barlow+Condensed:wght@400;600;700;800&display=swap');
+
+  :root {
+    --purple-deep:   #1A0A2E;
+    --purple-mid:    #2D1155;
+    --purple:        #6B2FA0;
+    --purple-light:  #9B59D0;
+    --purple-pale:   #EDE0FF;
+    --magenta:       #C2185B;
+    --magenta-bright:#E91E8C;
+    --magenta-pale:  #FCE4EC;
+    --teal:          #00BFA5;
+    --white:         #FAF8FF;
+    --grey:          #9E8FB8;
+    --grey-light:    #D4C9E8;
+    --text:          #1A0A2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: var(--purple-deep);
+    border-bottom: 3px solid var(--magenta-bright);
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--magenta-bright); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--purple-deep);
+    padding-top: 62px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* background texture circles */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(107,47,160,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; right: 200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(194,24,91,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px 80px 80px;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--magenta-bright);
+    margin-bottom: 32px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 7vw, 96px);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+
+  .hero-title .amp {
+    color: var(--magenta-bright);
+    display: block;
+    font-size: clamp(64px, 9vw, 120px);
+    line-height: 0.9;
+  }
+
+  .hero-title .sub {
+    color: var(--purple-light);
+  }
+
+  .hero-tagline {
+    font-family: 'Barlow', sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--grey-light);
+    line-height: 1.6;
+    margin: 28px 0 40px;
+    max-width: 420px;
+    border-left: 3px solid var(--magenta-bright);
+    padding-left: 18px;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .meta-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--magenta-bright);
+    min-width: 90px;
+  }
+
+  .meta-value {
+    font-size: 13px;
+    color: var(--grey-light);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--magenta-bright);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    width: fit-content;
+    transition: background 0.2s, transform 0.2s;
+    animation: fadeUp 0.5s 0.4s ease both;
+  }
+
+  .hero-cta:hover { background: var(--magenta); transform: translateX(4px); }
+
+  /* hero right — big title + stats */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px 80px 48px;
+    z-index: 1;
+    gap: 20px;
+    border-left: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .central-question {
+    background: linear-gradient(135deg, var(--purple-mid), var(--purple));
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 32px;
+  }
+
+  .cq-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--magenta-bright);
+    margin-bottom: 12px;
+  }
+
+  .cq-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .method-pill {
+    background: var(--purple-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .pill-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .pill-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--magenta-bright);
+    margin-bottom: 4px;
+  }
+
+  .pill-text {
+    font-size: 13px;
+    color: var(--grey-light);
+    line-height: 1.4;
+  }
+
+  .search-terms {
+    background: var(--purple-deep);
+    border: 1px solid var(--purple);
+    padding: 20px 24px;
+  }
+
+  .st-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 12px;
+  }
+
+  .st-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .st-tag {
+    background: var(--purple);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+  }
+
+  /* ── ABSTRACT ── */
+  .abstract {
+    background: var(--white);
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .abstract-left {}
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.0;
+    color: var(--purple-deep);
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .section-body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #4A3A6A;
+  }
+
+  .abstract-right {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .def-card {
+    border: 1px solid var(--grey-light);
+    padding: 28px;
+    position: relative;
+  }
+
+  .def-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+  }
+
+  .def-card.trans::before { background: var(--purple-light); }
+  .def-card.env::before { background: var(--teal); }
+
+  .def-card-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .def-card.trans .def-card-label { color: var(--purple-light); }
+  .def-card.env .def-card-label { color: var(--teal); }
+
+  .def-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--purple-deep);
+    margin-bottom: 10px;
+  }
+
+  .def-card p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #5A4A7A;
+  }
+
+  .def-note {
+    font-style: italic;
+    font-size: 12px;
+    color: var(--grey);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--grey-light);
+  }
+
+  /* ── METHODOLOGY ── */
+  .methodology {
+    background: var(--purple-deep);
+    padding: 100px 80px;
+  }
+
+  .methodology .section-title { color: var(--white); }
+  .methodology .section-body { color: var(--grey-light); max-width: 600px; margin-bottom: 48px; }
+
+  .method-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .method-step {
+    background: var(--purple-mid);
+    padding: 32px 24px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .method-step:hover { border-color: var(--magenta-bright); }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .step-body {
+    font-size: 12px;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+
+  .accounts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 24px;
+  }
+
+  .account-card {
+    background: var(--purple-light);
+    padding: 20px;
+    text-align: center;
+  }
+
+  .account-card .a-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--white);
+    display: block;
+  }
+
+  .account-card .a-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── FINDINGS ── */
+  .findings {
+    background: var(--white);
+    padding: 100px 80px;
+  }
+
+  .findings-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 64px;
+    align-items: end;
+  }
+
+  .findings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .finding-card {
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .finding-card:hover { transform: translateY(-3px); }
+
+  .finding-card.purple-bg { background: var(--purple-deep); }
+  .finding-card.magenta-bg { background: var(--magenta); }
+  .finding-card.pale-bg { background: var(--purple-pale); }
+  .finding-card.teal-bg { background: var(--purple-mid); }
+
+  .finding-tag-top {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .purple-bg .finding-tag-top { color: var(--magenta-bright); }
+  .magenta-bg .finding-tag-top { color: rgba(255,255,255,0.7); }
+  .pale-bg .finding-tag-top { color: var(--purple); }
+  .teal-bg .finding-tag-top { color: var(--magenta-bright); }
+
+  .finding-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    line-height: 1.05;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .purple-bg .finding-title { color: var(--white); }
+  .magenta-bg .finding-title { color: var(--white); }
+  .pale-bg .finding-title { color: var(--purple-deep); }
+  .teal-bg .finding-title { color: var(--white); }
+
+  .finding-body {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .purple-bg .finding-body { color: var(--grey-light); }
+  .magenta-bg .finding-body { color: rgba(255,255,255,0.85); }
+  .pale-bg .finding-body { color: #4A3A6A; }
+  .teal-bg .finding-body { color: var(--grey-light); }
+
+  /* ── ALGORITHMIC MODEL ── */
+  .algo {
+    background: var(--purple-mid);
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .algo .section-title { color: var(--white); }
+  .algo .section-body { color: var(--grey-light); }
+
+  .folk-theory-diagram {
+    background: var(--purple-deep);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 36px;
+  }
+
+  .ft-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--magenta-bright);
+    margin-bottom: 20px;
+  }
+
+  .ft-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ft-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .ft-row:last-child { border-bottom: none; }
+
+  .ft-node {
+    background: var(--purple);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    white-space: nowrap;
+  }
+
+  .ft-node.highlight { background: var(--magenta-bright); }
+
+  .ft-arrow {
+    color: var(--grey);
+    font-size: 12px;
+  }
+
+  .ft-desc {
+    font-size: 11px;
+    color: var(--grey);
+    line-height: 1.4;
+  }
+
+  /* ── KEY CONCLUSION ── */
+  .conclusion {
+    background: var(--magenta);
+    padding: 80px;
+  }
+
+  .conc-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .conc-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 24px;
+  }
+
+  .conc-statement {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--white);
+    line-height: 1.0;
+    letter-spacing: 0.02em;
+    margin-bottom: 32px;
+  }
+
+  .conc-body {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    max-width: 700px;
+  }
+
+  /* ── RESULTS DETAIL ── */
+  .results-detail {
+    background: var(--white);
+    padding: 100px 80px;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .result-card {
+    background: var(--purple-pale);
+    padding: 32px;
+    border-bottom: 4px solid var(--purple-light);
+    transition: border-color 0.2s;
+  }
+
+  .result-card:hover { border-color: var(--magenta); }
+
+  .result-card-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 12px;
+  }
+
+  .result-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--purple-deep);
+    margin-bottom: 10px;
+  }
+
+  .result-card p {
+    font-size: 13px;
+    color: #5A4A7A;
+    line-height: 1.65;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--purple-deep);
+    padding: 32px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 3px solid var(--magenta-bright);
+  }
+
+  .footer-back {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--magenta-bright);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+  }
+
+  .footer-back:hover { gap: 14px; }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--grey);
+  }
+
+  .footer-funding {
+    font-size: 11px;
+    color: var(--grey);
+    max-width: 300px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 14px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 80px 24px 40px; }
+    .hero-right { padding: 40px 24px 60px; border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
+    .abstract, .algo { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    .findings { padding: 60px 24px; }
+    .findings-header { grid-template-columns: 1fr; gap: 24px; }
+    .findings-grid { grid-template-columns: 1fr; }
+    .method-steps, .accounts-grid { grid-template-columns: 1fr 1fr; }
+    .methodology { padding: 60px 24px; }
+    .results-grid { grid-template-columns: 1fr; }
+    .results-detail { padding: 60px 24px; }
+    .conclusion { padding: 60px 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    .footer-funding { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://hannahferny.com" class="nav-logo">Hannah Tran</a>
+  <ul class="nav-links">
+    <li><a href="#abstract">Overview</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+    <li><a href="#findings">Findings</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="https://hannahferny.com/research.html">← All Research</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Qualitative Research · Civil & Environmental Engineering · Bucknell University</div>
+    <h1 class="hero-title">
+      Transgender<br>Identity
+      <span class="amp">&</span>
+      <span class="sub">The Environment</span><br>on TikTok
+    </h1>
+    <p class="hero-tagline">An investigation into transgender identity, ecology, nature, and social media presence, and ultimately seeking liberation for trans and cis people alike through critical application and development of technology.</p>
+    <div class="hero-meta">
+      <div class="meta-row">
+        <span class="meta-label">Authors</span>
+        <span class="meta-value">Hannah Tran & Austin Wadle</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Period</span>
+        <span class="meta-value">April - June 2024</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Method</span>
+        <span class="meta-value">Controlled Walkthrough · 4 TikTok Accounts · Ethnographic Sampling</span>
+      </div>
+    </div>
+    <a href="#findings" class="hero-cta">See Findings →</a>
+  </div>
+
+  <div class="hero-right">
+    <div class="central-question">
+      <div class="cq-label">Central Question</div>
+      <p class="cq-text">Can a platform often seen as a tool of capitalist exploitation and political decentralisation play a vital role in the quest for trans liberation?</p>
+    </div>
+    <div class="method-pill">
+      <div class="pill-icon">📱</div>
+      <div>
+        <div class="pill-label">Walkthrough Method</div>
+        <p class="pill-text">4 controlled TikTok accounts created for this study. First 30 For You Page videos per session logged and analyzed ethnographically.</p>
+      </div>
+    </div>
+    <div class="method-pill">
+      <div class="pill-icon">🌿</div>
+      <div>
+        <div class="pill-label">Intersection of Focus</div>
+        <p class="pill-text">Convergence of transgender identity, environmentalism, and pollution: an understudied intersection in social media research.</p>
+      </div>
+    </div>
+    <div class="search-terms">
+      <div class="st-label">Premeditated Search Terms</div>
+      <div class="st-tags">
+        <span class="st-tag">Transgender Nature</span>
+        <span class="st-tag">Transgender Identity</span>
+        <span class="st-tag">Queer Ecology</span>
+        <span class="st-tag">Black Transgender</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="abstract" id="abstract">
+  <div class="abstract-left">
+    <div class="section-label">Background</div>
+    <h2 class="section-title">Visibility on TikTok is not the same as liberation.</h2>
+    <p class="section-body">In contemporary public discourse, the transgender community has been at the forefront, especially on social media. While much of the conversation revolves around political aspects, the convergence of transgender identity, environmentalism, and pollution on TikTok has received far less attention.<br><br>TikTok offers a platform for marginalised voices, but it simultaneously serves as a battleground for competing interests seeking dominance and control. This research examines both sides: what the platform makes possible, and what it suppresses.</p>
+  </div>
+  <div class="abstract-right">
+    <div class="def-card trans">
+      <div class="def-card-label">Definition</div>
+      <div class="def-card-title">Transgender Identity</div>
+      <p>The experience of identifying with a gender/non-gender that differs from one assigned at birth, including non-binary and gender diverse individuals. This identity encapsulates various personal and interpersonal identities, expressions, and experiences.</p>
+      <p class="def-note">These definitions are contextual to our time (the 2020s) and place (the United States in particular).</p>
+    </div>
+    <div class="def-card env">
+      <div class="def-card-label">Definition</div>
+      <div class="def-card-title">The Environment</div>
+      <p>The broader concept of the context of which one exists and bears livelihood in, providing conditions and resources necessary for survival, wellbeing, and development. In this project, focused on the natural-physical and biological component that precedes human intervention, yet is interconnected with the anthropocentric systems that reciprocally shape human life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="methodology" id="methodology">
+  <div class="section-label">Methodology</div>
+  <h2 class="section-title">A Controlled Walkthrough<br>Across Four Accounts</h2>
+  <p class="section-body">Rather than studying existing TikTok accounts, we created four new controlled accounts, allowing us to observe how the algorithm constructs identity from scratch, rather than inheriting an existing profile's history.</p>
+
+  <div class="method-steps">
+    <div class="method-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Account Creation</div>
+      <p class="step-body">4 fresh TikTok accounts created with no prior history. Each approached the platform from a different identity perspective to observe divergent algorithmic paths.</p>
+    </div>
+    <div class="method-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Search Terms</div>
+      <p class="step-body">Premeditated search terms entered: Transgender Nature, Transgender Identity, Queer Ecology, Black Transgender. Each term tied to a specific account.</p>
+    </div>
+    <div class="method-step">
+      <div class="step-num">03</div>
+      <div class="step-title">FYP Sampling</div>
+      <p class="step-body">First 30 For You Page videos per session logged. Content, creator characteristics, and platform suggestions documented across the full sampling period (April–June 2024).</p>
+    </div>
+    <div class="method-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Ethnographic Analysis</div>
+      <p class="step-body">Engagements, creator characteristics, recurring patterns, and platform behaviour documented ethnographically. Qualitative dataset created from patterns across all four accounts.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px;">
+    <div style="font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--grey); margin-bottom:12px;">Accounts Sampled</div>
+    <div class="accounts-grid">
+      <div class="account-card" style="background:var(--purple);">
+        <span class="a-num">4</span>
+        <span class="a-label">TikTok Accounts</span>
+      </div>
+      <div class="account-card" style="background:var(--magenta);">
+        <span class="a-num">30</span>
+        <span class="a-label">FYP Videos / Session</span>
+      </div>
+      <div class="account-card" style="background:var(--purple-light);">
+        <span class="a-num">3 mo</span>
+        <span class="a-label">Sampling Period</span>
+      </div>
+      <div class="account-card" style="background:var(--purple-mid); border: 1px solid var(--purple);">
+        <span class="a-num">Folk</span>
+        <span class="a-label">Theory Framework</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section class="findings" id="findings">
+  <div class="findings-header">
+    <div>
+      <div class="section-label">Key Findings</div>
+      <h2 class="section-title">What TikTok Reveals <br> and Conceals</h2>
+    </div>
+    <p class="section-body" style="padding-top:60px;">The platform's algorithm does not neutrally amplify trans voices. It constructs, fragments, and constrains identity through feedback loops, visibility hierarchies, and structural absences.</p>
+  </div>
+  <div class="findings-grid">
+    <div class="finding-card purple-bg">
+      <span class="finding-tag-top">Finding 01 — Algorithmic Feedback Loops</span>
+      <h3 class="finding-title">The Algorithm Constructs Identity, Not Just Content</h3>
+      <p class="finding-body">TikTok's unique content format and search mechanisms result in feedback loops for users' experience, with conflicting content identity overall. The FYP doesn't reflect who you are; it shapes who the platform decides you are.</p>
+    </div>
+    <div class="finding-card magenta-bg">
+      <span class="finding-tag-top">Finding 02 — Nature Narratives</span>
+      <h3 class="finding-title">Nature Content Reinforces, Not Expands, Trans Narratives</h3>
+      <p class="finding-body">Most narration of nature considered "transgender" portrayed it as exclusive, deviant, and disconnected from other related identities. Rather than opening new frames for trans ecology, nature content often reproduced existing essentialist logics.</p>
+    </div>
+    <div class="finding-card pale-bg">
+      <span class="finding-tag-top">Finding 03 — In-Group Representation</span>
+      <h3 class="finding-title">Trans People of Colour Are Structurally Absent</h3>
+      <p class="finding-body">Lack of content and creators that are trans people of colour was consistent across all four accounts. Class diversity within the in-group was also frequently missing, revealing whose transness the algorithm amplifies.</p>
+    </div>
+    <div class="finding-card teal-bg">
+      <span class="finding-tag-top">Finding 04 — Mainstream Trans Discourse</span>
+      <h3 class="finding-title">Visibility Skews Toward Polarisation</h3>
+      <p class="finding-body">Disproportionate visibility among sub-groups, with hyper-visibility amongst trans women of colour, often narrated in polarising, devisive rhetoric. High visibility does not equal equitable or liberatory representation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALGORITHMIC MODEL -->
+<section class="algo" id="algo">
+  <div>
+    <div class="section-label">Theoretical Framework</div>
+    <h2 class="section-title">Folk Theory of the Algorithm</h2>
+    <p class="section-body" style="color:var(--grey-light);">Adapted from DeVito (2018), the folk theory framework describes how users develop mental models of algorithmic systems, and how those perceived models shape behaviour, self-presentation, and identity construction on the platform.</p>
+    <br>
+    <p class="section-body" style="color:var(--grey-light);">In this study, both the accounts' behaviour and the content creators' behaviour reflected internalized folk theories, shaping what they posted, how they described themselves, and what they amplified.</p>
+  </div>
+  <div class="folk-theory-diagram">
+    <div class="ft-label">Algorithmic Identity Model — adapted from DeVito, 2018</div>
+    <div class="ft-flow">
+      <div class="ft-row">
+        <span class="ft-node">Self</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-node">Folk Theory</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-node">Self-Presentation</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-node highlight">Curated Content</span>
+      </div>
+      <div class="ft-row">
+        <span class="ft-node">User Inputs</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-node highlight">For You Page</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-desc">Curation Algorithm shapes what content becomes visible</span>
+      </div>
+      <div class="ft-row">
+        <span class="ft-node">Location / Gender / Age</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-node">Interactions</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-node highlight">Platform</span>
+      </div>
+      <div class="ft-row">
+        <span class="ft-node">Sexual Orientation</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-node">Advertisement Profile</span>
+        <span class="ft-arrow">→</span>
+        <span class="ft-node highlight">Gender Identity</span>
+      </div>
+      <div class="ft-row" style="border:none; padding-top:16px;">
+        <span style="font-size:11px; color:var(--grey); font-style:italic;">Audience Feedback loops back through Folk Theory, the cycle reinforces itself.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="conclusion" id="conclusion">
+  <div class="conc-inner">
+    <div class="conc-label">Central Conclusion</div>
+    <h2 class="conc-statement">Visibility ≠ Liberation.</h2>
+    <p class="conc-body">Our findings reinforce previous notions about user identity on TikTok but also reveal volatility in the interaction between the transgender community and ecological content on the platform. A platform that makes trans people visible does not automatically make them free, especially when that visibility is filtered through an algorithm that reproduces existing hierarchies of whose identity gets amplified, celebrated, or erased.</p>
+  </div>
+</section>
+
+<!-- RESULTS DETAIL -->
+<section class="results-detail">
+  <div class="section-label">Results & Discussion</div>
+  <h2 class="section-title">Portrayal of Trans Identity on TikTok</h2>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-card-label">Nature Narratives</div>
+      <h3>Disregards Intersectionality</h3>
+      <p>Nature content portrayed as "transgender" often positioned trans identity as exclusive and deviant, disconnected from related identities. Intersectional perspectives (race, class, ecology) were structurally absent from algorithmically amplified content.</p>
+    </div>
+    <div class="result-card" style="border-color:var(--magenta);">
+      <div class="result-card-label" style="color:var(--magenta);">Mainstream Trans Discourse</div>
+      <h3>Devisive Rhetoric Dominates</h3>
+      <p>Trans women of colour received disproportionate visibility, but framed within polarising, devisive rhetoric rather than affirmative representation. Sub-group visibility did not translate to equitable platform treatment.</p>
+    </div>
+    <div class="result-card" style="border-color:var(--teal);">
+      <div class="result-card-label" style="color:var(--teal);">In-Group Representation</div>
+      <h3>Class Diversity Missing</h3>
+      <p>Content from and about trans people of colour was consistently underrepresented across all four accounts regardless of search term. Class diversity within the trans community was also frequently absent from algorithmically suggested content.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://hannahferny.com/research.html" class="footer-back">← All Research</a>
+  <span class="footer-copy">Hannah Tran & Austin Wadle · Bucknell University · 2024</span>
+  <div class="footer-funding">Mellon Confounding Problems Grant &<br>Bucknell University COE Summer Research Funding</div>
+</footer>
+
+</body>
+</html>
