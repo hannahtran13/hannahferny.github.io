@@ -853,6 +853,291 @@ footer{
 
 }
 
+/* ───────────────── MOBILE ───────────────── */
+
+@media (max-width: 1000px){
+
+    *{
+        min-width:0;
+    }
+
+    body{
+        background-attachment:scroll;
+    }
+
+    nav{
+        top:12px;
+        left:12px;
+        right:12px;
+
+        padding:14px 18px;
+
+        border-radius:24px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav-logo{
+        font-size:16px;
+    }
+
+    /* HERO */
+
+    .hero{
+        grid-template-columns:1fr;
+
+        gap:32px;
+
+        padding:
+            130px
+            20px
+            70px;
+
+        min-height:auto;
+    }
+
+    .hero-left{
+        gap:22px;
+    }
+
+    .hero-label{
+        font-size:12px;
+
+        line-height:1.5;
+
+        letter-spacing:0.14em;
+    }
+
+    .hero-title{
+
+        font-size:clamp(48px,18vw,82px);
+
+        line-height:0.88;
+
+        letter-spacing:-0.05em;
+
+        word-break:break-word;
+    }
+
+    .hero-description{
+        font-size:16px;
+
+        line-height:1.8;
+
+        max-width:100%;
+    }
+
+    .hero-meta{
+        gap:12px;
+    }
+
+    .meta-pill{
+        width:fit-content;
+
+        max-width:100%;
+
+        font-size:15px;
+
+        line-height:1.4;
+
+        padding:12px 16px;
+
+        border-radius:20px;
+    }
+
+    /* RIGHT SIDE */
+
+    .hero-right{
+        width:100%;
+    }
+
+    .question-card{
+        padding:24px;
+    }
+
+    .question-card h3{
+        font-size:16px;
+    }
+
+    .question-card p{
+        font-size:18px;
+
+        line-height:1.6;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr;
+
+        gap:16px;
+    }
+
+    .stat-card{
+        padding:22px;
+    }
+
+    .stat-number{
+        font-size:42px;
+    }
+
+    .stat-label{
+        font-size:16px;
+
+        line-height:1.6;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section{
+        padding:80px 20px;
+    }
+
+    .section-label{
+        font-size:12px;
+    }
+
+    .section-title{
+        font-size:clamp(38px,12vw,62px);
+
+        line-height:0.92;
+    }
+
+    .section-body{
+        font-size:16px;
+
+        line-height:1.9;
+    }
+
+    /* GRIDS */
+
+    .method-grid,
+    .findings-grid,
+    .two-grid,
+    .graph-grid,
+    .graph-feature,
+    .graph-feature.reverse{
+
+        grid-template-columns:1fr;
+    }
+
+    .graph-feature{
+        padding:22px;
+
+        gap:28px;
+    }
+
+    .graph-copy h3{
+        font-size:clamp(28px,10vw,48px);
+
+        line-height:0.95;
+    }
+
+    .graph-copy p{
+        font-size:16px;
+    }
+
+    .graph-caption{
+        padding:22px;
+    }
+
+    .graph-caption h4{
+        font-size:22px;
+    }
+
+    .graph-caption p{
+        font-size:15px;
+    }
+
+    /* FINDINGS */
+
+    .finding-card{
+        padding:30px;
+    }
+
+    .finding-number{
+        font-size:64px;
+    }
+
+    .finding-card h3{
+        font-size:24px;
+    }
+
+    /* INSIGHT */
+
+    .insight{
+        padding:90px 20px;
+    }
+
+    .insight-box{
+        padding:28px;
+    }
+
+    .insight-statement{
+        font-size:clamp(30px,10vw,52px);
+
+        line-height:1;
+    }
+
+    .formula{
+        width:100%;
+
+        overflow-x:auto;
+
+        text-align:center;
+
+        padding:20px;
+
+        border-radius:24px;
+
+        font-size:clamp(22px,7vw,38px);
+    }
+
+    .insight-text{
+        font-size:16px;
+    }
+
+    /* TAGS */
+
+    .tag-wrap{
+        gap:12px;
+    }
+
+    .tag{
+        font-size:15px;
+
+        padding:14px 18px;
+    }
+
+    /* FOOTER */
+
+    footer{
+        flex-direction:column;
+
+        gap:14px;
+
+        text-align:center;
+
+        padding:40px 20px;
+    }
+
+    .footer-left,
+    .footer-right{
+        font-size:14px;
+    }
+
+    /* SAFETY */
+
+    img,
+    video,
+    iframe,
+    svg{
+        max-width:100%;
+        height:auto;
+    }
+
+}
+
 </style>
 </head>
 
