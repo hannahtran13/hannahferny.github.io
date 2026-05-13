@@ -433,6 +433,183 @@ section{
     line-height:1.8;
 }
 
+/* RESULTS */
+
+.results-section{
+
+    display:flex;
+    flex-direction:column;
+    gap:42px;
+}
+
+.section-description{
+
+    max-width:60ch;
+
+    color:var(--muted);
+
+    margin-top:24px;
+
+    line-height:1.9;
+}
+
+.graph-feature{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+    align-items:center;
+
+    padding:40px;
+}
+
+.graph-feature.reverse{
+
+    grid-template-columns:1fr 1fr;
+}
+
+.graph-copy{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.graph-copy h3{
+
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    font-size:clamp(32px,4vw,56px);
+
+    line-height:0.95;
+}
+
+.graph-copy p{
+
+    color:var(--muted);
+
+    line-height:1.9;
+}
+
+.graph-kicker{
+
+    letter-spacing:0.18em;
+
+    text-transform:uppercase;
+
+    color:var(--accent);
+
+    font-size:12px;
+}
+
+.graph-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:24px;
+}
+
+.graph-card{
+
+    overflow:hidden;
+}
+
+.graph-image{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:22px;
+}
+
+.graph-caption{
+
+    padding:26px;
+}
+
+.graph-caption h4{
+
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    margin-bottom:12px;
+
+    font-size:24px;
+}
+
+.graph-caption p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+.insight-break{
+
+    padding:80px 40px;
+
+    text-align:center;
+}
+
+.insight-small{
+
+    color:var(--accent);
+
+    text-transform:uppercase;
+
+    letter-spacing:0.18em;
+
+    margin-bottom:18px;
+
+    font-size:12px;
+}
+
+.insight-large{
+
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    font-size:clamp(42px,9vw,110px);
+
+    line-height:0.9;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.graph-feature,
+.graph-feature.reverse,
+.graph-grid{
+
+    grid-template-columns:1fr;
+}
+
+.graph-feature{
+
+    padding:24px;
+}
+
+.graph-copy h3{
+
+    font-size:clamp(28px,9vw,50px);
+}
+
+}
+
+
 /* FINDINGS */
 
 .findings-grid{
@@ -511,22 +688,60 @@ section{
     margin-bottom:40px;
 }
 
-.formula{
-    display:inline-block;
+.formula-wrap{
+    display:flex;
 
-    padding:20px 36px;
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin:60px 0;
+}
+
+.formula-label{
+    font-family:'Highway Gothic', sans-serif;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.18em;
+
+    font-size:12px;
+
+    color:rgba(255,255,255,0.45);
+}
+
+.formula{
+    padding:
+        28px
+        48px;
 
     border-radius:999px;
 
-    background:rgba(255,159,45,0.14);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.03)
+        );
 
-    border:1px solid rgba(255,159,45,0.3);
+    border:
+        1px solid rgba(255,180,90,0.35);
 
-    font-size:24px;
+    backdrop-filter:blur(20px);
 
-    margin-bottom:40px;
+    font-size:clamp(32px,5vw,52px);
 
-    color:var(--accent-soft);
+    color:#ffc266;
+
+    font-weight:300;
+
+    letter-spacing:-0.02em;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.25),
+        inset 0 0 20px rgba(255,194,102,0.05);
 }
 
 .insight-text{
@@ -881,6 +1096,249 @@ footer{
 
 </section>
 
+<section class="results-section">
+
+    <div class="section-intro">
+        <p class="section-label">Experimental Results</p>
+
+        <h2 class="section-title">
+            Failure Beyond<br>
+            Distribution
+        </h2>
+
+        <p class="section-description">
+            While transformers achieved strong in-distribution validation performance,
+            their behavior collapsed under longer out-of-distribution sequences,
+            revealing reliance on statistical locality rather than structural rule learning.
+        </p>
+    </div>
+
+    <!-- HERO GRAPH -->
+
+    <div class="graph-feature glass-card">
+
+        <div class="graph-copy">
+
+            <p class="graph-kicker">
+                Validation Dynamics
+            </p>
+
+            <h3>
+                Models appear stable during training,
+                but stability alone does not imply abstraction.
+            </h3>
+
+            <p>
+                Both classification and next-token models demonstrate
+                smooth validation convergence during training.
+                However, later experiments reveal that this apparent
+                success does not transfer outside the original
+                training distribution.
+            </p>
+
+        </div>
+
+        <img
+            src="images/graphs/validation-shape.png"
+            alt="Validation dynamics comparison graph"
+            class="graph-image"
+        >
+
+    </div>
+
+    <!-- TWO COLUMN -->
+
+    <div class="graph-grid">
+
+        <div class="graph-card glass-card">
+
+            <img
+                src="images/graphs/classification-accuracy.png"
+                alt="Classification validation accuracy"
+                class="graph-image"
+            >
+
+            <div class="graph-caption">
+                <h4>High in-distribution performance</h4>
+
+                <p>
+                    Validation accuracy exceeds 90%, suggesting
+                    successful memorization of training dynamics.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="graph-card glass-card">
+
+            <img
+                src="images/graphs/ood-length.png"
+                alt="OOD perplexity spike"
+                class="graph-image"
+            >
+
+            <div class="graph-caption">
+
+                <h4>Sharp OOD failure</h4>
+
+                <p>
+                    A dramatic perplexity spike appears immediately
+                    beyond the training boundary, indicating failure
+                    to generalize algorithmically.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- INSIGHT BREAK -->
+
+    <div class="insight-break glass-card">
+
+        <p class="insight-small">
+            Key Observation
+        </p>
+
+        <h2 class="insight-large">
+            PERFORMANCE<br>
+            IS NOT<br>
+            UNDERSTANDING
+        </h2>
+
+    </div>
+
+    <!-- BIG COMPARISON -->
+
+    <div class="graph-feature reverse glass-card">
+
+        <img
+            src="images/graphs/train-length.png"
+            alt="OOD perplexity vs training length"
+            class="graph-image"
+        >
+
+        <div class="graph-copy">
+
+            <p class="graph-kicker">
+                Scaling Analysis
+            </p>
+
+            <h3>
+                Larger models do not consistently solve the problem.
+            </h3>
+
+            <p>
+                Increasing parameter count alone fails to guarantee
+                stronger structural generalization. Longer training
+                contexts improve OOD performance more reliably than
+                naive scaling.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- EOS SECTION -->
+
+    <div class="graph-grid">
+
+        <div class="graph-card glass-card">
+
+            <img
+                src="images/graphs/eos-accuracy.png"
+                alt="EOS accuracy"
+                class="graph-image"
+            >
+
+            <div class="graph-caption">
+
+                <h4>EOS prediction collapse</h4>
+
+                <p>
+                    End-of-sequence prediction deteriorates sharply
+                    outside the training range.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="graph-card glass-card">
+
+            <img
+                src="images/graphs/eos-perplexity.png"
+                alt="EOS perplexity"
+                class="graph-image"
+            >
+
+            <div class="graph-caption">
+
+                <h4>Perplexity instability</h4>
+
+                <p>
+                    The model exhibits severe uncertainty once
+                    sequence lengths exceed familiar contexts.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SYMBOL SECTION -->
+
+    <div class="graph-grid">
+
+        <div class="graph-card glass-card">
+
+            <img
+                src="images/graphs/symbol-accuracy.png"
+                alt="Symbol accuracy"
+                class="graph-image"
+            >
+
+            <div class="graph-caption">
+
+                <h4>Local token prediction survives</h4>
+
+                <p>
+                    Symbol-level prediction remains relatively stable,
+                    suggesting dependence on local statistical cues.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="graph-card glass-card">
+
+            <img
+                src="images/graphs/symbol-perplexity.png"
+                alt="Symbol perplexity"
+                class="graph-image"
+            >
+
+            <div class="graph-caption">
+
+                <h4>But abstraction still breaks</h4>
+
+                <p>
+                    OOD perplexity spikes indicate that the model
+                    does not consistently recover underlying DFA structure.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 <section id="findings">
 
     <div class="section-label">
@@ -970,8 +1428,18 @@ footer{
             A MODEL HAS LEARNED THE RULE ONLY IF ITS PREDICTIONS FACTOR THROUGH THE STATE MAPPING
         </div>
 
-        <div class="formula">
-            m̂<sub>D</sub>(x) ≈ g ∘ φ(x)
+        <div class="formula-wrap">
+
+            <div class="formula-label">
+                Structural Learning Condition
+            </div>
+
+            <div class="formula">
+                m̂<sub>D</sub>(x)
+                ≈
+                g ∘ φ(x)
+            </div>
+
         </div>
 
         <p class="insight-text">
