@@ -304,7 +304,6 @@ document.addEventListener('click', function(e){
         <div class="contact-left">
           <h1 class="sub-title">Contact me</h1>
           <p><i class="fa-solid fa-paper-plane"></i>tranmanh11hp@gmail.com</p>
-          <p><i class="fa-solid fa-square-phone"></i>+1 (646) 406-7753</p>
           <div class="social-icons">
             <a href="https://www.linkedin.com/in/hannah-tran-2852bb236"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://instagram.com/ferniesdesigns?igshid=OGQ5ZDc2ODk2ZA=="><i class="fa-brands fa-instagram"></i></a>
@@ -356,23 +355,55 @@ document.addEventListener('click', function(e){
 
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwhZskWNn5y7tK06t4kgOO_ZAv3ErLLtcXJxUh3UyakbnH8Xk9Dw01dMTyLIJn8g-Cf/exec'
-    const form = document.forms['submit-to-google-sheet']
-    const msg =document.getElementById("msg")
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzX7mXELI5xfDtaFd7yWN1utccAXxFAO8Fj9rLGefcMZMAPJdxyoods-BVxTQ8KKVkamw/exec'
 
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          msg.innerHTML = "Message sent successfully"
-          setTimeout(function(){
-            msg.innerHTML = ""
-          },5000)
-          form.reset()
-        })
-        .catch(error => console.error('Error!', error.message))
+  const form = document.forms['submit-to-google-sheet']
+  const submitBtn = form.querySelector('button[type="submit"]')
+
+  form.addEventListener('submit', e => {
+
+    e.preventDefault()
+
+    // loading state
+    submitBtn.disabled = true
+    submitBtn.innerHTML = "Submitting..."
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: new FormData(form),
+      mode: 'no-cors'
     })
-  </script>
+
+    .then(response => {
+
+      // success state
+      submitBtn.innerHTML = "Submission Successful ✓"
+
+      form.reset()
+
+      // revert button after 4 sec
+      setTimeout(() => {
+        submitBtn.disabled = false
+        submitBtn.innerHTML = "Submit"
+      }, 4000)
+
+    })
+
+    .catch(error => {
+
+      submitBtn.disabled = false
+      submitBtn.innerHTML = "Something went wrong"
+
+      console.error('Error!', error.message)
+
+      setTimeout(() => {
+        submitBtn.innerHTML = "Submit"
+      }, 4000)
+
+    })
+
+  })
+</script>
 </body>
 
 </html>
