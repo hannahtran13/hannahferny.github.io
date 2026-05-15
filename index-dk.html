@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hannah Tran Online Portal</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div class="container">
+
+      <nav>
+
+        <img src="images/logo.png" class="logo">
+
+        <ul id="sidemenu">
+
+          <li><a href="#header">Hjem</a></li>
+          <li><a href="#about">Om Mig</a></li>
+          <li><a href="#professions">Fagområder</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+          <li><a href="pottery.html">Pottemager</a></li>
+
+          <!-- LANGUAGE DROPDOWN -->
+
+          <li class="language-dropdown">
+
+                <button class="lang-btn" onclick="toggleLangMenu(event)">
+
+                    DK
+
+                </button>
+
+                <ul class="lang-menu" id="langMenu">
+
+                    <li><a href="index.html">EN</a></li>
+
+                    <li><a href="index-dk.html">DK</a></li>
+
+                </ul>
+
+            </li>
+
+            
+           <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+
+        </ul>
+
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+
+      </nav>
+
+      <div class="header-text">
+
+        <p>Hej, jeg hedder Hannah.</p>
+
+        <h1>
+          Jeg gør komplekse idéer <br>
+          til noget mennesker <br>
+          faktisk forstår.
+        </h1>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!--------------- ABOUT ------------------->
+
+  <div id="about">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="about-col-1">
+          <img src="images/user.png">
+        </div>
+
+        <div class="about-col-2">
+
+          <h1 class="sub-title">Om mig!</h1>
+
+          <p>
+            Jeg er seniorstuderende på Bucknell University og læser Computer Science og Environmental Studies.
+
+            Mit arbejde fokuserer på at oversætte komplekse systemer, især inden for bæredygtighed og teknologi, til klare og engagerende oplevelser. Jeg har arbejdet på tværs af marketing, research og design, hvor jeg har bygget kampagner, analyseret publikumsadfærd og skabt fortællinger, der forbinder tekniske idéer med virkelige mennesker.
+            <br><br>
+
+            For nylig har jeg:
+            <br>• Designet cross-platform kampagner for offentlige bæredygtighedsprojekter
+            <br>• Ledet research om sociale mediers narrativer og publikumsopfattelse
+            <br>• Bygget udstillinger og digitale oplevelser, der gør forskning mere tilgængelig
+            <br><br>
+
+            Jeg er særligt interesseret i arbejde, der kombinerer <strong>AI, storytelling og bæredygtighed</strong>, ikke kun for at informere mennesker, men for at ændre måden, de tænker og handler på.
+          </p>
+
+          <div class="tab-titles">
+
+            <p class="tab-links active-link" onclick="opentab('skills')">Kompetencer</p>
+
+            <p class="tab-links" onclick="opentab('experience')">Erfaring</p>
+
+            <p class="tab-links" onclick="opentab('education')">Uddannelse</p>
+
+            <p class="tab-links" onclick="opentab('volunteering')">Frivilligt Arbejde</p>
+
+          </div>
+
+          <div class="tab-contents active-tab" id="skills">
+
+            <ul>
+
+              <li>
+                <span>Marketing & Strategi</span><br>
+                Kampagneplanlægning, budskaber, publikumsresearch
+              </li>
+
+              <li>
+                <span>Design & Medier</span><br>
+                Adobe Creative Suite, visuel storytelling
+              </li>
+
+              <li>
+                <span>Research & Analyse</span><br>
+                Survey-design, kvalitativ og kvantitativ analyse
+              </li>
+
+              <li>
+                <span>Teknisk</span><br>
+                Python, JavaScript, HTML/CSS, R
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div class="tab-contents" id="experience">
+
+            <ul>
+
+              <li>
+                <span>2025 - Maryland Environmental Service</span><br>
+
+                <strong>Marketing & Operations Intern</strong><br>
+
+                Designede og gennemførte cross-platform kampagner for bæredygtighedsprodukter (Leafgro & Leafgro Gold)
+              </li>
+
+              <li>
+                <span>2024 - 2025 - Bucknell University</span><br>
+
+                <strong>Research Assistant (Audience Insight & Narrative Analysis)</strong><br>
+
+                Ledede kvalitativ og kvantitativ forskning om sociale mediers narrativer og miljøkommunikation.
+              </li>
+
+              <li>
+                <span>2023 - Bucknell University (RED Grant)</span><br>
+
+                <strong>Undergraduate Researcher - AI & Curriculum Integration</strong><br>
+
+                Arbejdede med machine learning og uddannelsesdesign for at gøre tekniske systemer mere tilgængelige.
+              </li>
+
+              <li>
+                <span>2023 - Bucknell Center for Sustainability & Environment</span><br>
+
+                <strong>Lead Designer & Full Exhibition Curator</strong><br>
+
+                Ledede visuel branding og narrativ udvikling for museumsrenovering og offentlig udstilling.
+              </li>
+
+              <li>
+                <span>2021 - 2022 - Freelance</span><br>
+
+                <strong>Grafisk Designer</strong><br>
+
+                Udviklede branding og digitale assets for små virksomheder og nonprofitorganisationer.
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div class="tab-contents" id="education">
+
+            <ul>
+
+              <li>
+
+                <span>Bucknell University</span><br>
+
+                Bachelor of Arts i Computer Science & Environmental Studies (Forventet maj 2026)
+                <br><br>
+
+                <strong>Relevante kurser:</strong><br>
+
+                UX/UI Design, Environmental Policy, Community Research Design
+
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div class="tab-contents" id="volunteering">
+
+            <ul>
+
+              <li>
+                <span>2020-2021 - The Ahurea Project</span><br>
+                Founder - Head of Content (sæson 1) / President (sæson 2)
+              </li>
+
+              <li>
+                <span>2021 - Inventa Magazine</span><br>
+                Editor-in-Chief
+              </li>
+
+              <li>
+                <span>2021 - “Me in Culture” Eventserie</span><br>
+                Head of Organisation
+              </li>
+
+              <li>
+                <span>2021 - “COLOVE” Podcast</span><br>
+                Head of Production
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--------------- PROFESSIONS -------------->
+
+  <div id="professions">
+
+    <div class="container">
+
+      <h1 class="sub-title">Hvad jeg arbejder med</h1>
+
+      <div class="profession-list">
+
+        <div>
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <h2>Marketing & Strategi</h2>
+
+          <p>
+            Designer kampagner og budskaber, der oversætter komplekse idéer, især inden for bæredygtighed, til noget mennesker faktisk forstår og interesserer sig for.
+          </p>
+
+          <a href="marketing.html">Udforsk</a>
+
+        </div>
+
+        <div>
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <h2>Research & Insight</h2>
+
+          <p>
+            Gennemfører kvalitativ og kvantitativ research for at forstå, hvordan mennesker tænker, hvad de tror på, og hvordan narrativer former adfærd.
+          </p>
+
+          <a href="research.html">Udforsk</a>
+
+        </div>
+
+        <div>
+
+          <i class="fa-solid fa-leaf"></i>
+
+          <h2>Bæredygtighed & Systemer</h2>
+
+          <p>
+            Arbejder med miljø- og samfundsprojekter, hvor tekniske systemer forbindes med virkelige lokalsamfund gennem strategi og kommunikation.
+          </p>
+
+          <a href="sustainability.html">Udforsk</a>
+
+        </div>
+
+        <div>
+
+          <i class="fa-solid fa-pen-nib"></i>
+
+          <h2>Design & Kommunikation</h2>
+
+          <p>
+            Bruger design som et værktøj til at gøre idéer tydelige, hvad enten det er visuel storytelling, udstillinger eller digitale interfaces.
+          </p>
+
+          <a href="design.html">Udforsk</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--------------- PORTFOLIO -------------->
+
+  <section id="portfolio" class="portfolio-section">
+
+    <div class="portfolio-container">
+
+      <h1 class="sub-title">Mit Arbejde</h1>
+
+      <div class="work-list">
+
+        <div class="work">
+
+          <img src="images/work-1.png" alt="The Ahurea Project">
+
+          <div class="layer">
+
+            <h3>The Ahurea Project</h3>
+
+            <p>
+              Et kulturprojekt om forskellige aspekter af humaniora,
+              med 80+ medlemmer på tværs af to sæsoner,
+              10.000+ følgere og 149.600+ mennesker nået.
+            </p>
+
+            <a href="ahurea-project.html">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="work">
+
+          <img src="images/work-2.png" alt="Milton Exhibition">
+
+          <div class="layer">
+
+            <h3>Milton: Planted In Place Exhibition</h3>
+
+            <p>
+              Den første udstilling på Milton Municipal Museum i Milton, Pennsylvania;
+              med fokus på områdets historie og natur.
+            </p>
+
+            <a href="milton-exhibition.html">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="work">
+
+          <img src="images/trail.png" alt="Buffalo Valley Rail Trail Extension">
+
+          <div class="layer">
+
+            <h3>
+              Buffalo Valley Rail Trail Extension Community Perception
+            </h3>
+
+            <p>
+              Community-baseret research i Lewisburg og Montandon, Pennsylvania.
+            </p>
+
+            <a href="trail.html">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!--------------- CONTACT -------------->
+
+  <div id="contact">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="contact-left">
+
+          <h1 class="sub-title">Kontakt</h1>
+
+          <p>
+            <i class="fa-solid fa-paper-plane"></i>
+            tranmanh11hp@gmail.com
+          </p>
+
+          <div class="social-icons">
+
+            <a href="https://www.linkedin.com/in/hannah-tran-2852bb236">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+
+            <a href="https://instagram.com/ferniesdesigns?igshid=OGQ5ZDc2ODk2ZA==">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+          </div>
+
+          <a href="images/my-cv.pdf" download class="btn btn2">
+            Download CV
+          </a>
+
+        </div>
+
+        <div class="contact-right">
+
+          <form name="submit-to-google-sheet">
+
+            <input type="text" name="Name" placeholder="Dit navn" required>
+
+            <input type="email" name="Email" placeholder="Din email">
+
+            <textarea name="Message" rows="6" placeholder="Din besked"></textarea>
+
+            <button type="submit" class="btn btn2">
+              Send
+            </button>
+
+          </form>
+
+          <span id="msg"></span>
+
+        </div>
+
+        <div class="copyright">
+
+          <p>Copyright © Hannah Tran. 2026</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TAB SCRIPT -->
+
+  <script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+
+      for(let tablink of tablinks){
+        tablink.classList.remove("active-link");
+      }
+
+      for(let tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+      }
+
+      event.currentTarget.classList.add("active-link");
+
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+
+  </script>
+
+  <!-- MOBILE MENU -->
+
+  <script>
+
+    var sidemnu = document.getElementById("sidemenu");
+
+    function openmenu(){
+      sidemnu.style.right = "0"
+    }
+
+    function closemenu(){
+      sidemnu.style.right = "-200px"
+    }
+
+  </script>
+
+  <script>
+
+    function toggleLangMenu(event){
+
+    event.stopPropagation();
+
+    const menu = document.getElementById("langMenu");
+
+    menu.classList.toggle("show-lang");
+
+    }
+
+    /* tap outside closes menu */
+
+    document.addEventListener('click', function(){
+
+    const menu = document.getElementById("langMenu");
+
+    menu.classList.remove("show-lang");
+
+    });
+
+  </script>
+   
+    <script>
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzX7mXELI5xfDtaFd7yWN1utccAXxFAO8Fj9rLGefcMZMAPJdxyoods-BVxTQ8KKVkamw/exec'
+
+    const form = document.forms['submit-to-google-sheet']
+
+    const submitBtn = form.querySelector('button[type="submit"]')
+
+    form.addEventListener('submit', e => {
+
+    e.preventDefault()
+
+    submitBtn.disabled = true
+    submitBtn.innerHTML = "Sender..."
+
+    fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form),
+        mode: 'no-cors'
+    })
+
+    .then(response => {
+
+        submitBtn.innerHTML = "Besked sendt ✓"
+
+        form.reset()
+
+        setTimeout(() => {
+
+        submitBtn.disabled = false
+        submitBtn.innerHTML = "Send"
+
+        }, 4000)
+
+    })
+
+    .catch(error => {
+
+        submitBtn.disabled = false
+
+        submitBtn.innerHTML = "Noget gik galt"
+
+        console.error('Error!', error.message)
+
+        setTimeout(() => {
+
+        submitBtn.innerHTML = "Send"
+
+        }, 4000)
+
+    })
+
+    })
+
+    </script>
+</body>
+
+</html>

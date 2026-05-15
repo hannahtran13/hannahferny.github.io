@@ -61,6 +61,23 @@ document.addEventListener('click', function(e){
           <li><a href="#professions">Professions</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="pottery.html">Pottery</a></li>
+          <li class="language-dropdown">
+                <button class="lang-btn" onclick="toggleLangMenu(event)">
+
+                    EN
+
+                </button>
+
+                <ul class="lang-menu" id="langMenu">
+
+                    <li><a href="index.html">EN</a></li>
+
+                    <li><a href="index-dk.html">DK</a></li>
+
+                </ul>
+
+            </li>
           <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
         </ul>
         <i class="fa-solid fa-bars" onclick="openmenu()"></i>
@@ -403,6 +420,30 @@ document.addEventListener('click', function(e){
     })
 
   })
+</script>
+
+<script>
+
+function toggleLangMenu(event){
+
+  event.stopPropagation();
+
+  const menu = document.getElementById("langMenu");
+
+  menu.classList.toggle("show-lang");
+
+}
+
+/* tap outside closes menu */
+
+document.addEventListener('click', function(){
+
+  const menu = document.getElementById("langMenu");
+
+  menu.classList.remove("show-lang");
+
+});
+
 </script>
 </body>
 
