@@ -85,7 +85,8 @@ document.addEventListener('click', function(e){
       <div class="header-text">
         <p>Hi, I’m Hannah.</p>
         <h1>
-          I turn complex ideas <br>into things people <br>actually understand.
+          I turn complex <br><span class="rotating-word">ideas</span>
+          <br>into things people <br>actually understand.
         </h1>
       </div>
     </div>
@@ -367,6 +368,34 @@ document.addEventListener('click', function(e){
     }
     function closemenu(){
       sidemnu.style.right = "-200px"
+    }
+  </script>
+
+  <script>
+    const rotatingWords = [
+      "ideas",
+      "research",
+      "data",
+      "systems",
+      "algorithms",
+      "designs",
+      "concepts",
+      "stories"
+    ];
+
+    const rotatingWord = document.querySelector(".rotating-word");
+    let rotatingWordIndex = 0;
+
+    if(rotatingWord){
+      setInterval(() => {
+        rotatingWordIndex = (rotatingWordIndex + 1) % rotatingWords.length;
+        rotatingWord.classList.add("is-changing");
+
+        setTimeout(() => {
+          rotatingWord.textContent = rotatingWords[rotatingWordIndex];
+          rotatingWord.classList.remove("is-changing");
+        }, 220);
+      }, 2200);
     }
   </script>
 

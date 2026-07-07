@@ -63,7 +63,8 @@
         <p>Hej, jeg hedder Hannah.</p>
 
         <h1>
-          Jeg gør komplekse idéer <br>
+          Jeg gør komplekse <br><span class="rotating-word">idéer</span>
+          <br>
           til noget mennesker <br>
           faktisk forstår.
         </h1>
@@ -530,6 +531,36 @@
     menu.classList.remove("show-lang");
 
     });
+
+  </script>
+
+  <script>
+
+    const rotatingWords = [
+      "idéer",
+      "studier",
+      "data",
+      "systemer",
+      "algoritmer",
+      "designs",
+      "koncepter",
+      "fortællinger"
+    ];
+
+    const rotatingWord = document.querySelector(".rotating-word");
+    let rotatingWordIndex = 0;
+
+    if(rotatingWord){
+      setInterval(() => {
+        rotatingWordIndex = (rotatingWordIndex + 1) % rotatingWords.length;
+        rotatingWord.classList.add("is-changing");
+
+        setTimeout(() => {
+          rotatingWord.textContent = rotatingWords[rotatingWordIndex];
+          rotatingWord.classList.remove("is-changing");
+        }, 220);
+      }, 2200);
+    }
 
   </script>
    

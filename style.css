@@ -295,6 +295,24 @@ HEADER
   margin-bottom:30px;
 }
 
+.rotating-word{
+  display:inline-block;
+
+  min-width:10ch;
+
+  color:#c70039;
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.rotating-word.is-changing{
+  opacity:0;
+
+  transform:translateY(0.18em);
+}
+
 /* =========================
 SECTIONS
 ========================= */
