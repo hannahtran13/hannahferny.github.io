@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediaScape - Computational Media Framing Analysis</title>
+  <meta name="description" content="Explore how news organizations frame the same issue through computational discourse analysis, NLP, and interactive data visualization.">
+  <meta property="og:title" content="MediaScape - Computational Media Framing Analysis">
+  <meta property="og:description" content="A static prototype for comparing how news organizations frame the same topic.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+</head>
+<body class="mediascape-page">
+  <nav class="ms-nav" aria-label="MediaScape navigation">
+    <a class="ms-wordmark" href="mediascape.html">MediaScape</a>
+    <div class="ms-nav-links">
+      <a href="#platform">Platform</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#topics">Topics</a>
+      <a href="mediascape-case-study.html">About</a>
+      <a class="ms-nav-button" href="#demo">Try Demo</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="ms-hero" id="topics">
+      <div class="ms-arc ms-arc-one" aria-hidden="true"></div>
+      <div class="ms-arc ms-arc-two" aria-hidden="true"></div>
+      <div class="ms-shell ms-hero-grid">
+        <div class="ms-hero-copy">
+          <p class="ms-eyebrow">Computational media analysis</p>
+          <h1>Understand the narratives behind the headlines.</h1>
+          <p class="ms-hero-lede">
+            MediaScape compares how different news organizations frame the same issue using discourse analysis, NLP, and data visualization.
+          </p>
+
+          <form class="ms-search" id="topicSearch">
+            <label for="topicInput">Search a topic</label>
+            <div>
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <input id="topicInput" name="topic" type="search" placeholder="Search a topic: climate change, EVs, immigration, AI...">
+              <button type="submit">Search</button>
+            </div>
+          </form>
+
+          <div class="ms-topic-chips" aria-label="Popular topics" id="topicChips"></div>
+        </div>
+
+        <section class="ms-dashboard-card" id="demo" aria-labelledby="dashboardTitle">
+          <div class="ms-card-head">
+            <div>
+              <p class="ms-eyebrow">Framing overview</p>
+              <h2 id="dashboardTitle">Climate Change</h2>
+              <p id="dashboardDescription">Prototype comparison across outlets.</p>
+            </div>
+            <button class="ms-export" type="button" disabled>Export demo</button>
+          </div>
+          <div class="ms-range-tabs" aria-label="Prototype date range">
+            <button type="button">7D</button>
+            <button type="button" class="is-active">30D</button>
+            <button type="button">90D</button>
+            <button type="button">1Y</button>
+          </div>
+          <div id="heroLegend" class="ms-legend"></div>
+          <div id="dashboardMetrics" class="ms-metric-list"></div>
+          <div class="ms-chart-card">
+            <div>
+              <h3>Volume Over Time</h3>
+              <p>Articles published per day, demonstration data</p>
+            </div>
+            <svg id="volumeChart" viewBox="0 0 620 180" role="img" aria-label="Line chart showing demonstration article volume over time"></svg>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="ms-stats ms-shell" aria-labelledby="statsTitle">
+      <div class="ms-section-heading">
+        <p class="ms-eyebrow">Demonstration dataset</p>
+        <h2 id="statsTitle">A static prototype with transparent mock data.</h2>
+      </div>
+      <div class="ms-stats-grid" id="statsGrid"></div>
+    </section>
+
+    <section class="ms-process ms-shell" aria-labelledby="processTitle">
+      <div class="ms-section-heading is-centered">
+        <h2 id="processTitle">How MediaScape works</h2>
+        <p>From raw articles to reliable insights in four steps.</p>
+      </div>
+      <div class="ms-process-grid">
+        <article><i class="fa-regular fa-file-lines"></i><h3>Collect articles</h3><p>Gather reporting from multiple news organizations.</p></article>
+        <article><i class="fa-solid fa-brain"></i><h3>Analyze framing</h3><p>Detect linguistic frames, rhetorical choices, tone, and recurring themes.</p></article>
+        <article><i class="fa-solid fa-scale-balanced"></i><h3>Compare narratives</h3><p>Examine how outlets emphasize different dimensions of the same issue.</p></article>
+        <article><i class="fa-solid fa-chart-simple"></i><h3>Visualize patterns</h3><p>Reveal trends, differences, and clusters through interactive visualizations.</p></article>
+      </div>
+    </section>
+
+    <section class="ms-split ms-shell" id="platform" aria-labelledby="comparisonTitle">
+      <div class="ms-panel-copy">
+        <p class="ms-eyebrow">Outlet comparison</p>
+        <h2 id="comparisonTitle">See how outlets frame the same story.</h2>
+        <p>Compare key framing dimensions side by side across leading news organizations.</p>
+        <ul class="ms-checks">
+          <li>Quantitative framing scores</li>
+          <li>Normalized for comparison</li>
+          <li>Designed for transparent interpretation</li>
+        </ul>
+      </div>
+      <div class="ms-wide-card">
+        <div class="ms-card-head">
+          <div><h3 id="comparisonTopic">Climate Change</h3><p>Comparison across outlets</p></div>
+          <span class="prototype-pill">Prototype data</span>
+        </div>
+        <div id="comparisonTable" class="ms-comparison-table" role="table" aria-label="Outlet comparison scores"></div>
+      </div>
+    </section>
+
+    <section class="ms-language ms-shell" aria-labelledby="languageTitle">
+      <div class="ms-panel-copy">
+        <p class="ms-eyebrow">Language and framing analysis</p>
+        <h2 id="languageTitle">What language shapes the narrative?</h2>
+        <p>Explore the words and rhetorical frames that outlets use most frequently when discussing the same topic.</p>
+        <div id="keywordGrid" class="ms-keyword-grid"></div>
+      </div>
+      <div class="ms-wide-card">
+        <h3>Framing Types</h3>
+        <p>Share of articles using each dominant frame</p>
+        <div id="framingTypes" class="ms-framing-types"></div>
+        <p class="ms-note">Frames are estimated in this prototype using a research-informed classification framework. Production results will require validation against human-coded samples.</p>
+      </div>
+    </section>
+
+    <section class="ms-split ms-shell" aria-labelledby="mapTitle">
+      <div class="ms-panel-copy">
+        <p class="ms-eyebrow">Narrative map</p>
+        <h2 id="mapTitle">Explore the landscape of narratives.</h2>
+        <p>Articles with similar framing and language appear closer together, helping reveal clusters and differences across outlets.</p>
+        <ul class="ms-checks">
+          <li>Each point represents an article</li>
+          <li>Closer points suggest similar narratives</li>
+          <li>Clusters show dominant storylines</li>
+        </ul>
+      </div>
+      <div class="ms-wide-card ms-map-card">
+        <div class="ms-card-head">
+          <div><h3>Narrative Map (Semantic Embeddings)</h3><p>30-day window, demonstration points</p></div>
+          <span class="prototype-pill">Demo map</span>
+        </div>
+        <div id="mapLegend" class="ms-legend"></div>
+        <svg id="narrativeMap" viewBox="0 0 680 390" role="img" aria-label="Prototype scatterplot of article narrative clusters grouped by outlet"></svg>
+        <aside class="ms-insight"><strong>Cluster insight</strong><span>Outlets may emphasize different risks, causes, and solutions even when discussing the same underlying issue.</span></aside>
+      </div>
+    </section>
+
+    <section class="ms-methodology ms-shell" id="methodology" aria-labelledby="methodTitle">
+      <div>
+        <p class="ms-eyebrow">Our methodology</p>
+        <h2 id="methodTitle">Grounded in media studies, linguistics, and climate communication research.</h2>
+      </div>
+      <div class="ms-method-grid">
+        <article><i class="fa-solid fa-language"></i><h3>NLP</h3><p>Identifies language patterns, entities, and lexical choices.</p></article>
+        <article><i class="fa-solid fa-diagram-project"></i><h3>Framing Analysis</h3><p>Applies a theory-driven classification framework.</p></article>
+        <article><i class="fa-regular fa-face-meh"></i><h3>Sentiment</h3><p>Estimates tone and emotional intensity.</p></article>
+        <article><i class="fa-solid fa-share-nodes"></i><h3>Embeddings</h3><p>Maps semantic similarity across articles.</p></article>
+        <article><i class="fa-solid fa-atom"></i><h3>Topic Modeling</h3><p>Surfaces recurring themes at scale.</p></article>
+      </div>
+      <p class="ms-transparency">MediaScape is designed as an interpretive research tool, not an automatic authority on political bias or factual truth. Model outputs should be documented, validated, and presented with uncertainty.</p>
+    </section>
+
+    <section class="ms-final-cta ms-shell" aria-labelledby="ctaTitle">
+      <h2 id="ctaTitle">Explore the media landscape more clearly.</h2>
+      <p>Start with the climate-change demonstration and see how narratives shape public understanding.</p>
+      <div>
+        <a href="#demo">Launch Demo</a>
+        <a href="#methodology">View Methodology</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ms-footer">
+    <div class="ms-shell">
+      <div>
+        <h2>MediaScape</h2>
+        <p>AI-powered media-analysis prototype for a more informed world.</p>
+      </div>
+      <div>
+        <h3>Platform</h3>
+        <a href="#platform">Features</a>
+        <a href="#demo">Demo</a>
+        <a href="#topics">Topics</a>
+      </div>
+      <div>
+        <h3>Resources</h3>
+        <a href="#methodology">Methodology</a>
+        <a href="mediascape-case-study.html">Case Study</a>
+      </div>
+      <div>
+        <h3>Portfolio</h3>
+        <a href="index.html">Hannah Tran</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <p class="ms-copyright">© <span id="currentYear"></span> MediaScape prototype. Built by Hannah Tran.</p>
+    </div>
+  </footer>
+
+  <script>
+    const sources = [
+      { id: "fox", name: "Fox News", shortName: "Fox", color: "#293681", shape: "circle" },
+      { id: "msnbc", name: "MSNBC", shortName: "MSNBC", color: "#4274D9", shape: "square" },
+      { id: "reuters", name: "Reuters", shortName: "Reuters", color: "#73B8D1", shape: "diamond" },
+      { id: "cnn", name: "CNN", shortName: "CNN", color: "#8AC6C8", shape: "triangle" }
+    ];
+
+    const topics = {
+      climate: {
+        label: "Climate Change",
+        description: "Compare how outlets frame climate policy, impacts, responsibility, and solutions.",
+        articleCount: 1842,
+        metrics: [
+          ["urgency", "Urgency", { fox: 32, msnbc: 68, reuters: 74, cnn: 70 }],
+          ["economic", "Economic Framing", { fox: 71, msnbc: 42, reuters: 55, cnn: 48 }],
+          ["scientific", "Scientific Framing", { fox: 28, msnbc: 76, reuters: 82, cnn: 77 }],
+          ["emotional", "Emotional Intensity", { fox: 45, msnbc: 61, reuters: 58, cnn: 66 }],
+          ["solutions", "Solutions Focus", { fox: 29, msnbc: 64, reuters: 69, cnn: 62 }],
+          ["attribution", "Human Attribution", { fox: 76, msnbc: 53, reuters: 61, cnn: 59 }],
+          ["conflict", "Conflict", { fox: 63, msnbc: 46, reuters: 38, cnn: 43 }],
+          ["future", "Future Orientation", { fox: 36, msnbc: 65, reuters: 70, cnn: 67 }]
+        ],
+        keywords: {
+          fox: ["hoax", "agenda", "costs", "alarmism", "regulation", "freedom", "energy", "jobs"],
+          msnbc: ["crisis", "science", "communities", "emissions", "justice", "impact", "action", "warming"],
+          reuters: ["emissions", "policy", "agreement", "targets", "report", "transition", "energy", "government"],
+          cnn: ["extreme weather", "threat", "communities", "leaders", "solutions", "future", "impact", "climate"]
+        },
+        frames: [
+          ["Conflict", { fox: 43, msnbc: 36, reuters: 28, cnn: 33 }],
+          ["Thematic", { fox: 26, msnbc: 32, reuters: 47, cnn: 37 }],
+          ["Episodic", { fox: 18, msnbc: 20, reuters: 19, cnn: 18 }],
+          ["Attribution", { fox: 52, msnbc: 46, reuters: 53, cnn: 49 }]
+        ]
+      },
+      immigration: {
+        label: "Immigration",
+        description: "Simplified prototype dataset comparing policy, security, humanitarian, and economic frames.",
+        articleCount: 936,
+        metrics: [
+          ["urgency", "Urgency", { fox: 74, msnbc: 62, reuters: 49, cnn: 57 }],
+          ["economic", "Economic Framing", { fox: 61, msnbc: 44, reuters: 58, cnn: 46 }],
+          ["humanitarian", "Humanitarian Framing", { fox: 34, msnbc: 72, reuters: 64, cnn: 69 }],
+          ["conflict", "Conflict", { fox: 78, msnbc: 59, reuters: 42, cnn: 53 }]
+        ],
+        keywords: {
+          fox: ["border", "security", "costs", "illegal", "policy", "enforcement"],
+          msnbc: ["families", "rights", "asylum", "community", "reform", "protection"],
+          reuters: ["policy", "court", "migration", "officials", "applications", "border"],
+          cnn: ["border", "families", "administration", "shelter", "lawmakers", "reform"]
+        },
+        frames: [
+          ["Conflict", { fox: 56, msnbc: 41, reuters: 32, cnn: 39 }],
+          ["Thematic", { fox: 29, msnbc: 38, reuters: 46, cnn: 40 }],
+          ["Episodic", { fox: 31, msnbc: 35, reuters: 24, cnn: 34 }],
+          ["Attribution", { fox: 64, msnbc: 52, reuters: 48, cnn: 50 }]
+        ]
+      },
+      evs: {
+        label: "Electric Vehicles",
+        description: "Simplified prototype dataset comparing cost, infrastructure, climate, and market frames.",
+        articleCount: 712,
+        metrics: [
+          ["economic", "Economic Framing", { fox: 68, msnbc: 46, reuters: 62, cnn: 54 }],
+          ["scientific", "Climate Framing", { fox: 31, msnbc: 70, reuters: 66, cnn: 64 }],
+          ["infrastructure", "Infrastructure Focus", { fox: 57, msnbc: 49, reuters: 71, cnn: 59 }],
+          ["future", "Future Orientation", { fox: 42, msnbc: 67, reuters: 64, cnn: 69 }]
+        ],
+        keywords: {
+          fox: ["mandate", "costs", "grid", "choice", "jobs", "batteries"],
+          msnbc: ["transition", "climate", "clean", "investment", "equity", "future"],
+          reuters: ["sales", "battery", "automakers", "demand", "charging", "market"],
+          cnn: ["drivers", "charging", "tax credits", "climate", "prices", "adoption"]
+        },
+        frames: [
+          ["Conflict", { fox: 48, msnbc: 31, reuters: 24, cnn: 30 }],
+          ["Thematic", { fox: 33, msnbc: 44, reuters: 51, cnn: 42 }],
+          ["Episodic", { fox: 19, msnbc: 22, reuters: 18, cnn: 24 }],
+          ["Attribution", { fox: 47, msnbc: 39, reuters: 45, cnn: 41 }]
+        ]
+      }
+    };
+
+    const comingSoon = [
+      { id: "inflation", label: "Inflation" },
+      { id: "ai", label: "Artificial Intelligence" }
+    ];
+
+    let activeTopic = "climate";
+
+    function sourceById(id) {
+      return sources.find(source => source.id === id);
+    }
+
+    function renderLegend(targetId) {
+      document.getElementById(targetId).innerHTML = sources.map(source =>
+        `<span><i class="shape-${source.shape}" style="--source-color:${source.color}"></i>${source.name}</span>`
+      ).join("");
+    }
+
+    function renderChips() {
+      const chips = Object.entries(topics).map(([id, topic]) =>
+        `<button type="button" class="${id === activeTopic ? "is-active" : ""}" aria-pressed="${id === activeTopic}" data-topic="${id}">${topic.label}</button>`
+      ).join("");
+      const disabled = comingSoon.map(topic =>
+        `<button type="button" class="is-disabled" data-disabled-topic="${topic.id}" aria-disabled="true">${topic.label}</button>`
+      ).join("");
+      document.getElementById("topicChips").innerHTML = chips + disabled;
+    }
+
+    function metricRow(metric, compact) {
+      const scores = sources.map(source => {
+        const score = metric[2][source.id] || 0;
+        return `<div class="ms-score-cell"><span>${score}</span><i style="--bar:${score}%; --source-color:${source.color}"></i></div>`;
+      }).join("");
+      return `<div class="${compact ? "ms-compact-row" : "ms-table-row"}"><strong>${metric[1]}</strong>${scores}</div>`;
+    }
+
+    function renderMetrics(topic) {
+      document.getElementById("dashboardMetrics").innerHTML = topic.metrics.slice(0, 4).map(metric => metricRow(metric, true)).join("");
+      const header = `<div class="ms-table-row ms-table-header"><strong>Framing Dimension</strong>${sources.map(source => `<strong>${source.name}</strong>`).join("")}</div>`;
+      document.getElementById("comparisonTable").innerHTML = header + topic.metrics.map(metric => metricRow(metric, false)).join("");
+    }
+
+    function renderVolumeChart() {
+      const chart = document.getElementById("volumeChart");
+      const lines = [
+        { color: "#293681", points: "10,140 80,128 150,92 220,112 290,56 360,82 430,108 500,90 610,122" },
+        { color: "#4274D9", points: "10,116 80,98 150,112 220,72 290,86 360,48 430,66 500,102 610,74" },
+        { color: "#73B8D1", points: "10,150 80,136 150,126 220,118 290,98 360,106 430,78 500,86 610,60" },
+        { color: "#8AC6C8", points: "10,156 80,148 150,138 220,144 290,122 360,128 430,112 500,118 610,96" }
+      ];
+      chart.innerHTML = `<g stroke="#E5E8F1">${[40,80,120,160].map(y => `<line x1="10" y1="${y}" x2="610" y2="${y}"/>`).join("")}</g>` +
+        lines.map(line => `<polyline points="${line.points}" fill="none" stroke="${line.color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`).join("");
+    }
+
+    function renderStats(topic) {
+      const stats = [
+        [`${topic.articleCount.toLocaleString()}`, "articles analyzed", "Across a demonstration corpus for the selected topic.", "fa-regular fa-newspaper"],
+        ["12", "framing dimensions", "From urgency and attribution to scientific and economic framing.", "fa-solid fa-sliders"],
+        ["4", "major outlets", "A comparative view across the media spectrum.", "fa-solid fa-people-group"],
+        ["Planned", "daily updates", "Future automated workflow. This page currently uses static data.", "fa-solid fa-rotate"]
+      ];
+      document.getElementById("statsGrid").innerHTML = stats.map(stat =>
+        `<article><i class="${stat[3]}"></i><div><strong>${stat[0]}</strong><h3>${stat[1]}</h3><p>${stat[2]}</p></div></article>`
+      ).join("");
+    }
+
+    function renderKeywords(topic) {
+      document.getElementById("keywordGrid").innerHTML = sources.map(source => {
+        const words = topic.keywords[source.id] || [];
+        return `<article><h3>${source.name}</h3><p>${words.map(word => `<span>${word}</span>`).join("")}</p></article>`;
+      }).join("");
+    }
+
+    function renderFramingTypes(topic) {
+      document.getElementById("framingTypes").innerHTML = topic.frames.map(frame => {
+        const bars = sources.map(source => {
+          const value = frame[1][source.id] || 0;
+          return `<div class="ms-frame-bar"><span>${source.shortName}</span><i style="--bar:${value}%; --source-color:${source.color}"></i><b>${value}%</b></div>`;
+        }).join("");
+        return `<article><h4>${frame[0]}</h4>${bars}</article>`;
+      }).join("");
+    }
+
+    function mapPoint(source, index) {
+      const centers = { fox: [190, 105], msnbc: [235, 270], reuters: [480, 120], cnn: [465, 280] };
+      const [cx, cy] = centers[source.id];
+      const x = cx + Math.sin(index * 2.1) * 62 + Math.cos(index * 0.7) * 18;
+      const y = cy + Math.cos(index * 1.7) * 48 + Math.sin(index * 0.9) * 16;
+      if (source.shape === "square") return `<rect x="${x}" y="${y}" width="7" height="7" fill="${source.color}" opacity=".9"/>`;
+      if (source.shape === "diamond") return `<rect x="${x}" y="${y}" width="7" height="7" transform="rotate(45 ${x + 3.5} ${y + 3.5})" fill="${source.color}" opacity=".9"/>`;
+      if (source.shape === "triangle") return `<path d="M${x + 4} ${y} L${x + 8} ${y + 8} L${x} ${y + 8} Z" fill="${source.color}" opacity=".9"/>`;
+      return `<circle cx="${x}" cy="${y}" r="4" fill="${source.color}" opacity=".9"/>`;
+    }
+
+    function renderMap() {
+      const points = sources.flatMap(source => Array.from({ length: 58 }, (_, index) => mapPoint(source, index))).join("");
+      document.getElementById("narrativeMap").innerHTML = `<g stroke="#E5E8F1"><line x1="340" y1="32" x2="340" y2="350"/><line x1="45" y1="195" x2="625" y2="195"/></g>${points}`;
+    }
+
+    function updateTopic(id) {
+      if (!topics[id]) return;
+      activeTopic = id;
+      const topic = topics[id];
+      document.getElementById("dashboardTitle").textContent = topic.label;
+      document.getElementById("dashboardDescription").textContent = topic.description;
+      document.getElementById("comparisonTopic").textContent = topic.label;
+      renderChips();
+      renderMetrics(topic);
+      renderStats(topic);
+      renderKeywords(topic);
+      renderFramingTypes(topic);
+    }
+
+    document.getElementById("topicChips").addEventListener("click", event => {
+      const button = event.target.closest("button[data-topic]");
+      if (button) updateTopic(button.dataset.topic);
+    });
+
+    document.getElementById("topicSearch").addEventListener("submit", event => {
+      event.preventDefault();
+      const query = document.getElementById("topicInput").value.trim().toLowerCase();
+      const match = Object.entries(topics).find(([id, topic]) => topic.label.toLowerCase().includes(query) || id.includes(query));
+      if (match) updateTopic(match[0]);
+      else alert("That topic is not in the static prototype yet. Try Climate Change, Immigration, or Electric Vehicles.");
+    });
+
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+    renderLegend("heroLegend");
+    renderLegend("mapLegend");
+    renderVolumeChart();
+    renderMap();
+    updateTopic(activeTopic);
+  </script>
+</body>
+</html>

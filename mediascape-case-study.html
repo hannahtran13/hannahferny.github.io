@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediaScape Case Study - Hannah Tran</title>
+  <meta name="description" content="A design and engineering case study for MediaScape, a computational discourse-analysis platform prototype.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+</head>
+<body class="mediascape-case-page">
+  <nav class="ms-nav" aria-label="MediaScape case study navigation">
+    <a class="ms-wordmark" href="index.html">Hannah Tran</a>
+    <div class="ms-nav-links">
+      <a href="index.html#portfolio">Portfolio</a>
+      <a href="mediascape.html">Launch Demo</a>
+      <a class="ms-nav-button" href="#next">Next Steps</a>
+    </div>
+  </nav>
+
+  <main class="ms-case">
+    <header class="ms-case-hero ms-shell">
+      <p class="ms-eyebrow">Flagship portfolio project</p>
+      <h1>MediaScape case study</h1>
+      <p>MediaScape is a computational discourse-analysis platform that explores how media organizations frame the same issue differently.</p>
+      <div class="ms-case-actions">
+        <a href="mediascape.html">Launch Demo</a>
+        <a href="index.html#portfolio">Back to Portfolio</a>
+      </div>
+    </header>
+
+    <section class="ms-case-grid ms-shell" aria-label="Project overview">
+      <article><span>Role</span><strong>Research, product design, frontend prototype</strong></article>
+      <article><span>Status</span><strong>Frontend prototype with mock data</strong></article>
+      <article><span>Focus</span><strong>NLP, discourse analysis, data visualization</strong></article>
+      <article><span>Topic demo</span><strong>Climate-change media coverage</strong></article>
+    </section>
+
+    <section class="ms-case-section ms-shell">
+      <p class="ms-eyebrow">Research origin</p>
+      <h2>From qualitative linguistics research to a product concept.</h2>
+      <p>
+        The project originated from a linguistics research paper comparing climate-change discourse on Fox News and MSNBC. The paper manually examined conflict framing, thematic framing, episodic framing, attribution framing, lexical choices, rhetorical questions, declarative speech acts, indexicality, audience positioning, and scientific and economic framing.
+      </p>
+      <p>
+        That manual work produced rich interpretive insights, but it also exposed a scale problem: discourse analysis is slow to apply consistently across large article collections.
+      </p>
+    </section>
+
+    <section class="ms-case-section ms-shell">
+      <p class="ms-eyebrow">Problem and opportunity</p>
+      <div class="ms-two-column">
+        <article>
+          <h2>Problem</h2>
+          <p>Manual discourse analysis can produce rich insights but is difficult to apply consistently across large collections of media content.</p>
+        </article>
+        <article>
+          <h2>Product opportunity</h2>
+          <p>MediaScape translates a qualitative research framework into an interactive computational workflow that can support larger-scale comparison while preserving transparency and room for human interpretation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ms-case-section ms-shell">
+      <p class="ms-eyebrow">Product strategy</p>
+      <h2>Make comparison legible without pretending the model is neutral truth.</h2>
+      <div class="ms-case-list">
+        <article><h3>Information architecture</h3><p>The product separates topic selection, framing scores, lexical evidence, semantic clustering, and methodology notes so users can inspect each layer of analysis.</p></article>
+        <article><h3>Design system</h3><p>The interface uses a calm navy-and-blue palette, thin borders, restrained shadows, editorial headings, and dashboard cards inspired by research tools rather than generic SaaS pages.</p></article>
+        <article><h3>Prototype features</h3><p>The current demo includes topic chips, a static dashboard preview, outlet comparison scores, keyword panels, framing-type bars, a generated SVG narrative map, and methodology disclosures.</p></article>
+      </div>
+    </section>
+
+    <section class="ms-case-section ms-shell">
+      <p class="ms-eyebrow">Technical architecture</p>
+      <h2>Current prototype and planned system.</h2>
+      <div class="ms-architecture">
+        <article>
+          <h3>Implemented now</h3>
+          <ul>
+            <li>Existing static portfolio framework</li>
+            <li>HTML, CSS, and JavaScript frontend prototype</li>
+            <li>Reusable section patterns and visualization primitives</li>
+            <li>Local mock data for demonstration topics</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Planned backend</h3>
+          <ul>
+            <li>Python analysis services</li>
+            <li>FastAPI application layer</li>
+            <li>PostgreSQL storage</li>
+            <li>pgvector for semantic search and clustering</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Planned analysis pipeline</h3>
+          <ul>
+            <li>Article collection and source documentation</li>
+            <li>Text cleaning and linguistic feature extraction</li>
+            <li>Frame classification and sentiment analysis</li>
+            <li>Embedding generation, topic modeling, and visualization</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="ms-case-section ms-shell">
+      <p class="ms-eyebrow">Ethical limitations</p>
+      <h2>Framing analysis requires humility.</h2>
+      <div class="ms-limitations">
+        <p>Framing classification is interpretive, and political framing cannot be reduced to a single objective score.</p>
+        <p>Sentiment models may misread sarcasm, humor, coded language, or contextual shifts.</p>
+        <p>Media-source comparisons can reinforce simplistic left-versus-right assumptions if the evidence and sampling methods are hidden.</p>
+        <p>Search rankings, date ranges, article-selection criteria, and source availability all affect results.</p>
+        <p>LLM-generated or model-generated analysis requires human validation and transparent confidence reporting.</p>
+        <p>A framing score is not a factuality score, and neutrality should not be treated as the absence of framing.</p>
+        <p>Outlets should not be assigned permanent ideological qualities based on a small dataset.</p>
+        <p>Results should show evidence, uncertainty, source context, and methodology wherever possible.</p>
+      </div>
+    </section>
+
+    <section class="ms-case-section ms-shell" id="next">
+      <p class="ms-eyebrow">Current status and next steps</p>
+      <h2>This version is a frontend prototype.</h2>
+      <p>
+        The current page does not analyze thousands of real articles, does not update daily, does not include operational AI classification, and has not been scientifically validated. It is a polished product and visualization prototype designed to communicate the research direction.
+      </p>
+      <div class="ms-case-list">
+        <article><h3>Next engineering milestone</h3><p>Replace mock data with a small documented corpus, build a reproducible annotation schema, and validate the first framing classifier against human-coded samples.</p></article>
+        <article><h3>Next design milestone</h3><p>Design evidence drill-downs so every score can be inspected through representative passages, source metadata, and confidence notes.</p></article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
