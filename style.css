@@ -2,6 +2,14 @@
 GLOBAL
 ========================= */
 
+@font-face{
+  font-family:"Realizm";
+  src:url("fonts/RealizmDemoRegular-ARv2m.ttf") format("truetype");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
 *{
   margin:0;
   padding:0;
@@ -1151,6 +1159,139 @@ MEDIASCAPE PORTFOLIO FEATURE
   box-shadow:0 24px 70px rgba(23,32,79,0.12);
 }
 
+/* =========================
+HJERNELANDET PORTFOLIO FEATURE
+========================= */
+
+.hjernelandet-section{
+  padding:20px 0 100px;
+}
+
+.hjernelandet-feature{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  gap:42px;
+  align-items:center;
+  padding:44px;
+  border-radius:30px;
+  background:
+    linear-gradient(135deg, rgba(244,234,216,0.94), rgba(198,220,23,0.36));
+  border:1px solid rgba(18,17,23,0.18);
+  box-shadow:0 24px 80px rgba(20,30,70,0.1);
+  color:#121117;
+}
+
+.hjernelandet-map-preview{
+  position:relative;
+  min-height:330px;
+  overflow:hidden;
+  border-radius:18px;
+  border:1px solid #121117;
+  background:#c6dc17;
+}
+
+.hjernelandet-map-preview img{
+  width:100%;
+  height:100%;
+  min-height:330px;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.8s ease;
+}
+
+.hjernelandet-feature:hover .hjernelandet-map-preview img{
+  transform:scale(1.03);
+}
+
+.hjernelandet-map-badge{
+  position:absolute;
+  left:22px;
+  bottom:22px;
+  padding:10px 12px;
+  background:#f4ead8;
+  border:1px solid #121117;
+  color:#121117;
+  font-family:"Realizm", Helvetica, Arial, sans-serif;
+  font-size:0.72rem;
+  font-weight:400;
+  line-height:1;
+  letter-spacing:0.14em;
+}
+
+.hjernelandet-kicker{
+  color:#f34e38;
+  font-size:0.78rem;
+  font-weight:900;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+.hjernelandet-feature h2{
+  color:#121117;
+  font-family:"Realizm", Helvetica, Arial, sans-serif;
+  font-size:clamp(3rem, 7vw, 6rem);
+  font-weight:400;
+  line-height:0.9;
+  margin-bottom:18px;
+}
+
+.hjernelandet-feature p{
+  max-width:650px;
+  color:#26232d;
+  font-size:1.02rem;
+}
+
+.hjernelandet-feature-lede{
+  color:#121117 !important;
+  font-size:1.25rem !important;
+  line-height:1.45;
+  margin-bottom:14px;
+}
+
+.hjernelandet-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:24px 0 28px;
+}
+
+.hjernelandet-tags span{
+  padding:9px 12px;
+  border-radius:999px;
+  background:#fff5e0;
+  border:1px solid rgba(18,17,23,0.18);
+  color:#121117;
+  font-size:0.78rem;
+  font-weight:900;
+}
+
+.hjernelandet-feature-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.hjernelandet-feature-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:900;
+  color:#fff;
+  background:#f34e38;
+  box-shadow:0 12px 0 #121117;
+  transition:0.25s ease;
+}
+
+.hjernelandet-feature-actions a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 0 #121117;
+}
+
 .mini-dashboard-header{
   display:flex;
   align-items:flex-start;
@@ -2109,6 +2250,7 @@ MEDIASCAPE CASE STUDY
 
 @media only screen and (max-width:1024px){
   .mediascape-feature,
+  .hjernelandet-feature,
   .ms-hero-grid,
   .ms-split,
   .ms-language,
@@ -2136,9 +2278,15 @@ MEDIASCAPE CASE STUDY
 }
 
 @media only screen and (max-width:768px){
-  .mediascape-feature{
+  .mediascape-feature,
+  .hjernelandet-feature{
     padding:28px;
     border-radius:24px;
+  }
+
+  .hjernelandet-map-preview,
+  .hjernelandet-map-preview img{
+    min-height:260px;
   }
 
   .mini-metric-row{

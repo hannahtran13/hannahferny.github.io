@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Environmentalism Gettysburg Doesn't Talk About | Hjernelandet</title>
+  <meta name="description" content="A Hjernelandet dispatch on everyday environmentalism, solar, recycling, and climate communication in Gettysburg, Pennsylvania.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face{
+      font-family:"Realizm";
+      src:url("../fonts/RealizmDemoRegular-ARv2m.ttf") format("truetype");
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+
+    :root{
+      --paper:#f4ead8;
+      --ink:#121117;
+      --coral:#f34e38;
+      --blue:#173fbe;
+      --acid:#c6dc17;
+      --soft:#e5d7bd;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:"DM Sans", Arial, sans-serif;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.32;
+      z-index:10;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page-pad{
+      width:calc(100% - 80px);
+      max-width:1500px;
+      margin-inline:auto;
+    }
+
+    .site-header{
+      height:86px;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      border-bottom:1px solid var(--ink);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      font-family:"Realizm", "DM Sans", Arial, sans-serif;
+      font-size:30px;
+      letter-spacing:-.02em;
+    }
+
+    .brand span{
+      color:var(--coral);
+      font-family:"DM Sans", Arial, sans-serif;
+      font-size:38px;
+      line-height:1;
+    }
+
+    .site-header nav{
+      display:flex;
+      gap:36px;
+      font-size:16px;
+      white-space:nowrap;
+    }
+
+    .site-header nav a{
+      position:relative;
+    }
+
+    .site-header nav a::after{
+      content:"";
+      position:absolute;
+      height:2px;
+      background:var(--coral);
+      left:0;
+      right:100%;
+      bottom:-8px;
+      transition:.25s ease;
+    }
+
+    .site-header nav a:hover::after{
+      right:0;
+    }
+
+    .issue{
+      justify-self:end;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      font-size:14px;
+      letter-spacing:.04em;
+    }
+
+    .issue i{
+      height:30px;
+      width:1px;
+      background:var(--ink);
+    }
+
+    .dispatch-hero{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 220px;
+      gap:48px;
+      min-height:520px;
+      padding:64px 0 42px;
+      border-bottom:1px solid var(--ink);
+    }
+
+    .kicker{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      max-width:880px;
+      margin-bottom:46px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:13px;
+      font-weight:700;
+      color:var(--coral);
+    }
+
+    .coords{
+      color:var(--ink);
+      text-align:right;
+      line-height:1.45;
+    }
+
+    h1{
+      max-width:920px;
+      margin:0;
+      font:700 clamp(48px,7.2vw,106px)/.9 "DM Sans", Arial, sans-serif;
+      letter-spacing:0;
+      transform:scaleX(.94);
+      transform-origin:left center;
+      text-transform:uppercase;
+    }
+
+    .dek{
+      max-width:680px;
+      margin:31px 0 38px;
+      font-size:22px;
+      line-height:1.45;
+    }
+
+    .byline{
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+      text-transform:uppercase;
+      letter-spacing:.11em;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .hero-index{
+      align-self:stretch;
+      border-left:1px solid var(--ink);
+      display:grid;
+      grid-template-rows:1fr auto;
+      padding-left:28px;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .hero-index b{
+      display:block;
+      margin-bottom:8px;
+      color:var(--coral);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:11px;
+    }
+
+    .hero-index strong{
+      display:block;
+      font-size:44px;
+      line-height:.95;
+      font-weight:500;
+    }
+
+    .landscape{
+      position:relative;
+      min-height:360px;
+      border-bottom:1px solid var(--ink);
+      overflow:hidden;
+      background:var(--acid);
+    }
+
+    .landscape img{
+      width:100%;
+      height:100%;
+      min-height:360px;
+      display:block;
+      object-fit:cover;
+    }
+
+    .landscape-label{
+      position:absolute;
+      left:50%;
+      bottom:24px;
+      transform:translateX(-50%);
+      background:var(--paper);
+      border:1px solid var(--ink);
+      padding:11px 16px;
+      text-align:center;
+      font-size:13px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .article-shell{
+      display:grid;
+      grid-template-columns:300px minmax(0,760px) 1fr;
+      gap:56px;
+      padding-top:70px;
+      padding-bottom:80px;
+      border-bottom:1px solid var(--ink);
+    }
+
+    .field-notes{
+      border-right:1px solid var(--ink);
+      padding-right:34px;
+      align-self:start;
+      position:sticky;
+      top:24px;
+    }
+
+    .eyebrow{
+      margin:0 0 24px;
+      color:var(--coral);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+
+    .meta-list{
+      display:grid;
+      gap:25px;
+    }
+
+    .meta-list b{
+      display:block;
+      margin-bottom:5px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+    }
+
+    .meta-list span{
+      display:block;
+      font-size:17px;
+      line-height:1.35;
+    }
+
+    .mini-map{
+      height:170px;
+      margin-top:34px;
+      border-top:1px solid var(--ink);
+      border-bottom:1px solid var(--ink);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      background:transparent;
+    }
+
+    .mini-map::before,
+    .mini-map::after{
+      content:none;
+    }
+
+    .mini-map span{
+      font-weight:700;
+      font-size:12px;
+      letter-spacing:.14em;
+      padding:0 0 14px 0;
+    }
+
+    .article-body{
+      font-size:20px;
+      line-height:1.72;
+    }
+
+    .article-body p{
+      margin:0 0 30px;
+    }
+
+    .article-body .lede{
+      font-size:25px;
+      line-height:1.55;
+    }
+
+    .article-body h2{
+      margin:64px 0 22px;
+      font:700 36px/1.05 "DM Sans", Arial, sans-serif;
+      transform:scaleX(.94);
+      transform-origin:left center;
+    }
+
+    .pull-interlude{
+      width:min(100%, 980px);
+      margin:62px 0 68px;
+      display:block;
+      border-top:1px solid var(--ink);
+      border-bottom:1px solid var(--ink);
+      background:transparent;
+    }
+
+    .pull-interlude blockquote{
+      margin:0;
+      padding:44px 0;
+      font:700 clamp(42px,6vw,84px)/1.02 "DM Sans", Arial, sans-serif;
+      transform:scaleX(.94);
+      transform-origin:left center;
+    }
+
+    .margin-annotation{
+      align-self:start;
+      border-left:1px solid var(--ink);
+      padding-left:24px;
+      font-size:14px;
+      line-height:1.55;
+    }
+
+    .margin-annotation b{
+      display:block;
+      margin-bottom:10px;
+      color:var(--coral);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:11px;
+    }
+
+    .afterword,
+    .evidence,
+    .continue{
+      padding-top:62px;
+      padding-bottom:62px;
+      border-bottom:1px solid var(--ink);
+    }
+
+    .afterword{
+      display:grid;
+      grid-template-columns:300px minmax(0,780px);
+      gap:56px;
+      background:var(--soft);
+      max-width:none;
+      width:100%;
+      padding-left:max(40px,calc((100vw - 1500px)/2));
+      padding-right:max(40px,calc((100vw - 1500px)/2));
+    }
+
+    .afterword h2,
+    .evidence h2,
+    .continue h2{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .afterword p{
+      margin:0;
+      max-width:760px;
+      font-size:22px;
+      line-height:1.55;
+    }
+
+    .evidence{
+      display:grid;
+      grid-template-columns:300px minmax(0,920px);
+      gap:56px;
+    }
+
+    .evidence ol{
+      margin:0;
+      padding-left:22px;
+      font-size:15px;
+      line-height:1.55;
+    }
+
+    .evidence li{
+      margin-bottom:14px;
+    }
+
+    .continue-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:1px;
+      background:var(--ink);
+      border:1px solid var(--ink);
+    }
+
+    .continue-grid a,
+    .continue-grid div{
+      min-height:170px;
+      background:var(--paper);
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      font-weight:700;
+    }
+
+    .continue-grid span{
+      color:var(--coral);
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .continue-grid b{
+      font-size:24px;
+      line-height:1.05;
+      transform:scaleX(.94);
+      transform-origin:left center;
+    }
+
+    footer{
+      padding-top:70px;
+      padding-bottom:30px;
+    }
+
+    footer h2{
+      margin:0;
+      font-family:"Realizm", "DM Sans", Arial, sans-serif;
+      font-weight:400;
+      font-size:clamp(70px,12vw,170px);
+      line-height:.85;
+      letter-spacing:-.04em;
+      border-bottom:1px solid var(--ink);
+      padding-bottom:20px;
+      white-space:nowrap;
+    }
+
+    footer > div{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:24px;
+      padding-top:22px;
+      font-size:12px;
+    }
+
+    footer nav{
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    footer > div > p:last-child{
+      text-align:right;
+    }
+
+    @media(max-width:1180px){
+      .article-shell{
+        grid-template-columns:240px minmax(0,1fr);
+      }
+
+      .margin-annotation{
+        grid-column:2;
+      }
+
+      .pull-interlude{
+        width:100%;
+      }
+    }
+
+    @media(max-width:900px){
+      .page-pad{
+        width:calc(100% - 32px);
+      }
+
+      .site-header{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .site-header nav{
+        display:none;
+      }
+
+      .brand{
+        font-size:22px;
+      }
+
+      .issue{
+        font-size:10px;
+      }
+
+      .dispatch-hero,
+      .article-shell,
+      .afterword,
+      .evidence{
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+
+      .dispatch-hero{
+        min-height:0;
+        padding-top:42px;
+      }
+
+      .kicker{
+        display:block;
+        margin-bottom:30px;
+      }
+
+      .coords{
+        margin-top:10px;
+        text-align:left;
+      }
+
+      .hero-index,
+      .field-notes,
+      .margin-annotation{
+        position:static;
+        border-left:0;
+        border-right:0;
+        border-top:1px solid var(--ink);
+        padding:24px 0 0;
+      }
+
+      .landscape,
+      .landscape img{
+        min-height:280px;
+      }
+
+      .landscape-label{
+        width:calc(100% - 32px);
+        white-space:normal;
+      }
+
+      .article-body{
+        font-size:18px;
+      }
+
+      .article-body .lede{
+        font-size:21px;
+      }
+
+      .pull-interlude blockquote{
+        padding:32px 0;
+      }
+
+      .afterword{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .continue-grid{
+        grid-template-columns:1fr;
+      }
+
+      footer h2{
+        font-size:15vw;
+      }
+
+      footer > div{
+        grid-template-columns:1fr;
+      }
+
+      footer nav{
+        justify-content:flex-start;
+      }
+
+      footer > div > p:last-child{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header class="site-header page-pad">
+      <a class="brand" href="index.html" aria-label="Back to Hjernelandet"><span>✦</span>HJERNELANDET</a>
+      <nav aria-label="Main navigation">
+        <a href="index.html#dispatches">Essays</a>
+        <a href="land-climate.html">Field Notes</a>
+        <a href="index.html#atlas">Brain Atlas</a>
+        <a href="index.html#about">About</a>
+      </nav>
+      <div class="issue"><span>DISPATCH 01</span><i></i><span>JULY 2026</span></div>
+    </header>
+
+    <section class="dispatch-hero page-pad">
+      <div>
+        <div class="kicker">
+          <span>Dispatch 01 / Land & Climate</span>
+          <span class="coords">40.143 N<br>77.231 W</span>
+        </div>
+        <h1>The Environmentalism Gettysburg Doesn't Talk About</h1>
+        <p class="dek">Rural Pennsylvania complicates the environmental map I thought I understood.</p>
+        <div class="byline">
+          <span>Words and observations by Hannah Tran</span>
+          <span>July 2026</span>
+        </div>
+      </div>
+      <aside class="hero-index" aria-label="Dispatch index">
+        <div>
+          <b>Filed from</b>
+          <strong>Adams County</strong>
+        </div>
+        <p>Solar arrays, recycling bins, ordinances, and the everyday systems that let climate action become ordinary.</p>
+      </aside>
+    </section>
+
+    <section class="landscape page-pad" aria-label="Hero illustration">
+      <img src="hero-landscape.png" alt="Illustrated Hjernelandet landscape with orchards, roads, fields, and topographic forms">
+      <div class="landscape-label">Orchards · solar fields · topographic forms</div>
+    </section>
+
+    <section class="article-shell page-pad">
+      <aside class="field-notes">
+        <p class="eyebrow">Field coordinates</p>
+        <div class="meta-list">
+          <div>
+            <b>Place</b>
+            <span>Adams County, Pennsylvania</span>
+          </div>
+          <div>
+            <b>Filed under</b>
+            <span>Land & Climate<br>Rural Life<br>Politics</span>
+          </div>
+          <div>
+            <b>Reading time</b>
+            <span>8 minutes</span>
+          </div>
+        </div>
+        <div class="mini-map" aria-hidden="true"><span>GETTYSBURG<br>CLIMATE COMMUNICATION</span></div>
+      </aside>
+
+      <article class="article-body">
+        <p class="lede">I thought I knew what environmentalism was supposed to look like. Then, driving north through Adams County, I began passing solar arrays. One appeared beyond an orchard; another interrupted a stretch of farms and pickups; then came another.</p>
+
+        <p>When I stopped, curiosity got the better of me and I opened the satellite view on my phone. What I had read as isolated installations resolved into a wider patchwork of dark rectangles across the landscape. This did not fit the political map I had carried into Gettysburg.</p>
+
+        <p>I arrived with a simple mental map: college towns are liberal, tourism towns are cosmopolitan, and rural Pennsylvania is conservative. Gettysburg is all three landscapes compressed together. Within minutes, a drive can move from battlefield to tourist downtown, from college lawns to orchards, farmland, solar fields, and small towns. The scenery changes faster than the labels we use for the people living inside it.</p>
+
+        <p>Then I began noticing the recycling. Not once, but repeatedly: at subsidized housing, ordinary wall-to-wall homes, and a mansion with a heated driveway. In one house, the owner recycled and composted while rejecting much of the politics usually bundled with environmentalism. I caught myself saying "everyone recycles here" and "everyone has solar." Those are perceptions, not statistics. But that is how a field note begins: an outsider notices a pattern that familiarity may have made invisible, then asks whether it holds.</p>
+
+        <p>I critique Gettysburg, but I also love it. I was not trying to catch the town in hypocrisy or award it a surprise environmental medal. I genuinely did not understand it. My attention kept drifting away from what residents might call themselves and toward the small systems organizing their days: the pickup schedule, the location of the bins, the zoning line, the ordinary rules that make one behavior easy and another exhausting.</p>
+
+        <p>So I opened borough documents to see whether recycling was mandatory. Gettysburg lists solid-waste and recycling compliance beside snow removal, weeds, and property maintenance: the mundane machinery of living together. A 2018 borough newsletter described a hauling contract that preserved broad curbside recycling even while neighboring municipalities narrowed what they accepted. Gettysburg College similarly describes solar panels, dining-waste reduction, and rainwater collection as campus operations. The environmental result is real, but daily participation is procedural: there is a bin, a schedule, a roof, a system.</p>
+
+        <p>That search changed my question. I had begun with "Why do conservatives recycle?" But the wording treated ideology as the cause and the behavior as an exception. The more useful question became: When does environmental behavior stop needing an environmental identity?</p>
+
+        <p>Research suggests that the label itself can alter a choice. In a 2013 study, Dena Gromet, Howard Kunreuther, and Richard Larrick found that an environmental message could make some politically conservative consumers less likely to select an efficient light bulb. The product had become a badge. Troy Campbell and Aaron Kay call a related pattern "solution aversion": people can become more skeptical of a problem when its familiar solution threatens their values.</p>
+
+        <div class="pull-interlude">
+          <blockquote>"The scenery changes faster than the labels we use for the people living inside it."</blockquote>
+        </div>
+
+        <h2>Solar without the environmentalist identity</h2>
+
+        <p>The lesson is not to conceal climate science or manipulate people with euphemisms. It is to stop demanding identity conversion as the price of participation. Lower bills, reliable power, cleaner air, comfort, less waste, and stewardship are genuine parts of the same action. A solar roof can be climate mitigation and "free electricity." A compost pile can reduce emissions and improve soil. More than one honest motivation can lead to the same useful behavior.</p>
+
+        <p>Visibility matters too. Rooftop solar advertises its own adoption. Bryan Bollinger and Kenneth Gillingham found that, at the average number of owner-occupied homes in a ZIP Code, one additional installation increased the probability of another adoption by 0.78 percentage points. A neighbor's panels are not just equipment; they are evidence that the technology works here, under familiar conditions. They turn an abstract transition into local precedent.</p>
+
+        <p>Norms can move even before a majority has changed. Gregg Sparkman and Gregory Walton found that telling people a behavior was "becoming more common" increased interest in eating less meat and, in one field experiment, doubled meatless orders at a cafe. "Everyone already does this" may be untrue. "More people here are starting to do this" can be both truthful and directional.</p>
+
+        <p>But messages cannot carry the whole burden. A blue bin without collection, a bike lane that vanishes at an intersection, or a rebate that requires hours of paperwork asks people to reenact their values every time they act. Infrastructure preserves the behavior on days when conviction is weak, attention is elsewhere, and nobody feels like being a climate hero.</p>
+
+        <p>Seat belts show how the layers fit together. Observed U.S. seat-belt use was 59 percent in 1991; NHTSA reports 91.3 percent use in 2025. Cars came with better restraints and reminder chimes. States adopted and enforced laws. Parents modeled buckling up. Recognition of "Click It or Ticket" rose from 35 percent in 2003 to 79 percent in 2007. Communication reinforced a material and legal system until buckling up became the opening ritual of driving.</p>
+
+        <h2>The questions climate communication should ask</h2>
+
+        <p>Climate communicators should therefore ask five questions. Is the action easy to repeat? Is it visible enough to become evidence for others? Are its immediate benefits legible without a partisan vocabulary? Do rules, defaults, prices, and feedback reinforce it? And does the language make participation sound like something people around here do, not a performance for a distant political tribe?</p>
+
+        <p>Depoliticizing a practice does not mean erasing its cause, ignoring unequal costs, or pretending policy is unnecessary. It means designing climate participation so people do not have to announce a complete worldview before they can enter. The strongest message may be a neighbor's roof, a cart already beside the trash can, or a building standard nobody thinks to debate each morning.</p>
+
+        <p>Gettysburg is famous for arguments that could not be avoided. Its quieter lesson is about the arguments we may not need to keep having. I began by driving past solar fields that seemed to contradict the place around them. Now I wonder whether the contradiction was mine. Climate action becomes durable not when every panel reads as a political declaration, but when it is as ordinary as a seat belt or a ZIP Code: useful, expected, built into the system, and almost boring. That is not climate action disappearing. It is what winning looks like.</p>
+      </article>
+
+      <aside class="margin-annotation">
+        <b>Margin note</b>
+        This dispatch began as a field-note problem: not whether Gettysburg was secretly environmentalist, but whether environmental behavior can outgrow the costume people expect it to wear.
+      </aside>
+    </section>
+
+    <section class="afterword">
+      <h2>A note from the cartographer</h2>
+      <p>I came in looking for a contradiction between rural politics and environmental practice. I left more interested in the systems that make action feel ordinary: the bin already beside the trash, the roof already producing power, the local proof that change can belong to a place without asking everyone there to recite the same identity.</p>
+    </section>
+
+    <section class="evidence page-pad">
+      <h2>Evidence notes</h2>
+      <ol>
+        <li>Borough of Gettysburg. Code Enforcement. Current page listing solid-waste and recycling compliance among routine property-maintenance responsibilities.</li>
+        <li>Borough of Gettysburg. Fall/Winter 2018-2019 Newsletter. Historical evidence on the borough's curbside recycling contract and accepted materials; recheck current contract details before publication.</li>
+        <li>Gettysburg College. Sustainability at Gettysburg. Current overview of solar, waste reduction, and rainwater collection as campus initiatives.</li>
+        <li>Gromet, D. M., Kunreuther, H., &amp; Larrick, R. P. (2013). Political ideology affects energy-efficiency attitudes and choices. Proceedings of the National Academy of Sciences, 110(23), 9314-9319.</li>
+        <li>Campbell, T. H., &amp; Kay, A. C. (2014). Solution aversion: On the relation between ideology and motivated disbelief. Journal of Personality and Social Psychology, 107(5), 809-824.</li>
+        <li>Bollinger, B., &amp; Gillingham, K. (2012). Peer effects in the diffusion of solar photovoltaic panels. Marketing Science, 31(6), 900-912.</li>
+        <li>Sparkman, G., &amp; Walton, G. M. (2017). Dynamic norms promote sustainable behavior, even if it is counternormative. Psychological Science, 28(11), 1663-1674.</li>
+        <li>National Highway Traffic Safety Administration. Seat Belt Safety: Buckle Up America. Reports a 91.3% national use rate in 2025.</li>
+        <li>National Highway Traffic Safety Administration. (2009). Analyzing the First Years of the Click It or Ticket Mobilizations. Historical use, enforcement, and campaign-awareness data.</li>
+      </ol>
+    </section>
+
+    <section class="continue page-pad">
+      <p class="eyebrow">Continue exploring</p>
+      <div class="continue-grid">
+        <a href="index.html#dispatches"><span>All dispatches</span><b>Notes from the interior</b></a>
+        <a href="land-climate.html"><span>Brain atlas</span><b>Land & Climate</b></a>
+        <a href="cities-motion.html"><span>Next province</span><b>Cities & Motion</b></a>
+      </div>
+    </section>
+
+    <footer class="page-pad">
+      <h2>HJERNELANDET</h2>
+      <div>
+        <p>Dispatches from inside my head.</p>
+        <nav aria-label="Footer navigation">
+          <a href="../index.html#portfolio">Portfolio</a>
+          <a href="../research.html">Research</a>
+          <a href="../design.html">Design</a>
+          <a href="../pottery.html">Hannahs Haandvaerk</a>
+        </nav>
+        <p>© 2026 HANNAH TRAN</p>
+      </div>
+    </footer>
+  </main>
+</body>
+
+</html>

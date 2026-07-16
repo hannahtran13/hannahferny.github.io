@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Land & Climate | Hjernelandet Search Atlas</title>
+  <meta name="description" content="The Land & Climate province of Hjernelandet, Hannah Tran's search atlas of essays and field notes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="province.css">
+</head>
+
+<body>
+  <main>
+    <header class="site-header page-pad">
+      <a class="brand" href="index.html" aria-label="Back to Hjernelandet"><span>✦</span>HJERNELANDET</a>
+      <nav aria-label="Main navigation">
+        <a href="index.html#dispatches">Essays</a>
+        <a href="land-climate.html">Field Notes</a>
+        <a href="index.html#atlas">Brain Atlas</a>
+        <a href="index.html#about">About</a>
+      </nav>
+      <div class="issue"><span>PROVINCE 01</span><i></i><span>SEARCH ATLAS</span></div>
+    </header>
+
+    <section class="province-hero page-pad">
+      <div>
+        <p class="eyebrow">Province 01 / Search atlas</p>
+        <h1>Land & Climate</h1>
+        <p class="dek">Where environmental behavior, rural landscapes, weather, infrastructure, and politics become part of the same map.</p>
+      </div>
+      <aside class="province-card">
+        <div>
+          <b>Indexed dispatches</b>
+          <strong>01</strong>
+        </div>
+        <p>The only province with a published dispatch right now. The rest of the atlas is still being surveyed.</p>
+      </aside>
+    </section>
+
+    <section class="atlas-shell page-pad">
+      <aside class="province-nav" aria-label="Province navigation">
+        <a href="land-climate.html" aria-current="page"><span>01</span><div><b>Land & Climate</b><em>Environmentalism, place, energy</em></div></a>
+        <a href="cities-motion.html"><span>02</span><div><b>Cities & Motion</b><em>Transit, roads, ports, movement</em></div></a>
+        <a href="language.html"><span>03</span><div><b>Language</b><em>Mishearings, borders, invented names</em></div></a>
+        <a href="life.html"><span>04</span><div><b>Life</b><em>Personal dispatches and field weather</em></div></a>
+      </aside>
+
+      <div>
+        <section class="search-panel" aria-label="Search this province">
+          <label class="search-label" for="province-search">Search Land & Climate</label>
+          <div class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="province-search" data-province-search type="search" value="environmentalism gettysburg" aria-describedby="result-count">
+          </div>
+          <p id="result-count" class="result-count" data-result-count></p>
+        </section>
+
+        <section class="results" aria-label="Search results">
+          <a class="result" data-result href="gettysburg.html">
+            <p class="result-url">hjernelandet / land-climate / dispatch-01</p>
+            <h2>The Environmentalism Gettysburg Doesn't Talk About</h2>
+            <p>Solar arrays appear beyond orchards. Recycling crosses political and economic lines. Rural Pennsylvania complicates the environmental map I thought I knew.</p>
+            <div class="result-meta"><span>Dispatch 01</span><span>Adams County, PA</span><span>8 min read</span></div>
+          </a>
+          <p class="no-results" data-no-results>No matching dispatches in this province yet. Try a broader search, or wander into another province.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="atlas-footer page-pad">
+      <a href="index.html#atlas">← Back to Brain Atlas</a>
+      <a href="cities-motion.html">Next province: Cities & Motion →</a>
+    </section>
+
+    <footer class="page-pad">
+      <h2>HJERNELANDET</h2>
+      <div>
+        <p>Dispatches from inside my head.</p>
+        <nav aria-label="Footer navigation">
+          <a href="../index.html#portfolio">Portfolio</a>
+          <a href="../research.html">Research</a>
+          <a href="../design.html">Design</a>
+          <a href="../pottery.html">Hannahs Haandvaerk</a>
+        </nav>
+        <p>© 2026 HANNAH TRAN</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="province-search.js"></script>
+</body>
+
+</html>
