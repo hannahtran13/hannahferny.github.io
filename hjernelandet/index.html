@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hjernelandet | Hannah Tran</title>
-  <meta name="description" content="Hjernelandet is Hannah Tran's essay atlas: dispatches from the country inside her head.">
+  <meta name="description" content="Hjernelandet is Hannah Tran's essay atlas: dispatches from the country inside his head.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -433,7 +433,17 @@
       font-weight:700;
     }
 
-    .dispatch-card a span{
+    .dispatch-card .disabled-link{
+      margin-top:auto;
+      border-top:1px solid;
+      padding-top:16px;
+      font-weight:700;
+      color:#12111788;
+      cursor:default;
+    }
+
+    .dispatch-card a span,
+    .dispatch-card .disabled-link span{
       float:right;
     }
 
@@ -517,7 +527,19 @@
       align-items:center;
     }
 
-    .province-list a:last-child{
+    .province-list .province-item{
+      display:grid;
+      grid-template-columns:42px 1fr auto;
+      gap:14px;
+      border-top:1px solid #f4ead855;
+      padding:21px 0;
+      align-items:center;
+      color:#f4ead899;
+      cursor:default;
+    }
+
+    .province-list a:last-child,
+    .province-list .province-item:last-child{
       border-bottom:1px solid #f4ead855;
     }
 
@@ -545,6 +567,11 @@
 
     .province-list a:hover em{
       transform:translate(5px,-5px);
+    }
+
+    .inline-disabled{
+      color:#12111788;
+      cursor:default;
     }
 
     .manifesto{
@@ -844,7 +871,7 @@
           <p class="card-category">Infrastructure</p>
           <h3>Everyone Drives. Everyone Drives Something Enormous.</h3>
           <p>A field note on pickups, headlights, and the peculiar physics of getting around rural Pennsylvania.</p>
-          <a href="">Coming soon <span>↗</span></a>
+          <div class="disabled-link">Coming soon <span>↗</span></div>
         </article>
 
         <article class="dispatch-card blue">
@@ -852,7 +879,7 @@
           <p class="card-category">Food & Place</p>
           <h3>The Food Desert Inside the Orchard</h3>
           <p>What it means to live amid extraordinary agricultural abundance and still struggle to buy fresh food.</p>
-          <a href="">Coming soon <span>↗</span></a>
+          <div class="disabled-link">Coming soon <span>↗</span></div>
         </article>
 
       </div>
@@ -872,9 +899,9 @@
       </div>
       <div class="province-list">
         <a href="land-climate.html"><span>01</span><div><b>LAND & CLIMATE</b><p>Where environmentalism actually lives</p></div><em>↗</em></a>
-        <a href="cities-motion.html"><span>02</span><div><b>CITIES & MOTION</b><p>Transit, roads, ports, and the urge to move</p></div><em>↗</em></a>
-        <a href="language.html"><span>03</span><div><b>LANGUAGE</b><p>Mishearings, inventions, and linguistic borderlands</p></div><em>↗</em></a>
-        <a href="life.html"><span>04</span><div><b>LIFE</b><p>Personal dispatches from the foggy interior</p></div><em>↗</em></a>
+        <div class="province-item"><span>02</span><div><b>CITIES & MOTION</b><p>Transit, roads, ports, and the urge to move</p></div><em>Coming soon</em></div>
+        <div class="province-item"><span>03</span><div><b>LANGUAGE</b><p>Mishearings, inventions, and linguistic borderlands</p></div><em>Coming soon</em></div>
+        <div class="province-item"><span>04</span><div><b>LIFE</b><p>Personal dispatches from the foggy interior</p></div><em>Coming soon</em></div>
       </div>
     </section>
 
@@ -891,7 +918,7 @@
       <div>
         <p class="eyebrow">Post from Hjernelandet</p>
         <h2>New dispatches,<br>without the border check.</h2>
-        <p class="dek">Start in <a href="land-climate.html">Land & Climate</a>, or search the coming provinces: <a href="cities-motion.html">Cities & Motion</a>, <a href="language.html">Language</a>, and <a href="life.html">Life</a>.</p>
+        <p class="dek">Start in <a href="land-climate.html">Land & Climate</a>. Cities & Motion, Language, and Life are <span class="inline-disabled">coming soon</span>.</p>
       </div>
       <form>
         <label for="email">Email address</label>
