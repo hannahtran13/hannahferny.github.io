@@ -161,6 +161,7 @@
       transform:scaleX(.94);
       transform-origin:left center;
       text-transform:uppercase;
+      overflow-wrap:break-word;
     }
 
     .dek{
@@ -168,6 +169,7 @@
       margin:31px 0 38px;
       font-size:22px;
       line-height:1.45;
+      overflow-wrap:break-word;
     }
 
     .byline{
@@ -544,8 +546,33 @@
       }
 
       .coords{
+        display:block;
         margin-top:10px;
         text-align:left;
+      }
+
+      h1{
+        font-size:clamp(38px,10.6vw,58px);
+        line-height:.94;
+        transform:scaleX(.9);
+      }
+
+      .dek{
+        font-size:20px;
+        line-height:1.42;
+      }
+
+      .byline{
+        gap:10px 22px;
+        font-size:11px;
+      }
+
+      .hero-index strong{
+        font-size:42px;
+      }
+
+      .hero-index p{
+        overflow-wrap:break-word;
       }
 
       .hero-index,
