@@ -116,6 +116,10 @@
       right:0;
     }
 
+    .mobile-hero{
+      display:none;
+    }
+
     .issue{
       justify-self:end;
       display:flex;
@@ -134,6 +138,14 @@
     .danish{
       color:var(--coral);
       font-size:30px;
+    }
+
+    .menu-mark{
+      display:none;
+    }
+
+    .mobile-nav-panel{
+      display:none;
     }
 
     .masthead{
@@ -696,15 +708,253 @@
       }
 
       .site-header{
+        position:absolute;
+        top:0;
+        left:16px;
+        right:16px;
+        z-index:4;
+        width:auto;
+        max-width:none;
         grid-template-columns:1fr 1fr;
+        color:#f9e7a7;
+        border-bottom:0;
       }
 
       .site-header nav{
         display:none;
       }
 
+      .spark{
+        color:#f9e7a7;
+        text-shadow:0 0 20px rgba(249,231,167,.28);
+      }
+
       .issue{
-        font-size:10px;
+        color:#f9e7a7;
+        gap:22px;
+      }
+
+      .issue i{
+        display:none;
+      }
+
+      .danish{
+        color:var(--coral);
+        font-size:30px;
+      }
+
+      .issue-copy{
+        display:none;
+      }
+
+      .menu-mark{
+        display:block;
+        width:34px;
+        height:22px;
+        padding:0;
+        border-left:0;
+        border-right:0;
+        border-top:2px solid #f9e7a7;
+        border-bottom:2px solid #f9e7a7;
+        background:transparent;
+        color:inherit;
+        position:relative;
+        cursor:pointer;
+      }
+
+      .menu-mark::before{
+        content:"";
+        position:absolute;
+        left:0;
+        right:0;
+        top:8px;
+        height:2px;
+        background:#f9e7a7;
+      }
+
+      .mobile-nav-panel{
+        position:fixed;
+        inset:0 0 0 auto;
+        z-index:20;
+        display:flex;
+        flex-direction:column;
+        width:min(86vw, 380px);
+        padding:28px;
+        background:#080b12;
+        color:#f9e7a7;
+        box-shadow:-28px 0 70px rgba(0,0,0,.45);
+        transform:translateX(102%);
+        transition:transform .28s ease;
+      }
+
+      .mobile-nav-panel.is-open{
+        transform:translateX(0);
+      }
+
+      body.nav-open{
+        overflow:hidden;
+      }
+
+      body.nav-open::after{
+        content:"";
+        position:fixed;
+        inset:0;
+        z-index:19;
+        background:rgba(0,0,0,.48);
+      }
+
+      .mobile-nav-top{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        border-bottom:1px solid #f9e7a766;
+        padding-bottom:20px;
+      }
+
+      .mobile-nav-title{
+        margin:0;
+        font-family:"Realizm", "DM Sans", Arial, sans-serif;
+        font-size:28px;
+        line-height:.9;
+        letter-spacing:-.035em;
+      }
+
+      .mobile-nav-close{
+        border:0;
+        background:transparent;
+        color:#f9e7a7;
+        font-size:34px;
+        line-height:1;
+        cursor:pointer;
+      }
+
+      .mobile-nav-links{
+        display:grid;
+        gap:0;
+        margin-top:26px;
+      }
+
+      .mobile-nav-links a{
+        display:grid;
+        grid-template-columns:36px 1fr auto;
+        gap:12px;
+        align-items:center;
+        padding:18px 0;
+        border-bottom:1px solid #f9e7a733;
+      }
+
+      .mobile-nav-links span{
+        color:var(--coral);
+        font-size:12px;
+        font-weight:700;
+        letter-spacing:.12em;
+      }
+
+      .mobile-nav-links b{
+        display:block;
+        color:#f9e7a7;
+        font-size:14px;
+        letter-spacing:.12em;
+        text-transform:uppercase;
+      }
+
+      .mobile-nav-links em{
+        color:#f9e7a7aa;
+        font-style:normal;
+        font-size:20px;
+      }
+
+      .mobile-nav-note{
+        margin:auto 0 0;
+        color:#f9e7a7bb;
+        font-size:13px;
+        line-height:1.5;
+      }
+
+      .mobile-hero{
+        position:relative;
+        display:flex;
+        min-height:100svh;
+        width:100%;
+        padding:118px 28px 28px;
+        overflow:hidden;
+        color:#f9e7a7;
+        background:#080b12 url("hero-mobile.png") center/cover no-repeat;
+      }
+
+      .mobile-hero::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:linear-gradient(180deg, rgba(3,5,10,.06), rgba(3,5,10,.18) 56%, rgba(3,5,10,.34));
+      }
+
+      .mobile-hero-inner{
+        position:relative;
+        z-index:1;
+        width:100%;
+        min-height:calc(100svh - 146px);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:flex-start;
+        text-align:center;
+        gap:24px;
+      }
+
+      .mobile-volume{
+        margin:0;
+        font-size:12px;
+        font-weight:700;
+        letter-spacing:.34em;
+        color:#f9e7a7;
+      }
+
+      .mobile-hero h1{
+        margin:0;
+        width:min(100%, 390px);
+        font-family:"Realizm", "DM Sans", Arial, sans-serif;
+        font-weight:400;
+        font-size:clamp(76px,24vw,124px);
+        line-height:.82;
+        letter-spacing:-.045em;
+        text-transform:uppercase;
+        text-shadow:0 4px 24px rgba(0,0,0,.38);
+      }
+
+      .mobile-hero h1 span{
+        display:block;
+      }
+
+      .mobile-tagline{
+        max-width:310px;
+        margin:auto 0 0;
+        color:#ffe7a5;
+        font-size:22px;
+        font-style:italic;
+        line-height:1.25;
+        text-shadow:0 2px 14px rgba(0,0,0,.55);
+      }
+
+      .mobile-scroll{
+        margin:0;
+        color:#ffe7a5;
+        font-size:12px;
+        font-weight:700;
+        letter-spacing:.34em;
+        text-transform:uppercase;
+      }
+
+      .mobile-scroll span{
+        display:block;
+        margin-top:6px;
+        font-size:24px;
+        letter-spacing:0;
+      }
+
+      .masthead,
+      .featured{
+        display:none;
       }
 
       .masthead h1{
@@ -825,8 +1075,35 @@
         <a href="#atlas">Brain Atlas</a>
         <a href="#about">About</a>
       </nav>
-      <div class="issue"><span class="danish">✚</span><i></i> VOL. 01 - JULY 2026</div>
+      <div class="issue"><span class="danish">✚</span><i></i><span class="issue-copy">VOL. 01 - JULY 2026</span><button class="menu-mark" type="button" aria-label="Open Hjernelandet navigation" aria-controls="mobile-nav" aria-expanded="false"></button></div>
     </header>
+
+    <aside class="mobile-nav-panel" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+      <div class="mobile-nav-top">
+        <p class="mobile-nav-title">HJERNE<br>LANDET</p>
+        <button class="mobile-nav-close" type="button" aria-label="Close Hjernelandet navigation">×</button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#dispatches"><span>01</span><b>Essays</b><em>↗</em></a>
+        <a href="gettysburg.html"><span>02</span><b>Latest Dispatch</b><em>↗</em></a>
+        <a href="#atlas"><span>03</span><b>Brain Atlas</b><em>↗</em></a>
+        <a href="land-climate.html"><span>04</span><b>Land & Climate</b><em>↗</em></a>
+        <a href="cities-motion.html"><span>05</span><b>Cities & Motion</b><em>↗</em></a>
+        <a href="language.html"><span>06</span><b>Language</b><em>↗</em></a>
+        <a href="life.html"><span>07</span><b>Life</b><em>↗</em></a>
+        <a href="#about"><span>08</span><b>About</b><em>↗</em></a>
+      </nav>
+      <p class="mobile-nav-note">Dispatches, provinces, and field notes from inside the map.</p>
+    </aside>
+
+    <section class="mobile-hero" aria-labelledby="mobile-site-title">
+      <div class="mobile-hero-inner">
+        <p class="mobile-volume">VOL. 01 - JULY 2026</p>
+        <h1 id="mobile-site-title"><span>HJERNE</span><span>LANDET</span></h1>
+        <p class="mobile-tagline">Dispatches from<br>the country inside my head.</p>
+        <p class="mobile-scroll">Scroll <span aria-hidden="true">↓</span></p>
+      </div>
+    </section>
 
     <section id="top" class="masthead page-pad" aria-labelledby="site-title">
       <h1 id="site-title">HJERNELANDET</h1>
@@ -952,6 +1229,38 @@
     signupForm.addEventListener("submit", function(event){
       event.preventDefault();
       signupForm.querySelector("button").textContent = "Entered the map";
+    });
+
+    const menuButton = document.querySelector(".menu-mark");
+    const mobileNav = document.querySelector("#mobile-nav");
+    const closeButton = document.querySelector(".mobile-nav-close");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-links a");
+
+    function setMobileNav(open){
+      document.body.classList.toggle("nav-open", open);
+      mobileNav.classList.toggle("is-open", open);
+      mobileNav.setAttribute("aria-hidden", String(!open));
+      menuButton.setAttribute("aria-expanded", String(open));
+    }
+
+    menuButton.addEventListener("click", function(){
+      setMobileNav(true);
+    });
+
+    closeButton.addEventListener("click", function(){
+      setMobileNav(false);
+    });
+
+    mobileNavLinks.forEach(function(link){
+      link.addEventListener("click", function(){
+        setMobileNav(false);
+      });
+    });
+
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape"){
+        setMobileNav(false);
+      }
     });
   </script>
 </body>
