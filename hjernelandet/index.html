@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hjernelandet | Hannah Tran</title>
   <meta name="description" content="Hjernelandet is Hannah Tran's essay atlas: dispatches from the country inside his head.">
-  <link rel="canonical" href="https://hannahferny.github.io/hjernelandet/">
+  <link rel="canonical" href="https://hannahferny.com/hjernelandet/">
   <meta property="og:title" content="Hjernelandet | Hannah Tran">
   <meta property="og:description" content="Hjernelandet is Hannah Tran's essay atlas: dispatches from the country inside his head.">
-  <meta property="og:image" content="https://hannahferny.github.io/hjernelandet/hero-landscape.png">
+  <meta property="og:image" content="https://hannahferny.com/hjernelandet/hero-landscape.png">
   <meta property="og:image:alt" content="Illustrated Hjernelandet landscape with orchards, solar fields, roads, and topographic forms.">
-  <meta property="og:url" content="https://hannahferny.github.io/hjernelandet/">
+  <meta property="og:url" content="https://hannahferny.com/hjernelandet/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hjernelandet | Hannah Tran">
   <meta name="twitter:description" content="Hjernelandet is Hannah Tran's essay atlas: dispatches from the country inside his head.">
-  <meta name="twitter:image" content="https://hannahferny.github.io/hjernelandet/hero-landscape.png">
+  <meta name="twitter:image" content="https://hannahferny.com/hjernelandet/hero-landscape.png">
   <meta name="twitter:image:alt" content="Illustrated Hjernelandet landscape with orchards, solar fields, roads, and topographic forms.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -641,39 +641,27 @@
       margin:0;
     }
 
-    .newsletter form label{
+    .newsletter .postal-status{
+      border-bottom:2px solid;
+      padding:15px 0;
+      margin:0;
+    }
+
+    .newsletter .postal-status strong,
+    .newsletter .postal-status span{
+      display:block;
+    }
+
+    .newsletter .postal-status strong{
       font-size:12px;
       text-transform:uppercase;
       letter-spacing:.16em;
     }
 
-    .newsletter form > div{
-      display:flex;
-      border-bottom:2px solid;
-      margin-top:14px;
-    }
-
-    .newsletter input{
-      background:none;
-      border:0;
-      outline:0;
-      flex:1;
+    .newsletter .postal-status span{
       font:24px "DM Sans", Arial, sans-serif;
-      padding:15px 0;
-      min-width:0;
-    }
-
-    .newsletter button{
-      background:none;
-      border:0;
-      font-weight:700;
-      cursor:pointer;
-      color:var(--ink);
-    }
-
-    .newsletter form > p{
-      font-size:11px;
-      margin-top:12px;
+      margin-top:14px;
+      opacity:.58;
     }
 
     footer{
@@ -1030,15 +1018,6 @@
         gap:50px;
       }
 
-      .newsletter form > div{
-        flex-direction:column;
-      }
-
-      .newsletter button{
-        text-align:left;
-        padding:14px 0;
-      }
-
       footer > div{
         grid-template-columns:1fr;
       }
@@ -1197,18 +1176,14 @@
 
     <section class="newsletter page-pad">
       <div>
-        <p class="eyebrow">Post from Hjernelandet</p>
-        <h2>New dispatches,<br>without the border check.</h2>
-        <p class="dek">Start in <a href="land-climate.html">Land & Climate</a>. Cities & Motion, Language, and Life are <span class="inline-disabled">coming soon</span>.</p>
+        <p class="eyebrow">Post from Hjernelandet · Dispatch service opening soon</p>
+        <h2>Dispatches, delivered<br>from the brainland.</h2>
+        <p class="dek">Occasional field notes on landscapes, infrastructure, language, and the peculiar ways people inhabit places. Sent whenever there is something worth sending.</p>
       </div>
-      <form>
-        <label for="email">Email address</label>
-        <div>
-          <input id="email" type="email" placeholder="you@somewhere.com">
-          <button type="submit">Cross the border →</button>
-        </div>
-        <p>Occasional notes. No noise. Unsubscribe whenever.</p>
-      </form>
+      <p class="postal-status" role="status">
+        <strong>The postal service is being established</strong>
+        <span>Return shortly</span>
+      </p>
     </section>
 
     <footer class="page-pad">
@@ -1227,13 +1202,6 @@
   </main>
 
   <script>
-    const signupForm = document.querySelector(".newsletter form");
-
-    signupForm.addEventListener("submit", function(event){
-      event.preventDefault();
-      signupForm.querySelector("button").textContent = "Entered the map";
-    });
-
     const menuButton = document.querySelector(".menu-mark");
     const mobileNav = document.querySelector("#mobile-nav");
     const closeButton = document.querySelector(".mobile-nav-close");
