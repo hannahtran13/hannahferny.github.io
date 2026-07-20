@@ -192,8 +192,10 @@ footer>div>p:last-child{text-align:right}
   .site-header{height:72px}.issue span:first-child,.issue i{display:none}
   .archive-map{top:120px;right:-25%;width:125%;height:62%;object-position:center;opacity:.19}
   .archive-hero::after{background:linear-gradient(180deg,var(--paper) 0,rgba(244,234,216,.72) 55%,rgba(244,234,216,.4))}
-  .hero-inner{min-height:520px;padding-top:42px}.hero-copy{width:100%}
-  .eyebrow{max-width:250px;line-height:1.5}.hero-copy h1{font-size:clamp(64px,21vw,100px)}.dek{font-size:17px}
+  .hero-inner{min-height:520px;padding-top:42px;overflow:hidden}.hero-copy{width:100%;min-width:0;overflow:hidden}
+  .eyebrow{max-width:250px;line-height:1.5}
+  .hero-copy h1{max-width:100%;font-size:clamp(50px,18vw,72px);line-height:.9;letter-spacing:-.055em}
+  .dek{font-size:17px}
   .registry-box{width:154px}
   .archive-stats div{padding:19px 12px}.archive-stats div:nth-child(odd){padding-left:0}.archive-stats div:nth-child(even){padding-right:0}.archive-stats dd{font-size:27px}.archive-stats dt{font-size:9px}
   .archive-controls{padding-top:30px;padding-bottom:28px;gap:22px}.search-input-wrap{height:52px}.filter-group{gap:6px}
