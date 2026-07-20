@@ -641,27 +641,88 @@
       margin:0;
     }
 
-    .newsletter .postal-status{
-      border-bottom:2px solid;
-      padding:15px 0;
+    .newsletter .dek{
+      max-width:610px;
+      margin:26px 0 0;
+      font-size:17px;
+      line-height:1.6;
+    }
+
+    .newsletter-form{
+      align-self:end;
+      min-width:0;
       margin:0;
     }
 
-    .newsletter .postal-status strong,
-    .newsletter .postal-status span{
+    .newsletter-form label{
       display:block;
-    }
-
-    .newsletter .postal-status strong{
+      margin-bottom:13px;
       font-size:12px;
-      text-transform:uppercase;
+      font-weight:700;
       letter-spacing:.16em;
+      line-height:1.4;
+      text-transform:uppercase;
     }
 
-    .newsletter .postal-status span{
-      font:24px "DM Sans", Arial, sans-serif;
-      margin-top:14px;
-      opacity:.58;
+    .newsletter-input-row{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      border:2px solid var(--ink);
+      background:rgba(244,234,216,.4);
+    }
+
+    .newsletter-input-row:focus-within{
+      outline:3px solid var(--coral);
+      outline-offset:4px;
+    }
+
+    .newsletter-input-row input{
+      width:100%;
+      min-width:0;
+      height:62px;
+      border:0;
+      outline:0;
+      padding:0 20px;
+      background:transparent;
+      color:var(--ink);
+      font:500 18px/1.2 "DM Sans", Arial, sans-serif;
+    }
+
+    .newsletter-input-row input::placeholder{
+      color:var(--ink);
+      opacity:.5;
+    }
+
+    .newsletter-input-row button{
+      min-width:145px;
+      min-height:62px;
+      border:0;
+      border-left:2px solid var(--ink);
+      padding:0 22px;
+      background:var(--ink);
+      color:var(--paper);
+      cursor:pointer;
+      font:700 12px/1 "DM Sans", Arial, sans-serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      transition:background-color .2s ease,color .2s ease;
+    }
+
+    .newsletter-input-row button:hover{
+      background:var(--coral);
+      color:var(--ink);
+    }
+
+    .newsletter-input-row button:focus-visible{
+      outline:3px solid var(--coral);
+      outline-offset:-6px;
+    }
+
+    .newsletter-note{
+      margin:12px 0 0;
+      font-size:12px;
+      line-height:1.5;
+      opacity:.68;
     }
 
     footer{
@@ -1018,6 +1079,10 @@
         gap:50px;
       }
 
+      .newsletter-form{
+        width:100%;
+      }
+
       footer > div{
         grid-template-columns:1fr;
       }
@@ -1036,6 +1101,28 @@
 
       footer > div > p:last-child{
         text-align:left;
+      }
+    }
+
+    @media(max-width:520px){
+      .newsletter{
+        padding:64px 24px;
+        gap:38px;
+      }
+
+      .newsletter h2{
+        font-size:clamp(40px,12vw,54px);
+      }
+
+      .newsletter-input-row{
+        grid-template-columns:1fr;
+      }
+
+      .newsletter-input-row button{
+        width:100%;
+        min-height:54px;
+        border-top:2px solid var(--ink);
+        border-left:0;
       }
     }
 
@@ -1061,7 +1148,7 @@
       <a class="spark" href="index.html" aria-label="Back to Hjernelandet home">✦</a>
       <nav aria-label="Main navigation">
         <a href="../index.html#portfolio">Portfolio</a>
-        <a href="all-dispatches.html">Essays</a>
+        <a href="all-dispatches.html">Dispatches</a>
         <a href="#atlas">Brain Atlas</a>
         <a href="#about">About</a>
       </nav>
@@ -1074,7 +1161,7 @@
         <button class="mobile-nav-close" type="button" aria-label="Close Hjernelandet navigation">×</button>
       </div>
       <nav class="mobile-nav-links">
-        <a href="all-dispatches.html"><span>01</span><b>Essays</b><em>↗</em></a>
+        <a href="all-dispatches.html"><span>01</span><b>Dispatches</b><em>↗</em></a>
         <a href="articles/dispatch-04/"><span>02</span><b>Latest Dispatch</b><em>↗</em></a>
         <a href="#atlas"><span>03</span><b>Brain Atlas</b><em>↗</em></a>
         <a href="land-climate.html"><span>04</span><b>Land & Climate</b><em>↗</em></a>
@@ -1184,14 +1271,48 @@
 
     <section class="newsletter page-pad">
       <div>
-        <p class="eyebrow">Post from Hjernelandet · Dispatch service opening soon</p>
-        <h2>Dispatches, delivered<br>from the brainland.</h2>
-        <p class="dek">Occasional field notes on landscapes, infrastructure, language, and the peculiar ways people inhabit places. Sent whenever there is something worth sending.</p>
+        <p class="eyebrow">Post from Hjernelandet</p>
+
+        <h2>
+          Dispatches, delivered<br>
+          from the brainland.
+        </h2>
+
+        <p class="dek">
+          Occasional field notes on landscapes, infrastructure, language,
+          and the peculiar ways people inhabit places. Sent whenever there
+          is something worth sending.
+        </p>
       </div>
-      <p class="postal-status" role="status">
-        <strong>The postal service is being established</strong>
-        <span>Return shortly</span>
-      </p>
+
+      <form
+        action="https://buttondown.com/api/emails/embed-subscribe/hjernelandet"
+        method="post"
+        class="newsletter-form"
+      >
+        <label for="bd-email">
+          Enter your address for future dispatches
+        </label>
+
+        <div class="newsletter-input-row">
+          <input
+            type="email"
+            name="email"
+            id="bd-email"
+            placeholder="reader@example.com"
+            autocomplete="email"
+            required
+          >
+
+          <button type="submit">
+            Subscribe
+          </button>
+        </div>
+
+        <p class="newsletter-note">
+          Occasional correspondence. Unsubscribe whenever you please.
+        </p>
+      </form>
     </section>
 
     <footer class="page-pad">
