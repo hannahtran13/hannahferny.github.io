@@ -53,7 +53,7 @@ button,input{font:inherit}
   border-bottom:1px solid var(--rule);
 }
 .spark{color:var(--coral);font-size:42px;line-height:1}
-.site-header nav{display:flex;gap:36px;font-size:16px;white-space:nowrap}
+.site-header nav{display:flex;gap:36px;font-size:17px;white-space:nowrap}
 .site-header nav a{position:relative}
 .site-header nav a::after{content:"";position:absolute;height:2px;background:var(--coral);left:0;right:100%;bottom:-8px;transition:right .25s ease}
 .site-header nav a:hover::after,.site-header nav a[aria-current="page"]::after{right:0}
