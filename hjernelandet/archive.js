@@ -2,7 +2,8 @@ const dispatches = [
   { id: "001", registryId: "HL-LC-001", title: "The Environmentalism Gettysburg Doesn't Talk About", province: "land-climate", provinceLabel: "Land & Climate", location: "Adams County, PA", readingTime: 8, volume: "01", date: "July 2026", image: "hero-landscape.png", url: "articles/dispatch-01/" },
   { id: "002", registryId: "HL-CM-002", title: "Everyone Drives. Everyone Drives Something Enormous.", province: "cities-motion", provinceLabel: "Cities & Motion", location: "Adams County, PA", readingTime: 9, volume: "01", date: "July 2026", image: "articles/dispatch-02/hero-landscape.png", url: "articles/dispatch-02/" },
   { id: "003", registryId: "HL-LC-003", title: "The Fresh Food Desert Inside the Orchard", province: "land-climate", provinceLabel: "Land & Climate", location: "Orrtanna, PA", readingTime: 7, volume: "01", date: "July 2026", image: "articles/dispatch-03/hero-landscape.png", url: "articles/dispatch-03/" },
-  { id: "004", registryId: "HL-LF-004", title: "I Thought I Needed a Third Place. Turns Out, I Needed to Take Root.", province: "life", provinceLabel: "Life", location: "Hagerstown, MD", readingTime: 7, volume: "01", date: "July 2026", image: "articles/dispatch-04/hero-landscape.png", url: "articles/dispatch-04/" }
+  { id: "004", registryId: "HL-LF-004", title: "I Thought I Needed a Third Place. Turns Out, I Needed to Take Root.", province: "life", provinceLabel: "Life", location: "Hagerstown, MD", readingTime: 7, volume: "01", date: "July 2026", image: "articles/dispatch-04/hero-landscape.png", url: "articles/dispatch-04/" },
+  { id: "005", registryId: "HL-LF-005", title: "Why Would You Do This To Yourself?", province: "life", provinceLabel: "Life", location: "Harrisburg, PA", readingTime: 7, volume: "01", date: "July 2026", image: "articles/dispatch-05/hero-landscape.png", url: "articles/dispatch-05/" }
 ];
 
 const provinces = ["land-climate", "cities-motion", "language", "life"];
@@ -27,7 +28,7 @@ function updateArchive({ updateUrl = true } = {}) {
 
   dispatches.forEach((dispatch) => {
     const provinceMatch = selectedProvince === "all" || dispatch.province === selectedProvince;
-    const searchText = `${dispatch.title} ${dispatch.provinceLabel} ${dispatch.location}`.toLocaleLowerCase();
+    const searchText = `${dispatch.id} ${dispatch.registryId} ${dispatch.title} ${dispatch.provinceLabel} ${dispatch.location}`.toLocaleLowerCase();
     const matches = provinceMatch && searchText.includes(query);
     records.get(dispatch.id).hidden = !matches;
     if (matches) visible += 1;
