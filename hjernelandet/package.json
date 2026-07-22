@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.js",
+    "check": "node scripts/validate-dispatches.js"
+  }
+}

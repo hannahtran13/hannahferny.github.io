@@ -1,13 +1,5 @@
-const dispatches = [
-  { id: "001", registryId: "HL-LC-001", title: "The Environmentalism Gettysburg Doesn't Talk About", province: "land-climate", provinceLabel: "Land & Climate", location: "Adams County, PA", readingTime: 8, volume: "01", date: "July 2026", image: "hero-landscape.png", url: "articles/dispatch-01/" },
-  { id: "002", registryId: "HL-CM-002", title: "Everyone Drives. Everyone Drives Something Enormous.", province: "cities-motion", provinceLabel: "Cities & Motion", location: "Adams County, PA", readingTime: 9, volume: "01", date: "July 2026", image: "articles/dispatch-02/hero-landscape.png", url: "articles/dispatch-02/" },
-  { id: "003", registryId: "HL-LC-003", title: "The Fresh Food Desert Inside the Orchard", province: "land-climate", provinceLabel: "Land & Climate", location: "Orrtanna, PA", readingTime: 7, volume: "01", date: "July 2026", image: "articles/dispatch-03/hero-landscape.png", url: "articles/dispatch-03/" },
-  { id: "004", registryId: "HL-LF-004", title: "I Thought I Needed a Third Place. Turns Out, I Needed to Take Root.", province: "life", provinceLabel: "Life", location: "Hagerstown, MD", readingTime: 7, volume: "01", date: "July 2026", image: "articles/dispatch-04/hero-landscape.png", url: "articles/dispatch-04/" },
-  { id: "005", registryId: "HL-LF-005", title: "Why Would You Do This To Yourself?", province: "life", provinceLabel: "Life", location: "Harrisburg, PA", readingTime: 7, volume: "01", date: "July 2026", image: "articles/dispatch-05/hero-landscape.png", url: "articles/dispatch-05/" }
-];
-
 const provinces = ["land-climate", "cities-motion", "language", "life"];
-const records = new Map(Array.from(document.querySelectorAll("[data-record-id]")).map((record) => [record.dataset.recordId, record]));
+const recordElements = Array.from(document.querySelectorAll("[data-record-id]"));
 const search = document.querySelector("#archive-search");
 const sort = document.querySelector("#archive-sort");
 const recordsContainer = document.querySelector(".records");
@@ -19,26 +11,23 @@ const emptyCopy = document.querySelector("[data-empty-copy]");
 const endRecord = document.querySelector("[data-end-record]");
 let selectedProvince = "all";
 
-document.querySelector("[data-total-dispatches]").textContent = String(dispatches.length).padStart(3, "0");
-document.querySelector("[data-total-provinces]").textContent = String(provinces.length).padStart(3, "0");
-
 function updateArchive({ updateUrl = true } = {}) {
   const query = search.value.trim().toLocaleLowerCase();
   let visible = 0;
 
-  dispatches.forEach((dispatch) => {
-    const provinceMatch = selectedProvince === "all" || dispatch.province === selectedProvince;
-    const searchText = `${dispatch.id} ${dispatch.registryId} ${dispatch.title} ${dispatch.provinceLabel} ${dispatch.location}`.toLocaleLowerCase();
+  recordElements.forEach((record) => {
+    const provinceMatch = selectedProvince === "all" || record.dataset.province === selectedProvince;
+    const searchText = `${record.dataset.recordId} ${record.dataset.title} ${record.dataset.location} ${record.textContent}`.toLocaleLowerCase();
     const matches = provinceMatch && searchText.includes(query);
-    records.get(dispatch.id).hidden = !matches;
+    record.hidden = !matches;
     if (matches) visible += 1;
   });
 
-  const orderedDispatches = [...dispatches].sort((a, b) => {
-    if (sort.value === "alphabetical") return a.title.localeCompare(b.title);
-    return Number(a.id) - Number(b.id);
+  const orderedRecords = [...recordElements].sort((a, b) => {
+    if (sort.value === "alphabetical") return a.dataset.title.localeCompare(b.dataset.title);
+    return Number(a.dataset.recordId) - Number(b.dataset.recordId);
   });
-  orderedDispatches.forEach((dispatch) => recordsContainer.append(records.get(dispatch.id)));
+  orderedRecords.forEach((record) => recordsContainer.append(record));
 
   summary.textContent = visible === 0 ? "No dispatches found" : `${visible} dispatch${visible === 1 ? "" : "es"} shown`;
   emptyState.hidden = visible !== 0;
