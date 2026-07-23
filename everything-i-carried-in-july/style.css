@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap");
+
+@font-face {
+  font-family: "Kremlin Grand Duke";
+  src: url("fonts/kremlin-grand-duke.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #082d70;
+  --paper: #f4f0e7;
+  --gold: #aa7b28;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #fff;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+main {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.masthead {
+  display: grid;
+  grid-template-columns: 1fr 2.1fr 1fr;
+  align-items: end;
+  width: min(1500px, 92vw);
+  margin: 0 auto;
+  padding: 54px 0 20px;
+}
+
+.eyebrow,
+.instruction,
+.tray-caption,
+.note-number,
+.note-label {
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  align-self: start;
+  margin: 12px 0 0;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-family: "Kremlin Grand Duke", Georgia, serif;
+  font-size: clamp(62px, 7.8vw, 122px);
+  font-weight: 400;
+  line-height: 0.78;
+  letter-spacing: 0.015em;
+}
+
+.intro {
+  max-width: 260px;
+  justify-self: end;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.instruction {
+  margin-top: 16px;
+  opacity: 0.65;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-style: normal;
+}
+
+.table {
+  padding: 58px 4vw 20px;
+}
+
+.tray {
+  position: relative;
+  isolation: isolate;
+  width: min(1320px, 90vw);
+  aspect-ratio: 1.636;
+  margin: 0 auto;
+}
+
+.tray-image {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  z-index: 0;
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 30px rgba(35, 30, 20, 0.2));
+  pointer-events: none;
+}
+
+.trinket {
+  position: absolute;
+  display: block;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transition: filter 0.25s ease, scale 0.25s ease;
+  filter:
+    drop-shadow(0 16px 12px rgba(8, 32, 65, 0.34))
+    drop-shadow(0 4px 4px rgba(8, 32, 65, 0.18));
+}
+
+.trinket:hover,
+.trinket:focus-visible {
+  outline: none;
+  scale: 1.035;
+  filter:
+    drop-shadow(0 20px 14px rgba(8, 32, 65, 0.4))
+    drop-shadow(0 5px 5px rgba(8, 32, 65, 0.2))
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.75));
+}
+
+.trinket:active {
+  cursor: grabbing;
+  scale: 1.06;
+}
+
+.trinket.returning {
+  transition:
+    left 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.25s ease,
+    scale 0.25s ease;
+}
+
+.trinket img {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+}
+
+.tray-caption {
+  display: flex;
+  justify-content: space-between;
+  width: min(1230px, 83vw);
+  margin: 5px auto 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(8, 45, 112, 0.26);
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1230px, 83vw);
+  margin: 0 auto;
+  padding: 22px 0 50px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.reset {
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  padding: 5px 0;
+  background: none;
+  color: inherit;
+  font: 500 10px/1 "DM Sans", Arial, sans-serif;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.modal-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(5, 25, 60, 0.32);
+  backdrop-filter: blur(6px);
+  animation: fade 0.25s ease both;
+}
+
+.modal-wrap[hidden] {
+  display: none;
+}
+
+.note-card {
+  position: relative;
+  width: min(430px, 92vw);
+  min-height: 560px;
+  padding: 32px 44px 46px;
+  border: 1px solid rgba(170, 123, 40, 0.65);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.1)),
+    #f6f0e2;
+  box-shadow: 0 30px 80px rgba(0, 20, 55, 0.3);
+  text-align: center;
+  transform: rotate(-0.5deg);
+  animation: rise 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.note-card::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(8, 45, 112, 0.18);
+  pointer-events: none;
+}
+
+.note-image {
+  width: 130px;
+  height: 180px;
+  margin: 18px auto 5px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 8px rgba(8, 32, 65, 0.18));
+}
+
+.note-number {
+  margin: 0;
+  color: var(--gold);
+}
+
+.note-label {
+  margin: 12px 0 7px;
+  color: var(--gold);
+}
+
+.note-card h2 {
+  margin: 0;
+  font: 400 32px/1.1 Georgia, serif;
+}
+
+.note-text {
+  max-width: 300px;
+  margin: 24px auto 0;
+  font: italic 17px/1.65 Georgia, serif;
+}
+
+.close {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  z-index: 2;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 300 27px/1 sans-serif;
+  cursor: pointer;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(-1.5deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .masthead {
+    display: block;
+    padding-top: 32px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    margin-bottom: 38px;
+  }
+
+  h1 {
+    font-size: clamp(50px, 15vw, 78px);
+    line-height: 0.86;
+  }
+
+  .intro {
+    margin: 34px auto 0;
+  }
+
+  .table {
+    padding: 20px 0 8px;
+  }
+
+  .tray {
+    width: 118vw;
+    margin-left: -9vw;
+  }
+
+  .tray-caption,
+  footer {
+    width: 88vw;
+  }
+
+  footer {
+    padding-bottom: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
