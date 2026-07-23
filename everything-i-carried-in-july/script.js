@@ -13,7 +13,7 @@ const objects = [
     id: "mirror",
     name: "The broken mirror",
     image: "assets/mirror.png",
-    note: "Every version of myself I compared to someone else—and found lacking.",
+    note: "Every version of myself I compared to someone else, and found lacking.",
     x: 35,
     y: 20,
     width: 18,
