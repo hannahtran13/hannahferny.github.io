@@ -201,6 +201,52 @@ footer a:hover {
   outline-offset: 6px;
 }
 
+@media (min-width: 901px) {
+  .experiment-grid{
+    display:block;
+  }
+
+  .experiment-card{
+    min-height:350px;
+    aspect-ratio:auto;
+    display:grid;
+    grid-template-columns:minmax(0, 1.35fr) minmax(330px, 0.65fr);
+    border:1px solid var(--rule);
+    background:rgba(255,255,255,0.48);
+  }
+
+  .experiment-card::after{
+    display:none;
+  }
+
+  .experiment-card > img{
+    min-width:0;
+    height:350px;
+    padding:22px;
+    background:#e8e0cf;
+    object-fit:contain;
+  }
+
+  .experiment-card .layer{
+    position:static;
+    opacity:1;
+    transform:none;
+    justify-content:space-between;
+    padding:34px 38px;
+    color:var(--ink);
+  }
+
+  .experiment-card .experiment-date{
+    color:var(--red);
+  }
+
+  .experiment-card .project-icon{
+    align-self:flex-start;
+    background:var(--red);
+    color:#fff;
+  }
+}
+
 footer {
   min-height: 130px;
   display: flex;
