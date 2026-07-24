@@ -718,6 +718,128 @@ PORTFOLIO
   transform:translateY(0);
 }
 
+/* MISCELLANEA */
+
+.miscellanea-card{
+  grid-column:1 / -1;
+  min-height:320px;
+  display:grid;
+  grid-template-columns:minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  align-items:stretch;
+  overflow:hidden;
+  border:1px solid rgba(20,30,70,0.08);
+  border-radius:30px;
+  background:#17204f;
+  box-shadow:0 20px 70px rgba(20,30,70,0.14);
+  color:#fff;
+  transition:transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.miscellanea-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 90px rgba(20,30,70,0.22);
+}
+
+.miscellanea-card-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:50px;
+}
+
+.miscellanea-kicker{
+  margin-bottom:14px;
+  color:#95ccdd;
+  font-size:0.78rem;
+  font-weight:800;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+}
+
+.miscellanea-card h2{
+  margin-bottom:16px;
+  color:#fff;
+  font-size:clamp(2.8rem, 6vw, 5.4rem);
+  line-height:0.92;
+  letter-spacing:-0.04em;
+}
+
+.miscellanea-card-copy > p:not(.miscellanea-kicker){
+  max-width:650px;
+  color:#f5dfe9;
+  font-size:1.1rem;
+  line-height:1.7;
+}
+
+.miscellanea-link{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:28px;
+  font-weight:800;
+}
+
+.miscellanea-link i{
+  transition:transform 0.35s ease;
+}
+
+.miscellanea-card:hover .miscellanea-link i{
+  transform:translate(4px, -4px);
+}
+
+.miscellanea-composition{
+  position:relative;
+  min-height:320px;
+  overflow:hidden;
+  background:
+    linear-gradient(115deg, transparent 48%, rgba(255,255,255,0.12) 49%, transparent 50%),
+    radial-gradient(circle at 72% 28%, #f5dfe9 0 7%, transparent 7.5%),
+    linear-gradient(145deg, #4274d9, #95ccdd);
+}
+
+.miscellanea-composition span{
+  position:absolute;
+  display:block;
+}
+
+.miscellanea-orbit{
+  width:220px;
+  height:220px;
+  top:50%;
+  left:50%;
+  border:2px solid rgba(255,255,255,0.7);
+  border-radius:50%;
+  transform:translate(-50%, -50%);
+}
+
+.miscellanea-disc{
+  width:110px;
+  height:110px;
+  left:17%;
+  bottom:13%;
+  border-radius:50%;
+  background:#c70039;
+  box-shadow:22px -18px 0 rgba(245,223,233,0.72);
+}
+
+.miscellanea-line{
+  width:190px;
+  height:18px;
+  right:-30px;
+  bottom:24%;
+  background:#293681;
+  transform:rotate(-28deg);
+}
+
+.miscellanea-dot{
+  width:22px;
+  height:22px;
+  top:22%;
+  left:20%;
+  border-radius:50%;
+  background:#fff;
+}
+
 /* =========================
 BUTTONS
 ========================= */
@@ -1012,6 +1134,18 @@ nav .fa-solid{
 
   .work{
     aspect-ratio:1 / 1.15;
+  }
+
+  .miscellanea-card{
+    grid-template-columns:1fr;
+  }
+
+  .miscellanea-card-copy{
+    padding:34px 30px 38px;
+  }
+
+  .miscellanea-composition{
+    min-height:240px;
   }
 
   .layer{

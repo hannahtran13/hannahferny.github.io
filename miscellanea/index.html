@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff5e0">
+    <meta
+      name="description"
+      content="Miscellanea — Hannah Tran's online sketchbook for experiments in visual language, composition, motion, and interaction."
+    >
+    <title>Miscellanea — Hannah Tran</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav aria-label="Primary navigation">
+      <a href="../index.html" aria-label="Hannah Tran home">
+        <img src="../images/logo.png" class="logo" alt="Hannah Tran">
+      </a>
+
+      <ul id="sidemenu">
+        <li><a href="../index.html#header">Home</a></li>
+        <li><a href="../index.html#about">My Story</a></li>
+        <li><a href="../index.html#professions">Professions</a></li>
+        <li><a href="../index.html#portfolio">Portfolio</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../hjernelandet/index.html">Hjernelandet</a></li>
+
+        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+      </ul>
+
+      <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+    </nav>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-label">
+          <span class="index-number">Index / 01</span>
+          <span class="status"><i aria-hidden="true"></i> Always in progress</span>
+        </div>
+        <div class="intro-copy">
+          <h1 id="page-title">Miscel&shy;lanea</h1>
+          <p>
+            An online sketchbook for experiments in visual language,
+            composition, motion, and interaction.
+          </p>
+        </div>
+        <p class="intro-note">
+          Small studies, unfinished thoughts, and things made to find out
+          what happens.
+        </p>
+      </section>
+
+      <section class="collection" aria-labelledby="collection-title">
+        <header class="collection-header">
+          <h2 id="collection-title">Experiments</h2>
+          <p>One study, for now. More will surface.</p>
+        </header>
+
+        <div class="experiment-grid">
+          <article class="experiment-card experiment-card--featured">
+            <a
+              class="experiment-card-link"
+              href="everything-i-carried-in-july/index.html"
+              aria-labelledby="experiment-01-title"
+            >
+              <div class="experiment-preview">
+                <img
+                  src="everything-i-carried-in-july/assets/tray.png"
+                  alt=""
+                >
+                <span class="experiment-number">001</span>
+                <span class="open-mark" aria-hidden="true">↗</span>
+              </div>
+              <div class="experiment-info">
+                <div>
+                  <p class="experiment-date">July 2026</p>
+                  <h3 id="experiment-01-title">Everything I Carried in July</h3>
+                </div>
+                <ul class="experiment-tags" aria-label="Experiment categories">
+                  <li>Interaction</li>
+                  <li>Personal archive</li>
+                  <li>Composition</li>
+                </ul>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Miscellanea © 2026 Hannah Tran</p>
+      <a href="#page-title">Back to top ↑</a>
+    </footer>
+
+    <script>
+      var sidemnu = document.getElementById("sidemenu");
+
+      function openmenu(){
+        sidemnu.style.right = "0";
+      }
+
+      function closemenu(){
+        sidemnu.style.right = "-220px";
+      }
+    </script>
+  </body>
+</html>

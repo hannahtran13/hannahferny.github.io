@@ -191,6 +191,32 @@ footer {
   cursor: pointer;
 }
 
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--ink);
+  color: inherit;
+  font: 500 10px/1 "DM Sans", Arial, sans-serif;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .modal-wrap {
   position: fixed;
   inset: 0;
@@ -318,6 +344,14 @@ footer {
 
   footer {
     padding-bottom: 32px;
+    flex-direction: column;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .footer-actions {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
