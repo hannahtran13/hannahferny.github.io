@@ -30,17 +30,6 @@ body {
   font-family: "DM Sans", Arial, sans-serif;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 99;
-  pointer-events: none;
-  opacity: 0.08;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-
 main {
   min-height: 100vh;
   overflow: hidden;
@@ -130,16 +119,17 @@ h1 {
   cursor: grab;
   touch-action: none;
   user-select: none;
-  transition: filter 0.25s ease, scale 0.25s ease;
-  filter:
-    drop-shadow(0 16px 12px rgba(8, 32, 65, 0.34))
-    drop-shadow(0 4px 4px rgba(8, 32, 65, 0.18));
+  transition: scale 0.25s ease;
 }
 
 .trinket:hover,
 .trinket:focus-visible {
   outline: none;
   scale: 1.035;
+}
+
+.trinket:hover img,
+.trinket:focus-visible img {
   filter:
     drop-shadow(0 20px 14px rgba(8, 32, 65, 0.4))
     drop-shadow(0 5px 5px rgba(8, 32, 65, 0.2))
@@ -155,7 +145,6 @@ h1 {
   transition:
     left 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     top 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.25s ease,
     scale 0.25s ease;
 }
 
@@ -163,6 +152,10 @@ h1 {
   display: block;
   width: 100%;
   pointer-events: none;
+  filter:
+    drop-shadow(0 16px 12px rgba(8, 32, 65, 0.34))
+    drop-shadow(0 4px 4px rgba(8, 32, 65, 0.18));
+  transition: filter 0.25s ease;
 }
 
 .tray-caption {
