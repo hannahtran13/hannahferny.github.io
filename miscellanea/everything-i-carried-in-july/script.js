@@ -194,3 +194,64 @@ modal.addEventListener("pointerdown", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeNote();
 });
+
+const porcelainStory = document.querySelector(".porcelain-story");
+const tileWall = document.querySelector(".tile-wall");
+const porcelainCue = document.querySelector(".porcelain-cue");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let porcelainFrame = null;
+
+function makeTiles() {
+  const columns = window.innerWidth <= 760 ? 5 : 8;
+  const rows = window.innerWidth <= 760 ? 11 : 5;
+  const tileCount = columns * rows;
+  tileWall.replaceChildren();
+
+  for (let index = 0; index < tileCount; index += 1) {
+    const tile = document.createElement("div");
+    const image = document.createElement("img");
+    const column = index % columns;
+    const direction = column < columns / 2 ? -1 : 1;
+    const variance = ((index * 37) % 19) - 9;
+    tile.className = "porcelain-tile";
+    image.src = `assets/gzhel-tile-0${(index % 2) + 1}.png`;
+    image.alt = "";
+    image.draggable = false;
+    tile.append(image);
+    tile.style.setProperty("--drift", `${direction * (70 + Math.abs(variance) * 7)}vw`);
+    tile.style.setProperty("--drop", `${95 + ((index * 29) % 90)}vh`);
+    tile.style.setProperty("--spin", `${direction * (18 + ((index * 13) % 48))}deg`);
+    tile.style.setProperty("--depth", `${-40 - ((index * 17) % 180)}px`);
+    tile.dataset.release = ((index * 23) % tileCount) / tileCount;
+    tileWall.append(tile);
+  }
+}
+
+function updatePorcelain() {
+  porcelainFrame = null;
+  const bounds = porcelainStory.getBoundingClientRect();
+  const distance = porcelainStory.offsetHeight - window.innerHeight;
+  const progress = Math.max(0, Math.min(1, -bounds.top / distance));
+
+  tileWall.querySelectorAll(".porcelain-tile").forEach((tile) => {
+    const release = Number(tile.dataset.release) * 0.42;
+    const fall = Math.max(0, Math.min(1, (progress - release) / 0.58));
+    const easedFall = 1 - Math.pow(1 - fall, 3);
+    tile.style.setProperty("--fall", reducedMotion.matches ? (progress > 0.35 ? 1 : 0) : easedFall);
+  });
+
+  porcelainCue.style.opacity = progress > 0.12 ? "0" : "1";
+}
+
+function requestPorcelainUpdate() {
+  if (porcelainFrame) return;
+  porcelainFrame = requestAnimationFrame(updatePorcelain);
+}
+
+makeTiles();
+updatePorcelain();
+window.addEventListener("scroll", requestPorcelainUpdate, { passive: true });
+window.addEventListener("resize", () => {
+  makeTiles();
+  requestPorcelainUpdate();
+});
