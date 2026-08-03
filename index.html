@@ -1,580 +1,651 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <title>Hannah Tran Online Portal</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="https://kit.fontawesome.com/1b373143aa.js" crossorigin="anonymous"></script>
-</head>
-<script>
-
-const works = document.querySelectorAll('.work');
-
-works.forEach(work => {
-
-  work.addEventListener('click', function(e){
-
-    // if already active -> follow project link
-    if(work.classList.contains('active')){
-
-      const link = work.querySelector('a');
-
-      if(link){
-        window.location.href = link.href;
-      }
-
-    } else {
-
-      // close all others
-      works.forEach(w => w.classList.remove('active'));
-
-      // open clicked one
-      work.classList.add('active');
-
-    }
-
-  });
-
-});
-
-// tap outside closes cards
-document.addEventListener('click', function(e){
-
-  if(!e.target.closest('.work')){
-    works.forEach(w => w.classList.remove('active'));
-  }
-
-});
-
-</script>
-<body>
-  <div id="header">
-    <div class="container">
-      <nav>
-        <img src="images/logo.png" class="logo">
-        <ul id="sidemenu">
-          <li><a href="#header">Home</a></li>
-          <li><a href="#about">My Story</a></li>
-          <li><a href="#professions">Professions</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="hjernelandet/index.html">Hjernelandet</a></li>
-          <li><a href="pottery.html">Pottery</a></li>
-          <li class="language-dropdown">
-                <button class="lang-btn" onclick="toggleLangMenu(event)">
-
-                    EN
-
-                </button>
-
-                <ul class="lang-menu" id="langMenu">
-
-                    <li><a href="index.html">EN</a></li>
-
-                    <li><a href="index-dk.html">DK</a></li>
-
-                </ul>
-
-            </li>
-          <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
-        </ul>
-        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
-      </nav>
-      <div class="header-text">
-        <p>Hi, I’m Hannah.</p>
-        <h1>
-          I turn complex <br><span class="rotating-word">ideas</span>
-          <br>into things people <br>actually understand.
-        </h1>
-      </div>
-    </div>
-  </div>
-  <!---------------mystory------------------->
-  <div id="about">
-    <div class="container">
-      <div class="row">
-        <div class="about-col-1">
-           <img src="images/user.png">
-        </div>
-        <div class="about-col-2">
-          <h1 class="sub-title">About me!</h1>
-          <p>
-          I’m a senior at Bucknell University studying Computer Science and Environmental Studies.
-
-          My work focuses on translating complex systems-especially in sustainability and technology-into clear, engaging experiences. I’ve worked across marketing, research, and design, building campaigns, analyzing audience behavior, and creating narratives that connect technical ideas with real people.<br><br>
-
-          Recently, I’ve:
-          <br>• Designed cross-platform marketing campaigns for public-facing environmental programs
-          <br>• Led research on social media narratives and audience perception
-          <br>• Built exhibitions and digital experiences that make research accessible<br><br>
-
-          I’m especially interested in work that combines <strong>AI, storytelling, and sustainability</strong>, not just to inform people, but to change how they think and act.
-          </p>
-
-          <div class="tab-titles">
-            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-            <p class="tab-links" onclick="opentab('experience')">Experience</p>
-            <p class="tab-links" onclick="opentab('education')">Education</p>
-            <p class="tab-links" onclick="opentab('volunteering')">Volunteering</p>
-          </div>
-          <div class="tab-contents active-tab" id="skills">
-            <ul>
-              <li><span>Marketing & Strategy</span><br>Campaign planning, messaging, audience research</li>
-              <li><span>Design & Media</span><br>Adobe Creative Suite, visual storytelling</li>
-              <li><span>Research & Analysis</span><br>Survey design, qualitative & quantitative analysis</li>
-              <li><span>Technical</span><br>Python, JavaScript, HTML/CSS, R</li>
-            </ul>
-          </div>
-          <div class="tab-contents" id="experience">
-            <ul>
-              <li>
-                <span>2025 - Maryland Environmental Service</span><br>
-                <strong>Marketing & Operations Intern</strong><br>
-                Designed and executed cross-platform campaigns for sustainability products (Leafgro & Leafgro Gold)
-              </li>
-
-              <li>
-                <span>2024 - 2025 - Bucknell University</span><br>
-                <strong>Research Assistant (Audience Insight & Narrative Analysis)</strong><br>
-                Led qualitative and quantitative research on social media narratives and environmental communication.
-              </li>
-
-              <li>
-                <span>2023 - Bucknell University (RED Grant)</span><br>
-                <strong>Undergraduate Researcher - AI & Curriculum Integration</strong> <br>
-                Applied machine learning concepts to educational design, translating technical systems into accessible learning experiences.
-              </li>
-
-              <li>
-                <span>2023 - Bucknell Center for Sustainability & Environment</span><br>
-                <strong>Lead Designer & Full Exhibition Curator</strong><br>
-                Led visual branding and narrative development for a museum renovation and public exhibition.
-              </li>
-
-              <li>
-                <span>2021 - 2022 - Freelance</span><br>
-                <strong>Graphic Designer</strong><br>
-                Delivered branding and digital assets for small businesses and nonprofits.
-              </li>
-            </ul>
-          </div>
-          <div class="tab-contents" id="education">
-            <ul>
-              <li>
-                <span>Bucknell University</span><br>
-                Bachelor of Arts in Computer Science & Environmental Studies (Expected May 2026)<br><br>
-
-                <strong>Relevant Coursework:</strong><br>
-                UX/UI Design, Environmental Policy, Community Research Design
-              </li>
-
-            </ul>
-          </div>
-          <div class="tab-contents" id="volunteering">
-            <ul>
-              <li><span>2020-2021 - The Ahurea Project</span><br>Founder - Head of Content (season 1)/ President (season 2)<br></li>
-              <li><span>2021 - Inventa Magazine</span><br>Editor-in-Chief<br></li>
-              <li><span>2021 - “Me in Culture” Events Series</span><br>Head of Organisation</li>
-              <li><span>2021 - “COLOVE” Podcast</span><br>Head of Production<br> </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!---------------profession-------------->
-<div id="professions">
-  <div class="container">
-    <h1 class="sub-title">What I Work On</h1>
-    <div class="profession-list">
-
-      <div>
-        <i class="fa-solid fa-bullhorn"></i>
-        <h2>Marketing & Strategy</h2>
-        <p>
-          Design campaigns and messaging that translate complex ideas-especially in sustainability-into something people actually understand and care about.
-        </p>
-        <a href="marketing.html">Explore</a>
-      </div>
-
-      <div>
-        <i class="fa-solid fa-chart-line"></i>
-        <h2>Research & Insight</h2>
-        <p>
-          Conduct qualitative and quantitative research to understand how people think, what they believe, and how narratives shape behavior.
-        </p>
-        <a href="research.html">Explore</a>
-      </div>
-
-      <div>
-        <i class="fa-solid fa-leaf"></i>
-        <h2>Sustainability & Systems</h2>
-        <p>
-          Work on environmental and public-facing projects, connecting technical systems with real communities through strategy and communication.
-        </p>
-        <a href="sustainability.html">Explore</a>
-      </div>
-
-      <div>
-        <i class="fa-solid fa-pen-nib"></i>
-        <h2>Design & Communication</h2>
-        <p>
-          Use design as a tool to make ideas clear-whether that’s visual storytelling, exhibitions, or digital interfaces.
-        </p>
-        <a href="design.html">Explore</a>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!---------------hjernelandet-------------->
-
-<section id="hjernelandet" class="hjernelandet-section">
-  <div class="portfolio-container">
-    <article class="hjernelandet-feature">
-      <div class="hjernelandet-map-preview" aria-hidden="true">
-        <img src="hjernelandet/hero-landscape.png" alt="">
-        <span class="hjernelandet-map-badge">Hjerne<br>landet</span>
-      </div>
-      <div class="hjernelandet-feature-copy">
-        <p class="hjernelandet-kicker">Essay atlas / place writing / visual storytelling</p>
-        <h2>Hjernelandet</h2>
-        <p class="hjernelandet-feature-lede">
-          A magazine-like map of essays, field notes, language oddities, and environmental observations.
-        </p>
-        <p>
-          Built as a standalone digital publication that still connects back to my portfolio, research, and design work.
-        </p>
-        <div class="hjernelandet-tags" aria-label="Hjernelandet themes">
-          <span>Writing</span>
-          <span>Editorial Design</span>
-          <span>Environment</span>
-          <span>Place</span>
-          <span>Identity</span>
-        </div>
-        <div class="hjernelandet-feature-actions">
-          <a href="hjernelandet/index.html">Enter Hjernelandet</a>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-<!---------------portfolio-------------->
-
-<section id="portfolio" class="portfolio-section">
-
-  <div class="portfolio-container">
-
-    <h1 class="sub-title">My Work</h1>
-
-    <div class="work-list">
-
-      <article class="mediascape-feature">
-        <div class="mediascape-feature-copy">
-          <p class="mediascape-kicker">Computational media analysis / NLP / data visualization</p>
-          <h2>MediaScape</h2>
-          <p class="mediascape-feature-lede">
-            Explore how different news organizations frame the same story through computational discourse analysis.
-          </p>
-          <p>
-            An interactive research platform built from my linguistics research on climate-change coverage across politically affiliated news media.
-          </p>
-          <div class="mediascape-tags" aria-label="MediaScape technologies and planned technologies">
-            <span>TypeScript</span>
-            <span>React-ready</span>
-            <span>Python planned</span>
-            <span>FastAPI planned</span>
-            <span>PostgreSQL planned</span>
-            <span>NLP</span>
-            <span>Data Visualization</span>
-          </div>
-          <div class="mediascape-feature-actions">
-            <a href="mediascape-case-study.html">View Case Study</a>
-            <a href="mediascape.html">Launch Demo</a>
-          </div>
-        </div>
-
-        <div class="mediascape-mini-dashboard" aria-label="MediaScape dashboard preview">
-          <div class="mini-dashboard-header">
-            <div>
-              <strong>Climate Change</strong>
-              <span>Prototype comparison across outlets</span>
-            </div>
-            <span class="prototype-pill">Demo data</span>
-          </div>
-          <div class="mini-metric-row">
-            <span>Urgency</span>
-            <i style="--bar:68%"></i>
-          </div>
-          <div class="mini-metric-row">
-            <span>Economic framing</span>
-            <i style="--bar:55%"></i>
-          </div>
-          <div class="mini-metric-row">
-            <span>Scientific framing</span>
-            <i style="--bar:82%"></i>
-          </div>
-          <svg viewBox="0 0 360 120" role="img" aria-label="Small line chart preview showing article volume changes over time">
-            <path d="M12 92 C58 82 74 60 116 68 S176 28 218 46 S286 82 348 52" fill="none" stroke="#4274D9" stroke-width="5" stroke-linecap="round"/>
-            <path d="M12 74 C64 62 82 78 126 52 S188 54 232 32 S294 52 348 36" fill="none" stroke="#95CCDD" stroke-width="5" stroke-linecap="round"/>
-            <path d="M12 102 C62 98 104 86 142 88 S210 72 248 86 S306 94 348 78" fill="none" stroke="#293681" stroke-width="5" stroke-linecap="round"/>
-          </svg>
-        </div>
-      </article>
-
-      <!-- PROJECT 1 -->
-
-      <div class="work">
-
-        <img src="images/work-1.png" alt="The Ahurea Project">
-
-        <div class="layer">
-
-          <h3>The Ahurea Project</h3>
-
-          <p>
-            A cultural project concerning different aspects of humanities,
-            achieved 80+ members in 2 seasons, attracted 10,000+ likes
-            and followers, reached 149,600+ people.
-          </p>
-
-          <a href="ahurea-project.html">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-      <!-- PROJECT 2 -->
-
-      <div class="work">
-
-        <img src="images/work-2.png" alt="Milton Exhibition">
-
-        <div class="layer">
-
-          <h3>Milton: Planted In Place Exhibition</h3>
-
-          <p>
-            The first exhibition at Milton Municipal Museum, Milton, PA;
-            celebrating the history and nature of Milton and the surrounding area.
-          </p>
-
-          <a href="milton-exhibition.html">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-      <!-- PROJECT 3 -->
-
-      <div class="work">
-
-        <img src="images/trail.png" alt="Buffalo Valley Rail Trail Extension">
-
-        <div class="layer">
-
-          <h3>
-            Buffalo Valley Rail Trail Extension Community Perception
-          </h3>
-
-          <p>
-            Community-based research in Lewisburg and Montandon, PA.
-          </p>
-
-          <a href="trail.html">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-      <a class="miscellanea-card" href="miscellanea/index.html">
-        <div class="miscellanea-card-copy">
-          <h2>Miscellanea</h2>
-          <p>
-            An online sketchbook for experiments in visual language, composition,
-            motion, and interaction.
-          </p>
-          <span class="miscellanea-link">
-            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-            <span class="sr-only">Explore the sketchbook</span>
-          </span>
-        </div>
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-  <!---------------contact-------------->
-  <div id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="contact-left">
-          <h1 class="sub-title">Contact me</h1>
-          <p><i class="fa-solid fa-paper-plane"></i>tranmanh11hp@gmail.com</p>
-          <div class="social-icons">
-            <a href="https://www.linkedin.com/in/hannah-tran-2852bb236"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://instagram.com/ferniesdesigns?igshid=OGQ5ZDc2ODk2ZA=="><i class="fa-brands fa-instagram"></i></a>
-          </div>
-          <a href="images/my-cv.pdf" download class="btn btn2">Download Resume</a>
-        </div>
-        <div class="contact-right">
-          <form name="submit-to-google-sheet">
-            <input type="text" name="Name" placeholder="Your Name" required>
-            <input type="email" name="Email" placeholder="Your Email">
-            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-            <button type="submit" class="btn btn2">Submit</button>            
-          </form>
-          <span id="msg"></span>
-        </div>
-        <div class="copyright">
-          <p>Copyright © Hannah Tran. 2026</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-
-    var tablinks = document.getElementsByClassName("tab-links");
-    var tabcontents = document.getElementsByClassName("tab-contents");
-
-    function opentab(tabname){
-      for(let tablink of tablinks){
-        tablink.classList.remove("active-link");
-      }
-      for(let tabcontent of tabcontents){
-        tabcontent.classList.remove("active-tab");
-      }
-      event.currentTarget.classList.add("active-link");
-      document.getElementById(tabname).classList.add("active-tab");
-    }
-    
-  </script>
-  <script>
-    var sidemnu = document.getElementById("sidemenu");
-
-    function openmenu(){
-      sidemnu.style.right = "0"
-    }
-    function closemenu(){
-      sidemnu.style.right = "-200px"
-    }
-  </script>
-
-  <script>
-    const rotatingWords = [
-      "ideas",
-      "research",
-      "data",
-      "systems",
-      "algorithms",
-      "designs",
-      "concepts",
-      "stories"
-    ];
-
-    const rotatingWord = document.querySelector(".rotating-word");
-    let rotatingWordIndex = 0;
-
-    if(rotatingWord){
-      setInterval(() => {
-        rotatingWordIndex = (rotatingWordIndex + 1) % rotatingWords.length;
-        rotatingWord.classList.add("is-changing");
-
-        setTimeout(() => {
-          rotatingWord.textContent = rotatingWords[rotatingWordIndex];
-          rotatingWord.classList.remove("is-changing");
-        }, 220);
-      }, 2200);
-    }
-  </script>
-
-
-  <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzX7mXELI5xfDtaFd7yWN1utccAXxFAO8Fj9rLGefcMZMAPJdxyoods-BVxTQ8KKVkamw/exec'
-
-  const form = document.forms['submit-to-google-sheet']
-  const submitBtn = form.querySelector('button[type="submit"]')
-
-  form.addEventListener('submit', e => {
-
-    e.preventDefault()
-
-    // loading state
-    submitBtn.disabled = true
-    submitBtn.innerHTML = "Submitting..."
-
-    fetch(scriptURL, {
-      method: 'POST',
-      body: new FormData(form),
-      mode: 'no-cors'
-    })
-
-    .then(response => {
-
-      // success state
-      submitBtn.innerHTML = "Submission Successful ✓"
-
-      form.reset()
-
-      // revert button after 4 sec
-      setTimeout(() => {
-        submitBtn.disabled = false
-        submitBtn.innerHTML = "Submit"
-      }, 4000)
-
-    })
-
-    .catch(error => {
-
-      submitBtn.disabled = false
-      submitBtn.innerHTML = "Something went wrong"
-
-      console.error('Error!', error.message)
-
-      setTimeout(() => {
-        submitBtn.innerHTML = "Submit"
-      }, 4000)
-
-    })
-
-  })
-</script>
-
-<script>
-
-function toggleLangMenu(event){
-
-  event.stopPropagation();
-
-  const menu = document.getElementById("langMenu");
-
-  menu.classList.toggle("show-lang");
-
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="An interactive portfolio of design, research, environmental communication, and independent publishing by Hannah Tran."><title>Selected Works — Hannah Tran</title><link rel="icon" href="favicon.svg"><style>
+:root{--paper:#f2eedf;--ink:#131820;--muted:#5e625f;--navy:#172a46;--rust:#c9553d;--green:#3f624e;--blue:#697a98;--clay:#b86f4f}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#d6d4cf;color:var(--ink)}body{font-family:"Helvetica Neue",Arial,sans-serif;overflow:hidden}button,a{font:inherit;color:inherit}.site-shell{height:100svh;display:grid;grid-template-rows:58px 42px 1fr 34px;background:radial-gradient(circle at 50% 40%,#ebe9e2,#cfcdc7);position:relative}.site-header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 26px;border-bottom:1px solid #13182033;background:#f2eedfee;z-index:30}.site-header>a{font-size:13px;font-weight:700;letter-spacing:.08em;text-decoration:none}.site-header>span{font-size:10px;letter-spacing:.05em;color:var(--muted)}.site-header nav{justify-self:end;display:flex;gap:20px}.site-header button,.modebar button{border:0;background:none;font-size:9px;letter-spacing:.12em;cursor:pointer}.modebar{display:flex;justify-content:space-between;align-items:center;padding:0 26px;border-bottom:1px solid #13182022;background:#e8e5dedd;z-index:25}.modebar>div{display:flex;gap:18px;align-items:center}.modebar b{font:9px ui-monospace,SFMono-Regular,monospace;letter-spacing:.1em}.mode-switch{border:1px solid var(--ink)!important;padding:7px 10px!important}.reader-stage{display:flex;min-height:0;align-items:center;justify-content:center;gap:16px;padding:20px 24px;overflow:hidden}.book-shell{width:min(1040px,calc(100vw - 150px));height:min(680px,calc(100svh - 170px));min-height:390px;filter:drop-shadow(0 28px 26px #15120d35);position:relative}.flipbook{margin:auto}.paper-page{background:var(--paper);overflow:hidden;box-shadow:inset 0 0 0 1px #13182016}.paper-page:nth-child(even){box-shadow:inset 15px 0 22px -24px #000,inset 0 0 0 1px #13182016}.paper-page:nth-child(odd){box-shadow:inset -15px 0 22px -24px #000,inset 0 0 0 1px #13182016}.page-inner{height:100%;padding:38px 38px 34px;display:flex;flex-direction:column;position:relative;overflow:hidden}.page-kicker{display:flex;justify-content:space-between;border-top:1px solid;padding-top:8px;text-transform:uppercase;font:8px ui-monospace,monospace;letter-spacing:.08em}.paper-page h2{font-size:38px;line-height:.92;letter-spacing:-.055em;margin:38px 0 18px;max-width:95%}.deck{font-family:Georgia,serif;font-size:17px;line-height:1.22;max-width:92%;margin:0 0 20px}.body-copy{font-family:Georgia,serif;font-size:12px;line-height:1.52;max-width:94%;margin:0}.facts{margin-top:auto;display:grid;gap:0;border-top:1px solid #13182055}.facts span{padding:8px 0;border-bottom:1px solid #13182033;font:8px ui-monospace,monospace;letter-spacing:.04em}.text-link{align-self:flex-start;border:0;border-bottom:1px solid;background:none;padding:0 0 4px;margin-top:22px;font-size:8px;letter-spacing:.1em;cursor:pointer}.cover{background:var(--navy);color:#f7f3e6}.cover .page-inner{padding:48px 46px;background:linear-gradient(90deg,#0002,transparent 9%),radial-gradient(circle at 85% 10%,#ffffff10,transparent 30%)}.cover h1{font-size:46px;line-height:.88;letter-spacing:-.06em;margin:auto 0 18px}.cover h1 em{font-style:normal;color:#e5c8a8}.cover>div>p{font-family:Georgia,serif;font-size:11px}.registration{display:flex;justify-content:space-between;font:8px ui-monospace,monospace}.registration span{font-size:20px}.cover-meta{display:flex;justify-content:space-between;border-top:1px solid #ffffff55;padding-top:12px;font:8px ui-monospace,monospace;line-height:1.7}.open-guide{position:absolute;right:42px;bottom:32px;border:1px solid #f7f3e6;background:transparent;color:inherit;padding:9px 11px;font-size:8px;letter-spacing:.08em;cursor:pointer}.spine{position:absolute;left:6px;top:50%;transform:rotate(-90deg) translateX(-50%);transform-origin:left top;font:6px ui-monospace,monospace;letter-spacing:.12em;opacity:.7}.portrait-placeholder{height:54%;margin-top:18px;background:linear-gradient(145deg,#c9553d,#172a46);display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:white}.portrait-placeholder b{font-size:28px}.portrait-placeholder span{font:7px ui-monospace,monospace;margin-top:5px}.portrait h2{font-size:28px;margin:18px 0 12px}.toc .facts{margin-top:15px}.toc .facts span{font-size:9px;padding:7px 0}.opener{background:var(--navy);color:white}.opener h2{font-size:70px;margin:auto 0 12px}.research{background:var(--blue)}.media{background:#e5e7e3}.media .page-inner:after{content:"ECONOMY  72  ·  SCIENCE  48  ·  URGENCY  91";display:grid;place-items:center;margin-top:auto;height:42%;color:white;font:9px ui-monospace,monospace;background:repeating-linear-gradient(90deg,var(--navy) 0 18%,#8a3540 18% 33%,#ddd 33% 34%)}.milton .page-inner:after{content:"FIG. 04A     FIG. 04B     FIG. 04C";margin-top:auto;height:55%;padding:14px;color:white;font:8px ui-monospace,monospace;background:linear-gradient(125deg,#1f4233 0 55%,#c9553d 55% 72%,#dccb97 72%)}.map .page-inner:after{content:"LEWISBURG  ●━━━━━━━━●  MONTANDON";display:grid;place-items:center;height:38%;margin:15px 0;color:var(--navy);font:9px ui-monospace,monospace;background:radial-gradient(circle at 22% 45%,#c9553d 0 5px,transparent 6px),radial-gradient(circle at 76% 58%,#c9553d 0 5px,transparent 6px),repeating-radial-gradient(ellipse,#0000 0 19px,#697a9844 20px 21px)}.ahurea{background:#f0c942}.ahurea .facts{grid-template-columns:1fr 1fr;border:0;gap:8px}.ahurea .facts span{height:105px;padding:10px;background:#c9553d;color:white;border:0}.ahurea .facts span:nth-child(2){background:#172a46}.ahurea .facts span:nth-child(3){background:#eee;color:#111}.ice{background:#9ba7ad;color:#f8f7f2}.ice .page-inner{background:repeating-linear-gradient(167deg,#ffffff15 0 1px,transparent 1px 45px)}blockquote{margin:auto;font-family:Georgia,serif;font-size:25px;line-height:1.25}.hjerne{background:#456450;color:#f2eedf}.hjerne h2{font-family:Georgia,serif;font-size:58px;letter-spacing:-.06em;margin:auto 0 8px}.dispatch{background:#e1ead9}.objects{background:#ead9c8}.objects .facts{grid-template-columns:repeat(3,1fr);gap:8px;border:0}.objects .facts span{height:145px;padding:10px;background:#f4eee4;border:1px solid #7b5139}.skate{background:#deddd8}.skate .page-inner:after{content:"CERAMIC SKATE · IMAGE RESERVED";height:52%;margin-top:auto;display:grid;place-items:center;border:1px solid;font:8px ui-monospace,monospace;background:linear-gradient(155deg,transparent 48%,var(--ink) 49% 51%,transparent 52%)}.inventory .facts{margin-top:18px}.contactsheet .facts{grid-template-columns:repeat(3,1fr);gap:6px;border:0}.contactsheet .facts span{height:110px;padding:8px;background:#dedbd0;border:0}.resume{background:#f7f7f3}.resume h2{font-size:29px}.resume .facts span{font-size:7px;padding:10px 0}.back-cover{background:var(--navy);color:#f2eedf}.back-cover h2{font-family:Georgia,serif;font-size:36px;margin:auto 0}.back-cover span{font:8px ui-monospace,monospace}.edge{width:38px;height:38px;border:1px solid #13182055;border-radius:50%;background:#f2eedfaa;font-family:Georgia,serif;font-size:25px;cursor:pointer;z-index:10}.page-stack{position:absolute;right:0;top:3%;height:94%;width:30px}.page-stack i{position:absolute;top:0;height:100%;width:5px;background:#e8e2d3;border-right:1px solid #8d8a8055}footer{display:flex;justify-content:space-between;align-items:center;padding:0 26px;border-top:1px solid #13182033;background:#e8e5de;font:8px ui-monospace,monospace;letter-spacing:.08em}.contents-drawer{position:absolute;top:100px;bottom:34px;left:0;width:min(390px,90vw);z-index:50;background:#f2eedf;padding:26px;overflow:auto;box-shadow:20px 0 40px #0003}.contents-drawer>button:first-child{float:right;border:0;background:none;font-size:8px}.contents-drawer h2{font-size:35px;letter-spacing:-.05em}.contents-drawer>button:not(:first-child){width:100%;display:grid;grid-template-columns:35px 1fr;text-align:left;padding:10px 0;border:0;border-top:1px solid;background:none;font-size:9px;cursor:pointer}.index-view{overflow:auto;padding:42px max(28px,6vw) 80px;background:#f2eedf}.index-head p{font:9px ui-monospace,monospace}.index-head h1{font-size:clamp(34px,6vw,78px);line-height:.88;letter-spacing:-.065em;max-width:1000px;margin:28px 0 36px}.index-head>div{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}.index-head button{border:1px solid;padding:8px 11px;background:transparent;font-size:8px;letter-spacing:.08em}.index-head button.active{background:var(--ink);color:white}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 16px}.index-card{border-top:1px solid;padding-top:8px}.card-art{height:190px;background:var(--navy);color:white;padding:14px}.rust .card-art,.red .card-art{background:var(--rust)}.green .card-art{background:var(--green)}.blue .card-art{background:var(--blue)}.clay .card-art{background:var(--clay)}.ink .card-art{background:var(--ink)}.card-art span{font-size:52px;letter-spacing:-.06em;opacity:.5}.index-card small{display:block;font:7px ui-monospace,monospace;margin-top:9px}.index-card h2{font-size:26px;letter-spacing:-.04em;margin:12px 0 6px}.index-card p{font-family:Georgia,serif;font-size:11px;line-height:1.4}.index-card>div:last-child{display:flex;justify-content:space-between;border-top:1px solid;padding-top:9px;font-size:7px}.index-card button{border:0;background:none;padding:0;cursor:pointer}
+@media(max-width:760px){body{overflow:hidden}.site-shell{grid-template-rows:52px 40px 1fr 30px}.site-header{grid-template-columns:1fr auto;padding:0 14px}.site-header>span,.site-header nav button:first-child{display:none}.site-header nav{gap:12px}.site-header nav button{font-size:8px}.modebar{padding:0 14px}.modebar>div b,.modebar>div button:nth-of-type(3),.modebar>div button:nth-of-type(4){display:none}.book-shell{width:calc(100vw - 22px);height:min(76svh,680px);min-height:400px}.reader-stage{padding:8px 3px}.edge{display:none}.page-inner{padding:30px 27px}.paper-page h2{font-size:33px}.cover h1{font-size:41px}.opener h2{font-size:54px}.hjerne h2{font-size:46px}.index-view{padding:28px 18px 60px}.index-grid{grid-template-columns:1fr}.card-art{height:155px}footer{padding:0 12px}footer span:nth-child(2){display:none}.site-header nav button:last-child{display:none}}@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.flipbook{transition:none!important}}
+
+:root {
+  --paper: #f8f7f3;
+  --ink: #050505;
+  --muted: #555;
+  --rust: #f01610;
 }
 
-/* tap outside closes menu */
+html,
+body,
+button,
+a,
+input,
+textarea,
+select,
+* {
+  font-family: Helvetica, Arial, sans-serif !important;
+}
 
-document.addEventListener('click', function(){
+.site-shell {
+  grid-template-rows: 64px 48px 1fr 32px;
+  background: #deddd9;
+}
 
-  const menu = document.getElementById("langMenu");
+.site-header {
+  padding: 0 32px;
+  background: rgba(248, 247, 243, 0.96);
+}
 
-  menu.classList.remove("show-lang");
+.site-header > a {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
 
-});
+.site-header > span,
+.site-header button,
+.modebar button {
+  font-size: 11px;
+  letter-spacing: -0.01em;
+}
 
-</script>
-</body>
+.site-header nav {
+  gap: 26px;
+}
 
-</html>
+.modebar {
+  padding: 0 32px;
+  background: rgba(248, 247, 243, 0.84);
+}
+
+.modebar b {
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.mode-switch {
+  border: 0 !important;
+  border-bottom: 2px solid !important;
+  padding: 4px 0 !important;
+  font-weight: 700;
+}
+
+.reader-stage {
+  padding: 26px 24px 30px;
+  position: relative;
+}
+
+.cover-tagline {
+  position: absolute;
+  z-index: 2;
+  left: auto;
+  right: calc(50% + clamp(22px, 2vw, 38px));
+  top: 50%;
+  width: min(31vw, 520px);
+  color: #f01610;
+  font-size: clamp(46px, 5.15vw, 88px);
+  font-weight: 700;
+  line-height: .78;
+  letter-spacing: -.085em;
+  transform: translateY(-46%) translateX(-18px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease, transform 420ms cubic-bezier(.2,.8,.2,1);
+}
+
+.cover-tagline span { color: #050505; }
+.cover-tagline.is-visible { opacity: 1; transform: translateY(-46%) translateX(0); }
+.cover-tagline.is-visible + .edge + .book-shell { transform: none; }
+
+.book-shell {
+  height: min(680px, calc(100svh - 190px));
+  transition: transform 420ms cubic-bezier(.2,.8,.2,1);
+}
+
+.paper-page {
+  background: var(--paper);
+}
+
+.page-inner {
+  padding: 30px 34px 34px;
+}
+
+.page-kicker {
+  border: 0;
+  padding: 0;
+  text-transform: none;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.paper-page h2 {
+  max-width: 100%;
+  margin: 72px 0 24px;
+  font-size: clamp(42px, 4.4vw, 68px);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.075em;
+  text-wrap: balance;
+}
+
+.deck {
+  max-width: 72%;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.body-copy {
+  max-width: 72%;
+  margin-top: auto;
+  margin-bottom: 20px;
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.facts {
+  margin-top: auto;
+  border-top: 0;
+  gap: 4px;
+}
+
+.facts span {
+  border: 0;
+  padding: 2px 0;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.text-link {
+  margin-top: 16px;
+  padding-bottom: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.cover {
+  background: #f01610;
+  color: #050505;
+}
+
+.cover .page-inner {
+  padding: 32px 36px;
+  background: none;
+}
+
+.cover h1 {
+  margin: 58px 0 auto;
+  font-size: clamp(52px, 5vw, 78px);
+  font-weight: 700;
+  line-height: 0.79;
+  letter-spacing: -0.085em;
+}
+
+.cover h1 em {
+  color: #fff;
+}
+
+.cover > div > p {
+  max-width: 55%;
+  margin: 16px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.registration,
+.cover-meta,
+.spine {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cover-meta {
+  border-top: 0;
+  padding-top: 16px;
+}
+
+.open-guide {
+  right: 36px;
+  bottom: 32px;
+  border: 0;
+  border-bottom: 2px solid;
+  padding: 2px 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.opener {
+  background: #f01610;
+  color: #050505;
+}
+
+.opener h2 {
+  margin: auto 0 18px;
+  font-size: clamp(68px, 7vw, 104px);
+  line-height: 0.78;
+  letter-spacing: -0.09em;
+}
+
+.research {
+  background: #050505;
+  color: #fff;
+}
+
+.hjerne {
+  background: #050505;
+  color: #fff;
+}
+
+.hjerne h2 {
+  margin: auto 0 10px;
+  font-size: clamp(58px, 6vw, 90px);
+  line-height: 0.8;
+  letter-spacing: -0.09em;
+}
+
+blockquote {
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+
+.portrait-placeholder {
+  margin-top: 26px;
+  height: 50%;
+  background: #f01610;
+}
+
+.portrait-placeholder b {
+  font-size: 40px;
+  letter-spacing: -0.07em;
+}
+
+.portrait h2 {
+  margin: 24px 0 12px;
+  font-size: 38px;
+}
+
+.objects .facts span,
+.contactsheet .facts span,
+.ahurea .facts span {
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.back-cover {
+  background: #050505;
+  color: #fff;
+}
+
+.back-cover h2 {
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.075em;
+}
+
+.contact-form {
+  margin-top: 22px;
+  display: grid;
+  gap: 11px;
+}
+
+.contact h2 { margin: 34px 0 12px; font-size: 42px; }
+.contact .body-copy { max-width: 90%; margin: 0 0 8px; }
+.contact .facts { margin: 0; }
+
+.contact-form label {
+  display: grid;
+  gap: 4px;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.contact-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #050505;
+  border-radius: 0;
+  outline: 0;
+  background: transparent;
+  padding: 4px 0 6px;
+  font-size: 10px;
+  resize: none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { border-bottom-width: 3px; }
+.contact-form button {
+  justify-self: start;
+  border: 0;
+  border-bottom: 2px solid;
+  background: #f01610;
+  padding: 8px 10px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.contact-form p { margin: 0; font-size: 8px; font-weight: 700; }
+
+.edge {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+footer {
+  padding: 0 32px;
+  font-size: 9px;
+  letter-spacing: 0;
+}
+
+.contents-drawer h2,
+.index-head h1 {
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.085em;
+}
+
+.contents-drawer h2 {
+  font-size: 64px;
+}
+
+.index-view {
+  padding: 58px max(32px, 5vw) 100px;
+  background: var(--paper);
+}
+
+.index-head p {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.index-head h1 {
+  max-width: 1200px;
+  margin: 42px 0 60px;
+  font-size: clamp(58px, 8vw, 122px);
+}
+
+.index-head button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 5px 0;
+  margin-right: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.index-head button.active {
+  background: transparent;
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.index-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64px 24px;
+}
+
+.card-art {
+  height: 260px;
+  background: #f01610 !important;
+}
+
+.card-art span {
+  font-size: 86px;
+  font-weight: 700;
+  letter-spacing: -0.085em;
+  opacity: 1;
+}
+
+.index-card small,
+.index-card p,
+.index-card > div:last-child {
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.index-card h2 {
+  margin: 16px 0 10px;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.065em;
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    grid-template-rows: 52px 40px 1fr 30px;
+  }
+  .page-inner {
+    padding: 26px 24px;
+  }
+  .cover-tagline { display: none; }
+  .cover-tagline.is-visible + .edge + .book-shell { transform: none; }
+  .paper-page h2 {
+    margin-top: 54px;
+    font-size: 44px;
+  }
+  .cover h1 {
+    font-size: 52px;
+  }
+  .deck,
+  .body-copy {
+    max-width: 82%;
+  }
+  .index-head h1 {
+    font-size: 58px;
+  }
+  .index-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1120px) {
+  .cover-tagline { left: auto; right: calc(50% + 20px); width: 34vw; font-size: clamp(36px, 4.5vw, 54px); }
+  .cover-tagline.is-visible + .edge + .book-shell { transform: none; }
+}
+
+/* Project spreads inherit the visual language of their full case studies. */
+#page-01 .portrait-placeholder {
+  background: url("images/user.png") center 30% / cover no-repeat;
+  color: transparent;
+}
+
+#page-06,
+#page-07 {
+  --project-accent: #4274d9;
+  background: #fbfcff;
+  color: #17204f;
+}
+#page-06 .page-inner::after {
+  background:
+    linear-gradient(90deg, transparent 0 10%, #293681 10% 26%, transparent 26% 31%, #4274d9 31% 54%, transparent 54% 59%, #95ccdd 59% 82%, transparent 82%),
+    #f0f7fc;
+}
+#page-07 .facts { border-color: #e5e8f1; }
+#page-07 .text-link { color: #4274d9; }
+
+#page-08,
+#page-09 {
+  --project-accent: #d7a628;
+  background: #ede4e0;
+  color: #665a48;
+}
+#page-08 .page-inner::after {
+  content: none;
+  display: none;
+}
+#page-08 .page-inner {
+  padding: 0;
+  background: url("images/work-2.png") center / cover no-repeat;
+}
+#page-08 .page-inner > * { display: none; }
+#page-09 h2::after {
+  content: "Installation · Publication · Archive";
+  display: block;
+  margin-top: 12px;
+  color: #9f6f00;
+  font: 8px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+#page-09 .facts { color: #9f8772; }
+#page-09 .text-link { color: #9f6f00; }
+
+#page-10,
+#page-11 {
+  --project-accent: #355f2e;
+  background: #ebe6d9;
+  color: #111;
+}
+#page-10 .page-inner::after {
+  content: "";
+  background: linear-gradient(#18483d22, #18483d22), url("images/trail.png") center / cover no-repeat;
+}
+#page-11 .facts { color: #355f2e; }
+#page-11 .text-link { color: #2f557b; }
+
+#page-12,
+#page-13 {
+  --project-accent: #a00070;
+  background: #0a0a0a;
+  color: #f5e6f2;
+}
+#page-12 .page-inner {
+  background: linear-gradient(90deg, #0a0a0a 0 36%, transparent 70%), url("images/work-1.png") center / cover no-repeat;
+}
+#page-12 .facts span { background: #a00070; color: #fff; }
+#page-12 .facts span:nth-child(2) { background: #905898; }
+#page-12 .facts span:nth-child(3) { background: #d8b4d0; color: #0a0a0a; }
+#page-12 .facts span:nth-child(4) { background: #2a0b23; }
+#page-13 .facts { color: #d8b4d0; }
+#page-13 .text-link { color: #d8b4d0; }
+
+#page-14,
+#page-15 {
+  color: #f4ead8;
+  background: #121117;
+}
+#page-14 .page-inner,
+#page-15 .page-inner {
+  background: linear-gradient(180deg, #12111766, #121117e8), url("hjernelandet/articles/dispatch-05/hero-landscape.png") center / cover no-repeat;
+}
+#page-15 .text-link { color: #f34e38; }
+
+#page-16,
+#page-17,
+#page-18,
+#page-19 {
+  --project-coral: #f34e38;
+  --project-blue: #173fbe;
+  --project-acid: #c6dc17;
+  background: #f4ead8;
+  color: #121117;
+}
+#page-16 .page-inner {
+  background: linear-gradient(90deg, #121117cc 0 34%, transparent 72%), url("hjernelandet/hero-landscape.png") center / cover no-repeat;
+  color: #f4ead8;
+}
+#page-17 .facts span:nth-child(2n) { color: #173fbe; }
+#page-17 .facts span:nth-child(2n+1),
+#page-17 .text-link { color: #f34e38; }
+#page-18 { background: #c6dc17; }
+#page-19 .text-link { color: #f34e38; }
+
+#page-20,
+#page-21 {
+  background: #090b10;
+  color: #f3f5f7;
+}
+#page-20 .page-inner {
+  background: linear-gradient(90deg, #090b10cc, #090b1055), url("images/dfa-space.png") center / cover no-repeat;
+}
+#page-21 .facts { color: #ffc66d; }
+#page-21 .text-link { color: #ff9f2d; }
+
+#page-22,
+#page-23,
+#page-24,
+#page-25 {
+  background: #faf6f0;
+  color: #1a0a08;
+}
+#page-22 .page-inner {
+  background: linear-gradient(90deg, #3d0a08dd 0 32%, transparent 70%), url("images/pots/14.png") center / cover no-repeat;
+  color: #faf6f0;
+}
+#page-22 .facts span { background: #c0302acc; color: #fff; border-color: #f5cdc8; }
+#page-23 .text-link,
+#page-25 .text-link { color: #c0302a; }
+#page-24 .page-inner::after {
+  content: "";
+  border: 0;
+  background: url("images/pots/15.png") center 54% / cover no-repeat;
+}
+
+#page-26,
+#page-27 {
+  background: #e7edf8;
+  color: #17346c;
+}
+#page-27 .facts span {
+  background-color: #fff;
+  background-position: center;
+  background-size: cover;
+  color: transparent;
+}
+#page-27 .facts span:nth-child(1) { background-image: url("miscellanea/everything-i-carried-in-july/assets/letter.png"); }
+#page-27 .facts span:nth-child(2) { background-image: url("miscellanea/everything-i-carried-in-july/assets/key.png"); }
+#page-27 .facts span:nth-child(3) { background-image: url("miscellanea/everything-i-carried-in-july/assets/anchor.png"); }
+#page-27 .facts span:nth-child(4) { background-image: url("miscellanea/everything-i-carried-in-july/assets/tray.png"); }
+#page-27 .facts span:nth-child(5) { background-image: url("miscellanea/everything-i-carried-in-july/assets/gzhel-tile-01.png"); }
+#page-27 .facts span:nth-child(6) { background-image: url("miscellanea/everything-i-carried-in-july/assets/hourglass.png"); }
+
+.paper-page[id] .text-link { cursor: pointer; }
+.paper-page[id] .text-link::after { content: ""; }
+.index-card > div:last-child a { color: inherit; text-decoration: none; }
+.index-card > div:last-child a:hover,
+.paper-page[id] .text-link:hover { text-decoration: underline; }
+
+.index-card.navy .card-art { background: linear-gradient(135deg, #293681, #95ccdd) !important; }
+.index-card.rust .card-art { background: linear-gradient(135deg, #665a48, #d7a628) !important; }
+.index-card.blue .card-art { background: linear-gradient(135deg, #18483d, #2f557b) !important; }
+.index-card.red .card-art { background: linear-gradient(135deg, #0a0a0a, #a00070 60%, #d8b4d0) !important; }
+.index-card.green .card-art { background: linear-gradient(135deg, #f34e38, #c6dc17 52%, #173fbe 53%) !important; color: #121117; }
+.index-card.clay .card-art { background: linear-gradient(135deg, #3d0a08, #c0302a 60%, #f5cdc8) !important; }
+.index-card.ink .card-art { background: #050505 !important; }
+.index-card[data-project="Milton: Planted in Place"] .card-art { background: linear-gradient(#d7a62833, #665a4877), url("images/work-2.png") center 34% / cover no-repeat !important; }
+.index-card[data-project="Community Trail Research"] .card-art { background: linear-gradient(#18483d33, #2f557b66), url("images/trail.png") center / cover no-repeat !important; }
+.index-card[data-project="The Ahurea Project"] .card-art { background: linear-gradient(#0a0a0a22, #a0007077), url("images/work-1.png") center 30% / cover no-repeat !important; }
+.index-card[data-project="Hjernelandet"] .card-art { background: linear-gradient(#f34e3833, #173fbe55), url("hjernelandet/hero-landscape.png") center / cover no-repeat !important; }
+.index-card[data-project="Lines of Inquiry"] .card-art { background: linear-gradient(#090b1099, #ff9f2d33), url("images/dfa-space.png") center / cover no-repeat !important; color: #fff; }
+.index-card[data-project="Hannah’s Håndværk"] .card-art { background: linear-gradient(#3d0a0866, #c0302a55), url("images/pots/14.png") center / cover no-repeat !important; }
+.index-card[data-project="Curriculum Vitae"] .card-art { background: linear-gradient(#05050599, #05050533), url("images/user.png") center 24% / cover no-repeat !important; }
+
+[hidden]{display:none!important}.book-shell{display:flex;justify-content:center}.flipbook{visibility:hidden}.flipbook.ready{visibility:visible}.paper-page{width:520px;height:680px}.book-shell.cover-position{transform:translateX(26%)}@media(max-width:760px){.book-shell.cover-position{transform:none}.paper-page{width:100%;height:100%}}</style><script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js" defer></script><script defer>
+document.addEventListener('DOMContentLoaded',()=>{const leaves=[{"folio":"00","section":"Edition","title":"AN INCOMPLETE GUIDE TO HANNAH TRAN","deck":"Volume I · Revised August 2026","body":"Printed nowhere. Compiled in Gettysburg, Pennsylvania. Edited during a season of applications, paperwork, and excessive rink travel. Contains environmental systems, JavaScript, clay dust, rural Pennsylvania, several invented territories, and approximately fifty ties.","facts":["HFT–001","FIRST DIGITAL EDITION"]},{"folio":"01","section":"Frontispiece","title":"I study the systems hidden inside ordinary life.","body":"Then I turn what I find into stories, interfaces, exhibitions, and objects.","facts":["HANNAH TRAN","Research · Editorial Design · Environmental Communication","Currently in Gettysburg, Pennsylvania"],"kind":"portrait"},{"folio":"02","section":"Contents","title":"CONTENTS","facts":["04  Selected Work","06  MediaScape","08  Milton: Planted in Place","10  Community Trail Research","12  The Ahurea Project","16  Hjernelandet","20  Lines of Inquiry","22  Objects & Making","26  Miscellaneous Evidence","28  Curriculum Vitae","32  Correspondence"],"kind":"toc"},{"folio":"03","section":"Editorial note","title":"A NOTE ON COMPLETENESS","body":"This guide does not contain everything I have made. It contains enough evidence to show how I work: I investigate complicated systems, find the human story inside them, and build a form through which someone else can understand what I found. Sometimes that form is a research platform. Sometimes it is an exhibition, an essay, a campaign, a ceramic object, or an imaginary country. The complete projects remain elsewhere. This book provides the routes.","cta":"BROWSE THE INDEX ↗"},{"folio":"04","section":"01 · Selected Work","title":"SELECTED WORK","deck":"Four projects. Four different questions.","kind":"opener"},{"folio":"05","section":"Orientation","title":"Notice the system. Understand the audience. Build the translation.","body":"The projects ahead move between research, environmental systems, editorial design and public interpretation.","facts":["RESEARCH","INTERFACES","ENVIRONMENT","EXHIBITIONS","CULTURE"]},{"folio":"06","section":"MediaScape · Fig. 03A","title":"SAME EVENT. DIFFERENT LANGUAGE. DIFFERENT REALITY.","deck":"Comparative outlet view","kind":"media"},{"folio":"07","section":"Computational media analysis · NLP · Interface design","title":"MEDIASCAPE","deck":"How does political affiliation change the language through which news organizations describe the same climate event?","body":"MediaScape is an interactive research platform for comparing how news outlets frame climate-change coverage. I developed the research framing, comparative information architecture and interface concept, letting readers move between computational patterns and the original language beneath them.","facts":["ROLE · Researcher, designer and developer","METHODS · Corpus design, discourse analysis, NLP","FOCUS · Climate communication","STATUS · Active prototype"],"cta":"EXPLORE THE CASE STUDY ↗"},{"folio":"08","section":"Milton · Documentation","title":"PLANTED IN PLACE","deck":"Installation · Publication · Archive","kind":"milton"},{"folio":"09","section":"Exhibition design · Archival research","title":"MILTON: PLANTED IN PLACE","deck":"How can a local museum make the environmental history of a place visible to the people already living inside it?","body":"The first exhibition at the Milton Municipal Museum brought together archival maps, local history, botanical research and editorial design. I developed its visual system and narrative structure, moving from the history of a region to the typography on an individual label.","facts":["ROLE · Lead designer and exhibition curator","CONTEXT · Milton Municipal Museum","DELIVERABLES · Identity, interpretation, publication"],"cta":"VIEW THE EXHIBITION PROJECT ↗"},{"folio":"10","section":"Community Trail Research","title":"LEWISBURG ↔ MONTANDON","deck":"A trail is also a negotiation.","facts":["SAFETY · ‘Where does the crossing go?’","ACCESS · ‘Who can reach it?’","PROPERTY · ‘What changes at my edge?’","MOBILITY · ‘Could this be transportation?’"],"kind":"map"},{"folio":"11","section":"Environmental infrastructure · Public perception","title":"COMMUNITY TRAIL RESEARCH","deck":"What happens when infrastructure that appears universally beneficial meets the particular fears, habits and histories of a community?","body":"This research examined perceptions surrounding a proposed Buffalo Valley Rail Trail extension. I helped translate individual responses into larger patterns without erasing the local concerns inside the data.","facts":["ROLE · Community researcher","METHODS · Surveys, stakeholder analysis, mixed methods","OUTPUT · Findings and communication recommendations"],"cta":"READ THE PROJECT SUMMARY ↗"},{"folio":"12","section":"The Ahurea Project · Visual archive","title":"ME IN CULTURE","deck":"TÔI TRONG VĂN HÓA","facts":["POSTER 01","GOODIE BAG 02","CAMPAIGN GRAPHIC 03","PUBLICATION 04"],"kind":"ahurea"},{"folio":"13","section":"Cultural storytelling · Editorial systems","title":"THE AHUREA PROJECT","deck":"How might cultural education feel native to the visual and social language of young people online?","body":"Founded in Vietnam in 2020, Ahurea combined editorial design, online events, publications, merchandise and participatory campaigns. As founder and creative lead, I built an operating editorial system capable of holding a growing community together.","facts":["10K+ COMMUNITY","149K+ CAMPAIGN REACH","40+ COLLABORATORS","80+ NATIONAL TALKSHOW PARTICIPANTS"],"cta":"OPEN THE VISUAL ARCHIVE ↗"},{"folio":"14","section":"Intermission","title":"","quote":"“Adults appeared once the activity had become a game, as though competence had already been established somewhere offstage.”","kind":"ice"},{"folio":"15","section":"From Dispatch 05","title":"WHY WOULD YOU DO THIS TO YOURSELF?","deck":"Power skating, public apprenticeship and the quiet rule that adults should appear finished.","cta":"READ DISPATCH 05 ↗","kind":"ice"},{"folio":"16","section":"Inserted publication · Vol. 01","title":"HJERNELANDET","deck":"Dispatches from the country inside my head.","facts":["JULY 2026","40.273 N · 76.887 W"],"kind":"hjerne"},{"folio":"17","section":"Editorial system","title":"A PUBLICATION WITH ITS OWN GEOGRAPHY","body":"Hjernelandet is an essay atlas for observations that refuse to remain separate: infrastructure, food systems, language, environmental contradiction, movement and belonging. I developed its identity, map, taxonomy, dispatch registry, editorial templates and reading system.","facts":["LAND & CLIMATE","CITIES & MOTION","LANGUAGE","LIFE"],"cta":"ENTER HJERNELANDET ↗"},{"folio":"18","section":"Dispatch sampler","title":"THE LOCAL IS NEVER ONLY LOCAL.","facts":["02 · Everyone Drives Something Enormous","03 · The Fresh Food Desert Inside the Orchard","04 · I Thought I Needed a Third Place"],"kind":"dispatch"},{"folio":"19","section":"Featured dispatch · Life","title":"WHY WOULD YOU DO THIS TO YOURSELF?","deck":"Power skating, public apprenticeship and the cost of appearing unfinished in adulthood.","body":"Complete essays open as ordinary vertical articles. The guide remains your place in the authored sequence.","cta":"READ THE FEATURED DISPATCH ↗"},{"folio":"20","section":"02 · Research Notebook","title":"LINES OF INQUIRY","deck":"Not every question becomes a project.","body":"Some remain open long enough to alter several projects around them. These are working questions—not claims of completed expertise.","kind":"opener research"},{"folio":"21","section":"Working questions","title":"10.1 · CAN TRANSFORMERS LEARN FORMAL LANGUAGES?","body":"Using deterministic finite automata to distinguish structural understanding from probabilistic approximation beyond training distributions.","facts":["STATUS · WORKING QUESTION","10.2 · TRANSGENDER IDENTITY AND THE ENVIRONMENT ON TIKTOK","STATUS · SEMINAR AND INDEPENDENT RESEARCH"],"cta":"VIEW RESEARCH & INSIGHT ↗"},{"folio":"22","section":"03 · Hannah’s Håndværk","title":"CABINET OF OBJECTS","deck":"Wheel-thrown, hand-built and always slightly unpredictable.","facts":["OBJ. 11.01 · ORCHID TEAPOT","OBJ. 11.02 · POUR-OVER & POT","OBJ. 11.03 · FOREST TUMBLER"],"kind":"objects"},{"folio":"23","section":"Museum catalogue","title":"POTTERY BETWEEN THE QUIET AND THE STRANGE.","facts":["OBJ. 11.04 · HORN BOWLS","OBJ. 11.05 · TINY FRUITS","OBJ. 11.06 · BERRY BOWL"],"body":"Select an object in the index to see its photograph, materials, dimensions and story.","cta":"VISIT HANNAH’S HÅNDVÆRK ↗","kind":"objects"},{"folio":"24","section":"Clay Meets Ice · Process","title":"AN OBJECT DESIGNED TO REPRESENT SPEED.","deck":"Coiled and slab-built stoneware · modeled lace structure · separate blade attachment","kind":"skate"},{"folio":"25","section":"Material practice","title":"CLAY MEETS ICE","body":"Hockey and pottery involve many of the same problems: pressure, timing, balance, material response and the moment when conscious instruction becomes physical instinct. The clay skate began as a joke and became one of the most technically demanding objects I had attempted. This is where I prefer to work: where unrelated systems begin explaining one another.","facts":["KILN OUTCOME · NEGOTIATED"],"cta":"SEE THE PROCESS ↗"},{"folio":"26","section":"04 · Miscellaneous Evidence","title":"A PARTIAL INVENTORY","facts":["From Hải Phòng · Currently in Gettysburg","Danish, English and Vietnamese","Computer Science + Environmental Studies","Ceramics instructor","Hockey player · right shot · usually wing","Approximately fifty ties","Believes Williamsport deserves an ice rink","Distrusts kilns","Invents countries when existing geography becomes insufficient"],"kind":"inventory"},{"folio":"27","section":"Contact sheet · 01—06","title":"NONE OF THESE OBJECTS EXPLAINS ME.","deck":"Together, they make the task slightly less impossible.","facts":["01 TIE","02 CERAMIC TOOL","03 HOCKEY TAPE","04 UNFINISHED MAP","05 HẢI PHÒNG OBJECT","06 RINK EPHEMERA"],"kind":"contactsheet"},{"folio":"28","section":"05 · Curriculum Vitae","title":"SELECTED EXPERIENCE","facts":["MARYLAND ENVIRONMENTAL SERVICE · Marketing & Operations Intern · 2025","BUCKNELL UNIVERSITY · Research Assistant · 2024—25","BUCKNELL RED GRANT · Undergraduate Researcher · 2023","MILTON MUNICIPAL MUSEUM · Lead Designer & Curator · 2023","THE AHUREA PROJECT · Founder & Creative Lead · 2020—21"],"kind":"resume"},{"folio":"29","section":"Education & practice","title":"COMPUTER SCIENCE + ENVIRONMENTAL STUDIES","body":"Selected study: interface design, environmental policy, qualitative and quantitative research, language and computational systems.","facts":["CERAMICS INSTRUCTOR","EDITORIAL & VISUAL DESIGNER","ENVIRONMENTAL COMMUNICATOR","INDEPENDENT WRITER & PUBLISHER"],"cta":"OPEN FULL RÉSUMÉ ↗"},{"folio":"30","section":"Capabilities","title":"WHAT I CAN BRING TO A PROJECT","facts":["RESEARCH & SYNTHESIS · interviews, surveys, discourse analysis","EDITORIAL SYSTEMS · information architecture, publication design","DESIGN & INTERPRETATION · identities, exhibitions, interfaces","TECHNICAL PRACTICE · JavaScript, TypeScript, HTML/CSS, Python","MATERIAL PRACTICE · ceramics, objects, installation"],"body":"I am most useful when a project is technically or culturally complicated and needs to become understandable without becoming simplistic."},{"folio":"31","section":"Correspondence","title":"WOULD YOU LIKE TO MAKE SOMETHING TOGETHER?","body":"I am interested in research, environmental communication, editorial design, public interpretation and digital experiences—especially work that crosses more than one of those categories.","facts":["GETTYSBURG, PENNSYLVANIA","AVAILABLE FOR RELOCATION AND REMOTE COLLABORATION"],"kind":"contact"},{"folio":"32","section":"Errata & future additions","title":"THIS GUIDE OMITS SEVERAL PROJECTS.","body":"Also omitted: most unfinished thoughts, numerous ceramic failures and almost the entire tie collection. Corrections and additions will appear in the next revision.","facts":["HFT–001","CLOSED AUGUST 2026","NEXT REVISION · UNANNOUNCED"]}];const projects=[{"title":"MediaScape","description":"Comparative climate-news analysis made explorable.","disciplines":"Research · Interface · Environment","year":"2026","page":6,"accent":"navy"},{"title":"Milton: Planted in Place","description":"Environmental history translated into a public exhibition.","disciplines":"Design · Exhibition · Environment","year":"2023","page":8,"accent":"rust"},{"title":"Community Trail Research","description":"Community perception around environmental infrastructure.","disciplines":"Research · Environment","year":"2024","page":10,"accent":"blue"},{"title":"The Ahurea Project","description":"An editorial system that organized a cultural community.","disciplines":"Design · Culture","year":"2020—21","page":12,"accent":"red"},{"title":"Hjernelandet","description":"An essay atlas with a geography of its own.","disciplines":"Writing · Design","year":"2026","page":16,"accent":"green"},{"title":"Lines of Inquiry","description":"Current questions in computation, platforms and identity.","disciplines":"Research","year":"2024—26","page":20,"accent":"blue"},{"title":"Hannah’s Håndværk","description":"Ceramic objects between the quiet and the strange.","disciplines":"Making","year":"2022—26","page":22,"accent":"clay"},{"title":"Curriculum Vitae","description":"Experience, education and interdisciplinary practice.","disciplines":"All","year":"2020—26","page":28,"accent":"ink"}];let mode='book',contents=false,filter='ALL',current=0,wheelTotal=0,wheelLocked=false,wheelEnd;const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];const bookEl=q('#flipbook'),stage=q('#reader'),index=q('#index'),drawer=q('#contents'),folio=q('#folio'),count=q('#count'),modeButton=q('#mode-switch'),shell=q('.book-shell');
+const pageLinks={"07":"mediascape-case-study.html","09":"milton-exhibition.html","11":"trail.html","13":"ahurea-project.html","15":"hjernelandet/articles/dispatch-05/","17":"hjernelandet/index.html","19":"hjernelandet/articles/dispatch-05/","21":"research.html","23":"pottery.html","25":"pottery.html#process","29":"images/my-cv.pdf"};
+const projectLinks={"MediaScape":"mediascape-case-study.html","Milton: Planted in Place":"milton-exhibition.html","Community Trail Research":"trail.html","The Ahurea Project":"ahurea-project.html","Hjernelandet":"hjernelandet/index.html","Lines of Inquiry":"research.html","Hannah’s Håndværk":"pottery.html","Curriculum Vitae":"images/my-cv.pdf"};
+const finalPage=q('#page-32');if(finalPage){finalPage.className='paper-page final-cover';finalPage.innerHTML='<div class="page-inner"><div class="page-kicker"><span>Volume I · Back cover</span><span>32</span></div><p class="final-cover__edition">HFT—001 · First digital edition</p><h2>Thank you<br>for reading.</h2><p class="final-cover__note">An incomplete guide to Hannah Tran.<br>Work, writing, objects and miscellaneous evidence.</p><nav class="final-cover__links" aria-label="Social links"><a href="https://www.linkedin.com/in/hannah-tran-2852bb236" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://instagram.com/ferniesdesigns?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" rel="noreferrer">Hannah’s Håndværk · Instagram ↗</a></nav><div class="final-cover__legal"><span>© 2026 Hannah Tran. All rights reserved.</span><span>Designed, written and assembled in Gettysburg, Pennsylvania.</span><span>hannahferny.com</span></div></div>'}q('.back-cover')?.remove();
+const flip=new St.PageFlip(bookEl,{width:520,height:680,size:'stretch',minWidth:280,maxWidth:560,minHeight:366,maxHeight:732,showCover:true,usePortrait:true,mobileScrollSupport:true,drawShadow:true,maxShadowOpacity:.55,flippingTime:780,showPageCorners:true,swipeDistance:22});flip.loadFromHTML(qa('.paper-page'));bookEl.classList.add('ready');
+const paletteFor=i=>{if(i>=7&&i<=8)return{backgroundColor:'#eaf1fb',colors:['#293681','#4274d9','#95ccdd']};if(i>=9&&i<=10)return{backgroundColor:'#ede4e0',colors:['#665a48','#d7a628','#c8dbbe']};if(i>=11&&i<=12)return{backgroundColor:'#ebe6d9',colors:['#18483d','#355f2e','#2f557b']};if(i>=13&&i<=14)return{backgroundColor:'#160a14',colors:['#a00070','#905898','#d8b4d0']};if(i>=15&&i<=20)return{backgroundColor:'#f4ead8',colors:['#f34e38','#173fbe','#c6dc17']};if(i>=21&&i<=22)return{backgroundColor:'#090b10',colors:['#ff9f2d','#7ab6ff','#f3f5f7']};if(i>=23&&i<=26)return{backgroundColor:'#faf6f0',colors:['#3d0a08','#c0302a','#e8756a']};if(i>=27&&i<=28)return{backgroundColor:'#e7edf8',colors:['#17346c','#4f709c','#ffffff']};return{backgroundColor:'#deddd9',colors:['#050505','#111111','#000000']}};
+const update=i=>{current=i;folio.textContent=i===0?'COVER':(leaves[Math.min(i-1,leaves.length-1)]?.folio||'BACK');count.textContent=String(i+1).padStart(2,'0')+' / '+String(leaves.length+1).padStart(2,'0');q('.cover-tagline').classList.toggle('is-visible',i===0);shell.classList.toggle('cover-position',i===0);const ambient=paletteFor(i);document.documentElement.style.setProperty('--ambient-background',ambient.backgroundColor);dispatchEvent(new CustomEvent('ferrofluid:palette',{detail:ambient}));history.replaceState(null,'',i?'#page-'+String(i-1).padStart(2,'0'):'#cover')};flip.on('flip',e=>update(e.data));
+const setMode=next=>{mode=next;stage.hidden=mode!=='book';index.hidden=mode!=='index';modeButton.textContent=mode==='book'?'Open the index':'Read the book'};const go=n=>{setMode('book');drawer.hidden=true;contents=false;setTimeout(()=>flip.turnToPage(n),30)};const prev=()=>flip.flipPrev();const next=()=>flip.flipNext();
+q('.site-header>a').onclick=e=>{e.preventDefault();go(0)};q('#prev').onclick=prev;q('#next').onclick=next;q('#edge-prev').onclick=prev;q('#edge-next').onclick=next;q('#open-guide').onclick=next;q('#selected').onclick=()=>go(5);q('#resume').onclick=()=>go(29);q('#contact').onclick=()=>go(32);modeButton.onclick=()=>setMode(mode==='book'?'index':'book');q('#index-button').onclick=()=>setMode('index');q('#contents-button').onclick=()=>{contents=!contents;drawer.hidden=!contents};q('#close-contents').onclick=()=>{contents=false;drawer.hidden=true};qa('[data-index]').forEach(b=>b.onclick=()=>setMode('index'));qa('.paper-page .text-link:not([data-index])').forEach(b=>{const id=b.closest('.paper-page')?.id.replace('page-',''),href=pageLinks[id];if(href){b.onclick=()=>location.href=href;b.setAttribute('aria-label',b.textContent.trim()+' — opens '+href)}});
+q('#contents-list').innerHTML=leaves.filter((_,i)=>i%2===0).map((l,i)=>'<button data-page="'+(i*2+1)+'"><span>'+l.folio+'</span>'+(sentence(l.title)||l.section)+'</button>').join('');q('#contents-list').onclick=e=>{const b=e.target.closest('[data-page]');if(b)go(+b.dataset.page)};
+function renderIndex(){const shown=projects.filter(p=>filter==='ALL'||p.disciplines.toUpperCase().includes(filter));q('#filters').innerHTML=['ALL','RESEARCH','DESIGN','WRITING','ENVIRONMENT','MAKING'].map(f=>'<button class="'+(f===filter?'active':'')+'" data-filter="'+f+'">'+sentence(f)+'</button>').join('');q('#cards').innerHTML=shown.map((p,i)=>'<article class="index-card '+p.accent+'" data-project="'+p.title+'"><div class="card-art"><span>'+String(i+1).padStart(2,'0')+'</span></div><small>'+p.disciplines+' · '+p.year+'</small><h2>'+p.title+'</h2><p>'+p.description+'</p><div><button data-open="'+(p.page+1)+'">View in guide · p. '+String(p.page).padStart(2,'0')+'</button><a href="'+projectLinks[p.title]+'">Open project ↗</a></div></article>').join('')}renderIndex();q('#filters').onclick=e=>{const b=e.target.closest('[data-filter]');if(b){filter=b.dataset.filter;renderIndex()}};q('#cards').onclick=e=>{const b=e.target.closest('[data-open]');if(b)go(+b.dataset.open)};
+addEventListener('keydown',e=>{if(e.key==='ArrowLeft')prev();if(e.key==='ArrowRight'){e.preventDefault();next()}if(e.key==='Escape'){contents=false;drawer.hidden=true}});addEventListener('wheel',e=>{if(mode!=='book'||contents||e.target.closest('input,textarea,select,.contents-drawer'))return;e.preventDefault();clearTimeout(wheelEnd);wheelEnd=setTimeout(()=>{wheelLocked=false;wheelTotal=0},220);if(wheelLocked)return;wheelTotal+=e.deltaY;if(Math.abs(wheelTotal)<55)return;wheelLocked=true;wheelTotal>0?next():prev();wheelTotal=0},{passive:false});let touchStart=null;stage.addEventListener('touchstart',e=>{if(innerWidth>760||mode!=='book'||contents||e.target.closest('input,textarea,select,button,.contents-drawer'))return;const t=e.changedTouches[0];touchStart={x:t.clientX,y:t.clientY}},{passive:true,capture:true});stage.addEventListener('touchend',e=>{if(!touchStart)return;const t=e.changedTouches[0],dx=t.clientX-touchStart.x,dy=t.clientY-touchStart.y;touchStart=null;if(Math.abs(dy)<48||Math.abs(dy)<=Math.abs(dx))return;dy<0?next():prev()},{passive:true,capture:true});
+q('.contact-form').onsubmit=e=>{e.preventDefault();const d=new FormData(e.currentTarget),body='From: '+d.get('name')+'\nEmail: '+d.get('email')+'\n\n'+d.get('message');location.href='mailto:tranmanh11hp@gmail.com?subject='+encodeURIComponent(d.get('subject')||'A note from the portfolio')+'&body='+encodeURIComponent(body);q('.contact-form [role=status]').hidden=false};const hash=location.hash.match(/page-(\d+)/),legacy={"#about":2,"#professions":31,"#contact":32};if(hash)setTimeout(()=>go(Number(hash[1])+1),0);else if(location.hash==='#portfolio')setMode('index');else if(legacy[location.hash])setTimeout(()=>go(legacy[location.hash]),0);else update(0);
+if(!document.querySelector('link[data-ferrofluid]')){const styles=document.createElement('link');styles.rel='stylesheet';styles.href='Ferrofluid.css';styles.dataset.ferrofluid='';document.head.append(styles)}const mountBackground=()=>{const background=q('.site-shell');if(background&&window.mountFerrofluid){window.mountFerrofluid(background,{...paletteFor(current),speed:.5,scale:1,turbulence:1,fluidity:.1,rimWidth:.2,sharpness:3,shimmer:1,glow:2,flowDirection:'down',opacity:.72,mouseInteraction:true,mouseStrength:1,mouseRadius:.3})}};const loadFerrofluid=()=>{const component=document.createElement('script');component.src='Ferrofluid.js';component.onload=mountBackground;document.head.append(component)};if(window.OGL||window.ogl)loadFerrofluid();else{const ogl=document.createElement('script');ogl.src='vendor/ogl.umd.js';ogl.onload=loadFerrofluid;document.head.append(ogl)};const lineStyles=document.createElement('link');lineStyles.rel='stylesheet';lineStyles.href='LineSidebar.css';document.head.append(lineStyles);const lineScript=document.createElement('script');lineScript.src='LineSidebar.js';lineScript.onload=()=>{const source=q('#page-02 .facts'),destinations=[5,7,9,11,13,17,21,23,27,29,32];if(source)window.mountLineSidebar(source,{proximityRadius:86,onItemClick:index=>go(destinations[index])})};document.head.append(lineScript);const mediaStyles=document.createElement('link');mediaStyles.rel='stylesheet';mediaStyles.href='MediaScapeDemo.css';document.head.append(mediaStyles);const mediaScript=document.createElement('script');mediaScript.src='MediaScapeDemo.js';mediaScript.onload=()=>window.mountMediaScapeDemo(q('#page-06 .page-inner'));document.head.append(mediaScript);
+function sentence(text=''){return text&&text===text.toUpperCase()?text.toLocaleLowerCase().replace(/^./,c=>c.toLocaleUpperCase()):text}});
+</script></head><body><main class="site-shell"><header class="site-header"><a href="https://hannahferny.com">Hannah Tran</a><span>Research · Editorial design · Digital experiences</span><nav><button id="selected">Selected work</button><button id="resume">Résumé</button><button id="contact">Contact</button></nav></header><div class="modebar"><div><b>Vol. I / <span id="folio">COVER</span></b><button id="contents-button">Contents</button><button id="index-button">Index</button><button id="prev">←</button><button id="next">→</button></div><button class="mode-switch" id="mode-switch">Open the index</button></div><section class="reader-stage" id="reader" aria-label="An Incomplete Guide to Hannah Tran"><div class="cover-tagline is-visible" aria-hidden="true">Work,<br>writing,<br>objects <span>&amp;</span><br>miscellaneous<br>evidence</div><button class="edge left" id="edge-prev" aria-label="Previous page">‹</button><div class="book-shell cover-position"><div class="page-stack"></div><div id="flipbook" class="flipbook"><article class="paper-page cover"><div class="page-inner"><div class="registration">HFT—001 <span>+</span></div><h1>An incomplete<br>guide to<br><em>Hannah Tran</em></h1><p>Researcher · Designer · Writer · Maker</p><div class="cover-meta"><span>Volume I<br>Gettysburg, Pennsylvania<br>2026</span><span>Revised August 2026</span></div><button class="open-guide" id="open-guide">Open the guide ↘</button><b class="spine">Hannah Tran · An incomplete guide · Vol. I</b></div></article><article class="paper-page " id="page-00"><div class="page-inner"><div class="page-kicker"><span>Edition</span><span>00</span></div><h2>An incomplete guide to hannah tran</h2><p class="deck">Volume I · Revised August 2026</p><p class="body-copy">Printed nowhere. Compiled in Gettysburg, Pennsylvania. Edited during a season of applications, paperwork, and excessive rink travel. Contains environmental systems, JavaScript, clay dust, rural Pennsylvania, several invented territories, and approximately fifty ties.</p><div class="facts"><span>HFT–001</span><span>FIRST DIGITAL EDITION</span></div></div></article><article class="paper-page portrait" id="page-01"><div class="page-inner"><div class="page-kicker"><span>Frontispiece</span><span>01</span></div><div class="portrait-placeholder"><b>PORTRAIT</b><span>Asset reserved for Hannah’s selected editorial portrait</span></div><h2>I study the systems hidden inside ordinary life.</h2><p class="body-copy">Then I turn what I find into stories, interfaces, exhibitions, and objects.</p><div class="facts"><span>HANNAH TRAN</span><span>Research · Editorial Design · Environmental Communication</span><span>Currently in Gettysburg, Pennsylvania</span></div></div></article><article class="paper-page toc" id="page-02"><div class="page-inner"><div class="page-kicker"><span>Contents</span><span>02</span></div><h2>Contents</h2><div class="facts"><span>04  Selected Work</span><span>06  MediaScape</span><span>08  Milton: Planted in Place</span><span>10  Community Trail Research</span><span>12  The Ahurea Project</span><span>16  Hjernelandet</span><span>20  Lines of Inquiry</span><span>22  Objects &amp; Making</span><span>26  Miscellaneous Evidence</span><span>28  Curriculum Vitae</span><span>32  Correspondence</span></div></div></article><article class="paper-page " id="page-03"><div class="page-inner"><div class="page-kicker"><span>Editorial note</span><span>03</span></div><h2>A note on completeness</h2><p class="body-copy">This guide does not contain everything I have made. It contains enough evidence to show how I work: I investigate complicated systems, find the human story inside them, and build a form through which someone else can understand what I found. Sometimes that form is a research platform. Sometimes it is an exhibition, an essay, a campaign, a ceramic object, or an imaginary country. The complete projects remain elsewhere. This book provides the routes.</p><button class="text-link" data-index>Browse the index ↗</button></div></article><article class="paper-page opener" id="page-04"><div class="page-inner"><div class="page-kicker"><span>01 · Selected Work</span><span>04</span></div><h2>Selected work</h2><p class="deck">Four projects. Four different questions.</p></div></article><article class="paper-page " id="page-05"><div class="page-inner"><div class="page-kicker"><span>Orientation</span><span>05</span></div><h2>Notice the system. Understand the audience. Build the translation.</h2><p class="body-copy">The projects ahead move between research, environmental systems, editorial design and public interpretation.</p><div class="facts"><span>RESEARCH</span><span>INTERFACES</span><span>ENVIRONMENT</span><span>EXHIBITIONS</span><span>CULTURE</span></div></div></article><article class="paper-page media" id="page-06"><div class="page-inner"><div class="page-kicker"><span>MediaScape · Fig. 03A</span><span>06</span></div><h2>Same event. different language. different reality.</h2><p class="deck">Comparative outlet view</p></div></article><article class="paper-page " id="page-07"><div class="page-inner"><div class="page-kicker"><span>Computational media analysis · NLP · Interface design</span><span>07</span></div><h2>Mediascape</h2><p class="deck">How does political affiliation change the language through which news organizations describe the same climate event?</p><p class="body-copy">MediaScape is an interactive research platform for comparing how news outlets frame climate-change coverage. I developed the research framing, comparative information architecture and interface concept, letting readers move between computational patterns and the original language beneath them.</p><div class="facts"><span>ROLE · Researcher, designer and developer</span><span>METHODS · Corpus design, discourse analysis, NLP</span><span>FOCUS · Climate communication</span><span>STATUS · Active prototype</span></div><button class="text-link" >Explore the case study ↗</button></div></article><article class="paper-page milton" id="page-08"><div class="page-inner"><div class="page-kicker"><span>Milton · Documentation</span><span>08</span></div><h2>Planted in place</h2><p class="deck">Installation · Publication · Archive</p></div></article><article class="paper-page " id="page-09"><div class="page-inner"><div class="page-kicker"><span>Exhibition design · Archival research</span><span>09</span></div><h2>Milton: planted in place</h2><p class="deck">How can a local museum make the environmental history of a place visible to the people already living inside it?</p><p class="body-copy">The first exhibition at the Milton Municipal Museum brought together archival maps, local history, botanical research and editorial design. I developed its visual system and narrative structure, moving from the history of a region to the typography on an individual label.</p><div class="facts"><span>ROLE · Lead designer and exhibition curator</span><span>CONTEXT · Milton Municipal Museum</span><span>DELIVERABLES · Identity, interpretation, publication</span></div><button class="text-link" >View the exhibition project ↗</button></div></article><article class="paper-page map" id="page-10"><div class="page-inner"><div class="page-kicker"><span>Community Trail Research</span><span>10</span></div><h2>Lewisburg ↔ montandon</h2><p class="deck">A trail is also a negotiation.</p><div class="facts"><span>SAFETY · ‘Where does the crossing go?’</span><span>ACCESS · ‘Who can reach it?’</span><span>PROPERTY · ‘What changes at my edge?’</span><span>MOBILITY · ‘Could this be transportation?’</span></div></div></article><article class="paper-page " id="page-11"><div class="page-inner"><div class="page-kicker"><span>Environmental infrastructure · Public perception</span><span>11</span></div><h2>Community trail research</h2><p class="deck">What happens when infrastructure that appears universally beneficial meets the particular fears, habits and histories of a community?</p><p class="body-copy">This research examined perceptions surrounding a proposed Buffalo Valley Rail Trail extension. I helped translate individual responses into larger patterns without erasing the local concerns inside the data.</p><div class="facts"><span>ROLE · Community researcher</span><span>METHODS · Surveys, stakeholder analysis, mixed methods</span><span>OUTPUT · Findings and communication recommendations</span></div><button class="text-link" >Read the project summary ↗</button></div></article><article class="paper-page ahurea" id="page-12"><div class="page-inner"><div class="page-kicker"><span>The Ahurea Project · Visual archive</span><span>12</span></div><h2>Me in culture</h2><p class="deck">TÔI TRONG VĂN HÓA</p><div class="facts"><span>POSTER 01</span><span>GOODIE BAG 02</span><span>CAMPAIGN GRAPHIC 03</span><span>PUBLICATION 04</span></div></div></article><article class="paper-page " id="page-13"><div class="page-inner"><div class="page-kicker"><span>Cultural storytelling · Editorial systems</span><span>13</span></div><h2>The ahurea project</h2><p class="deck">How might cultural education feel native to the visual and social language of young people online?</p><p class="body-copy">Founded in Vietnam in 2020, Ahurea combined editorial design, online events, publications, merchandise and participatory campaigns. As founder and creative lead, I built an operating editorial system capable of holding a growing community together.</p><div class="facts"><span>10K+ COMMUNITY</span><span>149K+ CAMPAIGN REACH</span><span>40+ COLLABORATORS</span><span>80+ NATIONAL TALKSHOW PARTICIPANTS</span></div><button class="text-link" >Open the visual archive ↗</button></div></article><article class="paper-page ice" id="page-14"><div class="page-inner"><div class="page-kicker"><span>Intermission</span><span>14</span></div><blockquote>“Adults appeared once the activity had become a game, as though competence had already been established somewhere offstage.”</blockquote></div></article><article class="paper-page ice" id="page-15"><div class="page-inner"><div class="page-kicker"><span>From Dispatch 05</span><span>15</span></div><h2>Why would you do this to yourself?</h2><p class="deck">Power skating, public apprenticeship and the quiet rule that adults should appear finished.</p><button class="text-link" >Read dispatch 05 ↗</button></div></article><article class="paper-page hjerne" id="page-16"><div class="page-inner"><div class="page-kicker"><span>Inserted publication · Vol. 01</span><span>16</span></div><h2>Hjernelandet</h2><p class="deck">Dispatches from the country inside my head.</p><div class="facts"><span>JULY 2026</span><span>40.273 N · 76.887 W</span></div></div></article><article class="paper-page " id="page-17"><div class="page-inner"><div class="page-kicker"><span>Editorial system</span><span>17</span></div><h2>A publication with its own geography</h2><p class="body-copy">Hjernelandet is an essay atlas for observations that refuse to remain separate: infrastructure, food systems, language, environmental contradiction, movement and belonging. I developed its identity, map, taxonomy, dispatch registry, editorial templates and reading system.</p><div class="facts"><span>LAND &amp; CLIMATE</span><span>CITIES &amp; MOTION</span><span>LANGUAGE</span><span>LIFE</span></div><button class="text-link" >Enter hjernelandet ↗</button></div></article><article class="paper-page dispatch" id="page-18"><div class="page-inner"><div class="page-kicker"><span>Dispatch sampler</span><span>18</span></div><h2>The local is never only local.</h2><div class="facts"><span>02 · Everyone Drives Something Enormous</span><span>03 · The Fresh Food Desert Inside the Orchard</span><span>04 · I Thought I Needed a Third Place</span></div></div></article><article class="paper-page " id="page-19"><div class="page-inner"><div class="page-kicker"><span>Featured dispatch · Life</span><span>19</span></div><h2>Why would you do this to yourself?</h2><p class="deck">Power skating, public apprenticeship and the cost of appearing unfinished in adulthood.</p><p class="body-copy">Complete essays open as ordinary vertical articles. The guide remains your place in the authored sequence.</p><button class="text-link" >Read the featured dispatch ↗</button></div></article><article class="paper-page opener research" id="page-20"><div class="page-inner"><div class="page-kicker"><span>02 · Research Notebook</span><span>20</span></div><h2>Lines of inquiry</h2><p class="deck">Not every question becomes a project.</p><p class="body-copy">Some remain open long enough to alter several projects around them. These are working questions—not claims of completed expertise.</p></div></article><article class="paper-page " id="page-21"><div class="page-inner"><div class="page-kicker"><span>Working questions</span><span>21</span></div><h2>10.1 · can transformers learn formal languages?</h2><p class="body-copy">Using deterministic finite automata to distinguish structural understanding from probabilistic approximation beyond training distributions.</p><div class="facts"><span>STATUS · WORKING QUESTION</span><span>10.2 · TRANSGENDER IDENTITY AND THE ENVIRONMENT ON TIKTOK</span><span>STATUS · SEMINAR AND INDEPENDENT RESEARCH</span></div><button class="text-link" >View research &amp; insight ↗</button></div></article><article class="paper-page objects" id="page-22"><div class="page-inner"><div class="page-kicker"><span>03 · Hannah’s Håndværk</span><span>22</span></div><h2>Cabinet of objects</h2><p class="deck">Wheel-thrown, hand-built and always slightly unpredictable.</p><div class="facts"><span>OBJ. 11.01 · ORCHID TEAPOT</span><span>OBJ. 11.02 · POUR-OVER &amp; POT</span><span>OBJ. 11.03 · FOREST TUMBLER</span></div></div></article><article class="paper-page objects" id="page-23"><div class="page-inner"><div class="page-kicker"><span>Museum catalogue</span><span>23</span></div><h2>Pottery between the quiet and the strange.</h2><p class="body-copy">Select an object in the index to see its photograph, materials, dimensions and story.</p><div class="facts"><span>OBJ. 11.04 · HORN BOWLS</span><span>OBJ. 11.05 · TINY FRUITS</span><span>OBJ. 11.06 · BERRY BOWL</span></div><button class="text-link" >Visit hannah’s håndværk ↗</button></div></article><article class="paper-page skate" id="page-24"><div class="page-inner"><div class="page-kicker"><span>Clay Meets Ice · Process</span><span>24</span></div><h2>An object designed to represent speed.</h2><p class="deck">Coiled and slab-built stoneware · modeled lace structure · separate blade attachment</p></div></article><article class="paper-page " id="page-25"><div class="page-inner"><div class="page-kicker"><span>Material practice</span><span>25</span></div><h2>Clay meets ice</h2><p class="body-copy">Hockey and pottery involve many of the same problems: pressure, timing, balance, material response and the moment when conscious instruction becomes physical instinct. The clay skate began as a joke and became one of the most technically demanding objects I had attempted. This is where I prefer to work: where unrelated systems begin explaining one another.</p><div class="facts"><span>KILN OUTCOME · NEGOTIATED</span></div><button class="text-link" >See the process ↗</button></div></article><article class="paper-page inventory" id="page-26"><div class="page-inner"><div class="page-kicker"><span>04 · Miscellaneous Evidence</span><span>26</span></div><h2>A partial inventory</h2><div class="facts"><span>From Hải Phòng · Currently in Gettysburg</span><span>Danish, English and Vietnamese</span><span>Computer Science + Environmental Studies</span><span>Ceramics instructor</span><span>Hockey player · right shot · usually wing</span><span>Approximately fifty ties</span><span>Believes Williamsport deserves an ice rink</span><span>Distrusts kilns</span><span>Invents countries when existing geography becomes insufficient</span></div></div></article><article class="paper-page contactsheet" id="page-27"><div class="page-inner"><div class="page-kicker"><span>Contact sheet · 01—06</span><span>27</span></div><h2>None of these objects explains me.</h2><p class="deck">Together, they make the task slightly less impossible.</p><div class="facts"><span>01 TIE</span><span>02 CERAMIC TOOL</span><span>03 HOCKEY TAPE</span><span>04 UNFINISHED MAP</span><span>05 HẢI PHÒNG OBJECT</span><span>06 RINK EPHEMERA</span></div></div></article><article class="paper-page resume" id="page-28"><div class="page-inner"><div class="page-kicker"><span>05 · Curriculum Vitae</span><span>28</span></div><h2>Selected experience</h2><div class="facts"><span>MARYLAND ENVIRONMENTAL SERVICE · Marketing &amp; Operations Intern · 2025</span><span>BUCKNELL UNIVERSITY · Research Assistant · 2024—25</span><span>BUCKNELL RED GRANT · Undergraduate Researcher · 2023</span><span>MILTON MUNICIPAL MUSEUM · Lead Designer &amp; Curator · 2023</span><span>THE AHUREA PROJECT · Founder &amp; Creative Lead · 2020—21</span></div></div></article><article class="paper-page " id="page-29"><div class="page-inner"><div class="page-kicker"><span>Education &amp; practice</span><span>29</span></div><h2>Computer science + environmental studies</h2><p class="body-copy">Selected study: interface design, environmental policy, qualitative and quantitative research, language and computational systems.</p><div class="facts"><span>CERAMICS INSTRUCTOR</span><span>EDITORIAL &amp; VISUAL DESIGNER</span><span>ENVIRONMENTAL COMMUNICATOR</span><span>INDEPENDENT WRITER &amp; PUBLISHER</span></div><button class="text-link" >Open full résumé ↗</button></div></article><article class="paper-page " id="page-30"><div class="page-inner"><div class="page-kicker"><span>Capabilities</span><span>30</span></div><h2>What i can bring to a project</h2><p class="body-copy">I am most useful when a project is technically or culturally complicated and needs to become understandable without becoming simplistic.</p><div class="facts"><span>RESEARCH &amp; SYNTHESIS · interviews, surveys, discourse analysis</span><span>EDITORIAL SYSTEMS · information architecture, publication design</span><span>DESIGN &amp; INTERPRETATION · identities, exhibitions, interfaces</span><span>TECHNICAL PRACTICE · JavaScript, TypeScript, HTML/CSS, Python</span><span>MATERIAL PRACTICE · ceramics, objects, installation</span></div></div></article><article class="paper-page contact" id="page-31"><div class="page-inner"><div class="page-kicker"><span>Correspondence</span><span>31</span></div><h2>Would you like to make something together?</h2><p class="body-copy">I am interested in research, environmental communication, editorial design, public interpretation and digital experiences—especially work that crosses more than one of those categories.</p><div class="facts"><span>GETTYSBURG, PENNSYLVANIA</span><span>AVAILABLE FOR RELOCATION AND REMOTE COLLABORATION</span></div><form class="contact-form"><div class="contact-pair"><label>Name<input name="name" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label></div><label>What are you thinking about?<input name="subject" required></label><label>Tell me a little more<textarea name="message" rows="4" required></textarea></label><button type="submit">Send a note ↗</button><p role="status" hidden>Your email app should be open with the note ready to send.</p></form></div></article><article class="paper-page " id="page-32"><div class="page-inner"><div class="page-kicker"><span>Errata &amp; future additions</span><span>32</span></div><h2>This guide omits several projects.</h2><p class="body-copy">Also omitted: most unfinished thoughts, numerous ceramic failures and almost the entire tie collection. Corrections and additions will appear in the next revision.</p><div class="facts"><span>HFT–001</span><span>CLOSED AUGUST 2026</span><span>NEXT REVISION · UNANNOUNCED</span></div></div></article><article class="paper-page back-cover"><div class="page-inner"><h2>This guide remains incomplete.</h2><span>hannahferny.com</span></div></article></div></div><button class="edge right" id="edge-next" aria-label="Next page">›</button></section><section class="index-view" id="index" hidden><div class="index-head"><p>Volume I · Open index</p><h1>Work, writing, objects &amp; miscellaneous evidence</h1><div id="filters"></div></div><div class="index-grid" id="cards"></div></section><aside class="contents-drawer" id="contents" hidden><button id="close-contents">Close ×</button><h2>Contents</h2><div id="contents-list"></div></aside><footer><span>An incomplete guide · Vol. I</span><span>Drag corners · Swipe · Use arrow keys</span><span id="count">01 / 35</span></footer></main></body></html>
