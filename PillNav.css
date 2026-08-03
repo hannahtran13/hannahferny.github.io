@@ -209,6 +209,13 @@
   display: none;
 }
 
+.cover-tagline.is-turning {
+  opacity: 0 !important;
+  pointer-events: none;
+  transform: translateY(-46%) translateX(-18px) !important;
+  transition-duration: .16s !important;
+}
+
 @media (max-width: 760px) {
   .site-shell.pill-navigation {
     grid-template-rows: 52px 52px minmax(0, 1fr) 0;

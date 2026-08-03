@@ -42,6 +42,74 @@
     });
   }
 
+  function stabilizeCoverTagline() {
+    const tagline = document.querySelector('.cover-tagline');
+    const book = document.querySelector('#flipbook');
+    if (!tagline || !book) return;
+
+    let restoreTimer;
+    const beginCoverTurn = () => {
+      if ((location.hash || '#cover') !== '#cover') return;
+      window.clearTimeout(restoreTimer);
+      tagline.classList.add('is-turning');
+      tagline.classList.remove('is-visible');
+      restoreTimer = window.setTimeout(() => {
+        if ((location.hash || '#cover') === '#cover') {
+          tagline.classList.remove('is-turning');
+          tagline.classList.add('is-visible');
+        }
+      }, 1100);
+    };
+
+    ['open-guide', 'next', 'edge-next', 'selected', 'resume', 'contact'].forEach(id => {
+      const control = document.getElementById(id);
+      if (control) {
+        control.addEventListener('pointerdown', beginCoverTurn, { passive: true });
+        control.addEventListener('click', beginCoverTurn);
+      }
+    });
+    book.addEventListener('pointerdown', beginCoverTurn, { passive: true });
+
+    // Trackpad and mouse-wheel page turns bypass the book's pointer controls.
+    // Mirror the flipbook's wheel threshold so the cover copy disappears as
+    // soon as a downward scroll actually commits to opening the first page.
+    let coverWheelTotal = 0;
+    let coverWheelEnd;
+    window.addEventListener('wheel', event => {
+      const target = event.target;
+      if ((location.hash || '#cover') !== '#cover' || event.deltaY <= 0 ||
+          (target instanceof Element && target.closest('input, textarea, select, .contents-drawer'))) {
+        return;
+      }
+
+      window.clearTimeout(coverWheelEnd);
+      coverWheelEnd = window.setTimeout(() => { coverWheelTotal = 0; }, 220);
+      coverWheelTotal += event.deltaY;
+      if (coverWheelTotal < 55) return;
+
+      coverWheelTotal = 0;
+      beginCoverTurn();
+    }, { passive: true });
+
+    const folio = document.querySelector('#folio');
+    if (folio) {
+      new MutationObserver(() => {
+        window.clearTimeout(restoreTimer);
+        tagline.classList.remove('is-turning');
+        tagline.classList.toggle('is-visible', (location.hash || '#cover') === '#cover');
+      }).observe(folio, { childList: true, characterData: true, subtree: true });
+    }
+    document.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === 'Enter') beginCoverTurn();
+    });
+    window.addEventListener('hashchange', () => {
+      if ((location.hash || '#cover') !== '#cover') {
+        window.clearTimeout(restoreTimer);
+        tagline.classList.remove('is-turning', 'is-visible');
+      }
+    });
+  }
+
   function initializePillNav() {
     const header = document.querySelector('.site-header');
     const modebar = document.querySelector('.modebar');
@@ -125,6 +193,7 @@
     window.addEventListener('hashchange', updateActiveState);
     document.addEventListener('click', () => queueMicrotask(updateActiveState));
     updateActiveState();
+    stabilizeCoverTagline();
   }
 
   if (document.readyState === 'loading') {
