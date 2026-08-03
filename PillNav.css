@@ -89,14 +89,11 @@
   content: "";
   position: absolute;
   z-index: -1;
-  left: 50%;
-  bottom: -56px;
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
+  inset: 0;
+  border-radius: inherit;
   background: #b82922;
-  transform: translateX(-50%) scale(0);
-  transform-origin: 50% 0;
+  transform: scaleX(0);
+  transform-origin: center;
   transition: transform .34s cubic-bezier(.2, .8, .2, 1);
 }
 
@@ -104,7 +101,7 @@
 .pill-nav-row .pill-control:focus-visible::before,
 .pill-nav-row .pill-control.is-active::before,
 .pill-nav-row .pill-control[aria-pressed="true"]::before {
-  transform: translateX(-50%) scale(1.35);
+  transform: scaleX(1);
 }
 
 .pill-nav-row .label-stack {
