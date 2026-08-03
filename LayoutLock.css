@@ -1,0 +1,63 @@
+/* Preserve the publication's designed proportions while fitting the viewport. */
+body.book-mode .site-shell.pill-navigation .reader-stage {
+  contain: layout paint;
+}
+
+body.book-mode .site-shell.pill-navigation .book-shell {
+  flex: 0 0 auto;
+  width: auto !important;
+  height: min(680px, calc(100svh - 132px), calc((100vw - 96px) * 17 / 26)) !important;
+  min-width: 0;
+  min-height: 0 !important;
+  max-width: calc(100vw - 96px);
+  max-height: calc(100svh - 132px);
+  aspect-ratio: 26 / 17;
+}
+
+body.book-mode .site-shell.pill-navigation .paper-page,
+body.book-mode .site-shell.pill-navigation .page-inner {
+  aspect-ratio: 13 / 17;
+}
+
+body.book-mode .site-shell.pill-navigation .paper-page {
+  contain: layout paint;
+}
+
+body.book-mode .site-shell.pill-navigation .page-inner {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+body.book-mode .site-shell.pill-navigation .page-inner > * {
+  max-width: 100%;
+}
+
+@media (max-width: 760px) {
+  body.book-mode .site-shell.pill-navigation .reader-stage {
+    position: relative;
+    align-items: center;
+    padding: 4px 6px 58px;
+  }
+
+  body.book-mode .site-shell.pill-navigation .book-shell {
+    width: min(calc(100vw - 12px), calc((100svh - 168px) * 13 / 17)) !important;
+    height: auto !important;
+    max-width: calc(100vw - 12px);
+    max-height: calc(100svh - 168px);
+    aspect-ratio: 13 / 17;
+  }
+
+  body.book-mode .site-shell.pill-navigation .edge {
+    display: none !important;
+  }
+
+}
+
+@media (max-width: 760px) and (orientation: landscape) {
+  body.book-mode .site-shell.pill-navigation .book-shell {
+    width: min(calc(100vw - 12px), calc((100svh - 160px) * 13 / 17)) !important;
+    height: auto !important;
+  }
+}

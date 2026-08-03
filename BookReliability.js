@@ -16,6 +16,7 @@
       if (!book.classList.contains('ready')) return false;
       root.classList.remove('book-fallback');
       document.body.classList.add('book-mode');
+      window.requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
       return true;
     };
 

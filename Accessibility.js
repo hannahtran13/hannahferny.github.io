@@ -42,10 +42,10 @@
 
     let previousFocus = null;
     let drawerOpen = false;
-    const background = Array.from(shell.children).filter(element => element !== drawer && element !== announcement);
+    const background = () => Array.from(shell.children).filter(element => element !== drawer && element !== announcement);
 
     function setBackgroundAvailable(available) {
-      background.forEach(element => {
+      background().forEach(element => {
         if (available) {
           element.inert = false;
           if (element.dataset.previousAriaHidden === '') element.removeAttribute('aria-hidden');

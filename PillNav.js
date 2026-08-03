@@ -68,10 +68,55 @@
     enhance(header);
     enhance(modebar);
 
+    const reader = document.querySelector('#reader');
+    const contact = document.querySelector('#contact');
+    const modeSwitch = document.querySelector('#mode-switch');
+    const previous = document.querySelector('#edge-prev');
+    const next = document.querySelector('#edge-next');
+    const siteShell = reader?.closest('.site-shell');
+    if (reader && siteShell && contact && modeSwitch && previous && next && !siteShell.querySelector('.mobile-bottom-pill-row')) {
+      const dock = document.createElement('nav');
+      const mobilePrevious = document.createElement('button');
+      const mobileContact = document.createElement('button');
+      const mobileIndex = document.createElement('button');
+      const mobileNext = document.createElement('button');
+      dock.className = 'mobile-bottom-pill-row pill-nav-row';
+      dock.setAttribute('aria-label', 'Mobile page navigation');
+      mobilePrevious.type = mobileContact.type = mobileIndex.type = mobileNext.type = 'button';
+      mobilePrevious.className = 'mobile-page-arrow';
+      mobileNext.className = 'mobile-page-arrow';
+      mobileContact.className = 'mobile-contact-action';
+      mobileIndex.className = 'mobile-index-action';
+      mobilePrevious.textContent = '←';
+      mobileContact.textContent = 'Contact';
+      mobileIndex.textContent = 'Open the index';
+      mobileNext.textContent = '→';
+      mobilePrevious.setAttribute('aria-label', 'Previous page');
+      mobileNext.setAttribute('aria-label', 'Next page');
+      mobileContact.addEventListener('click', () => contact.click());
+      mobileIndex.addEventListener('click', () => modeSwitch.click());
+      mobilePrevious.addEventListener('click', () => previous.click());
+      mobileNext.addEventListener('click', () => next.click());
+      dock.append(mobilePrevious, mobileContact, mobileIndex, mobileNext);
+      siteShell.append(dock);
+      dock.querySelectorAll('button').forEach(labelControl);
+
+      const syncIndexLabel = () => {
+        const source = modeSwitch.querySelector('.pill-label')?.textContent || modeSwitch.textContent;
+        const primary = mobileIndex.querySelector('.pill-label');
+        const hover = mobileIndex.querySelector('.pill-label-hover');
+        if (primary) primary.textContent = source.trim();
+        if (hover) hover.textContent = source.trim();
+      };
+      new MutationObserver(() => queueMicrotask(syncIndexLabel)).observe(modeSwitch, { childList: true, characterData: true, subtree: true });
+      syncIndexLabel();
+    }
+
     new MutationObserver(() => {
       enhance(header);
       enhance(modebar);
     }).observe(header, { childList: true, subtree: true });
+    new MutationObserver(() => enhance(modebar)).observe(modebar, { childList: true, subtree: true });
 
     const index = document.querySelector('#index');
     if (index) new MutationObserver(updateActiveState).observe(index, { attributes: true, attributeFilter: ['hidden'] });
