@@ -1,6 +1,6 @@
 (function () {
   function finalizeSiteIdentity() {
-    document.title = 'Hannah Tran - Research, Design & Environmental Communications';
+    document.title = 'Hannah Tran — Research, Design & Environmental Communication';
     const descriptor = document.querySelector('.site-header > span');
     if (descriptor) descriptor.textContent = 'Research, Design & Environmental Communications';
 

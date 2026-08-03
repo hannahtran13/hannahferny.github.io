@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hannahferny.com/hjernelandet/sitemap.xml
+Sitemap: https://hannahferny.com/sitemap.xml
