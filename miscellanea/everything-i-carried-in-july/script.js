@@ -95,6 +95,7 @@ function openNote(item, button) {
   lastFocused = button;
   noteNumber.textContent = `${String(objects.indexOf(item) + 1).padStart(2, "0")} / 07`;
   noteImage.src = item.image;
+  noteImage.alt = `Illustration of ${item.name.toLowerCase()}`;
   noteTitle.textContent = item.name;
   noteText.textContent = item.note;
   modal.hidden = false;

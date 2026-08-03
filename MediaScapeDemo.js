@@ -1,4 +1,13 @@
 (function () {
+  function finalizeSiteIdentity() {
+    document.title = 'Hannah Tran - Research, Design & Environmental Communications';
+    const descriptor = document.querySelector('.site-header > span');
+    if (descriptor) descriptor.textContent = 'Research, Design & Environmental Communications';
+
+    const reservedPortrait = document.querySelector('.portrait-placeholder');
+    if (reservedPortrait) reservedPortrait.replaceChildren();
+  }
+
   function mountMediaScapeDemo(target) {
     if (!target || target.querySelector('.media-demo')) return;
 
@@ -154,6 +163,33 @@
     }));
   }
 
+  function describeBackgroundImages() {
+    const descriptions = {
+      '.cover .page-inner': 'Full-length portrait of Hannah Tran wearing a red Chicago Bulls jacket, cream trousers, a patterned tie, and a backward white cap.',
+      '#page-01 .page-inner': 'Formal studio portrait of Hannah Tran wearing a dark suit and striped tie.',
+      '#page-12 .page-inner': 'Magenta, cyan, and black Ahurea artwork combining a sculptural figure with the words Me in Culture.',
+      '#page-16 .page-inner': 'Misty mountain landscape introducing Hjernelandet, an imagined country for essays and observations.',
+      '#page-22 .page-inner': 'Handmade ceramic teapot painted with purple orchid flowers, photographed on overlapping book pages.',
+      '#page-24 .page-inner': 'Hand-built ceramic ice skate with modeled laces and a separately attached blade.'
+    };
+    Object.entries(descriptions).forEach(([selector, text]) => {
+      const target = document.querySelector(selector);
+      if (!target || target.querySelector('.image-description')) return;
+      const description = document.createElement('span');
+      description.className = 'image-description';
+      description.textContent = text;
+      target.appendChild(description);
+    });
+    const posterPages = {
+      '#page-08 .page-inner': 'Milton Municipal Museum Planted in Place exhibition poster with oversized orange typography over a historic streetscape.',
+      '#page-10 .page-inner': 'Your Community, Your Voice recruitment poster for a survey about the proposed Buffalo Valley Rail Trail extension between Lewisburg and Montandon.'
+    };
+    Object.entries(posterPages).forEach(([selector, text]) => {
+      const target = document.querySelector(selector);
+      if (target) { target.setAttribute('role', 'img'); target.setAttribute('aria-label', text); }
+    });
+  }
+
   function wireContactForm() {
     const form = document.querySelector('#page-31 .contact-form');
     if (!form || form.dataset.googleSheet === 'ready') return;
@@ -200,9 +236,11 @@
   }
 
   window.mountMediaScapeDemo = mountMediaScapeDemo;
+  finalizeSiteIdentity();
   normalizeResearchPage();
   normalizeObjectsAndMiscellanea();
   populateAhureaArchive();
+  describeBackgroundImages();
   wireContactForm();
   const localeScript = document.createElement('script');
   localeScript.src = 'LocaleToggle.js';

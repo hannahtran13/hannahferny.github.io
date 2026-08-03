@@ -1,0 +1,95 @@
+:root {
+  --muted: #454947;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #c9553d;
+  outline-offset: 3px;
+}
+
+.cover button:focus-visible,
+.opener button:focus-visible,
+.final-cover a:focus-visible {
+  outline-color: #fff3e8;
+}
+
+.page-kicker,
+.facts span,
+.text-link,
+.registration,
+.cover-meta,
+.open-guide,
+.back-cover span,
+.site-header button,
+.modebar button,
+.modebar b,
+footer,
+.contents-drawer > button,
+.index-head p,
+.index-head button,
+.index-card small,
+.index-card > div:last-child,
+.ahurea-archive b,
+.research-entry__number,
+.research-entry__foot,
+.process-strip span,
+.final-cover__edition,
+.final-cover__legal {
+  font-size: 11px !important;
+  line-height: 1.25;
+}
+
+#page-12 .ahurea-gallery span,
+#page-21 .research-entry p,
+#page-21 .research-method__head,
+#page-21 .research-method li,
+#page-21 .research-method li b,
+#page-26 .miscellanea-gateway__label,
+#page-27 .deck,
+#page-27 .inventory-list li,
+#page-28 .resume-roles span,
+#page-28 .resume-roles small {
+  font-size: 11px !important;
+  line-height: 1.3;
+}
+
+.site-header > span {
+  font-size: 11px;
+}
+
+.page-kicker,
+.facts,
+.cover-meta,
+.modebar,
+.site-header,
+footer,
+.index-card,
+.contents-drawer > button:not(:first-child) {
+  border-color: #13182066 !important;
+}
+
+.contents-drawer[aria-modal="true"] {
+  outline: 1px solid #13182066;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
