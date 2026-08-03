@@ -299,22 +299,25 @@
   .media-demo__chart path { animation: none; stroke-dashoffset: 0; }
 }
 
-/* Page 21: matching hierarchy for both research questions. */
+/* Page 21: a simple, line-by-line research index. */
 #page-21 .research-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 0;
   margin-top: 24px;
   min-height: 0;
 }
 
 #page-21 .research-entry {
-  display: flex;
+  display: grid;
   min-width: 0;
-  flex-direction: column;
-  padding: 16px;
-  border: 1px solid rgba(255,198,109,.42);
-  background: rgba(255,255,255,.035);
+  gap: 7px;
+  padding: 13px 0 15px;
+  border-top: 1px solid rgba(255,198,109,.55);
+}
+
+#page-21 .research-entry:last-of-type {
+  border-bottom: 1px solid rgba(255,198,109,.55);
 }
 
 #page-21 .research-entry__number {
@@ -324,41 +327,32 @@
 }
 
 #page-21 .research-entry h2 {
-  margin: 15px 0 12px;
+  margin: 0;
   max-width: none;
-  font-size: clamp(23px, 3vw, 34px);
-  line-height: .94;
+  font-size: clamp(18px, 2.5vw, 27px);
+  line-height: 1;
 }
 
 #page-21 .research-entry p {
-  margin: 0 0 20px;
+  margin: 0;
+  max-width: 64ch;
   color: #c9cdd5;
   font-family: Georgia, serif;
   font-size: 10px;
   line-height: 1.45;
 }
 
-#page-21 .research-entry__foot {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255,198,109,.3);
-  color: #ffc66d;
-  font: 7px ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-#page-21 .research-entry__foot a {
-  flex: none;
+#page-21 .research-entry__link {
+  width: fit-content;
+  margin-top: 2px;
   color: #ff9f2d;
+  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
   text-decoration: none;
 }
 
-#page-21 .research-entry__foot a:hover { text-decoration: underline; }
+#page-21 .research-entry__link:hover { text-decoration: underline; }
 
 #page-21 .research-method {
   grid-column: 1 / -1;
@@ -413,11 +407,9 @@
 }
 
 @media (max-width: 700px) {
-  #page-21 .research-list { gap: 8px; margin-top: 14px; }
-  #page-21 .research-entry { padding: 11px; }
-  #page-21 .research-entry h2 { margin: 10px 0 8px; font-size: clamp(18px, 5.2vw, 25px); }
-  #page-21 .research-entry p { margin-bottom: 12px; font-size: 8px; }
-  #page-21 .research-entry__foot { display: grid; gap: 6px; }
+  #page-21 .research-list { margin-top: 14px; }
+  #page-21 .research-entry { gap: 5px; padding: 10px 0 11px; }
+  #page-21 .research-entry h2 { font-size: clamp(16px, 4.5vw, 22px); }
   #page-21 .research-method { padding: 10px; }
   #page-21 .research-method__head { margin-bottom: 10px; }
   #page-21 .research-method li { font-size: 8px; padding-right: 7px; }

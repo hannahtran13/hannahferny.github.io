@@ -55,13 +55,13 @@
         <span class="research-entry__number">10.1</span>
         <h2>Can transformers learn formal languages?</h2>
         <p>Using deterministic finite automata to distinguish structural understanding from probabilistic approximation beyond training distributions.</p>
-        <div class="research-entry__foot"><span>Working question</span><a href="research-dfa.html">View research ↗</a></div>
+        <a class="research-entry__link" href="research-dfa.html">View research ↗</a>
       </article>
       <article class="research-entry">
         <span class="research-entry__number">10.2</span>
         <h2>Trans identity and the environment on TikTok</h2>
         <p>Exploring how TikTok’s algorithmic distribution shapes transgender identity and environmental narratives through digital visibility and platform behavior.</p>
-        <div class="research-entry__foot"><span>Seminar &amp; independent research</span><a href="research-tiktok.html">View research ↗</a></div>
+        <a class="research-entry__link" href="research-tiktok.html">View research ↗</a>
       </article>
       <aside class="research-method" aria-label="How I do research">
         <div class="research-method__head">
