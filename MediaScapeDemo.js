@@ -41,6 +41,33 @@
     </div>`;
   }
 
+  function redesignFrontispiece() {
+    const page = document.querySelector('#page-01');
+    if (!page || page.querySelector('.frontispiece-photo')) return;
+
+    // Preserve PageFlip's sheet classes while replacing only the page content.
+    page.classList.add('frontispiece-redesign');
+    page.innerHTML = `<div class="page-inner">
+      <img class="frontispiece-photo" src="images/frontispiece-hannah.jpg" alt="Hannah Tran reclining in a chair while wearing a black football jersey, collared shirt, tie, and cap">
+      <div class="frontispiece-kicker"><span>Frontispiece</span><span>01</span></div>
+      <div class="frontispiece-copy">
+        <h2>I study the systems hidden inside ordinary life.</h2>
+        <p class="frontispiece-intro">I am interested in the invisible rules that shape everyday life: how people move, organize, repair, collect, and remember. My work spans research, editorial design, software, exhibitions, writing, and physical making because the questions rarely fit inside a single discipline.</p>
+        <div class="frontispiece-profile">
+          <strong>Hannah Tran</strong>
+          <span>Research</span>
+          <span>Editorial Design</span>
+          <span>Software</span>
+          <span>Writing</span>
+          <span>Environmental Communication</span>
+          <span>Ceramics</span>
+          <small>Gettysburg, Pennsylvania</small>
+        </div>
+        <i class="frontispiece-rule" aria-hidden="true"></i>
+      </div>
+    </div>`;
+  }
+
   function updateCommunityResearchCopy() {
     const page = document.querySelector('#page-11');
     if (!page) return;
@@ -223,7 +250,7 @@
   function describeBackgroundImages() {
     const descriptions = {
       '.cover .page-inner': 'Full-length portrait of Hannah Tran wearing a red Chicago Bulls jacket, cream trousers, a patterned tie, and a backward white cap.',
-      '#page-01 .page-inner': 'Formal studio portrait of Hannah Tran wearing a dark suit and striped tie.',
+      '#page-01 .page-inner': 'Black-and-white portrait of Hannah Tran reclining in a chair while wearing a football jersey, collared shirt, tie, and cap.',
       '#page-12 .page-inner': 'Magenta, cyan, and black Ahurea artwork combining a sculptural figure with the words Me in Culture.',
       '#page-16 .page-inner': 'Misty mountain landscape introducing Hjernelandet, an imagined country for essays and observations.',
       '#page-22 .page-inner': 'Handmade ceramic teapot painted with purple orchid flowers, photographed on overlapping book pages.',
@@ -294,6 +321,7 @@
 
   window.mountMediaScapeDemo = mountMediaScapeDemo;
   finalizeSiteIdentity();
+  redesignFrontispiece();
   redesignMiltonSpread();
   updateCommunityResearchCopy();
   normalizeResearchPage();
