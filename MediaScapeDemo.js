@@ -13,7 +13,9 @@
     const system = document.querySelector('#page-09');
     if (!hero || !system || hero.querySelector('.milton-hero')) return;
 
-    hero.className = 'paper-page milton';
+    // PageFlip adds its own classes after initialization. Preserve them so this
+    // late content enhancement stays attached to the curl animation.
+    hero.classList.add('milton');
     hero.innerHTML = `<div class="page-inner">
       <img class="milton-hero" src="images/milton/result2.jpg" alt="A visitor points toward a detail on the Milton exhibition’s wall of historical Sanborn maps">
       <div class="milton-hero-label">Milton Municipal Museum · 2023</div>
@@ -22,7 +24,7 @@
       <p class="milton-edge-caption">The first exhibition mounted at the Milton Municipal Museum</p>
     </div>`;
 
-    system.className = 'paper-page milton-system';
+    system.classList.add('milton-system');
     system.innerHTML = `<div class="page-inner">
       <div class="milton-kicker"><span>Exhibition design · Archival research · 2023</span><span>09</span></div>
       <div class="milton-artifacts" aria-label="Publication and identity artifacts from the exhibition">
