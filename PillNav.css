@@ -206,6 +206,11 @@
   display: none;
 }
 
+.mobile-top-pill-row,
+.mobile-menu-sheet {
+  display: none;
+}
+
 .cover-tagline.is-turning {
   opacity: 0 !important;
   pointer-events: none;
@@ -215,51 +220,46 @@
 
 @media (max-width: 760px) {
   .site-shell.pill-navigation {
-    grid-template-rows: 52px 52px minmax(0, 1fr) 0;
+    grid-template-rows: 58px minmax(0, 1fr) 0;
   }
 
   .site-shell > .site-header.pill-nav-row,
   .site-shell > .modebar.pill-nav-row {
-    width: calc(100vw - 12px) !important;
-    max-width: none;
-    height: 46px !important;
-    margin: 3px 6px;
-    justify-content: center !important;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .pill-nav-row::-webkit-scrollbar { display: none; }
-
-  .site-header.pill-nav-row nav,
-  .modebar.pill-nav-row > div {
-    flex: 0 0 auto;
-  }
-
-  .modebar.pill-nav-row > div {
-    margin-inline: auto;
-  }
-
-  .pill-nav-row .pill-control {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-height: 34px;
-    padding: 0 12px !important;
-    font-size: 11px !important;
-  }
-
-  .modebar.pill-nav-row b {
-    display: inline-flex !important;
-  }
-
-  .modebar.pill-nav-row #prev,
-  .modebar.pill-nav-row #next,
-  .site-header.pill-nav-row #contact,
-  .modebar.pill-nav-row #mode-switch {
     display: none !important;
+  }
+
+  .mobile-top-pill-row {
+    z-index: 30;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: stretch;
+    gap: 3px;
+    height: 48px;
+    margin: 6px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, .62);
+    border-radius: 999px;
+    background: rgba(248, 247, 243, .72);
+    box-shadow: 0 10px 28px rgba(17, 18, 22, .16), inset 0 1px rgba(255, 255, 255, .74);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+    backdrop-filter: blur(18px) saturate(1.25);
+  }
+
+  .mobile-top-pill-row .pill-control {
+    min-width: 0;
+    min-height: 38px;
+    padding: 0 11px !important;
+    font-size: 10px !important;
+  }
+
+  .mobile-top-pill-row .mobile-home-action {
+    color: #fff;
+    background: #121317 !important;
+  }
+
+  .mobile-top-pill-row .mobile-folio-action {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .mobile-bottom-pill-row {
@@ -288,18 +288,101 @@
   }
 
   .mobile-bottom-pill-row .mobile-page-arrow {
-    flex: 0 0 42px;
+    flex: 1 1 50%;
     color: #fff;
     background: #121317 !important;
-    font-size: 17px !important;
+    font-size: 10px !important;
   }
 
-  .mobile-bottom-pill-row .mobile-contact-action {
-    flex: .85 1 82px;
+  .mobile-menu-sheet {
+    position: absolute;
+    top: 60px;
+    right: 8px;
+    left: 8px;
+    z-index: 60;
+    display: block;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, .72);
+    border-radius: 24px;
+    background: rgba(248, 247, 243, .94);
+    box-shadow: 0 22px 60px rgba(17, 18, 22, .28);
+    -webkit-backdrop-filter: blur(22px) saturate(1.2);
+    backdrop-filter: blur(22px) saturate(1.2);
   }
 
-  .mobile-bottom-pill-row .mobile-index-action {
-    flex: 1.4 1 132px;
+  .mobile-menu-sheet[hidden] { display: none !important; }
+
+  .mobile-menu-head,
+  .mobile-menu-language {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-menu-head {
+    margin-bottom: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-head button,
+  .mobile-menu-language button {
+    border: 0;
+    border-radius: 999px;
+    background: #fff;
+    padding: 9px 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-links {
+    display: grid;
+  }
+
+  .mobile-menu-links button {
+    position: relative;
+    border: 0;
+    border-top: 1px solid rgba(17, 18, 22, .18);
+    background: transparent;
+    padding: 15px 8px;
+    text-align: left;
+    font-size: clamp(24px, 7vw, 34px);
+    font-weight: 700;
+    letter-spacing: -.055em;
+  }
+
+  .mobile-menu-links button.is-active {
+    color: #b82922;
+  }
+
+  .mobile-menu-links button.is-active::after {
+    content: "CURRENT";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    font-size: 8px;
+    letter-spacing: .08em;
+    transform: translateY(-50%);
+  }
+
+  .mobile-menu-language {
+    justify-content: flex-start;
+    gap: 7px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(17, 18, 22, .18);
+  }
+
+  .mobile-menu-language span {
+    margin-right: auto;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-language button.active {
+    color: #fff;
+    background: #b82922;
   }
 
   .site-shell.pill-navigation > .index-view {

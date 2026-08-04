@@ -42,10 +42,10 @@ body.book-mode .site-shell.pill-navigation .page-inner > * {
   }
 
   body.book-mode .site-shell.pill-navigation .book-shell {
-    width: min(calc(100vw - 12px), calc((100svh - 168px) * 13 / 17)) !important;
+    width: min(calc(100vw - 12px), calc((100svh - 122px) * 13 / 17)) !important;
     height: auto !important;
     max-width: calc(100vw - 12px);
-    max-height: calc(100svh - 168px);
+    max-height: calc(100svh - 122px);
     aspect-ratio: 13 / 17;
   }
 

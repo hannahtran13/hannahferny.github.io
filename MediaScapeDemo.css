@@ -163,6 +163,20 @@
 
 #page-10 .page-inner > * { display: none; }
 
+#page-10 .page-inner::before {
+  content: "10";
+  position: absolute;
+  top: 30px;
+  right: 34px;
+  z-index: 3;
+  display: block;
+  color: #111;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
 #page-10 .page-inner::after {
   content: none;
   display: none;

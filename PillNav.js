@@ -40,6 +40,13 @@
       if (active) control.setAttribute('aria-current', 'page');
       else control.removeAttribute('aria-current');
     });
+
+    document.querySelectorAll('[data-mobile-proxy]').forEach(control => {
+      const active = Boolean(states[control.dataset.mobileProxy]);
+      control.classList.toggle('is-active', active);
+      if (active) control.setAttribute('aria-current', 'page');
+      else control.removeAttribute('aria-current');
+    });
   }
 
   function stabilizeCoverTagline() {
@@ -138,46 +145,121 @@
 
     const reader = document.querySelector('#reader');
     const contact = document.querySelector('#contact');
+    const contentsButton = document.querySelector('#contents-button');
+    const indexButton = document.querySelector('#index-button');
     const modeSwitch = document.querySelector('#mode-switch');
     const previous = document.querySelector('#edge-prev');
     const next = document.querySelector('#edge-next');
     const siteShell = reader?.closest('.site-shell');
-    if (reader && siteShell && contact && modeSwitch && previous && next && !siteShell.querySelector('.mobile-bottom-pill-row')) {
+    if (reader && siteShell && contact && contentsButton && indexButton && modeSwitch && previous && next && !siteShell.querySelector('.mobile-bottom-pill-row')) {
+      const mobileTop = document.createElement('nav');
+      const mobileHome = document.createElement('button');
+      const mobileFolio = document.createElement('button');
+      const mobileMenuButton = document.createElement('button');
+      const mobileMenu = document.createElement('div');
       const dock = document.createElement('nav');
       const mobilePrevious = document.createElement('button');
-      const mobileContact = document.createElement('button');
-      const mobileIndex = document.createElement('button');
       const mobileNext = document.createElement('button');
+
+      mobileTop.className = 'mobile-top-pill-row pill-nav-row';
+      mobileTop.setAttribute('aria-label', 'Mobile site navigation');
+      mobileHome.type = mobileFolio.type = mobileMenuButton.type = 'button';
+      mobileHome.className = 'mobile-home-action';
+      mobileFolio.className = 'mobile-folio-action';
+      mobileMenuButton.className = 'mobile-menu-action';
+      mobileHome.textContent = 'Hannah Tran';
+      mobileFolio.textContent = 'Vol. I / COVER';
+      mobileMenuButton.textContent = 'Menu';
+      mobileMenuButton.setAttribute('aria-haspopup', 'dialog');
+      mobileMenuButton.setAttribute('aria-controls', 'mobile-menu');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+      mobileHome.addEventListener('click', () => home?.click());
+
+      mobileMenu.id = 'mobile-menu';
+      mobileMenu.className = 'mobile-menu-sheet';
+      mobileMenu.hidden = true;
+      mobileMenu.setAttribute('role', 'dialog');
+      mobileMenu.setAttribute('aria-modal', 'true');
+      mobileMenu.setAttribute('aria-label', 'Site menu');
+      mobileMenu.innerHTML = '<div class="mobile-menu-head"><b>Navigate</b><button type="button" class="mobile-menu-close" aria-label="Close menu">Close ×</button></div><div class="mobile-menu-links"></div><div class="mobile-menu-language"><span>Language</span><button type="button" data-language="EN">EN</button><button type="button" data-language="DK">DK</button></div>';
+
+      const menuLinks = mobileMenu.querySelector('.mobile-menu-links');
+      [
+        ['selected', 'Selected work'],
+        ['resume', 'Résumé'],
+        ['contact', 'Contact'],
+        ['contents-button', 'Contents'],
+        ['index-button', 'Index']
+      ].forEach(([id, label]) => {
+        const action = document.createElement('button');
+        action.type = 'button';
+        action.textContent = label;
+        action.dataset.mobileProxy = id;
+        action.addEventListener('click', () => {
+          document.getElementById(id)?.click();
+          closeMobileMenu();
+        });
+        menuLinks.append(action);
+      });
+
+      function closeMobileMenu() {
+        mobileMenu.hidden = true;
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenuButton.classList.remove('is-active');
+      }
+
+      mobileMenuButton.addEventListener('click', () => {
+        const opening = mobileMenu.hidden;
+        mobileMenu.hidden = !opening;
+        mobileMenuButton.setAttribute('aria-expanded', String(opening));
+        mobileMenuButton.classList.toggle('is-active', opening);
+        if (opening) mobileMenu.querySelector('.mobile-menu-close')?.focus();
+      });
+      mobileMenu.querySelector('.mobile-menu-close')?.addEventListener('click', closeMobileMenu);
+      mobileMenu.addEventListener('click', event => {
+        const language = event.target.closest('[data-language]');
+        if (!language) return;
+        const languageCode = language.dataset.language === 'DK' ? 'da' : 'en';
+        header.querySelector(`.language-switcher button[data-lang="${languageCode}"]`)?.click();
+        closeMobileMenu();
+      });
+      mobileMenu.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMobileMenu();
+      });
+
       dock.className = 'mobile-bottom-pill-row pill-nav-row';
       dock.setAttribute('aria-label', 'Mobile page navigation');
-      mobilePrevious.type = mobileContact.type = mobileIndex.type = mobileNext.type = 'button';
+      mobilePrevious.type = mobileNext.type = 'button';
       mobilePrevious.className = 'mobile-page-arrow';
       mobileNext.className = 'mobile-page-arrow';
-      mobileContact.className = 'mobile-contact-action';
-      mobileIndex.className = 'mobile-index-action';
-      mobilePrevious.textContent = '←';
-      mobileContact.textContent = 'Contact';
-      mobileIndex.textContent = 'Open the index';
-      mobileNext.textContent = '→';
+      mobilePrevious.textContent = '← Previous';
+      mobileNext.textContent = 'Next →';
       mobilePrevious.setAttribute('aria-label', 'Previous page');
       mobileNext.setAttribute('aria-label', 'Next page');
-      mobileContact.addEventListener('click', () => contact.click());
-      mobileIndex.addEventListener('click', () => modeSwitch.click());
       mobilePrevious.addEventListener('click', () => previous.click());
       mobileNext.addEventListener('click', () => next.click());
-      dock.append(mobilePrevious, mobileContact, mobileIndex, mobileNext);
+      mobileTop.append(mobileHome, mobileFolio, mobileMenuButton);
+      dock.append(mobilePrevious, mobileNext);
+      siteShell.prepend(mobileTop);
+      siteShell.append(mobileMenu);
       siteShell.append(dock);
+      mobileTop.querySelectorAll('button').forEach(labelControl);
       dock.querySelectorAll('button').forEach(labelControl);
 
-      const syncIndexLabel = () => {
-        const source = modeSwitch.querySelector('.pill-label')?.textContent || modeSwitch.textContent;
-        const primary = mobileIndex.querySelector('.pill-label');
-        const hover = mobileIndex.querySelector('.pill-label-hover');
-        if (primary) primary.textContent = source.trim();
-        if (hover) hover.textContent = source.trim();
+      const syncFolio = () => {
+        const folioText = document.querySelector('#folio')?.textContent.trim() || 'COVER';
+        const isDanish = document.documentElement.lang === 'da';
+        const localizedFolio = isDanish && folioText === 'COVER' ? 'FORSIDE' : folioText;
+        const label = `${isDanish ? 'Bind I' : 'Vol. I'} / ${localizedFolio}`;
+        const primary = mobileFolio.querySelector('.pill-label');
+        const hover = mobileFolio.querySelector('.pill-label-hover');
+        if (primary) primary.textContent = label;
+        if (hover) hover.textContent = label;
       };
-      new MutationObserver(() => queueMicrotask(syncIndexLabel)).observe(modeSwitch, { childList: true, characterData: true, subtree: true });
-      syncIndexLabel();
+      const folioLabel = document.querySelector('#folio');
+      if (folioLabel) new MutationObserver(syncFolio).observe(folioLabel, { childList: true, characterData: true, subtree: true });
+      new MutationObserver(syncFolio).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+      syncFolio();
     }
 
     new MutationObserver(() => {

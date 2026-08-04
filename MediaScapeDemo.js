@@ -8,6 +8,37 @@
     if (reservedPortrait) reservedPortrait.replaceChildren();
   }
 
+  function redesignMiltonSpread() {
+    const hero = document.querySelector('#page-08');
+    const system = document.querySelector('#page-09');
+    if (!hero || !system || hero.querySelector('.milton-hero')) return;
+
+    hero.className = 'paper-page milton';
+    hero.innerHTML = `<div class="page-inner">
+      <img class="milton-hero" src="images/milton/result2.jpg" alt="A visitor points toward a detail on the Milton exhibition’s wall of historical Sanborn maps">
+      <div class="milton-hero-label">Milton Municipal Museum · 2023</div>
+      <span class="spread-page-number">08</span>
+      <h2 class="milton-hero-title">Planted<br>in place</h2>
+      <p class="milton-edge-caption">The first exhibition mounted at the Milton Municipal Museum</p>
+    </div>`;
+
+    system.className = 'paper-page milton-system';
+    system.innerHTML = `<div class="page-inner">
+      <div class="milton-kicker"><span>Exhibition design · Archival research · 2023</span><span>09</span></div>
+      <div class="milton-artifacts" aria-label="Publication and identity artifacts from the exhibition">
+        <img class="milton-artifact-spread" src="images/milton/67.png" alt="Exhibition book spread combining local history with Sanborn maps">
+        <img class="milton-artifact-book" src="images/milton/book-cover.png" alt="Planted in Place exhibition book cover">
+        <img class="milton-artifact-postcard" src="images/milton/POSTCARD front orange.png" alt="Orange Milton Municipal Museum exhibition postcard">
+      </div>
+      <div class="milton-copy">
+        <p class="milton-question">How can a local museum make the environmental history of a place visible to the people already living inside it?</p>
+        <p class="milton-description">For the first exhibition mounted at the Milton Municipal Museum, I translated Sanborn maps, botanical research and local history into a continuous public experience spanning identity, publication and spatial interpretation.</p>
+        <div class="milton-metadata"><span>ROLE · Lead designer and exhibition curator</span><span>SYSTEM · Identity, publication and spatial interpretation</span><span>OUTCOME · First exhibition at Milton Municipal Museum</span></div>
+        <a class="text-link" href="milton-exhibition.html">Enter the exhibition archive ↗</a>
+      </div>
+    </div>`;
+  }
+
   function mountMediaScapeDemo(target) {
     if (!target || target.querySelector('.media-demo')) return;
 
@@ -237,12 +268,10 @@
 
   window.mountMediaScapeDemo = mountMediaScapeDemo;
   finalizeSiteIdentity();
+  redesignMiltonSpread();
   normalizeResearchPage();
   normalizeObjectsAndMiscellanea();
   populateAhureaArchive();
   describeBackgroundImages();
   wireContactForm();
-  const localeScript = document.createElement('script');
-  localeScript.src = 'LocaleToggle.js';
-  document.head.append(localeScript);
 })();
