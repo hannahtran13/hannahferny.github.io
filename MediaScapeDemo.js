@@ -41,6 +41,30 @@
     </div>`;
   }
 
+  function updateCommunityResearchCopy() {
+    const page = document.querySelector('#page-11');
+    if (!page) return;
+
+    const kicker = page.querySelector('.page-kicker span:first-child');
+    const title = page.querySelector('h2');
+    const deck = page.querySelector('.deck');
+    const body = page.querySelector('.body-copy');
+    const facts = page.querySelectorAll('.facts span');
+    const link = page.querySelector('.text-link');
+
+    if (kicker) kicker.textContent = 'Community Research · Public Infrastructure';
+    if (title) title.textContent = 'Buffalo Valley Rail Trail Extension';
+    if (deck) deck.textContent = 'LEWISBURG ↔ MONTANDON, PENNSYLVANIA';
+    if (body) {
+      body.textContent = 'A proposed extension would repurpose a former railway bridge as a pedestrian and cycling connection between two neighboring communities separated by the Susquehanna River.\nWhat happens when infrastructure that appears universally beneficial meets the particular fears, habits and histories of a community?\nThrough surveys, stakeholder research and geographic analysis, our team examined how residents understood the proposal—and how place, trust and existing patterns of movement shaped their response.';
+      body.style.whiteSpace = 'pre-line';
+    }
+    if (facts[0]) facts[0].textContent = 'ROLE · Community researcher';
+    if (facts[1]) facts[1].textContent = 'PARTNER · Lewisburg Neighborhoods';
+    if (facts[2]) facts[2].textContent = 'METHODS · Surveys, stakeholder analysis, mixed methods';
+    if (link) link.textContent = 'Explore the research and findings ↗';
+  }
+
   function mountMediaScapeDemo(target) {
     if (!target || target.querySelector('.media-demo')) return;
 
@@ -271,6 +295,7 @@
   window.mountMediaScapeDemo = mountMediaScapeDemo;
   finalizeSiteIdentity();
   redesignMiltonSpread();
+  updateCommunityResearchCopy();
   normalizeResearchPage();
   normalizeObjectsAndMiscellanea();
   populateAhureaArchive();
