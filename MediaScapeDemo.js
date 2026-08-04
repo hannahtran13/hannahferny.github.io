@@ -56,8 +56,8 @@
     if (title) title.textContent = 'Buffalo Valley Rail Trail Extension';
     if (deck) deck.textContent = 'LEWISBURG ↔ MONTANDON, PENNSYLVANIA';
     if (body) {
-      body.textContent = 'A proposed extension would repurpose a former railway bridge as a pedestrian and cycling connection between two neighboring communities separated by the Susquehanna River.\nWhat happens when infrastructure that appears universally beneficial meets the particular fears, habits and histories of a community?\nThrough surveys, stakeholder research and geographic analysis, our team examined how residents understood the proposal—and how place, trust and existing patterns of movement shaped their response.';
-      body.style.whiteSpace = 'pre-line';
+      body.innerHTML = '<span class="community-copy__paragraph">A proposed extension would repurpose a former railway bridge as a pedestrian and cycling connection between two neighboring communities separated by the Susquehanna River.</span><span class="community-copy__question">What happens when infrastructure that appears universally beneficial meets the particular fears, habits and histories of a community?</span><span class="community-copy__paragraph">Through surveys, stakeholder research and geographic analysis, our team examined how residents understood the proposal, and how place, trust and existing patterns of movement shaped their response.</span>';
+      body.style.removeProperty('white-space');
     }
     if (facts[0]) facts[0].textContent = 'ROLE · Community researcher';
     if (facts[1]) facts[1].textContent = 'PARTNER · Lewisburg Neighborhoods';

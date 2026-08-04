@@ -390,6 +390,31 @@
 #page-21 .research-method__head a { color: #ff9f2d; text-decoration: none; }
 #page-21 .research-method__head a:hover { text-decoration: underline; }
 
+#page-11 .community-copy__paragraph,
+#page-11 .community-copy__question {
+  display: block;
+}
+
+#page-11 .community-copy__question {
+  margin: 10px 0;
+  font-size: 1.12em;
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
+
+@media (max-width: 760px) {
+  #page-11 .body-copy {
+    font-size: 9.5px;
+    line-height: 1.28;
+  }
+
+  #page-11 .community-copy__question {
+    margin: 7px 0;
+    font-size: 1.1em;
+  }
+}
+
 #page-21 .research-method ol {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
