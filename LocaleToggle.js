@@ -51,6 +51,11 @@
     'An editorial system that organized a cultural community.':'Et redaktionelt system, der organiserede et kulturelt fællesskab.','An essay atlas with a geography of its own.':'Et essayatlas med sin egen geografi.','Current questions in computation, platforms and identity.':'Aktuelle spørgsmål om computation, platforme og identitet.','Ceramic objects between the quiet and the strange.':'Keramiske objekter mellem det stille og det mærkelige.','Experience, education and interdisciplinary practice.':'Erfaring, uddannelse og tværfaglig praksis.'
   });
   Object.assign(da, {
+    'Hjernelandet is an essay atlas for observations that refuse to remain separate: infrastructure, food systems, language, environmental contradiction, movement and belonging. I developed its identity, map, taxonomy, dispatch registry, editorial templates and reading system.':'Hjernelandet er et essayatlas for observationer, der nægter at forblive adskilte: infrastruktur, fødevaresystemer, sprog, miljømæssige modsætninger, bevægelse og tilhørsforhold. Jeg udviklede dets identitet, kort, taksonomi, register over beretninger, redaktionelle skabeloner og læsesystem.',
+    'LAND & CLIMATE':'LAND & KLIMA',
+    'CITIES & MOTION':'BYER & BEVÆGELSE',
+    'LANGUAGE':'SPROG',
+    'LIFE':'LIV',
     'I am interested in the invisible rules that shape everyday life: how people move, organize, repair, collect, and remember. My work spans research, editorial design, software, exhibitions, writing, and physical making because the questions rarely fit inside a single discipline.':'Jeg er interesseret i de usynlige regler, der former hverdagen: hvordan mennesker bevæger sig, organiserer, reparerer, samler og husker. Mit arbejde spænder over research, redaktionelt design, software, udstillinger, skrivning og fysisk håndværk, fordi spørgsmålene sjældent passer ind i én enkelt disciplin.',
     'Editorial Design':'Redaktionelt design',
     'Software':'Software',

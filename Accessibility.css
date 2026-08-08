@@ -40,7 +40,6 @@ textarea:focus-visible,
 .modebar button,
 .modebar b,
 footer,
-.contents-drawer > button,
 .index-head p,
 .index-head button,
 .index-card small,
@@ -79,13 +78,8 @@ footer,
 .modebar,
 .site-header,
 footer,
-.index-card,
-.contents-drawer > button:not(:first-child) {
+.index-card {
   border-color: #13182066 !important;
-}
-
-.contents-drawer[aria-modal="true"] {
-  outline: 1px solid #13182066;
 }
 
 @media (prefers-reduced-motion: reduce) {

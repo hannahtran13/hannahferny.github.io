@@ -1,3 +1,8 @@
+.site-shell #contents-button,
+.site-shell > #contents {
+  display: none !important;
+}
+
 .site-shell > .site-header.pill-nav-row,
 .site-shell > .modebar.pill-nav-row {
   width: max-content !important;
@@ -22,10 +27,6 @@
 
 .site-shell.pill-navigation > footer {
   display: none !important;
-}
-
-.site-shell.pill-navigation > .contents-drawer {
-  bottom: 0;
 }
 
 .site-header.pill-nav-row {

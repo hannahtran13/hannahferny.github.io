@@ -85,7 +85,7 @@
     window.addEventListener('wheel', event => {
       const target = event.target;
       if ((location.hash || '#cover') !== '#cover' || event.deltaY <= 0 ||
-          (target instanceof Element && target.closest('input, textarea, select, .contents-drawer'))) {
+          (target instanceof Element && target.closest('input, textarea, select'))) {
         return;
       }
 
@@ -122,6 +122,13 @@
     const modebar = document.querySelector('.modebar');
     if (!header || !modebar) return;
 
+    // The in-book contents spread and Index already provide navigation. Remove
+    // the redundant overlay and its trigger before enhancing either nav row.
+    window.setTimeout(() => {
+      document.querySelector('#contents-button')?.remove();
+      document.querySelector('#contents')?.remove();
+    }, 0);
+
     header.classList.add('pill-nav-row', 'pill-nav-primary');
     modebar.classList.add('pill-nav-row', 'pill-nav-secondary');
     header.closest('.site-shell')?.classList.add('pill-navigation');
@@ -145,13 +152,12 @@
 
     const reader = document.querySelector('#reader');
     const contact = document.querySelector('#contact');
-    const contentsButton = document.querySelector('#contents-button');
     const indexButton = document.querySelector('#index-button');
     const modeSwitch = document.querySelector('#mode-switch');
     const previous = document.querySelector('#edge-prev');
     const next = document.querySelector('#edge-next');
     const siteShell = reader?.closest('.site-shell');
-    if (reader && siteShell && contact && contentsButton && indexButton && modeSwitch && previous && next && !siteShell.querySelector('.mobile-bottom-pill-row')) {
+    if (reader && siteShell && contact && indexButton && modeSwitch && previous && next && !siteShell.querySelector('.mobile-bottom-pill-row')) {
       const mobileTop = document.createElement('nav');
       const mobileHome = document.createElement('button');
       const mobileFolio = document.createElement('button');
@@ -188,7 +194,6 @@
         ['selected', 'Selected work'],
         ['resume', 'Résumé'],
         ['contact', 'Contact'],
-        ['contents-button', 'Contents'],
         ['index-button', 'Index']
       ].forEach(([id, label]) => {
         const action = document.createElement('button');
