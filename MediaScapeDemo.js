@@ -26,7 +26,7 @@
 
     system.classList.add('milton-system');
     system.innerHTML = `<div class="page-inner">
-      <div class="milton-kicker"><span>Exhibition design · Archival research · 2023</span><span>09</span></div>
+      <div class="page-kicker milton-kicker"><span>Exhibition design · Archival research · 2023</span><span>09</span></div>
       <div class="milton-artifacts" aria-label="Publication and identity artifacts from the exhibition">
         <img class="milton-artifact-spread" src="images/milton/67.png" alt="Exhibition book spread combining local history with Sanborn maps">
         <img class="milton-artifact-book" src="images/milton/book-cover.png" alt="Planted in Place exhibition book cover">
@@ -49,7 +49,7 @@
     page.classList.add('frontispiece-redesign');
     page.innerHTML = `<div class="page-inner">
       <img class="frontispiece-photo" src="images/frontispiece-hannah.jpg" alt="Hannah Tran reclining in a chair while wearing a black football jersey, collared shirt, tie, and cap">
-      <div class="frontispiece-kicker"><span>Frontispiece</span><span>01</span></div>
+      <div class="page-kicker frontispiece-kicker"><span>Frontispiece</span><span>01</span></div>
       <div class="frontispiece-copy">
         <h2>I study the systems hidden inside ordinary life.</h2>
         <p class="frontispiece-intro">I am interested in the invisible rules that shape everyday life: how people move, organize, repair, collect, and remember. My work spans research, editorial design, software, exhibitions, writing, and physical making because the questions rarely fit inside a single discipline.</p>
@@ -65,6 +65,35 @@
         </div>
         <i class="frontispiece-rule" aria-hidden="true"></i>
       </div>
+    </div>`;
+  }
+
+  function redesignConnectingLogicSpread() {
+    const copyPage = document.querySelector('#page-14');
+    const portraitPage = document.querySelector('#page-15');
+    if (!copyPage || !portraitPage || copyPage.querySelector('.connecting-headline')) return;
+
+    // Preserve PageFlip's generated sheet classes so the replacement remains
+    // part of the same physical page-turn sequence.
+    copyPage.classList.add('connecting-logic-page', 'connecting-logic-copy-page');
+    portraitPage.classList.add('connecting-logic-page', 'connecting-logic-portrait-page');
+
+    copyPage.innerHTML = `<div class="page-inner">
+      <div class="page-kicker connecting-kicker"><span>Intermission</span><span>14</span></div>
+      <h2 class="book-display-title connecting-headline">
+        <span class="connecting-line connecting-line-an">An</span>
+        <span class="connecting-line">unreasonable</span>
+        <span class="connecting-line">number of</span>
+        <span class="connecting-line">professional</span>
+        <span class="connecting-line connecting-line-identities">identities.</span>
+        <strong>One Hannah.</strong>
+      </h2>
+      <p class="book-supporting-copy connecting-note">Researcher, designer, editor, programmer, environmental communicator and maker. The titles multiply; the practice remains the same: learn the system, find the consequential pattern and build a form through which someone else can understand it.</p>
+    </div>`;
+
+    portraitPage.innerHTML = `<div class="page-inner">
+      <div class="page-kicker connecting-kicker"><span>The Connecting Logic</span><span>15</span></div>
+      <img class="connecting-portraits" src="images/connecting-logic.png" alt="Three portraits of Hannah Tran wearing different suits">
     </div>`;
   }
 
@@ -322,6 +351,7 @@
   window.mountMediaScapeDemo = mountMediaScapeDemo;
   finalizeSiteIdentity();
   redesignFrontispiece();
+  redesignConnectingLogicSpread();
   redesignMiltonSpread();
   updateCommunityResearchCopy();
   normalizeResearchPage();

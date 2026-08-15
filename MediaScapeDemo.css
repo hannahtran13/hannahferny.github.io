@@ -1,3 +1,47 @@
+/* Canonical book header geometry. Every numbered page, including redesigned
+   spreads, uses these tokens so folios share one baseline and inset. */
+:root {
+  --book-header-top: 30px;
+  --book-header-inline: 34px;
+  --book-header-size: 11px;
+  --book-header-line-height: 1.25;
+  --book-display-size: clamp(42px, 4.4vw, 68px);
+  --book-display-line-height: .86;
+  --book-display-weight: 700;
+  --book-display-tracking: -.075em;
+  --book-display-top-gap: 72px;
+  --book-deck-size: 17px;
+  --book-deck-line-height: 1.04;
+  --book-body-size: 11px;
+  --book-body-line-height: 1.35;
+}
+
+.paper-page .page-kicker {
+  flex: 0 0 auto;
+  min-height: calc(var(--book-header-size) * var(--book-header-line-height));
+  margin: 0;
+  align-items: flex-start;
+  font-size: var(--book-header-size) !important;
+  font-weight: 700;
+  line-height: var(--book-header-line-height);
+  letter-spacing: -.01em;
+}
+
+.paper-page .book-display-title {
+  margin-top: var(--book-display-top-gap);
+  font-size: var(--book-display-size);
+  font-weight: var(--book-display-weight);
+  line-height: var(--book-display-line-height);
+  letter-spacing: var(--book-display-tracking);
+}
+
+.paper-page .book-supporting-copy {
+  font-size: var(--book-body-size);
+  font-weight: 400;
+  line-height: var(--book-body-line-height);
+  letter-spacing: -.015em;
+}
+
 /* Front cover portrait: layered behind the unchanged editorial composition. */
 .image-description {
   position: absolute !important;
@@ -405,7 +449,7 @@
   display: flex;
   flex-direction: column;
   isolation: isolate;
-  padding: 30px;
+  padding: var(--book-header-top) var(--book-header-inline) 34px;
 }
 
 #page-01.frontispiece-redesign .page-inner::after {
@@ -430,12 +474,6 @@
 .frontispiece-kicker {
   position: relative;
   z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 1.25;
-  text-transform: none;
 }
 
 .frontispiece-copy {
@@ -820,7 +858,98 @@
   font: 7px ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+/* Pages 14–15: intermission / connecting logic */
+#page-14.connecting-logic-page,
+#page-15.connecting-logic-page {
+  color: #080808;
+  background: #fff;
+}
+
+#page-14.connecting-logic-page .page-inner,
+#page-15.connecting-logic-page .page-inner {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--book-header-top) var(--book-header-inline) 34px;
+  color: #080808;
+  background: #fff;
+}
+
+.connecting-kicker {
+  position: relative;
+  z-index: 3;
+  color: #080808;
+}
+
+.connecting-headline {
+  position: relative;
+  z-index: 2;
+  max-width: none;
+  margin: var(--book-display-top-gap) 0 0;
+  color: #080808;
+  font-size: var(--book-display-size);
+  font-weight: var(--book-display-weight);
+  line-height: var(--book-display-line-height);
+  letter-spacing: var(--book-display-tracking);
+}
+
+.connecting-headline .connecting-line,
+.connecting-headline strong {
+  display: block;
+}
+
+.connecting-headline .connecting-line-an {
+  margin-bottom: 0;
+  font-size: 1em;
+}
+
+.connecting-headline .connecting-line-identities {
+  padding-left: 28%;
+}
+
+.connecting-headline strong {
+  margin-top: 0;
+  color: #ff302f;
+  font-size: 1em;
+  font-weight: inherit;
+  white-space: nowrap;
+}
+
+.connecting-note {
+  position: absolute;
+  z-index: 2;
+  left: var(--book-header-inline);
+  bottom: 34px;
+  width: 72%;
+  margin: 0;
+  color: #080808;
+  font-size: var(--book-body-size);
+  line-height: var(--book-body-line-height);
+  letter-spacing: -.015em;
+}
+
+.connecting-portraits {
+  position: absolute;
+  z-index: 1;
+  right: -1.5%;
+  bottom: 0;
+  width: auto;
+  height: 91%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+}
+
 @media (max-width: 700px) {
+  :root {
+    --book-header-top: 26px;
+    --book-header-inline: 24px;
+    --book-display-size: 44px;
+    --book-display-top-gap: 54px;
+  }
+  .connecting-note { width: 76%; }
+  .connecting-portraits { right: -3%; height: 88%; max-width: 104%; }
   #page-23 .body-copy { max-width: 100%; font-size: 11px; }
   #page-26 .miscellanea-gateway p { max-width: 90%; font-size: 11px; }
   #page-27 h2 { margin-top: clamp(28px, 6vh, 50px); font-size: clamp(38px, 11vw, 58px); }

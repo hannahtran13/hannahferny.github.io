@@ -72,6 +72,16 @@
     'PARTNER · Lewisburg Neighborhoods':'PARTNER · Lewisburg Neighborhoods',
     'Explore the research and findings ↗':'Udforsk researchen og resultaterne ↗'
   });
+  Object.assign(da, {
+    'The Connecting Logic':'Den forbindende logik',
+    'An':'Et',
+    'unreasonable':'urimeligt',
+    'number of':'antal',
+    'professional':'professionelle',
+    'identities.':'identiteter.',
+    'One Hannah.':'Én Hannah.',
+    'Researcher, designer, editor, programmer, environmental communicator and maker. The titles multiply; the practice remains the same: learn the system, find the consequential pattern and build a form through which someone else can understand it.':'Researcher, designer, redaktør, programmør, miljøformidler og maker. Titlerne bliver flere; praksissen forbliver den samme: Lær systemet at kende, find det afgørende mønster, og byg en form, som gør det forståeligt for andre.'
+  });
   const originals = new WeakMap();
   let currentLang = 'en';
   function textNodes(root) { const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT); const out=[]; while(w.nextNode())out.push(w.currentNode); return out; }
